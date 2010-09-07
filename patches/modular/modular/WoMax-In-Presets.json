@@ -1,0 +1,85 @@
+{
+	"pattrstorage" : 	{
+		"name" : "Presets",
+		"slots" : 		{
+			"1" : 			{
+				"id" : 1,
+				"name" : "Michel",
+				"data" : 				{
+					"Dmax" : [ 12.0 ],
+					"Oracle_MIDI" : [ 0 ],
+					"Oracle_SP" : [ 1 ],
+					"Pitch" : [ 0 ],
+					"Proba" : [ 0.56 ],
+					"Quality" : [ 0.52 ],
+					"Spectral" : [ 1 ],
+					"Weights" : [ 4 ],
+					"Window" : [ 55 ],
+					"YinFreq" : [ 100 ],
+					"YinSampl" : [ 1 ]
+				}
+
+			}
+,
+			"2" : 			{
+				"id" : 2,
+				"name" : "Beñat",
+				"data" : 				{
+					"Dmax" : [ 8.0 ],
+					"Oracle_MIDI" : [ 1 ],
+					"Oracle_SP" : [ 1 ],
+					"Pitch" : [ 1 ],
+					"Proba" : [ 0.6 ],
+					"Quality" : [ 0.6 ],
+					"Spectral" : [ 1 ],
+					"Weights" : [ 0 ],
+					"Window" : [ 75 ],
+					"YinFreq" : [ 80 ],
+					"YinSampl" : [ 2 ]
+				}
+
+			}
+,
+			"3" : 			{
+				"id" : 3,
+				"name" : "Medo",
+				"data" : 				{
+					"Dmax" : [ 9.0 ],
+					"Oracle_MIDI" : [ 1 ],
+					"Oracle_SP" : [ 1 ],
+					"Pitch" : [ 1 ],
+					"Proba" : [ 0.43 ],
+					"Quality" : [ 0.32 ],
+					"Spectral" : [ 1 ],
+					"Weights" : [ 0 ],
+					"Window" : [ 55 ],
+					"YinFreq" : [ 50 ],
+					"YinSampl" : [ 2 ]
+				}
+
+			}
+,
+			"4" : 			{
+				"id" : 4,
+				"name" : "Brice",
+				"data" : 				{
+					"Dmax" : [ 3.0 ],
+					"Oracle_MIDI" : [ 1 ],
+					"Oracle_SP" : [ 1 ],
+					"Pitch" : [ 1 ],
+					"Proba" : [ 0.45 ],
+					"Quality" : [ 0.31 ],
+					"Spectral" : [ 1 ],
+					"Weights" : [ 2 ],
+					"Window" : [ 57 ],
+					"YinFreq" : [ 45 ],
+					"YinSampl" : [ 2 ]
+				}
+
+			}
+
+		}
+
+	}
+
+}
