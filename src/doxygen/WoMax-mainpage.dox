@@ -1,0 +1,9 @@
+/**@mainpage
+ * @htmlonly
+  <div id="mainpage">
+  	<h2>This project ports Factor Oracle into MaxMSP in the context of OMax software</h2>
+    <a href="http://omax.ircam.fr/" target="_blank"><img src="../pic/AfficheMartin.jpg"></a></br>
+  	The initial development has been made with Apple XCode 3.1.2 on a MacBook (processor intel Core 2 Duo) running Mac OS 10.5.7 (Leopard). Max5 externals have been implemented using MaxSDK-5.0.6 and tested with Max 5.0.7 (38325).
+  	Further development and testing from October 2009 has been done with Apple XCode 3.1.4 on a MacBook Pro Unibody running Mac OS 10.5.8 (Leopard) using MaxSDK-5.0.8 and tested with Max 5.0.8 (40079).
+  </div>
+  @endhtmlonly */
