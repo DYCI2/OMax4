@@ -94,45 +94,50 @@ extern "C"
 					
 					// set data name
 					x->dataname = OMax_data_name(x->oname);
-					x->dataname->s_thing = (t_object*)x;
-					
-					///@remarks Sets also the data type (member t_OMax_data::datatype) depending on the second argument given to the Max5 object (if any, otherwise default is @link O_DataType::LETTERS LETTERS @endlink) */
-					x->datatype = LETTERS;
-					string datatype = "LETTERS";
-					if (argc < 2 || (argv+1)->a_type!=A_SYM)
-						object_post((t_object *)x,"No data type, using LETTERS");
+					if (x->dataname->s_thing!=NULL)
+						object_error((t_object*)x, "Name %s already used",x->oname->s_name);
 					else
 					{
-						if (atom_getsym(argv+1) == gensym("MIDI_MONO"))
+						x->dataname->s_thing = (t_object*)x;
+						
+						///@remarks Sets also the data type (member t_OMax_data::datatype) depending on the second argument given to the Max5 object (if any, otherwise default is @link O_DataType::LETTERS LETTERS @endlink) */
+						x->datatype = LETTERS;
+						string datatype = "LETTERS";
+						if (argc < 2 || (argv+1)->a_type!=A_SYM)
+							object_post((t_object *)x,"No data type, using LETTERS");
+						else
 						{
-							x->datatype = MIDI_MONO;
-							datatype = "MIDI_MONO";
-						}
-						else { 
-							if (atom_getsym(argv+1) == gensym("SPECTRAL"))
+							if (atom_getsym(argv+1) == gensym("MIDI_MONO"))
 							{
-								x->datatype = SPECTRAL;
-								datatype = "SPECTRAL";
-								if (atom_getlong(argv+2))
-									x->nbcoeffs = atom_getlong(argv+2);
-								else
-								{
-									x->nbcoeffs = 7;
-									object_post((t_object *)x, "Missing number of coefficients for %s, assuming 7",x->oname->s_name);
-								}
+								x->datatype = MIDI_MONO;
+								datatype = "MIDI_MONO";
 							}
 							else { 
-								if (atom_getsym(argv+1) == gensym("LETTERS")){}
-								else
-									object_error((t_object *)x,"Type %s undefined, using LETTERS",atom_getsym(argv+1)->s_name);
+								if (atom_getsym(argv+1) == gensym("SPECTRAL"))
+								{
+									x->datatype = SPECTRAL;
+									datatype = "SPECTRAL";
+									if (atom_getlong(argv+2))
+										x->nbcoeffs = atom_getlong(argv+2);
+									else
+									{
+										x->nbcoeffs = 7;
+										object_post((t_object *)x, "Missing number of coefficients for %s, assuming 7",x->oname->s_name);
+									}
+								}
+								else { 
+									if (atom_getsym(argv+1) == gensym("LETTERS")){}
+									else
+										object_error((t_object *)x,"Type %s undefined, using LETTERS",atom_getsym(argv+1)->s_name);
+								}
 							}
 						}
+						if (datatype == "SPECTRAL")
+							object_post((t_object *)x,"Data %s of type %s declared with %ld coefficients",x->oname->s_name, datatype.c_str(),x->nbcoeffs);
+						else
+							object_post((t_object *)x,"Data %s of type %s declared",x->oname->s_name, datatype.c_str());
+						
 					}
-				if (datatype == "SPECTRAL")
-					object_post((t_object *)x,"Data %s of type %s declared with %ld coefficients",x->oname->s_name, datatype.c_str(),x->nbcoeffs);
-				else
-					object_post((t_object *)x,"Data %s of type %s declared",x->oname->s_name, datatype.c_str());
-					
 				}
 			}
 			// write flags
@@ -167,6 +172,8 @@ extern "C"
 					x->data.freestates<O_char>();
 			}
 		}
+		if (x->dataname->s_thing == (t_object *)x)
+			x->dataname->s_thing = NULL;
 	}
 	
 	/**@public @memberof t_OMax_data

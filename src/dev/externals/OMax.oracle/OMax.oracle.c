@@ -104,9 +104,14 @@ using namespace std;
 				{
 					///@details Declare the first argument given to the Max5 object as the name of F0 (member t_OMax_oracle::oname) and links it with the OMax.oracle object
 					x->oname = atom_getsym(argv);
+					if (x->oname->s_thing!=NULL)
+						object_error((t_object*)x, "Name %s already used",x->oname->s_name);
+					else
+					{
 					x->oname->s_thing = (t_object*)x;
 					x->oracle.set_name(x->oname->s_name);
 					object_post((t_object *)x,"Oracle %s declared",x->oname->s_name);
+					}
 				}
 			}
 			//write flags
@@ -127,6 +132,8 @@ using namespace std;
 	 * @brief Object destruction */	
 	void OMax_oracle_free(t_OMax_oracle *x)
 	{
+		if (x->oname->s_thing == (t_object*)x)
+			x->oname->s_thing = NULL;
 		///@remarks Deletes the whole FO structure
 		x->oracle.freestates();
 	}

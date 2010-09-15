@@ -186,12 +186,6 @@
 		2FBBEAE108F335360078DB84 /* Development */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				COPY_PHASE_STRIP = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/../../MaxSDK-5.0.6/c74support/max-includes\"",
-				);
-				GCC_OPTIMIZATION_LEVEL = 0;
 			};
 			name = Development;
 		};

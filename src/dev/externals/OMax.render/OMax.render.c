@@ -267,7 +267,7 @@ extern "C"
 			ATOMIC_INCREMENT(&(((t_OMax_data *)(x->dataname->s_thing))->readcount));
 			if(!(((t_OMax_data *)(x->dataname->s_thing))->wflag))
 			{
-				if ((statnb>=0) && (statnb<(long)(x->data->get_size())))
+				if (x->data && (statnb>=0) && (statnb<(long)(x->data->get_size())))
 				{
 					O_label * labL = (*x->data)[statnb];
 					

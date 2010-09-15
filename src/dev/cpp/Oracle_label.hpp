@@ -10,6 +10,8 @@
 
 #include <list>
 #include <iostream>
+#include <math.h>
+#include <stdarg.h>
 using namespace std;
 
 /**@defgroup label Data Sequence structure
@@ -192,7 +194,129 @@ public:
 	bool operator== (const O_spectral &) const;
 	/// Output data on a standard stream
 	friend ostream & operator<< (ostream &, const O_spectral &);
+	//@}
 };
+
+///MIDI note for polyphonic MIDI
+class O_MIDI_note
+{
+protected:
+	int pitch;
+	int velocity;
+	int channel;
+	int offset;
+	
+public:
+	///@name Constructors & Destructors
+	//@{
+	/// Default constructor
+	O_MIDI_note();
+	/// Copy constructor
+	O_MIDI_note(const O_MIDI_note &);
+	/// Create a note from data
+	O_MIDI_note(int=60,int=0,int=128,int=0);
+	/// Standard destructor
+	~O_MIDI_note(){};
+	//@}
+	
+	///@name Set & Get
+	//@{
+	/// Return the pitch of the note
+	int get_pitch();
+	/// Set the pitch of the note
+	void set_pitch(int);
+	/// Return the velocity of the note
+	int get_velocity();
+	/// Set the velocity of the note
+	void set_velocity(int);
+	/// Return the channel of the note
+	int get_channel();
+	/// Set the channel of the note
+	void set_channel(int);
+	/// Return the offset of the note
+	int get_offset();
+	/// Set the offset of the note
+	void set_offset(int);
+	/// Return all parameters of the note at once in an int array
+	int* get_note(int*);
+	/// Set all parameters of the note at once
+	void set_note(int=60,int=0,int=128,int=0);
+	//@}
+	
+	///@name Operators Overload
+	//@{
+	/// Compare two notes based solely on pitches
+	bool operator== (const O_MIDI_note & other) const;
+	/// Strict order between notes solely based on pitches
+	bool operator< (const O_MIDI_note & other) const;
+	/// Output note on a standard stream
+	friend ostream & operator<< (ostream &, const O_MIDI_note &);
+	//@}
+	
+	// friends
+	friend class O_MIDI_poly;
+};
+
+/*enum Comp
+{
+	notes_strict,
+	notes_mod12,
+	vpitch_stric,
+	vpitch_mod12
+};*/
+
+///State of a polyphonic MIDI sequence
+class O_MIDI_poly : public O_label
+{
+protected:
+	int vpitch;
+	int mvelocity;
+	list<O_MIDI_note> notes;
+	
+public:
+	///@name Constructors & Destructors
+	//@{
+	/// Default constructor
+	O_MIDI_poly();
+	/// Copy constructor
+	O_MIDI_poly(const O_MIDI_poly &);
+	/// Create a MIDI_poly state from list of notes and data
+	O_MIDI_poly(list<O_MIDI_note>&, int=0, int=0, int=0, int=0, int=0);
+	/// Standard destructor
+	~O_MIDI_poly(){};
+	//@}
+	
+	///@name Set & Get
+	//@{
+	/// Return the list of notes in the frame
+	list<O_MIDI_note> get_notes();
+	/// Return the notes in the frame in an int array
+	int* get_notes(int*);
+	/// Set the list of notes in the frame
+	void set_notes(list<O_MIDI_note>);
+	/// Set the list of notes from separate notes
+	void set_notes(O_MIDI_note*, ...);
+	/// Get all the pitches of the frame
+	list<int> get_pitches() const;
+	//@}
+	
+	///@name Internal calculations on frame data
+	//@{
+	/// Computes and set the virtual fondamental pitch from the list of notes
+	void set_vpitch();
+	/// Computes and set the mean velocity from the list of notes
+	int set_mvelocity();
+	//@}
+	
+	///@name Operators Overload
+	//@{
+	/// Compare two states based on exact comparisons of pitches in the frame
+	bool operator== (const O_MIDI_poly &) const;
+	/// Output note on a standard stream
+	friend ostream & operator<< (ostream &, const O_MIDI_poly &);
+	//@}
+};
+
 /**@}*/
 
 #endif

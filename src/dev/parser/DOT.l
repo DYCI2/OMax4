@@ -1,4 +1,9 @@
-/* First try for dot graphs */
+/*------------------
+ * DOT lexer file
+ * Created BenCello
+ *------------------*/
+
+///@file DOT.l DOT lexer file
 
 %{
 #include <stdio.h>
@@ -54,4 +59,3 @@ target	{return TARGET;}
 .		{}
 
 %%
-

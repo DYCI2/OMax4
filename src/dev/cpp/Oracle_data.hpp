@@ -250,7 +250,7 @@ void O_data::reset_S2D()
 O_label * O_data::operator[] (int i) const
 {
 	if (this!= NULL && size>0 && i<size)
-		return(state_vect[i]);
+		return state_vect[i];
 	else
 		return NULL;
 }

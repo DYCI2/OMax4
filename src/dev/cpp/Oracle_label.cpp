@@ -7,7 +7,9 @@
 
 #include "Oracle_label.hpp"
 
+/////////////////////////////
 /* Generic Label functions */
+/////////////////////////////
 
 O_label::O_label()
 {
@@ -88,7 +90,9 @@ void O_label::set_section(int sectionin)
 	section = sectionin;
 }
 
+////////////////////
 /* char functions */
+////////////////////
 
 ///@details Create a state with a whitespace as @b letter attribute
 ///@remarks Calls the O_label default constructor
@@ -128,7 +132,9 @@ ostream & operator<< (ostream & out, const O_char & charin)
 	return(out);
 }
 
+/////////////////////////
 /* MIDI_mono functions */
+/////////////////////////
 
 ///@details @b Pitch is set to 60, @b velocity to 0 and @b channel to 128
 ///@remarks Calls the O_label default constructor
@@ -190,7 +196,9 @@ ostream & operator<< (ostream & out, const O_MIDI_mono & midin)
 	return(out);
 }
 
+////////////////////////
 /* spectral functions */
+////////////////////////
 
 ///@details @b Pitch is set to 60, @b energy to 0 and the list of coeff is an empty list.
 ///@remarks Calls the O_label default constructor
@@ -285,5 +293,238 @@ ostream & operator<< (ostream & out, const O_spectral & spectralin)
 	for (it = spectralin.coeffs.begin(); it!= spectralin.coeffs.end(); it++)
 		out<<(*it)<<" ";
 	out<<" : "<<spectralin.phrase<<" "<<spectralin.bufferef<<endl;
+	return(out);
+}
+
+/////////////////////////
+/* MIDI_note functions */
+/////////////////////////
+
+O_MIDI_note::O_MIDI_note()
+{
+	pitch = 60;
+	velocity = 0;
+	channel = 128;
+	offset = 0;
+}
+
+O_MIDI_note::O_MIDI_note(const O_MIDI_note & notein)
+{
+	pitch = notein.pitch;
+	velocity = notein.velocity;
+	channel = notein.channel;
+	offset = notein.offset;
+}
+
+O_MIDI_note::O_MIDI_note(int pitchin, int velocityin, int channelin, int offsetin)
+{
+	pitch = pitchin;
+	velocity = velocityin;
+	channel = channelin;
+	offset = offsetin;
+}
+
+int O_MIDI_note::get_pitch()
+{
+	return pitch;
+}
+
+void O_MIDI_note::set_pitch(int pitchin)
+{
+	pitch = pitchin;
+}
+
+int O_MIDI_note::get_velocity()
+{
+	return velocity;
+}
+
+void O_MIDI_note::set_velocity(int velocityin)
+{
+	velocity = velocityin;
+}
+
+int O_MIDI_note::get_channel()
+{
+	return channel;
+}
+
+void O_MIDI_note::set_channel(int channelin)
+{
+	channel = channelin;
+}
+
+int O_MIDI_note::get_offset()
+{
+	return offset;
+}
+
+void O_MIDI_note::set_offset(int offsetin)
+{
+	offset = offsetin;
+}
+
+///@remarks If passed NULL, allocates memory
+int* O_MIDI_note::get_note(int* noteout)
+{
+	if (noteout == NULL)
+		noteout = (int*)malloc(4*sizeof(int));
+	noteout[0]=pitch;
+	noteout[1]=velocity;
+	noteout[2]=channel;
+	noteout[3]=offset;
+	return noteout;
+}
+
+void O_MIDI_note::set_note(int pitchin, int velocityin, int channelin, int offsetin)
+{
+	pitch = pitchin;
+	velocity = velocityin;
+	channel = channelin;
+	offset = offsetin;
+}
+
+bool O_MIDI_note::operator== (const O_MIDI_note & other) const
+{
+	return(pitch == other.pitch);
+}
+
+bool O_MIDI_note::operator< (const O_MIDI_note & other) const
+{
+	return(pitch < other.pitch);
+}
+
+ostream & operator<< (ostream & out, const O_MIDI_note & notein)
+{
+	out<<notein.pitch<<" "<<notein.velocity<<" "<<notein.channel<<" "<<notein.offset;
+	return(out);
+}
+
+/////////////////////////
+/* MIDI_poly functions */
+/////////////////////////
+
+///@details @b virtual pitch is set to 0, @b velocity to 0
+///@remarks Calls the O_label default constructor
+O_MIDI_poly::O_MIDI_poly() : O_label()
+{
+	vpitch = 0;
+	mvelocity = 0;
+	notes = list<O_MIDI_note>();
+}
+
+O_MIDI_poly::O_MIDI_poly(const O_MIDI_poly & framein) : O_label(framein)
+{
+	vpitch = framein.vpitch;
+	mvelocity = framein.mvelocity;
+	notes = list<O_MIDI_note>(framein.notes);
+}
+
+///@details The virtual fondamental pitch @b vpitch is computed on the notes as well as the mean velocity
+///@remarks All the following arguments are passed to the O_label constructor
+O_MIDI_poly::O_MIDI_poly(list<O_MIDI_note> & notesin, int statenbin, int bufferefin, int durationin, int phrasein, int sectionin) : O_label(statenbin, bufferefin, durationin, phrasein, sectionin)
+{
+	notes = notesin;
+}
+
+// Set & Get
+
+list<O_MIDI_note> O_MIDI_poly::get_notes()
+{
+	return notes;
+}
+
+int* O_MIDI_poly::get_notes(int* notesout)
+{
+	int i;
+	i = notes.size();
+	if (notesout == NULL)
+		notesout = (int*)malloc(i*4*sizeof(int));
+	i = 0;
+	list<O_MIDI_note>::iterator noteit;
+	for (noteit = notes.begin(); noteit!= notes.end(); noteit++)
+	{
+		notesout[i] = noteit->pitch;
+		notesout[i+1] = noteit->velocity;
+		notesout[i+2] = noteit->channel;
+		notesout[i+3] = noteit->offset;
+		i+=4;
+	}
+	return notesout;
+}
+
+void O_MIDI_poly::set_notes(list<O_MIDI_note> notesin)
+{
+	notes = notesin;
+	//@remarks Compute also the virtual fundamental and the mean velocity, calling O_MIDI_poly::set_vpitch and O_MIDI_poly::set_mvelocity
+	set_vpitch();
+	set_mvelocity();
+}
+
+void O_MIDI_poly::set_notes(O_MIDI_note* note1,...)
+{
+	va_list notelist;
+	va_start(notelist,note1);
+	O_MIDI_note* noteptr = note1;
+	while (noteptr!= NULL)
+	{
+		notes.push_back(*noteptr);
+		noteptr = va_arg(notelist,O_MIDI_note*);
+	}
+	va_end(notelist);
+	notes.sort();
+	//@remarks Compute also the virtual fundamental and the mean velocity, calling O_MIDI_poly::set_vpitch and O_MIDI_poly::set_mvelocity
+	set_vpitch();
+	set_mvelocity();
+}
+
+list<int> O_MIDI_poly::get_pitches() const
+{
+	list<int> pitches;
+	list<O_MIDI_note>::const_iterator noteit;
+	for (noteit = notes.begin(); noteit!= notes.end(); noteit++)
+		pitches.push_back(noteit->pitch);
+	pitches.unique();
+	return pitches;
+}
+
+// calculations
+void O_MIDI_poly::set_vpitch()
+{
+	// fondamentale virtuelle ?
+}
+
+int O_MIDI_poly::set_mvelocity()
+{
+	int accum = 0;
+	list<O_MIDI_note>::iterator noteit;
+	for (noteit = notes.begin(); noteit!= notes.end(); noteit++)
+		accum += noteit->velocity;
+	mvelocity = (int)floor(accum/(float)notes.size()+0.5);
+	//@returns mean velocity of all notes in the frame
+	return mvelocity;
+}
+
+// Operator Overload
+
+bool O_MIDI_poly::operator== (const O_MIDI_poly & other) const
+{
+	///@returns The (lazy) pairwise comparison of the pitches
+	list<int> pitches = get_pitches();
+	list<int> other_pitches = other.get_pitches();
+	int nbpitches = pitches.size();
+	if (other_pitches.size()!=nbpitches)
+		return false;
+	pitches.merge(other_pitches);
+	pitches.unique();
+	return(pitches.size()== nbpitches);
+}
+
+ostream & operator<< (ostream & out, const O_MIDI_poly & framein)
+{
+	list<O_MIDI_note>::const_iterator noteit;
+	for (noteit = framein.notes.begin(); noteit!= framein.notes.end(); noteit++)
+		out<<" "<<(*noteit)<<endl;
+	out<<framein.vpitch<<" "<<framein.mvelocity<<" "<<framein.phrase<<" "<<framein.bufferef<<endl;
 	return(out);
 }

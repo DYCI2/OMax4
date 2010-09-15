@@ -1,4 +1,9 @@
-/* First try for dot graphs */
+/*------------------
+ * DOT parser file
+ * Created BenCello
+ *------------------*/
+
+///@file DOT.y DOT parser file
 
 %{
 #include <stdio.h>

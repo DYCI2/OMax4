@@ -193,7 +193,7 @@ int O_learner::add(O_DataType & dataIn)
 	else
 		l = search_trans(*oracle->state_vect[k], *newdata);*/
 
-	pair<int,int> newsuffix=suffix(newstate, newdata); //<<LRS inside
+	pair<int,int> newsuffix=suffix(newstate, newdata); //<LRS inside
 	
 	//int lrsnew = lrs(*(*oracle)[j],*(*oracle)[l]); // lrs
 	oracle->state_vect.back()->set_suffix((*oracle)[newsuffix.first],newsuffix.second);
@@ -234,8 +234,10 @@ int O_learner::addfrom(O_DataType * dataIn)
 	// basic transition
 	O_it->add_trans(newstate);
 	
+	// suffix algorithm
 	pair<int,int> newsuffix = suffix(newstate, dataIn); //<<LRS inside
 	
+	// set the suffix
 	oracle->state_vect.back()->set_suffix((*oracle)[newsuffix.first],newsuffix.second);
 	
 	// reversed suffix
