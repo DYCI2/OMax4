@@ -163,23 +163,15 @@
 		};
 		2FBBEAE108F335360078DB84 /* Development */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FB8F3EC50F61697F008CAF2C /* max.xcconfig */;
 			buildSettings = {
 			};
 			name = Development;
 		};
 		2FBBEAE208F335360078DB84 /* Deployment */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FB8F3EC50F61697F008CAF2C /* max.xcconfig */;
 			buildSettings = {
-				ARCHS = (
-					ppc,
-					i386,
-				);
-				COPY_PHASE_STRIP = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/../../MaxSDK-5.0.6/c74support/max-includes\"",
-					"\"$(SRCROOT)/../../../../../../Max5/MaxSDK-5.1.1/c74support/max-includes\"",
-				);
 			};
 			name = Deployment;
 		};

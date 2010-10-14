@@ -384,6 +384,19 @@ void O_MIDI_note::set_note(int pitchin, int velocityin, int channelin, int offse
 	offset = offsetin;
 }
 
+/*
+// Tools
+float O_MIDI_note::freq2midi(float freqin)
+{
+	return 69+12*log2(freqin/440.);
+}
+
+float O_MIDI_note::midi2freq(float midin)
+{
+	return 440.*pow(2, (midin-69.)/12.);
+}
+*/
+
 bool O_MIDI_note::operator== (const O_MIDI_note & other) const
 {
 	return(pitch == other.pitch);
@@ -456,9 +469,11 @@ int* O_MIDI_poly::get_notes(int* notesout)
 void O_MIDI_poly::set_notes(list<O_MIDI_note> notesin)
 {
 	notes = notesin;
+	/*
 	//@remarks Compute also the virtual fundamental and the mean velocity, calling O_MIDI_poly::set_vpitch and O_MIDI_poly::set_mvelocity
 	set_vpitch();
 	set_mvelocity();
+	 */
 }
 
 void O_MIDI_poly::set_notes(O_MIDI_note* note1,...)
@@ -473,9 +488,11 @@ void O_MIDI_poly::set_notes(O_MIDI_note* note1,...)
 	}
 	va_end(notelist);
 	notes.sort();
+	/* Del
 	//@remarks Compute also the virtual fundamental and the mean velocity, calling O_MIDI_poly::set_vpitch and O_MIDI_poly::set_mvelocity
-	set_vpitch();
+	set_vpitch(1.);
 	set_mvelocity();
+	 */
 }
 
 list<int> O_MIDI_poly::get_pitches() const
@@ -488,10 +505,80 @@ list<int> O_MIDI_poly::get_pitches() const
 	return pitches;
 }
 
-// calculations
-void O_MIDI_poly::set_vpitch()
+float O_MIDI_poly::get_vpitch() const
 {
-	// fondamentale virtuelle ?
+	return vpitch;
+}
+
+void O_MIDI_poly::set_vpitch(float vpitchin)
+{
+	vpitch = vpitchin;
+}
+
+float O_MIDI_poly::get_mvelocity() const
+{
+	return mvelocity;
+}
+
+void O_MIDI_poly::set_mvelocity(float mveloin)
+{
+	mvelocity = mveloin;
+}
+
+/*
+// calculations
+float O_MIDI_poly::midi2freq_approx(float midi)
+{
+	return pow(2,(midi/12.))-1.;
+}
+
+float O_MIDI_poly::rec_virfun(float* freqs, float* end, float divmin, float divmax, float approx)
+{
+	float inf,sup;
+	float quo_min, quo_max;
+	float quotient;
+	float resu = 0;
+	if (divmin <= divmax)
+	{
+		if (freqs==end)
+			return((divmin + divmax) / 2.);
+		else
+		{
+			sup = freqs[0] * (1 + approx);
+			inf = freqs[0] / (1 + approx);
+			quo_min = ceil(inf/divmax);
+			quo_max = floor(sup/divmin);
+			quotient = quo_min;
+			while (quotient <= quo_max)
+			{
+				resu = rec_virfun(freqs+1,end, max(inf/quotient, divmin), min(sup/quotient, divmax), approx);
+				if ((int)resu)
+					return resu;
+				quotient++;
+			}
+			return 0.;
+		}
+
+	}
+	return 0.;
+}
+
+float O_MIDI_poly::set_vpitch(float approx)
+{
+	int i=0;
+	int s=notes.size();
+	float approxf = midi2freq_approx(approx);	
+	list<O_MIDI_note>::iterator notit;
+	float freqs[s];
+	for (notit=notes.begin(); notit!=notes.end(); notit++)
+	{
+		freqs[i]=notit->midi2freq(notit->get_pitch());
+		i++;
+	}
+	vpitch = notes.begin()->freq2midi(rec_virfun(freqs, freqs+s, 0.1, freqs[0]*(1.0+approxf), approxf));
+	vpitch = (floor(vpitch/approx))*approx;
+	//@returns Virtual fundamental of the frame
+	return vpitch;
 }
 
 int O_MIDI_poly::set_mvelocity()
@@ -504,20 +591,24 @@ int O_MIDI_poly::set_mvelocity()
 	//@returns mean velocity of all notes in the frame
 	return mvelocity;
 }
-
+*/
+ 
 // Operator Overload
 
 bool O_MIDI_poly::operator== (const O_MIDI_poly & other) const
 {
-	///@returns The (lazy) pairwise comparison of the pitches
-	list<int> pitches = get_pitches();
+	//returns The (lazy) pairwise comparison of the pitches
+	/*list<int> pitches = get_pitches();
 	list<int> other_pitches = other.get_pitches();
 	int nbpitches = pitches.size();
 	if (other_pitches.size()!=nbpitches)
 		return false;
 	pitches.merge(other_pitches);
 	pitches.unique();
-	return(pitches.size()== nbpitches);
+	return(pitches.size()== nbpitches);*/
+	
+	return(vpitch == other.get_vpitch());
+	
 }
 
 ostream & operator<< (ostream & out, const O_MIDI_poly & framein)

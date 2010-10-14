@@ -243,6 +243,15 @@ public:
 	void set_note(int=60,int=0,int=128,int=0);
 	//@}
 	
+	/*
+	///@name Tools
+	/// Convert from Hz to MIDI
+	float freq2midi(float);
+	/// Convert from MIDI to Hz
+	float midi2freq(float);
+	//@}
+	 */
+	
 	///@name Operators Overload
 	//@{
 	/// Compare two notes based solely on pitches
@@ -269,11 +278,17 @@ public:
 class O_MIDI_poly : public O_label
 {
 protected:
-	int vpitch;
-	int mvelocity;
+	float vpitch;
+	float mvelocity;
 	list<O_MIDI_note> notes;
 	
 public:
+	/* Del
+	///Convert a MIDI cent approximation (additive) to a Hz approximation (multiplicative)
+	float midi2freq_approx(float);
+	///Internal recursive function for virtual fundamental frequency calculation
+	float rec_virfun (float*, float*, float, float, float);*/
+	
 	///@name Constructors & Destructors
 	//@{
 	/// Default constructor
@@ -298,15 +313,24 @@ public:
 	void set_notes(O_MIDI_note*, ...);
 	/// Get all the pitches of the frame
 	list<int> get_pitches() const;
+	/// Return virtual fundamental
+	float get_vpitch() const;
+	/// Set virtual fundamental
+	void set_vpitch(float);
+	/// Return mean velocity
+	float get_mvelocity() const;
+	/// Set mean velocity
+	void set_mvelocity(float);
 	//@}
 	
+	/* Del
 	///@name Internal calculations on frame data
 	//@{
 	/// Computes and set the virtual fondamental pitch from the list of notes
-	void set_vpitch();
+	float set_vpitch(float);
 	/// Computes and set the mean velocity from the list of notes
 	int set_mvelocity();
-	//@}
+	//@} */
 	
 	///@name Operators Overload
 	//@{

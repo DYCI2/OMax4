@@ -76,6 +76,7 @@ int main(void)
 	
 	c = class_new("bc.yinstats", (method)bc_yinstats_new, (method)bc_yinstats_free, (long)sizeof(t_bc_yinstats), 0L, A_GIMME, 0);
 	
+	// credits
 	post("bc.yinstats v1.0 – 2010: statistical post-processing for yin~");
 	post("   design by Georges Bloch, external by Benjamin Lévy, moral & coffe support by Gérard Assayag");
 	

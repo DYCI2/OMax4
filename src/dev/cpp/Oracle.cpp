@@ -37,11 +37,11 @@ int main (int argc, char * const argv[]) {
 	O_MIDI_poly frame1;
 	frame1.set_notes(&C4,&D4,&F4,NULL);
 	O_MIDI_poly frame2;
-	frame2.set_notes(&D4,&F5,&D4,NULL);
+	frame2.set_notes(&C4,&F4,&D4,&F5,NULL);
 	O_MIDI_poly frame3;
 	frame3.set_notes(&F4,&E3,&C4,NULL);
 	
-	build.add(frame1);
+	/*build.add(frame1);
 	build.add(frame2);
 	build.add(frame3);
 	build.add(frame1);
@@ -56,7 +56,7 @@ int main (int argc, char * const argv[]) {
 	build.add(frame1);
 	build.add(frame1);
 	build.add(frame3);
-	build.add(frame2);
+	build.add(frame2);*/
 	
 	
 	/*cout<<frame1.set_mvelocity()<<endl;
@@ -66,7 +66,7 @@ int main (int argc, char * const argv[]) {
 	cout<<(frame1==frame2)<<endl;
 	cout<<(frame3==frame2)<<endl;*/
 	
-	cout<<oracle;
+	//cout<<oracle;
 	
 	/*O_oracle copy;
 	O_data copy_data;
@@ -104,6 +104,22 @@ int main (int argc, char * const argv[]) {
 	
 	//oracle.freestates();
 	//data.freestates<O_char>();
+	
+	//sleep(2);
+	
+	/*float freqtest[5];
+	freqtest[0]=67.;
+	freqtest[2]=517.;
+	freqtest[3]=1313.;
+	freqtest[1]=229.;
+	freqtest[4]=4023.;
+	freqtest[2]=110.;*/
+	//cout<<"approx : "<<frame1.midi2freq_approx(1.)<<endl;
+	cout<<"fund : "<<frame1.get_vpitch()/12.<<endl;
+	cout<<"fund : "<<frame1.get_vpitch()<<endl;
+	cout<<"fund : "<<frame2.get_vpitch()<<endl;
+	cout<<"fund : "<<frame3.get_vpitch()<<endl;
+	cout<<"comp : "<<(frame1==frame2)<<endl;
 	
 	return 0;
 }

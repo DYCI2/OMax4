@@ -54,6 +54,7 @@ extern "C"
 	void OMax_path(t_OMax_SLT *x, long statnb);
 	void OMax_fullpath(t_OMax_SLT *x, long statnb);
 	void OMax_sortedSLT(t_OMax_SLT *x, long statnb);
+	void OMax_sortedSLTbis(t_OMax_SLT *x, long statnb, long nbsol);
 	void OMax_ctxt(t_OMax_SLT *x, long ctxt);
 	void OMax_setname(t_OMax_SLT *x, t_symbol *newname);
 	
@@ -82,6 +83,7 @@ extern "C"
 		class_addmethod(c, (method)OMax_path, "path", A_LONG, 0);
 		class_addmethod(c, (method)OMax_fullpath, "fullpath", A_LONG, 0);
 		class_addmethod(c, (method)OMax_sortedSLT, "sorted", A_LONG, 0);
+		//class_addmethod(c, (method)OMax_sortedSLTbis, "sorted", A_LONG, A_LONG, 0);
 		class_addmethod(c, (method)OMax_ctxt, "in1", A_LONG, 0);
 		class_addmethod(c, (method)OMax_setname, "set", A_DEFSYM, 0);
 		
@@ -398,6 +400,54 @@ extern "C"
 					list<pair<O_state*,int> >::iterator it;
 					
 					SLT = *state->sortedSLT(x->context);
+					
+					long vals[2];
+					t_atom * SLTout = NULL;
+					atom_alloc_array(2, &i, &SLTout, &err);
+					if(err && i==2)
+					{
+						for (it = SLT.begin(); it!=SLT.end(); it++)
+						{
+							vals[0]=(*it).first->get_statenb();
+							vals[1]=(*it).second;
+							atom_setlong_array(2,SLTout,2,vals);
+							outlet_list(x->out_SLT, NULL, 2, SLTout); // output
+						}
+					}
+					
+					list<O_state*> path;
+					O_state * root = state->rec_upSLT(&path, x->context);
+					/// Output the root of the tree
+					outlet_int(x->out_root, root->get_statenb());
+				}
+			}
+			ATOMIC_DECREMENT(&(((t_OMax_oracle *)(x->oname->s_thing))->readcount));
+		}
+	}
+	
+	/**@public @memberof t_OMax_SLT
+	 * @brief Output the nth first links in the Suffix Link Tree (SLT) prunned to the @link t_OMax_SLT::context minimal context @endlink and sorted by decreasing context length
+	 * @remarks Input message in Max5: @c sorted followed by a state number (@c int) and a number of solutions (@c int) */	
+	void OMax_sortedSLTbis(t_OMax_SLT *x, long statnb, long nbsol)
+	{
+		if (OMax_SLT_bind(x))
+		{
+			ATOMIC_INCREMENT(&(((t_OMax_oracle *)(x->oname->s_thing))->readcount));
+			if(!(((t_OMax_oracle *)(x->oname->s_thing))->wflag))
+			{
+				if ((statnb>=0) && (statnb<(long)(x->oracle->get_size())))
+				{
+					O_state * state = (*x->oracle)[statnb];
+					
+					char err;
+					long i = 0;
+					list<pair<O_state*,int> > SLT;
+					list<pair<O_state*,int> >::iterator it;
+					
+					if (nbsol>0)
+						SLT = *state->sortedSLT(x->context, (int)nbsol);
+					else
+						SLT = *state->sortedSLT(x->context);
 					
 					long vals[2];
 					t_atom * SLTout = NULL;
