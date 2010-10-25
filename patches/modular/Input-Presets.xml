@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+
+<pattrstorage name = "Input-Presets">
+	<slot number = "1" name = "Default">
+		<pattr name = "Dmax" value = "5." />
+		<pattr name = "Level" value = "" />
+		<pattr name = "Oracle_MIDI" value = "" />
+		<pattr name = "Oracle_SP" value = "1" />
+		<pattr name = "Phrases" value = "" />
+		<pattr name = "Pitch" value = "1" />
+		<pattr name = "Proba" value = "0.56" />
+		<pattr name = "Quality" value = "0.52" />
+		<pattr name = "Sections" value = "" />
+		<pattr name = "Spectral" value = "1" />
+		<pattr name = "Thresh" value = "" />
+		<pattr name = "Weights" value = "0" />
+		<pattr name = "Window" value = "55" />
+		<pattr name = "YinFreq" value = "100" />
+		<pattr name = "YinSampl" value = "1" />
+		<pattr name = "Presets-File" value = "" />
+	</slot>
+	<slot number = "2" name = "SaxT/ClarBb">
+		<pattr name = "Dmax" value = "5." />
+		<pattr name = "Level" value = "" />
+		<pattr name = "Oracle_MIDI" value = "" />
+		<pattr name = "Oracle_SP" value = "" />
+		<pattr name = "Phrases" value = "" />
+		<pattr name = "Pitch" value = "" />
+		<pattr name = "Proba" value = "0.57" />
+		<pattr name = "Quality" value = "0.48" />
+		<pattr name = "Sections" value = "" />
+		<pattr name = "Spectral" value = "" />
+		<pattr name = "Thresh" value = "" />
+		<pattr name = "Weights" value = "" />
+		<pattr name = "Window" value = "57" />
+		<pattr name = "YinFreq" value = "100" />
+		<pattr name = "YinSampl" value = "1" />
+		<pattr name = "Presets-File" value = "" />
+	</slot>
+	<slot number = "3" name = "ClarBasse">
+		<pattr name = "Dmax" value = "5." />
+		<pattr name = "Level" value = "" />
+		<pattr name = "Oracle_MIDI" value = "" />
+		<pattr name = "Oracle_SP" value = "" />
+		<pattr name = "Phrases" value = "" />
+		<pattr name = "Pitch" value = "" />
+		<pattr name = "Proba" value = "0.58" />
+		<pattr name = "Quality" value = "0.5" />
+		<pattr name = "Sections" value = "" />
+		<pattr name = "Spectral" value = "" />
+		<pattr name = "Thresh" value = "" />
+		<pattr name = "Weights" value = "" />
+		<pattr name = "Window" value = "66" />
+		<pattr name = "YinFreq" value = "47" />
+		<pattr name = "YinSampl" value = "2" />
+		<pattr name = "Presets-File" value = "" />
+	</slot>
+	<slot number = "4" name = "Voice">
+		<pattr name = "Dmax" value = "5." />
+		<pattr name = "Level" value = "" />
+		<pattr name = "Oracle_MIDI" value = "" />
+		<pattr name = "Oracle_SP" value = "" />
+		<pattr name = "Phrases" value = "" />
+		<pattr name = "Pitch" value = "" />
+		<pattr name = "Proba" value = "0.56" />
+		<pattr name = "Quality" value = "0.4" />
+		<pattr name = "Sections" value = "" />
+		<pattr name = "Spectral" value = "" />
+		<pattr name = "Thresh" value = "" />
+		<pattr name = "Weights" value = "" />
+		<pattr name = "Window" value = "55" />
+		<pattr name = "YinFreq" value = "80" />
+		<pattr name = "YinSampl" value = "2" />
+		<pattr name = "Presets-File" value = "" />
+	</slot>
+	<slot number = "5" name = "Percussion">
+		<pattr name = "Dmax" value = "5." />
+		<pattr name = "Level" value = "" />
+		<pattr name = "Oracle_MIDI" value = "1" />
+		<pattr name = "Oracle_SP" value = "1" />
+		<pattr name = "Phrases" value = "" />
+		<pattr name = "Pitch" value = "1" />
+		<pattr name = "Proba" value = "0.4" />
+		<pattr name = "Quality" value = "0.3" />
+		<pattr name = "Sections" value = "" />
+		<pattr name = "Spectral" value = "1" />
+		<pattr name = "Thresh" value = "" />
+		<pattr name = "Weights" value = "3" />
+		<pattr name = "Window" value = "40" />
+		<pattr name = "YinFreq" value = "40" />
+		<pattr name = "YinSampl" value = "3" />
+		<pattr name = "Presets-File" value = "" />
+	</slot>
+	<slot number = "6" name = "Sound_poetry">
+		<pattr name = "Dmax" value = "5." />
+		<pattr name = "Level" value = "" />
+		<pattr name = "Oracle_MIDI" value = "" />
+		<pattr name = "Oracle_SP" value = "" />
+		<pattr name = "Phrases" value = "" />
+		<pattr name = "Pitch" value = "" />
+		<pattr name = "Proba" value = "0.43" />
+		<pattr name = "Quality" value = "0.32" />
+		<pattr name = "Sections" value = "" />
+		<pattr name = "Spectral" value = "" />
+		<pattr name = "Thresh" value = "" />
+		<pattr name = "Weights" value = "" />
+		<pattr name = "Window" value = "55" />
+		<pattr name = "YinFreq" value = "50" />
+		<pattr name = "YinSampl" value = "2" />
+		<pattr name = "Presets-File" value = "" />
+	</slot>
+	<slot number = "7" name = "Guitar">
+		<pattr name = "Dmax" value = "5." />
+		<pattr name = "Level" value = "" />
+		<pattr name = "Oracle_MIDI" value = "" />
+		<pattr name = "Oracle_SP" value = "" />
+		<pattr name = "Phrases" value = "" />
+		<pattr name = "Pitch" value = "" />
+		<pattr name = "Proba" value = "0.63" />
+		<pattr name = "Quality" value = "0.52" />
+		<pattr name = "Sections" value = "" />
+		<pattr name = "Spectral" value = "" />
+		<pattr name = "Thresh" value = "" />
+		<pattr name = "Weights" value = "" />
+		<pattr name = "Window" value = "63" />
+		<pattr name = "YinFreq" value = "75" />
+		<pattr name = "YinSampl" value = "2" />
+		<pattr name = "Presets-File" value = "" />
+	</slot>
+	<slot number = "8" name = "Basse">
+		<pattr name = "Dmax" value = "5." />
+		<pattr name = "Level" value = "" />
+		<pattr name = "Oracle_MIDI" value = "" />
+		<pattr name = "Oracle_SP" value = "" />
+		<pattr name = "Phrases" value = "" />
+		<pattr name = "Pitch" value = "" />
+		<pattr name = "Proba" value = "0.6" />
+		<pattr name = "Quality" value = "0.44" />
+		<pattr name = "Sections" value = "" />
+		<pattr name = "Spectral" value = "" />
+		<pattr name = "Thresh" value = "" />
+		<pattr name = "Weights" value = "" />
+		<pattr name = "Window" value = "67" />
+		<pattr name = "YinFreq" value = "41" />
+		<pattr name = "YinSampl" value = "2" />
+		<pattr name = "Presets-File" value = "" />
+	</slot>
+	<slot number = "9" name = "Fagott">
+		<pattr name = "Dmax" value = "5." />
+		<pattr name = "Level" value = "" />
+		<pattr name = "Oracle_MIDI" value = "" />
+		<pattr name = "Oracle_SP" value = "" />
+		<pattr name = "Phrases" value = "" />
+		<pattr name = "Pitch" value = "" />
+		<pattr name = "Proba" value = "0.45" />
+		<pattr name = "Quality" value = "0.31" />
+		<pattr name = "Sections" value = "" />
+		<pattr name = "Spectral" value = "" />
+		<pattr name = "Thresh" value = "" />
+		<pattr name = "Weights" value = "" />
+		<pattr name = "Window" value = "57" />
+		<pattr name = "YinFreq" value = "47" />
+		<pattr name = "YinSampl" value = "2" />
+		<pattr name = "Presets-File" value = "" />
+	</slot>
+	<slot number = "10" name = "Michel Doneda">
+		<pattr name = "Dmax" value = "12." />
+		<pattr name = "Level" value = "" />
+		<pattr name = "Oracle_MIDI" value = "0" />
+		<pattr name = "Oracle_SP" value = "1" />
+		<pattr name = "Phrases" value = "" />
+		<pattr name = "Pitch" value = "0" />
+		<pattr name = "Proba" value = "0.56" />
+		<pattr name = "Quality" value = "0.52" />
+		<pattr name = "Sections" value = "" />
+		<pattr name = "Spectral" value = "1" />
+		<pattr name = "Thresh" value = "" />
+		<pattr name = "Weights" value = "4" />
+		<pattr name = "Window" value = "55" />
+		<pattr name = "YinFreq" value = "100" />
+		<pattr name = "YinSampl" value = "1" />
+		<pattr name = "Presets-File" value = "" />
+	</slot>
+	<slot number = "11" name = "Beñat Achiary">
+		<pattr name = "Dmax" value = "8." />
+		<pattr name = "Level" value = "" />
+		<pattr name = "Oracle_MIDI" value = "1" />
+		<pattr name = "Oracle_SP" value = "1" />
+		<pattr name = "Phrases" value = "" />
+		<pattr name = "Pitch" value = "1" />
+		<pattr name = "Proba" value = "0.6" />
+		<pattr name = "Quality" value = "0.6" />
+		<pattr name = "Sections" value = "" />
+		<pattr name = "Spectral" value = "1" />
+		<pattr name = "Thresh" value = "" />
+		<pattr name = "Weights" value = "0" />
+		<pattr name = "Window" value = "75" />
+		<pattr name = "YinFreq" value = "80" />
+		<pattr name = "YinSampl" value = "2" />
+		<pattr name = "Presets-File" value = "" />
+	</slot>
+	<slot number = "12" name = "Médéric Collignon">
+		<pattr name = "Dmax" value = "9." />
+		<pattr name = "Level" value = "" />
+		<pattr name = "Oracle_MIDI" value = "1" />
+		<pattr name = "Oracle_SP" value = "1" />
+		<pattr name = "Phrases" value = "" />
+		<pattr name = "Pitch" value = "1" />
+		<pattr name = "Proba" value = "0.43" />
+		<pattr name = "Quality" value = "0.32" />
+		<pattr name = "Sections" value = "" />
+		<pattr name = "Spectral" value = "1" />
+		<pattr name = "Thresh" value = "" />
+		<pattr name = "Weights" value = "0" />
+		<pattr name = "Window" value = "55" />
+		<pattr name = "YinFreq" value = "50" />
+		<pattr name = "YinSampl" value = "2" />
+		<pattr name = "Presets-File" value = "" />
+	</slot>
+	<slot number = "13" name = "Brice Martin">
+		<pattr name = "Dmax" value = "3." />
+		<pattr name = "Level" value = "" />
+		<pattr name = "Oracle_MIDI" value = "1" />
+		<pattr name = "Oracle_SP" value = "1" />
+		<pattr name = "Phrases" value = "" />
+		<pattr name = "Pitch" value = "1" />
+		<pattr name = "Proba" value = "0.45" />
+		<pattr name = "Quality" value = "0.31" />
+		<pattr name = "Sections" value = "" />
+		<pattr name = "Spectral" value = "1" />
+		<pattr name = "Thresh" value = "" />
+		<pattr name = "Weights" value = "2" />
+		<pattr name = "Window" value = "57" />
+		<pattr name = "YinFreq" value = "45" />
+		<pattr name = "YinSampl" value = "2" />
+		<pattr name = "Presets-File" value = "" />
+	</slot>
+	<slot number = "14" name = "Mari Kimura">
+		<pattr name = "Dmax" value = "5." />
+		<pattr name = "Level" value = "" />
+		<pattr name = "Oracle_MIDI" value = "1" />
+		<pattr name = "Oracle_SP" value = "1" />
+		<pattr name = "Phrases" value = "" />
+		<pattr name = "Pitch" value = "1" />
+		<pattr name = "Proba" value = "0.5" />
+		<pattr name = "Quality" value = "0.4" />
+		<pattr name = "Sections" value = "" />
+		<pattr name = "Spectral" value = "1" />
+		<pattr name = "Thresh" value = "" />
+		<pattr name = "Weights" value = "5" />
+		<pattr name = "Window" value = "45" />
+		<pattr name = "YinFreq" value = "96" />
+		<pattr name = "YinSampl" value = "1" />
+		<pattr name = "Presets-File" value = "" />
+	</slot>
+	<slot number = "15" name = "MIDI">
+		<pattr name = "Dmax" value = "5." />
+		<pattr name = "Level" value = "" />
+		<pattr name = "Oracle_MIDI" value = "" />
+		<pattr name = "Oracle_SP" value = "0" />
+		<pattr name = "Phrases" value = "" />
+		<pattr name = "Pitch" value = "0" />
+		<pattr name = "Proba" value = "0.56" />
+		<pattr name = "Quality" value = "0.52" />
+		<pattr name = "Sections" value = "" />
+		<pattr name = "Spectral" value = "0" />
+		<pattr name = "Thresh" value = "" />
+		<pattr name = "Weights" value = "" />
+		<pattr name = "Window" value = "0" />
+		<pattr name = "YinFreq" value = "100" />
+		<pattr name = "YinSampl" value = "1" />
+		<pattr name = "Presets-File" value = "" />
+	</slot>
+</pattrstorage>
+

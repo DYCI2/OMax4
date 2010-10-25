@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+
+<pattrstorage name = "pattr">
+	<slot number = "1" name = "Default">
+		<pattr name = "Phrases" value = "2000" />
+		<pattr name = "Sections" value = "2500" />
+		<pattr name = "Presets-File" value = "Input.xml" />
+		<patcher name = "Pouet-Yin+">
+			<pattr name = "pattr" value = "-1" />
+			<pattr name = "Level" value = "50" />
+			<pattr name = "Pitch" value = "1" />
+			<pattr name = "Proba" value = "0.56" />
+			<pattr name = "Quality" value = "0.52" />
+			<pattr name = "Window" value = "55" />
+			<pattr name = "YinFreq" value = "100" />
+			<pattr name = "YinSampl" value = "1" />
+		</patcher>
+		<patcher name = "Pouet-Spectral">
+			<pattr name = "pattr" value = "-1" />
+			<pattr name = "Dmax" value = "5." />
+			<pattr name = "Spectral" value = "1" />
+			<pattr name = "Thresh" value = "25" />
+			<pattr name = "Weights" value = "0" />
+		</patcher>
+	</slot>
+	<slot number = "2" name = "SaxT/ClarBb">
+		<pattr name = "Phrases" value = "2000" />
+		<pattr name = "Sections" value = "2500" />
+		<pattr name = "Presets-File" value = "Input.xml" />
+		<patcher name = "Pouet-Yin+">
+			<pattr name = "pattr" value = "-1" />
+			<pattr name = "Level" value = "50" />
+			<pattr name = "Pitch" value = "1" />
+			<pattr name = "Proba" value = "0.57" />
+			<pattr name = "Quality" value = "0.48" />
+			<pattr name = "Window" value = "57" />
+			<pattr name = "YinFreq" value = "100" />
+			<pattr name = "YinSampl" value = "1" />
+		</patcher>
+		<patcher name = "Pouet-Spectral">
+			<pattr name = "pattr" value = "-1" />
+			<pattr name = "Dmax" value = "5." />
+			<pattr name = "Spectral" value = "1" />
+			<pattr name = "Thresh" value = "25" />
+			<pattr name = "Weights" value = "0" />
+		</patcher>
+	</slot>
+	<slot number = "3" name = "ClarBasse">
+		<pattr name = "Phrases" value = "2000" />
+		<pattr name = "Sections" value = "2500" />
+		<pattr name = "Presets-File" value = "Input.xml" />
+		<patcher name = "Pouet-Yin+">
+			<pattr name = "pattr" value = "-1" />
+			<pattr name = "Level" value = "50" />
+			<pattr name = "Pitch" value = "1" />
+			<pattr name = "Proba" value = "0.58" />
+			<pattr name = "Quality" value = "0.5" />
+			<pattr name = "Window" value = "66" />
+			<pattr name = "YinFreq" value = "47" />
+			<pattr name = "YinSampl" value = "2" />
+		</patcher>
+		<patcher name = "Pouet-Spectral">
+			<pattr name = "pattr" value = "-1" />
+			<pattr name = "Dmax" value = "5." />
+			<pattr name = "Spectral" value = "1" />
+			<pattr name = "Thresh" value = "25" />
+			<pattr name = "Weights" value = "2" />
+		</patcher>
+	</slot>
+</pattrstorage>
+
