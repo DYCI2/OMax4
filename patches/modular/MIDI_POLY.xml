@@ -62,13 +62,13 @@
 			<pattr name = "pattrstorage" value = "-1" />
 			<pattr name = "ChanOverride" value = "0" />
 			<pattr name = "Channel" value = "0" />
-			<pattr name = "Noteout" value = "1" />
+			<pattr name = "Noteout" value = "0" />
 		</patcher>
 		<patcher name = "DeSlicer[1]">
 			<pattr name = "pattrstorage" value = "-1" />
 			<pattr name = "ChanOverride" value = "0" />
 			<pattr name = "Channel" value = "0" />
-			<pattr name = "Noteout" value = "1" />
+			<pattr name = "Noteout" value = "0" />
 		</patcher>
 		<patcher name = "Impro2">
 			<pattr name = "pattrstorage" value = "-1" />

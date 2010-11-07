@@ -2,14 +2,17 @@
 
 <pattrstorage name = "pattr">
 	<slot number = "1" name = "Default">
-		<patcher name = "Pouet-Slicer">
+		<patcher name = "Name-Yin+">
 			<pattr name = "pattrstorage" value = "-1" />
-			<pattr name = "Approx" value = "0.5" />
-			<pattr name = "Channel" value = "-1" />
-			<pattr name = "Notein" value = "1" />
-			<pattr name = "Tolerance" value = "50" />
+			<pattr name = "Level" value = "50" />
+			<pattr name = "Pitch" value = "1" />
+			<pattr name = "Proba" value = "0.56" />
+			<pattr name = "Quality" value = "0.52" />
+			<pattr name = "Window" value = "55" />
+			<pattr name = "YinFreq" value = "100" />
+			<pattr name = "YinSampl" value = "1" />
 		</patcher>
-		<patcher name = "Pouet_POLY_Graph">
+		<patcher name = "Name_MIDI_Graph">
 			<pattr name = "pattrstorage" value = "-1" />
 			<pattr name = "AutoZoom" value = "1" />
 			<pattr name = "Black" value = "10" />
@@ -29,13 +32,12 @@
 		</patcher>
 		<patcher name = "Impro1">
 			<pattr name = "pattrstorage" value = "-1" />
-			<pattr name = "#Notes" value = "3." />
 			<pattr name = "Attractor" value = "0" />
 			<pattr name = "AttractorEn" value = "0" />
 			<pattr name = "AttractorFollow" value = "0" />
 			<pattr name = "AttractorWeight" value = "10." />
-			<pattr name = "Continuity" value = "12" />
-			<pattr name = "DropCtxt" value = "1" />
+			<pattr name = "Continuity" value = "7" />
+			<pattr name = "DropCxt" value = "1" />
 			<pattr name = "Follow" value = "10." />
 			<pattr name = "FollowEn" value = "0" />
 			<pattr name = "MinCtxt" value = "3" />
@@ -43,7 +45,7 @@
 			<pattr name = "Region1En" value = "0" />
 			<pattr name = "Region2En" value = "0" />
 			<pattr name = "RegionsEn" value = "0" />
-			<pattr name = "TabooLength" value = "20" />
+			<pattr name = "TabooLength" value = "6" />
 			<pattr name = "Velocity" value = "3." />
 		</patcher>
 		<patcher name = "Player">
@@ -51,34 +53,14 @@
 			<pattr name = "Cut-Threshold" value = "0.002" />
 			<pattr name = "Cut-Window" value = "20" />
 		</patcher>
-		<patcher name = "Player[1]">
-			<pattr name = "pattrstorage" value = "-1" />
-			<pattr name = "Cut-Threshold" value = "0.002" />
-			<pattr name = "Cut-Window" value = "20" />
-			<pattr name = "Direction" value = "0" />
-			<pattr name = "Speed" value = "1." />
-		</patcher>
-		<patcher name = "DeSlicer">
-			<pattr name = "pattrstorage" value = "-1" />
-			<pattr name = "ChanOverride" value = "0" />
-			<pattr name = "Channel" value = "0" />
-			<pattr name = "Noteout" value = "1" />
-		</patcher>
-		<patcher name = "DeSlicer[1]">
-			<pattr name = "pattrstorage" value = "-1" />
-			<pattr name = "ChanOverride" value = "0" />
-			<pattr name = "Channel" value = "0" />
-			<pattr name = "Noteout" value = "1" />
-		</patcher>
 		<patcher name = "Impro2">
 			<pattr name = "pattrstorage" value = "-1" />
-			<pattr name = "#Notes" value = "3." />
 			<pattr name = "Attractor" value = "0" />
 			<pattr name = "AttractorEn" value = "0" />
 			<pattr name = "AttractorFollow" value = "0" />
 			<pattr name = "AttractorWeight" value = "10." />
-			<pattr name = "Continuity" value = "12" />
-			<pattr name = "DropCtxt" value = "1" />
+			<pattr name = "Continuity" value = "7" />
+			<pattr name = "DropCxt" value = "1" />
 			<pattr name = "Follow" value = "10." />
 			<pattr name = "FollowEn" value = "0" />
 			<pattr name = "MinCtxt" value = "3" />
@@ -86,8 +68,15 @@
 			<pattr name = "Region1En" value = "0" />
 			<pattr name = "Region2En" value = "0" />
 			<pattr name = "RegionsEn" value = "0" />
-			<pattr name = "TabooLength" value = "20" />
+			<pattr name = "TabooLength" value = "6" />
 			<pattr name = "Velocity" value = "3." />
+		</patcher>
+		<patcher name = "Player[1]">
+			<pattr name = "pattrstorage" value = "-1" />
+			<pattr name = "Cut-Threshold" value = "0.002" />
+			<pattr name = "Cut-Window" value = "20" />
+			<pattr name = "Direction" value = "0" />
+			<pattr name = "Speed" value = "1." />
 		</patcher>
 	</slot>
 </pattrstorage>
