@@ -4,6 +4,9 @@
  * Last updated 08/10/10
  **************************************/
 
+///@file bc.virfun.c bc.virfun external code
+//@{
+
 
 #include "ext.h"				// standard Max include, always required
 #include "ext_obex.h"			// required for new style Max object
@@ -14,7 +17,7 @@
 #define max(a,b) ((a) > (b) ? a : b)
 #define min(a,b) ((a) < (b) ? a : b)
 
-/**@ingroup virfun
+/**@ingroup yin
  * @nosubgrouping
  * @brief bc.virfun external
  * @details */
@@ -41,6 +44,7 @@ void bc_virfun_assist(t_bc_virfun *x, void *b, long m, long a, char *s);
 
 // Input/ouput routines
 void bc_virfun_int(t_bc_virfun *x, long n);
+void bc_virfun_float(t_bc_virfun *x, double f);
 void bc_virfun_list(t_bc_virfun *x, t_symbol *s, long ac, t_atom *av);
 
 t_max_err bc_virfun_approx(t_bc_virfun *x, void *attr , long ac, t_atom *av);
@@ -174,6 +178,9 @@ void bc_virfun_assist(t_bc_virfun *x, void *b, long io, long index, char *s)
 
 ///@name Input/Output routines
 //@{
+
+/**@memberof t_bc_virfun
+ * @brief Compute and return the virtual fondamental*/
 void bc_virfun_list(t_bc_virfun *x, t_symbol *s, long ac, t_atom *av)
 {
 	int i;
@@ -216,14 +223,41 @@ void bc_virfun_list(t_bc_virfun *x, t_symbol *s, long ac, t_atom *av)
 	}
  }
 
+/**@memberof t_bc_virfun
+ * @brief Compute and return the virtual fondamental*/
 void bc_virfun_int(t_bc_virfun *x, long n)
 {
-	 
+	t_max_err err;
+	t_atom av;
+	t_symbol *s_list = gensym("list");
+	err = atom_setlong(&av, n);
+	if (!err)
+		bc_virfun_list(x, s_list, 1, &av);
+	///@remarks Of course, virtual fundamental of one pitch is the pitch itself
+	
 }
 
+/**@memberof t_bc_virfun
+ * @brief Compute and return the virtual fondamental*/
+void bc_virfun_float(t_bc_virfun *x, double f)
+{
+	t_max_err err;
+	t_atom av;
+	t_symbol *s_list = gensym("list");
+	err = atom_setfloat(&av, f);
+	if (!err)
+		bc_virfun_list(x, s_list, 1, &av);
+	///@remarks Of course, virtual fundamental of one pitch is the pitch itself
+}
+//@}
+
+///@name Internal routines
+//@{
+
+/**@memberof t_bc_virfun
+ * @brief Set the approximation (tolerance) of the calculation*/
 t_max_err bc_virfun_approx(t_bc_virfun *x, void *attr , long ac, t_atom *av)
 {
-	
 	if (ac&&av) {
 		x->a_approx = atom_getfloat(av);
 		x->approxf=midi2freq_approx(x->a_approx);
@@ -233,6 +267,8 @@ t_max_err bc_virfun_approx(t_bc_virfun *x, void *attr , long ac, t_atom *av)
 	return MAX_ERR_NONE;
 }
 
+/**@memberof t_bc_virfun
+ * @brief Recursive function to compute virtual fundamentals*/
 float rec_virfun(float* freqs, float* end, float divmin, float divmax, float approx)
 {
 	float inf,sup;
@@ -263,17 +299,25 @@ float rec_virfun(float* freqs, float* end, float divmin, float divmax, float app
 	return 0.;
 }
 
+/**@memberof t_bc_virfun
+ * @brief Convert the tolerance (in floating point MIDI) to a frequency factor*/
 float midi2freq_approx(float midi)
 {
 	return pow(2,(midi/12.))-1.;
 }
 
+/**@memberof t_bc_virfun
+ * @brief Convert Hz to (floating point) MIDI*/
 float freq2midi(float freqin)
 {
 	return 69+12*log2(freqin/440.);
 }
 
+/**@memberof t_bc_virfun
+ * @brief Convert (floating point) MIDI to Hz*/
 float midi2freq(float midin)
 {
 	return 440.*pow(2, (midin-69.)/12.);
 }
+
+//@}

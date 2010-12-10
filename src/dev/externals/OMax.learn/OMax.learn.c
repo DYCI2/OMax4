@@ -37,6 +37,9 @@ extern "C"
 		t_symbol*	dataname;	///< Pointer to Data Sequence name
 		bool		obound;		///< Binding flag
 		O_learner	builder;	///< Learner
+		int			maxnotes;	///< Max number of note for a slice (controls memory allocation)
+		O_MIDI_note*notes;		///< Note array for polyphonic
+		int			notecount;	///< Number of note currently hold
 		void*		stateout;	///< Outlet 0 (leftmost)
 	} t_OMax_learn;
 	
@@ -53,6 +56,7 @@ extern "C"
 	
 	// Input/ouput routines
 	void OMax_learn_add(t_OMax_learn *x, t_symbol *s, short ac, t_atom * av);
+	void OMax_learn_note(t_OMax_learn *x, t_symbol *s, short ac, t_atom * av);
 	
 	// Internal routines
 	t_symbol * OMax_learn_dataname(t_symbol * oname);
@@ -77,6 +81,7 @@ extern "C"
 		
 		// input methods
 		class_addmethod(c, (method)OMax_learn_add, "add", A_GIMME, 0);
+		class_addmethod(c, (method)OMax_learn_note, "note", A_GIMME, 0);
 		
 		class_register(CLASS_BOX, c); /* CLASS_NOBOX */
 		OMax_learn_class = c;
@@ -107,8 +112,16 @@ extern "C"
 				if (argv->a_type != A_SYM)
 					object_error((t_object *)x,"First argument must be a symbol (name of an existing Oracle)");
 				else
+				{
 					x->oname = atom_getsym(argv);
-				x->dataname = OMax_learn_dataname(x->oname);
+					x->dataname = OMax_learn_dataname(x->oname);
+					
+					///@details Allocates memory for note stacking
+					x->maxnotes = 12;
+					x->notecount = 0;
+					x->notes = (O_MIDI_note*)malloc(x->maxnotes*sizeof(O_MIDI_note));
+				}
+				
 			}
 			
 			// color
@@ -139,7 +152,7 @@ extern "C"
 				switch (index)
 			{
 				case 0: // leftmost
-					sprintf(s, "messages (add ...)");
+					sprintf(s, "add ... to learn, note ... to stack");
 					break;
 			}
                 break;
@@ -337,6 +350,7 @@ extern "C"
 						break;
 					}
 					case SPECTRAL:
+					{
 						int pitchin;
 						int coeffcount;
 						bool valid = TRUE;
@@ -414,13 +428,149 @@ extern "C"
 							object_error((t_object *)x,"Oracle %s being read (%d, %d)",x->oname->s_name, ((t_OMax_oracle *)(x->oname->s_thing))->readcount, ((t_OMax_data *)(x->dataname->s_thing))->readcount);
 						ATOMIC_DECREMENT(&((t_OMax_oracle *)(x->oname->s_thing))->wflag);
 						ATOMIC_DECREMENT(&((t_OMax_data *)(x->dataname->s_thing))->wflag);
-						break;		
+						break;
+					}
+					case MIDI_POLY:
+					{
+						bool valid = TRUE;
+						O_MIDI_poly * newdata = new O_MIDI_poly();
+						switch (ac)
+						{
+							case 6:
+								if ((av+5)->a_type == A_LONG)
+									((O_label*)newdata)->set_duration(atom_getlong(av+5));
+								else
+								{
+									object_error((t_object *)x, "Error in input, duration must be int");
+									valid = FALSE;
+									break;
+								}
+							case 5:
+								if ((av+4)->a_type == A_LONG)
+									((O_label*)newdata)->set_bufferef(atom_getlong(av+4));
+								else
+								{
+									object_error((t_object *)x, "Error in input, buffer reference must be int");
+									valid = FALSE;
+									break;
+								}
+							case 4:
+								if ((av+3)->a_type == A_LONG)
+									((O_label*)newdata)->set_section(atom_getlong(av+3));
+								else
+								{
+									object_error((t_object *)x, "Error in input, section must be int");
+									valid = FALSE;
+									break;
+								}
+							case 3:
+								if ((av+2)->a_type == A_LONG)
+									((O_label*)newdata)->set_phrase(atom_getlong(av+2));
+								else
+								{
+									object_error((t_object *)x, "Error in input, phrase must be int");
+									valid = FALSE;
+									break;
+								}
+							case 2:
+								if ((av+1)->a_type == A_FLOAT)
+									newdata->set_mvelocity(atom_getfloat(av+1));
+								else
+								{
+									object_error((t_object *)x, "Error in input, mean velocity must be float");
+									valid = FALSE;
+									break;
+								}
+							case 1:
+								if (av->a_type == A_FLOAT)
+									newdata->set_vpitch(atom_getfloat(av));
+								else
+								{
+									object_error((t_object *)x, "Error in input, virtual pitch must be float");
+									valid = FALSE;
+								}
+								break;
+							default:
+								object_error((t_object *)x, "Error in input, too many arguments");
+								valid = FALSE;
+								break;
+						}
+						if (valid)
+						{
+							/// Add accumulated notes to the frame
+							int i;
+							list<O_MIDI_note> notes;
+							for (i=0;i<x->notecount;i++)
+								notes.push_back(x->notes[i]);
+							newdata->set_notes(notes);
+							
+							ATOMIC_INCREMENT(&((t_OMax_oracle *)(x->oname->s_thing))->wflag);
+							ATOMIC_INCREMENT(&((t_OMax_data *)(x->dataname->s_thing))->wflag);
+							if (!(((t_OMax_oracle *)(x->oname->s_thing))->readcount)
+								&& !(((t_OMax_data *)(x->dataname->s_thing))->readcount))
+							{
+								/// Add state to both structures
+								out = x->builder.add(*newdata);
+							}
+							else
+								object_error((t_object *)x,"Oracle %s being read (%d, %d)",x->oname->s_name, ((t_OMax_oracle *)(x->oname->s_thing))->readcount, ((t_OMax_data *)(x->dataname->s_thing))->readcount);
+							ATOMIC_DECREMENT(&((t_OMax_oracle *)(x->oname->s_thing))->wflag);
+							ATOMIC_DECREMENT(&((t_OMax_data *)(x->dataname->s_thing))->wflag);
+							
+							/// Clear accumulated notes
+							x->notecount = 0;
+							
+							break;
+						}
+					}
 				}
 				/// Output the index of the added state (identical in both structures)
 				outlet_int(x->stateout, out);
 			}
 			else
 				object_error((t_object *)x,"Error in input, too few arguments");
+		}
+	}
+	
+	/**@public @memberof t_OMax_learn
+	 * @brief Stack notes for polyphonic data
+	 * @remarks Input message in Max5: @c note*/
+	void OMax_learn_note(t_OMax_learn *x, t_symbol *s, short ac, t_atom * av)
+	{
+		long count = (long)ac;
+		long vals[5];
+		/// Check for binding
+		if (OMax_learn_bind(x))
+		{
+			if (x->datatype!=MIDI_POLY)
+				object_error((t_object*)x, "No note stacking allowed in this type");
+			else
+			{
+				if (!atom_getlong_array((long)ac, av, count, vals))
+				{
+					switch (count) {
+						case 2:
+							x->notes[x->notecount] = O_MIDI_note(vals[0],vals[1]);
+							x->notecount++;
+							break;
+						case 3:
+							x->notes[x->notecount] = O_MIDI_note(vals[0],vals[1],vals[2]);
+							x->notecount++;
+							break;
+						case 4:
+							x->notes[x->notecount] = O_MIDI_note(vals[0],vals[1],vals[2],vals[3]);
+							x->notecount++;
+							break;
+						case 5:
+							x->notes[x->notecount] = O_MIDI_note(vals[0],vals[1],vals[2],vals[3],vals[4]);
+							x->notecount++;
+							break;
+						default:
+							object_error((t_object*)x, "Wrong number of argument for a note");
+							break;
+					}
+				}
+			}
 		}
 	}
 	

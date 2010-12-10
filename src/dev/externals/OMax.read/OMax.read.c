@@ -246,6 +246,7 @@ extern "C"
 						atom_setlong_array((long)trans.size(),trans_list,(long)trans.size(),vals);
 						outlet_list(x->out_trans, NULL, (short)trans.size(), trans_list); // output
 					}
+					sysmem_freeptr(trans_list);
 					
 					// suffix
 					t_atom * suff = NULL;
@@ -256,6 +257,7 @@ extern "C"
 							atom_setlong(suff+1, state.get_suffix().second);
 							outlet_list(x->out_suff, NULL, 2, suff); // output
 					}
+					sysmem_freeptr(suff);
 					
 					// reversed suffixes
 					list<pair<O_state*,int> > rsuff = state.get_rsuff();
@@ -273,6 +275,7 @@ extern "C"
 							outlet_list(x->out_rsuff, NULL, 2, rsuff_out); // output
 						}
 					}
+					sysmem_freeptr(rsuff_out);
 					
 					// done
 					outlet_bang(x->out_bang);

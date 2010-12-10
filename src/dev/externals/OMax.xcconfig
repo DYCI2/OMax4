@@ -2,7 +2,7 @@
 PRODUCT_NAME = $(PROJECT_NAME)
 
 // Paths
-MAX5_SDK = ~/Max5/MaxSDK-5.1.1
+MAX5_SDK = ~/Max5/MaxSDK-5.1.6
 C74SUPPORT = $(MAX5_SDK)/c74support
 HEADER_SEARCH_PATHS = /Developer/Headers/FlatCarbon "$(C74SUPPORT)/max-includes" "$(C74SUPPORT)/msp-includes"
 FRAMEWORK_SEARCH_PATHS = "$(C74SUPPORT)/max-includes" "$(C74SUPPORT)/msp-includes"

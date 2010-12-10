@@ -12,6 +12,7 @@ using namespace std;
 #include "Oracle_label.hpp"
 #include "Oracle_data.hpp"
 #include "Oracle_learn.hpp"
+#include "virfun.h"
 
 
 int main (int argc, char * const argv[]) {
@@ -34,19 +35,36 @@ int main (int argc, char * const argv[]) {
 	O_MIDI_note F5 (77, 100, 1);
 	O_MIDI_note E3 (52, 90, 1);
 	
+	float freqs[3];
+	float approxf=midi2freq_approx(0.5);
 	O_MIDI_poly frame1;
 	frame1.set_notes(&C4,&D4,&F4,NULL);
+	freqs[0]=midi2freq(C4.get_pitch());
+	freqs[1]=midi2freq(D4.get_pitch());
+	freqs[2]=midi2freq(F4.get_pitch());
+	frame1.set_vpitch(rec_virfun(freqs, freqs+3, 0.1, freqs[0]*(1.0+approxf), approxf));
+	cout<<frame1.get_vpitch()<<endl;
 	O_MIDI_poly frame2;
-	frame2.set_notes(&C4,&F4,&D4,&F5,NULL);
+	frame2.set_notes(&F4,&D4,&F5,NULL);
+	freqs[0]=midi2freq(F4.get_pitch());
+	freqs[1]=midi2freq(D4.get_pitch());
+	freqs[2]=midi2freq(F5.get_pitch());
+	frame2.set_vpitch(rec_virfun(freqs, freqs+3, 0.1, freqs[0]*(1.0+approxf), approxf));
+	cout<<frame2.get_vpitch()<<endl;
 	O_MIDI_poly frame3;
 	frame3.set_notes(&F4,&E3,&C4,NULL);
+	freqs[0]=midi2freq(F4.get_pitch());
+	freqs[1]=midi2freq(E3.get_pitch());
+	freqs[2]=midi2freq(C4.get_pitch());
+	frame3.set_vpitch(rec_virfun(freqs, freqs+3, 0.1, freqs[0]*(1.0+approxf), approxf));
+	cout<<frame3.get_vpitch()<<endl;
 	
-	/*build.add(frame1);
-	build.add(frame2);
-	build.add(frame3);
 	build.add(frame1);
 	build.add(frame2);
 	build.add(frame3);
+	build.add(frame1);
+	build.add(frame2);
+	build.add(frame3);
 	build.add(frame3);
 	build.add(frame1);
 	build.add(frame1);
@@ -56,7 +74,7 @@ int main (int argc, char * const argv[]) {
 	build.add(frame1);
 	build.add(frame1);
 	build.add(frame3);
-	build.add(frame2);*/
+	build.add(frame2);
 	
 	
 	/*cout<<frame1.set_mvelocity()<<endl;
@@ -66,7 +84,7 @@ int main (int argc, char * const argv[]) {
 	cout<<(frame1==frame2)<<endl;
 	cout<<(frame3==frame2)<<endl;*/
 	
-	//cout<<oracle;
+	cout<<oracle;
 	
 	/*O_oracle copy;
 	O_data copy_data;
@@ -115,11 +133,11 @@ int main (int argc, char * const argv[]) {
 	freqtest[4]=4023.;
 	freqtest[2]=110.;*/
 	//cout<<"approx : "<<frame1.midi2freq_approx(1.)<<endl;
-	cout<<"fund : "<<frame1.get_vpitch()/12.<<endl;
+	/*cout<<"fund : "<<frame1.get_vpitch()/12.<<endl;
 	cout<<"fund : "<<frame1.get_vpitch()<<endl;
 	cout<<"fund : "<<frame2.get_vpitch()<<endl;
 	cout<<"fund : "<<frame3.get_vpitch()<<endl;
-	cout<<"comp : "<<(frame1==frame2)<<endl;
+	cout<<"comp : "<<(frame1==frame2)<<endl;*/
 	
 	return 0;
 }

@@ -260,6 +260,7 @@ extern "C"
 						/// Output the path from the input state to the root
 						outlet_list(x->out_path, NULL, (short)path.size(), pathout);
 					}
+					sysmem_freeptr(pathout);
 					
 					
 					/// Output the whole tree following every reverse suffix link
@@ -326,6 +327,7 @@ extern "C"
 						/// Output the path from the input state to the root
 						outlet_list(x->out_path, NULL, (short)path.size(), pathout);
 					}
+					sysmem_freeptr(pathout);
 					
 					/// Output the root of the tree
 					outlet_int(x->out_root, root->get_statenb());
@@ -371,6 +373,7 @@ extern "C"
 						/// Output the whole path
 						outlet_list(x->out_path, NULL, (short)path.size(), pathout);
 					}
+					sysmem_freeptr(pathout);
 					
 					/// Output the root (0)
 					outlet_int(x->out_root, root->get_statenb());

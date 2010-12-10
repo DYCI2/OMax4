@@ -4,7 +4,7 @@
  *--------------------------------------*/
 
 ///@file bc.yinstats.c bc.yinstats external code
-///@defgroup yin Augmented Yin External
+///@defgroup yin Additionals Externals
 //@{
 
 #include "ext.h"				// standard Max include, always required

@@ -110,9 +110,9 @@ public:
 class O_MIDI_mono : public O_label
 {
 protected:
-	int pitch;
-	int velocity;
-	int channel;
+	int pitch;		///< MIDI pitch
+	int velocity;	///< MIDI velocity
+	int channel;	///< MIDI channel
 	
 public:
 	///@name Constructors & Destructors
@@ -137,6 +137,12 @@ public:
 	int get_velocity();
 	/// Set the velocity of the state
 	void set_velocity(int);
+	/// Return the channel of the state
+	int get_channel();
+	/// Set the velocity of the state
+	void set_channel(int);
+	/// Get data of the state in an int array
+	int* get_data(int*);
 	//@}
 	
 	///@name Operators Overload
@@ -152,9 +158,9 @@ public:
 class O_spectral : public O_label
 {
 protected:
-	int pitch;
-	float energy;
-	list<float> coeffs;
+	int pitch;			///< Instantaneous pitch
+	float energy;		///< Overall energy of the slice (first MFCC coefficient)
+	list<float> coeffs; ///< List of spectral coefficients
 
 public:
 	///@name Constructors & Desctructors
@@ -183,6 +189,8 @@ public:
 	void set_energy(list<float> &);
 	/// Returns all the spectral coefficients of the state (first one is always energy)
 	list<float> get_coeffs();
+	/// Returns all the spectral coefficients of the state in a float array
+	float* get_coeffs(float*);
 	/// Set spectral coefficients of the state
 	///@remarks Set energy as the first coefficient of the list overwriting previous energy value
 	void set_coeffs(list<float> &);
@@ -201,10 +209,12 @@ public:
 class O_MIDI_note
 {
 protected:
-	int pitch;
-	int velocity;
-	int channel;
-	int offset;
+	int pitch;		///< MIDI Pitch
+	int velocity;	///< MIDI velocity
+	int channel;	///< MIDI channel
+	int offset;		///< Offset in the slice (ms)
+	int duration;	///< @brief Duration (ms)
+					///< @details Negativ if the note is still pending
 	
 public:
 	///@name Constructors & Destructors
@@ -214,7 +224,7 @@ public:
 	/// Copy constructor
 	O_MIDI_note(const O_MIDI_note &);
 	/// Create a note from data
-	O_MIDI_note(int=60,int=0,int=128,int=0);
+	O_MIDI_note(int=60,int=0,int=128,int=0,int=0);
 	/// Standard destructor
 	~O_MIDI_note(){};
 	//@}
@@ -237,10 +247,14 @@ public:
 	int get_offset();
 	/// Set the offset of the note
 	void set_offset(int);
+	/// Return the duration of the note
+	int get_duration();
+	/// Set the duration of the note
+	void set_duration(int);
 	/// Return all parameters of the note at once in an int array
 	int* get_note(int*);
 	/// Set all parameters of the note at once
-	void set_note(int=60,int=0,int=128,int=0);
+	void set_note(int=60,int=0,int=128,int=0, int=0);
 	//@}
 	
 	/*
@@ -278,9 +292,9 @@ public:
 class O_MIDI_poly : public O_label
 {
 protected:
-	float vpitch;
-	float mvelocity;
-	list<O_MIDI_note> notes;
+	float vpitch;		///< Virtual pitch of the slice
+	float mvelocity;	///< Average veloctiy
+	list<O_MIDI_note> notes; ///< List of notes in the slice
 	
 public:
 	/* Del

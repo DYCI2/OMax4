@@ -21,7 +21,8 @@ typedef enum
 	{
 		LETTERS,				///< class O_char
 		MIDI_MONO,				///< class O_MIDI_mono
-		SPECTRAL				///< class O_spectral
+		SPECTRAL,				///< class O_spectral
+		MIDI_POLY				///< class O_MIDI_poly
 	} O_DataType;
 
 /**@ingroup label

@@ -222,6 +222,7 @@ using namespace std;
 				outlet_list(x->out0, NULL, 2, datesout);
 			}
 		}
+		sysmem_freeptr(datesout);
 	}
 
 	//@}

@@ -180,6 +180,27 @@ void O_MIDI_mono::set_velocity(int velocityin)
 	velocity = velocityin;
 }
 
+int O_MIDI_mono::get_channel()
+{
+	return channel;
+}
+
+void O_MIDI_mono::set_channel(int chanin)
+{
+	channel = chanin;
+}
+
+///@remarks If passed NULL, allocates memory
+int* O_MIDI_mono::get_data(int* dataout)
+{
+	if (dataout == NULL)
+		dataout = (int*)malloc(3*sizeof(int));
+	dataout[0]=pitch;
+	dataout[1]=velocity;
+	dataout[2]=channel;
+	return dataout;
+}
+
 // Operators Overload
 bool O_MIDI_mono::operator== (const O_MIDI_mono & other) const
 {
@@ -252,10 +273,21 @@ void O_spectral::set_energy(list<float> & coeffin)
 	energy = coeffin.front();
 }
 
-list<float>
-O_spectral::get_coeffs()
+list<float> O_spectral::get_coeffs()
 {
 	return coeffs;
+}
+
+///@remarks If passed NULL, allocates memory
+float* O_spectral::get_coeffs(float* dataout)
+{
+	int i = 0;
+	list<float>::iterator fit;
+	if (dataout == NULL)
+		dataout = (float*)malloc(coeffs.size()*sizeof(int));
+	for (fit = coeffs.begin(); fit != coeffs.end() ; fit++)
+		dataout[i++]=*fit;
+	return dataout;
 }
 
 void O_spectral::set_coeffs(list<float> & coeffin)
@@ -306,6 +338,7 @@ O_MIDI_note::O_MIDI_note()
 	velocity = 0;
 	channel = 128;
 	offset = 0;
+	duration = 0;
 }
 
 O_MIDI_note::O_MIDI_note(const O_MIDI_note & notein)
@@ -314,14 +347,16 @@ O_MIDI_note::O_MIDI_note(const O_MIDI_note & notein)
 	velocity = notein.velocity;
 	channel = notein.channel;
 	offset = notein.offset;
+	duration = notein.duration;
 }
 
-O_MIDI_note::O_MIDI_note(int pitchin, int velocityin, int channelin, int offsetin)
+O_MIDI_note::O_MIDI_note(int pitchin, int velocityin, int channelin, int offsetin, int durationin)
 {
 	pitch = pitchin;
 	velocity = velocityin;
 	channel = channelin;
 	offset = offsetin;
+	duration = durationin;
 }
 
 int O_MIDI_note::get_pitch()
@@ -364,24 +399,37 @@ void O_MIDI_note::set_offset(int offsetin)
 	offset = offsetin;
 }
 
+int O_MIDI_note::get_duration()
+{
+	return duration;
+}
+
+void O_MIDI_note::set_duration(int durationin)
+{
+	duration = durationin;
+}
+
+
 ///@remarks If passed NULL, allocates memory
 int* O_MIDI_note::get_note(int* noteout)
 {
 	if (noteout == NULL)
-		noteout = (int*)malloc(4*sizeof(int));
+		noteout = (int*)malloc(5*sizeof(int));
 	noteout[0]=pitch;
 	noteout[1]=velocity;
 	noteout[2]=channel;
 	noteout[3]=offset;
+	noteout[4]=duration;
 	return noteout;
 }
 
-void O_MIDI_note::set_note(int pitchin, int velocityin, int channelin, int offsetin)
+void O_MIDI_note::set_note(int pitchin, int velocityin, int channelin, int offsetin, int durationin)
 {
 	pitch = pitchin;
 	velocity = velocityin;
 	channel = channelin;
 	offset = offsetin;
+	duration = durationin;
 }
 
 /*
@@ -607,6 +655,14 @@ bool O_MIDI_poly::operator== (const O_MIDI_poly & other) const
 	pitches.unique();
 	return(pitches.size()== nbpitches);*/
 	
+	// comparaison modulo 12
+	
+	/*float div1 = vpitch/12.;
+	float div2 = other.get_vpitch()/12.;
+	
+	return (((div1 - floor(div1))*12.)==((div2 - floor(div2))*12.));*/
+	
+	// Comparaison exacte
 	return(vpitch == other.get_vpitch());
 	
 }

@@ -116,6 +116,10 @@ extern "C"
 			if (!err || i!=2)
 				object_error((t_object*)x, "Allocation error");
 			
+			x->coefout = NULL;
+			x->coeflist = NULL;
+			x->coeftab = NULL;
+			
 			// outlet init
 			x->out_statenb = intout(x); // rightmost
 			x->out_buf = listout(x);
@@ -149,7 +153,13 @@ extern "C"
 	 * @brief Object destruction */
 	void OMax_render_free(t_OMax_render *x)
 	{
-		;
+		sysmem_freeptr(x->twout);
+		if (x->coefout)
+			sysmem_freeptr(x->coefout);
+		if (x->coeflist)
+			delete x->coeflist;
+		if (x->coeftab)
+			free(x->coeftab);
 	}
 	
 	/**@public @memberof t_OMax_render
@@ -221,7 +231,7 @@ extern "C"
 				x->obound = TRUE;
 				///@remarks Sets @link t_OMax_render::datatype data type @endlink too
 				x->datatype = ((t_OMax_data*)(x->dataname->s_thing))->datatype;
-				if (x->datatype == SPECTRAL)
+				if (x->datatype == SPECTRAL) // allocate memory for the output
 				{
 					x->nbcoeffs = ((t_OMax_data*)(x->dataname->s_thing))->nbcoeffs;
 					// allocation for coeff output
@@ -231,6 +241,14 @@ extern "C"
 					long i = 0;
 					atom_alloc_array(x->nbcoeffs, &i, &x->coefout, &err);
 					if (!err || i!=x->nbcoeffs)
+						object_error((t_object*)x, "Allocation error");
+				}
+				if (x->datatype == MIDI_POLY) // allocate memory for the output
+				{
+					char err;
+					long i = 0;
+					atom_alloc_array(6, &i, &x->coefout, &err);
+					if (!err || i<6)
 						object_error((t_object*)x, "Allocation error");
 				}
 			}
@@ -319,11 +337,33 @@ extern "C"
 							outlet_list(x->out_data, NULL,x->nbcoeffs, x->coefout); // then output coeffs
 							break;
 						}
-
+						case MIDI_POLY:
+						{
+							// output notes of the slice
+							list<O_MIDI_note> notes = ((O_MIDI_poly*)labL)->get_notes();
+							list<O_MIDI_note>::iterator notit;
+							atom_setsym(x->coefout, gensym("note"));
+							for (notit=notes.begin();notit!=notes.end();notit++)
+							{
+								atom_setlong(x->coefout+1, notit->get_pitch());
+								atom_setlong(x->coefout+2, notit->get_velocity());
+								atom_setlong(x->coefout+3, notit->get_channel());
+								atom_setlong(x->coefout+4, notit->get_offset());
+								atom_setlong(x->coefout+5, notit->get_duration());
+								outlet_list(x->out_data, NULL,6, x->coefout); // then output coeffs
+							}
+							
+							// output slice data
+							atom_setsym(x->coefout, gensym("slice"));
+							atom_setlong(x->coefout+1, notes.size());
+							atom_setfloat(x->coefout+2, ((O_MIDI_poly*)labL)->get_vpitch());
+							atom_setfloat(x->coefout+3, ((O_MIDI_poly*)labL)->get_mvelocity());
+							outlet_list(x->out_data, NULL, 4, x->coefout); // output
+							
+							break;
+						}
 					}
-					
 					outlet_bang(x->out_bang);
-					
 				}
 				//else
 				//object_post((t_object *)x,"State %ld outside Oracles bounds", statnb, x->oname->s_name);

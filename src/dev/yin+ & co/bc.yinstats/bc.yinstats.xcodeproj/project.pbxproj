@@ -7,16 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7B186AAA128751F7000A07FB /* max.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 7B186AA9128751F7000A07FB /* max.xcconfig */; };
 		7B89C942119AA72500789D45 /* MaxAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B89C941119AA72500789D45 /* MaxAPI.framework */; };
 		7BA4379910FB74950093DEB8 /* bc.yinstats.c in Sources */ = {isa = PBXBuildFile; fileRef = 7BA4379810FB74950093DEB8 /* bc.yinstats.c */; };
-		FB8F3F6E0F616A7C008CAF2C /* max.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = FB8F3EC50F61697F008CAF2C /* max.xcconfig */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		2FBBEAE508F335360078DB84 /* bc.yinstats.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = bc.yinstats.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
+		7B186AA9128751F7000A07FB /* max.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = max.xcconfig; path = ../max.xcconfig; sourceTree = SOURCE_ROOT; };
 		7B89C941119AA72500789D45 /* MaxAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MaxAPI.framework; path = "../../../../../../Max5/MaxSDK-5.1.1/c74support/max-includes/MaxAPI.framework"; sourceTree = SOURCE_ROOT; };
 		7BA4379810FB74950093DEB8 /* bc.yinstats.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = bc.yinstats.c; sourceTree = "<group>"; };
-		FB8F3EC50F61697F008CAF2C /* max.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = max.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -34,7 +34,7 @@
 		089C166AFE841209C02AAC07 /* iterator */ = {
 			isa = PBXGroup;
 			children = (
-				FB8F3EC50F61697F008CAF2C /* max.xcconfig */,
+				7B186AA9128751F7000A07FB /* max.xcconfig */,
 				08FB77ADFE841716C02AAC07 /* Source */,
 				089C1671FE841209C02AAC07 /* External Frameworks and Libraries */,
 				19C28FB4FE9D528D11CA2CBB /* Products */,
@@ -105,7 +105,14 @@
 			isa = PBXProject;
 			buildConfigurationList = 2FBBEACF08F335010078DB84 /* Build configuration list for PBXProject "bc.yinstats" */;
 			compatibilityVersion = "Xcode 3.1";
+			developmentRegion = English;
 			hasScannedForEncodings = 1;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+			);
 			mainGroup = 089C166AFE841209C02AAC07 /* iterator */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -120,7 +127,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FB8F3F6E0F616A7C008CAF2C /* max.xcconfig in Resources */,
+				7B186AAA128751F7000A07FB /* max.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -150,27 +157,26 @@
 /* Begin XCBuildConfiguration section */
 		2FBBEAD008F335010078DB84 /* Development */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FB8F3EC50F61697F008CAF2C /* max.xcconfig */;
+			baseConfigurationReference = 7B186AA9128751F7000A07FB /* max.xcconfig */;
 			buildSettings = {
 			};
 			name = Development;
 		};
 		2FBBEAD108F335010078DB84 /* Deployment */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7B186AA9128751F7000A07FB /* max.xcconfig */;
 			buildSettings = {
 			};
 			name = Deployment;
 		};
 		2FBBEAE108F335360078DB84 /* Development */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FB8F3EC50F61697F008CAF2C /* max.xcconfig */;
 			buildSettings = {
 			};
 			name = Development;
 		};
 		2FBBEAE208F335360078DB84 /* Deployment */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FB8F3EC50F61697F008CAF2C /* max.xcconfig */;
 			buildSettings = {
 			};
 			name = Deployment;

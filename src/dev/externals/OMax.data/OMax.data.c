@@ -31,9 +31,12 @@ extern "C"
 	void OMax_data_init(t_OMax_data *x);
 	void OMax_data_reset(t_OMax_data *x);
 	void OMax_data_type(t_OMax_data *x);
+	void OMax_data_write(t_OMax_data *x, t_symbol *s);
 	
 	// Internal routines
 	t_symbol * OMax_data_name(t_symbol * oname);
+	void OMax_data_dowrite(t_OMax_data *x, t_symbol *s);
+	void OMax_data_writefile(t_OMax_data *x, char *filename, short path);
 	
 	// Global class pointer variable
 	t_class *OMax_data_class;
@@ -57,6 +60,7 @@ extern "C"
 		class_addmethod(c, (method)OMax_data_init, "init", 0);
 		class_addmethod(c, (method)OMax_data_reset, "reset", 0);
 		class_addmethod(c, (method)OMax_data_type, "type", 0);
+		class_addmethod(c, (method)OMax_data_write, "write", A_DEFSYM, 0);
 		
 		
 		class_register(CLASS_BOX, c); /* CLASS_NOBOX */
@@ -125,10 +129,17 @@ extern "C"
 										object_post((t_object *)x, "Missing number of coefficients for %s, assuming 7",x->oname->s_name);
 									}
 								}
-								else { 
-									if (atom_getsym(argv+1) == gensym("LETTERS")){}
-									else
-										object_error((t_object *)x,"Type %s undefined, using LETTERS",atom_getsym(argv+1)->s_name);
+								else {
+									if (atom_getsym(argv+1) == gensym("MIDI_POLY"))
+									{
+										x->datatype = MIDI_POLY;
+										datatype = "MIDI_POLY";
+									}
+									else { 
+										if (atom_getsym(argv+1) == gensym("LETTERS"));
+										else
+											object_error((t_object *)x,"Type %s undefined, using LETTERS",atom_getsym(argv+1)->s_name);
+									}
 								}
 							}
 						}
@@ -166,8 +177,13 @@ extern "C"
 			{
 				case SPECTRAL:
 					x->data.freestates<O_spectral>();
+					break;
 				case MIDI_MONO:
 					x->data.freestates<O_MIDI_mono>();
+					break;
+				case MIDI_POLY:
+					x->data.freestates<O_MIDI_poly>();
+					break;
 				default:
 					x->data.freestates<O_char>();
 			}
@@ -187,7 +203,7 @@ extern "C"
 				switch (index)
 			{
 				case 0: // leftmost
-					sprintf(s, "messages (init, reset, size)");
+					sprintf(s, "messages (init, reset, size, type, write)");
 					break;
 			}
                 break;
@@ -224,8 +240,13 @@ extern "C"
 		{
 			case SPECTRAL:
 				x->data.start<O_spectral>();
+				break;
 			case MIDI_MONO:
 				x->data.start<O_MIDI_mono>();
+				break;
+			case MIDI_POLY:
+				x->data.start<O_MIDI_poly>();
+				break;
 			default:
 				x->data.start<O_char>();
 		}
@@ -247,8 +268,13 @@ extern "C"
 			{
 				case SPECTRAL:
 					x->data.freestates<O_spectral>();
+					break;
 				case MIDI_MONO:
 					x->data.freestates<O_MIDI_mono>();
+					break;
+				case MIDI_POLY:
+					x->data.freestates<O_MIDI_poly>();
+					break;
 				default:
 					x->data.freestates<O_char>();
 			}
@@ -266,6 +292,14 @@ extern "C"
 		outlet_int(x->out0, (long)x->datatype);
 	}
 	
+	/**@public @memberof t_OMax_data
+	 * @brief Get Data saved in a JSON file
+	 * @remarks Input message in Max5: @c write with the name a file (opens a browser otherwise) */
+	void OMax_data_write(t_OMax_data *x, t_symbol *s)
+	{
+		defer(x, (method)OMax_data_dowrite, s, 0, NULL);
+	}
+	
 	//@}
 	
 	///@name Internal routines
@@ -280,6 +314,158 @@ extern "C"
 		///@details Append @c _data to the FO name
 		strcat(dataname,"_data");
 		return gensym(dataname);
+	}
+	
+	/**@public @memberof t_OMax_data
+	 * @brief Prepare writing a JSON file
+	 */	
+	void OMax_data_dowrite(t_OMax_data *x, t_symbol *s)
+	{
+		long filetype = 'TEXT';
+		long outtype = 'TEXT';
+		short numtypes = 1;
+		char filename[512];
+		short path;
+		
+		if (s == gensym(""))
+		{      // if no argument supplied, ask for file
+			if (saveasdialog_extended(filename, &path, &outtype, &filetype, numtypes))     // non-zero: user cancelled
+				return;
+		}
+		else
+		{
+			strcpy(filename, s->s_name);
+			path = path_getdefault();
+		}
+		OMax_data_writefile(x, filename, path);
+	}
+	
+	/**@public @memberof t_OMax_data
+	 * @brief Write data in a JSON file
+	 */
+	void OMax_data_writefile(t_OMax_data *x, char *filename, short path)
+	{
+		char err;
+		int* note_data = NULL;
+		float* sp_data = NULL;
+		long i = 0;
+		long idx = 0;
+		long nbstates = x->data.get_size();
+		O_label* current;
+		t_symbol* sym_state = gensym("state");
+		t_symbol* sym_time = gensym("time");
+		t_symbol* sym_seg = gensym("seg");
+		t_symbol* sym_letter = gensym("letter");
+		t_symbol* sym_note = gensym("note");
+		t_symbol* sym_pitch = gensym("pitch");
+		t_symbol* sym_coeffs = gensym("coeffs");
+		char letter[2]; letter[1] = NULL;
+		t_dictionary* d;
+		t_atom* datab = (t_atom*)sysmem_newptr(nbstates*sizeof(t_atom));
+		t_atom* array;
+		if (x->nbcoeffs>2)
+			atom_alloc_array(x->nbcoeffs, &i, &array, &err);
+		else
+			atom_alloc_array(3, &i, &array, &err);
+		if (!err)
+			object_error((t_object*)x, "Allocation error");
+		
+		//t_dictionary* data;
+		t_dictionary* ditem;
+		//long err;
+		
+		d = dictionary_new(); //main directory
+		dictionary_appendsym(d, gensym("name"), x->oname);
+		switch (x->datatype)
+		{
+			case 3:
+				dictionary_appendsym(d, gensym("typeID"), gensym("MIDI_POLY"));
+				break;
+			case 2:
+				dictionary_appendsym(d, gensym("typeID"), gensym("SPECTRAL"));
+				for (idx=0; idx<nbstates; idx++)
+				{
+					current = x->data[idx];
+					ditem = dictionary_new();
+					// state number
+					dictionary_appendlong(ditem, sym_state, current->get_statenb());
+					// time data (buffer date and duration)
+					atom_setlong(array, current->get_bufferef());
+					atom_setlong(array+1, current->get_duration());
+					dictionary_appendatoms(ditem, sym_time, 2, array);
+					// segmentation data (phrase and section)
+					atom_setlong(array, current->get_section());
+					atom_setlong(array+1, current->get_phrase());
+					dictionary_appendatoms(ditem, sym_seg, 2, array);
+					// pitch
+					dictionary_appendlong(ditem, sym_pitch, ((O_spectral*)current)->get_pitch());
+					// MFCCs
+					sp_data = ((O_spectral*)current)->get_coeffs(sp_data);
+					atom_setfloat_array(x->nbcoeffs, array, x->nbcoeffs, sp_data);
+					dictionary_appendatoms(ditem, sym_coeffs, x->nbcoeffs, array);
+					// add to the data array
+					atom_setobj(&datab[idx], ditem);
+				}
+				break;
+			case 1:
+				dictionary_appendsym(d, gensym("typeID"), gensym("MIDI_MONO"));
+				for (idx=0; idx<nbstates; idx++)
+				{
+					current = x->data[idx];
+					ditem = dictionary_new();
+					// state number
+					dictionary_appendlong(ditem, sym_state, current->get_statenb());
+					// time data (buffer date and duration)
+					atom_setlong(array, current->get_bufferef());
+					atom_setlong(array+1, current->get_duration());
+					dictionary_appendatoms(ditem, sym_time, 2, array);
+					// segmentation data (phrase and section)
+					atom_setlong(array, current->get_section());
+					atom_setlong(array+1, current->get_phrase());
+					dictionary_appendatoms(ditem, sym_seg, 2, array);
+					// note
+					note_data = ((O_MIDI_mono*)current)->get_data(note_data);
+					atom_setlong_array(3, array, 3, (long*)note_data);
+					dictionary_appendatoms(ditem, sym_note, 3, array);
+					// add to the data array
+					atom_setobj(&datab[idx], ditem);
+				}
+				break;
+			default:
+				dictionary_appendsym(d, gensym("typeID"), gensym("LETTERS"));
+				for (idx=0; idx<nbstates; idx++)
+				{
+					current = x->data[idx];
+					ditem = dictionary_new();
+					// state number
+					dictionary_appendlong(ditem, sym_state, current->get_statenb());
+					// time data (buffer date and duration)
+					atom_setlong(array, current->get_bufferef());
+					atom_setlong(array+1, current->get_duration());
+					dictionary_appendatoms(ditem, sym_time, 2, array);
+					// segmentation data (phrase and section)
+					atom_setlong(array, current->get_section());
+					atom_setlong(array+1, current->get_phrase());
+					dictionary_appendatoms(ditem, sym_seg, 2, array);
+					// letter
+					letter[0] = ((O_char*)current)->get_letter();
+					dictionary_appendsym(ditem, sym_letter, gensym(letter));
+					// add to the data array
+					atom_setobj(&datab[idx], ditem);
+				}
+				break;
+		}
+		dictionary_appendlong(d, gensym("type"), x->datatype);
+		dictionary_appendlong(d, gensym("size"), nbstates);
+		dictionary_appendatoms(d, gensym("data"), nbstates, datab);
+		
+		dictionary_write(d, filename, path);
+		
+		//sysmem_freeptr(array);
+		//sysmem_freeptr(datab);
+		free(note_data);
+		free(sp_data);
+		object_free(d);
 	}
 	
 	//@}

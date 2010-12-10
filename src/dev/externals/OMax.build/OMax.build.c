@@ -307,6 +307,13 @@ extern "C"
 							ATOMIC_DECREMENT(&((t_OMax_data *)(x->idataname->s_thing))->wflag);
 							break;
 						}
+						case MIDI_POLY:
+						{
+							ATOMIC_INCREMENT(&((t_OMax_data *)(x->idataname->s_thing))->wflag);
+							statnb = x->idata->add<O_MIDI_poly>(x->date,(*x->odata)[statein]);
+							ATOMIC_DECREMENT(&((t_OMax_data *)(x->idataname->s_thing))->wflag);
+							break;
+						}
 					}
 					
 					/// Use duration to compute the new ending date
