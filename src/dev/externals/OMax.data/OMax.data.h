@@ -14,6 +14,8 @@
 #include "jgraphics.h"			// required for the color
 #include "ext_atomic.h"			// required for atomic operation for thread saf
 
+#define MAX_NOTES 10
+
 /**@ingroup externals
  * @brief Types of data
  */

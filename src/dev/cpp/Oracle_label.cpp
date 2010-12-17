@@ -283,10 +283,11 @@ float* O_spectral::get_coeffs(float* dataout)
 {
 	int i = 0;
 	list<float>::iterator fit;
-	if (dataout == NULL)
-		dataout = (float*)malloc(coeffs.size()*sizeof(int));
-	for (fit = coeffs.begin(); fit != coeffs.end() ; fit++)
+	if (dataout == NULL && coeffs.size()!=0)
+		dataout = (float*)malloc(coeffs.size()*sizeof(float));
+	for (fit = coeffs.begin(); fit != coeffs.end(); fit++)
 		dataout[i++]=*fit;
+	cout<<endl;
 	return dataout;
 }
 
@@ -297,6 +298,11 @@ void O_spectral::set_coeffs(list<float> & coeffin)
 		energy = coeffin.front();
 		coeffs = coeffin;
 	}
+}
+
+void O_spectral::set_coeffs(int nb, float val)
+{
+	coeffs = list<float>(nb,val);
 }
 
 // Operator Overload

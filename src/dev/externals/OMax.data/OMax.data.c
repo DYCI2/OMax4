@@ -103,6 +103,7 @@ extern "C"
 					else
 					{
 						x->dataname->s_thing = (t_object*)x;
+						x->nbcoeffs = 0;
 						
 						///@remarks Sets also the data type (member t_OMax_data::datatype) depending on the second argument given to the Max5 object (if any, otherwise default is @link O_DataType::LETTERS LETTERS @endlink) */
 						x->datatype = LETTERS;
@@ -351,7 +352,11 @@ extern "C"
 		long i = 0;
 		long idx = 0;
 		long nbstates = x->data.get_size();
+		
+		char letter[2]; letter[1] = NULL;
+		
 		O_label* current;
+		
 		t_symbol* sym_state = gensym("state");
 		t_symbol* sym_time = gensym("time");
 		t_symbol* sym_seg = gensym("seg");
@@ -359,20 +364,20 @@ extern "C"
 		t_symbol* sym_note = gensym("note");
 		t_symbol* sym_pitch = gensym("pitch");
 		t_symbol* sym_coeffs = gensym("coeffs");
-		char letter[2]; letter[1] = NULL;
-		t_dictionary* d;
+		t_symbol* sym_slice = gensym("slice");
+		t_symbol* sym_notes = gensym("notes");
+		
 		t_atom* datab = (t_atom*)sysmem_newptr(nbstates*sizeof(t_atom));
-		t_atom* array;
+		t_atom* array = NULL;
 		if (x->nbcoeffs>2)
 			atom_alloc_array(x->nbcoeffs, &i, &array, &err);
 		else
 			atom_alloc_array(3, &i, &array, &err);
-		if (!err)
-			object_error((t_object*)x, "Allocation error");
+		t_atom* notesarray = (t_atom*)sysmem_newptr(MAX_NOTES*sizeof(t_atom));
 		
-		//t_dictionary* data;
+		t_dictionary* d;
+		t_dictionary* notedic;
 		t_dictionary* ditem;
-		//long err;
 		
 		d = dictionary_new(); //main directory
 		dictionary_appendsym(d, gensym("name"), x->oname);
@@ -380,6 +385,41 @@ extern "C"
 		{
 			case 3:
 				dictionary_appendsym(d, gensym("typeID"), gensym("MIDI_POLY"));
+				for (idx=0; idx<nbstates; idx++)
+				{
+					current = x->data[idx];
+					ditem = dictionary_new();
+					// state number
+					dictionary_appendlong(ditem, sym_state, current->get_statenb());
+					// time data (buffer date and duration)
+					atom_setlong(array, current->get_bufferef());
+					atom_setlong(array+1, current->get_duration());
+					dictionary_appendatoms(ditem, sym_time, 2, array);
+					// segmentation data (phrase and section)
+					atom_setlong(array, current->get_section());
+					atom_setlong(array+1, current->get_phrase());
+					dictionary_appendatoms(ditem, sym_seg, 2, array);
+					// slice data
+					atom_setlong(array, ((O_MIDI_poly*)current)->get_vpitch());
+					atom_setlong(array+1, ((O_MIDI_poly*)current)->get_mvelocity());
+					dictionary_appendatoms(ditem, sym_slice, 2, array);
+					// notes
+					list<O_MIDI_note> notes = ((O_MIDI_poly*)current)->get_notes();
+					list<O_MIDI_note>::iterator notit;
+					i = 0;
+					for (notit = notes.begin(); notit != notes.end() ; notit++)
+					{
+						notedic = dictionary_new();
+						note_data = notit->get_note(note_data);
+						atom_setlong_array(5, array, 5, (long*)note_data);
+						dictionary_appendatoms(notedic, sym_note, 3, array);
+						dictionary_appendatoms(notedic, sym_time, 2, array+3);
+						atom_setobj(&notesarray[i++], notedic);
+					}
+					dictionary_appendatoms(ditem, sym_notes, i, notesarray);
+					// add to the data array
+					atom_setobj(&datab[idx], ditem);
+				}
 				break;
 			case 2:
 				dictionary_appendsym(d, gensym("typeID"), gensym("SPECTRAL"));
@@ -401,7 +441,8 @@ extern "C"
 					dictionary_appendlong(ditem, sym_pitch, ((O_spectral*)current)->get_pitch());
 					// MFCCs
 					sp_data = ((O_spectral*)current)->get_coeffs(sp_data);
-					atom_setfloat_array(x->nbcoeffs, array, x->nbcoeffs, sp_data);
+					if (sp_data)
+						atom_setfloat_array(x->nbcoeffs, array, x->nbcoeffs, sp_data);
 					dictionary_appendatoms(ditem, sym_coeffs, x->nbcoeffs, array);
 					// add to the data array
 					atom_setobj(&datab[idx], ditem);
@@ -461,8 +502,8 @@ extern "C"
 		
 		dictionary_write(d, filename, path);
 		
-		//sysmem_freeptr(array);
-		//sysmem_freeptr(datab);
+		sysmem_freeptr(array);
+		sysmem_freeptr(datab);
 		free(note_data);
 		free(sp_data);
 		object_free(d);

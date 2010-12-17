@@ -194,6 +194,8 @@ public:
 	/// Set spectral coefficients of the state
 	///@remarks Set energy as the first coefficient of the list overwriting previous energy value
 	void set_coeffs(list<float> &);
+	/// Set all spectral coefficients to the same value
+	void set_coeffs(int, float);
 	//@}
 	
 	///@name Operators Overload
