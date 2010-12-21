@@ -174,25 +174,6 @@ int O_learner::add(O_DataType & dataIn)
 	O_it->add_trans(newstate);
 	
 	// suffix algorithm
-	/*j = O_it->get_statenb();
-	if(O_it->get_suffix().first)
-		k = O_it->get_suffix().first->get_statenb();
-	else
-		k = -1;
-	while (k>=0 && search_trans(*oracle->state_vect[k], *newdata)==-1)
-	{
-		oracle->state_vect[k]->add_trans(newstate);
-		j = k;
-		if(oracle->state_vect[k]->get_suffix().first)
-			k = oracle->state_vect[k]->get_suffix().first->get_statenb();
-		else
-			k = -1;
-	}
-	if (k==-1)
-		l = 0;
-	else
-		l = search_trans(*oracle->state_vect[k], *newdata);*/
-
 	pair<int,int> newsuffix=suffix(newstate, newdata); //<LRS inside
 	
 	//int lrsnew = lrs(*(*oracle)[j],*(*oracle)[l]); // lrs

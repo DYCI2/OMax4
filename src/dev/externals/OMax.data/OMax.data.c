@@ -32,11 +32,13 @@ extern "C"
 	void OMax_data_reset(t_OMax_data *x);
 	void OMax_data_type(t_OMax_data *x);
 	void OMax_data_write(t_OMax_data *x, t_symbol *s);
+	void OMax_data_read(t_OMax_data *x, t_symbol *s);
 	
 	// Internal routines
 	t_symbol * OMax_data_name(t_symbol * oname);
 	void OMax_data_dowrite(t_OMax_data *x, t_symbol *s);
 	void OMax_data_writefile(t_OMax_data *x, char *filename, short path);
+	void OMax_data_doread(t_OMax_data *x, t_symbol *s);
 	
 	// Global class pointer variable
 	t_class *OMax_data_class;
@@ -61,6 +63,7 @@ extern "C"
 		class_addmethod(c, (method)OMax_data_reset, "reset", 0);
 		class_addmethod(c, (method)OMax_data_type, "type", 0);
 		class_addmethod(c, (method)OMax_data_write, "write", A_DEFSYM, 0);
+		class_addmethod(c, (method)OMax_data_read, "read", A_DEFSYM, 0);
 		
 		
 		class_register(CLASS_BOX, c); /* CLASS_NOBOX */
@@ -301,6 +304,15 @@ extern "C"
 		defer(x, (method)OMax_data_dowrite, s, 0, NULL);
 	}
 	
+	/**@public @memberof t_OMax_data
+	 * @brief Read Data from a JSON file
+	 * @remarks Input message in Max5: @c read with the name a file (opens a browser otherwise) */
+	void OMax_data_read(t_OMax_data *x, t_symbol *s)
+	{
+		defer(x, (method)OMax_data_doread, s, 0, NULL);
+		outlet_int(x->out0,(long)x->data.get_size());
+	}
+	
 	//@}
 	
 	///@name Internal routines
@@ -325,8 +337,10 @@ extern "C"
 		long filetype = 'TEXT';
 		long outtype = 'TEXT';
 		short numtypes = 1;
-		char filename[512];
+		char foldername[MAX_FILENAME_CHARS];
+		char filename[MAX_FILENAME_CHARS];
 		short path;
+		short newpath;
 		
 		if (s == gensym(""))
 		{      // if no argument supplied, ask for file
@@ -335,8 +349,15 @@ extern "C"
 		}
 		else
 		{
-			strcpy(filename, s->s_name);
-			path = path_getdefault();
+			path_frompotentialpathname(s->s_name, &path, filename);
+			cout<<"potential path : "<<path<<" file : "<<filename<<endl;
+			path_frompathname(s->s_name, &path, filename);
+			cout<<"path : "<<path<<" file : "<<filename<<endl;
+			path_getname(path, foldername, &newpath);
+			cout<<"getname : "<<foldername<<" newpath : "<<newpath<<endl;
+			//path_createfolder(path, &foldername, &newpath);
+			//strcpy(filename, s->s_name);
+			//path = path_getdefault();
 		}
 		OMax_data_writefile(x, filename, path);
 	}
@@ -369,21 +390,27 @@ extern "C"
 		
 		t_atom* datab = (t_atom*)sysmem_newptr(nbstates*sizeof(t_atom));
 		t_atom* array = NULL;
-		if (x->nbcoeffs>2)
+		/*if (x->nbcoeffs>2)
 			atom_alloc_array(x->nbcoeffs, &i, &array, &err);
 		else
-			atom_alloc_array(3, &i, &array, &err);
-		t_atom* notesarray = (t_atom*)sysmem_newptr(MAX_NOTES*sizeof(t_atom));
+			atom_alloc_array(3, &i, &array, &err);*/
 		
 		t_dictionary* d;
-		t_dictionary* notedic;
 		t_dictionary* ditem;
 		
 		d = dictionary_new(); //main directory
+		
+		// name
 		dictionary_appendsym(d, gensym("name"), x->oname);
+		
 		switch (x->datatype)
 		{
 			case 3:
+				// vars & alloc
+				t_dictionary* notedic;
+				atom_alloc_array(5, &i, &array, &err);
+				t_atom* notesarray = (t_atom*)sysmem_newptr(MAX_NOTES*sizeof(t_atom));
+				
 				dictionary_appendsym(d, gensym("typeID"), gensym("MIDI_POLY"));
 				for (idx=0; idx<nbstates; idx++)
 				{
@@ -422,7 +449,11 @@ extern "C"
 				}
 				break;
 			case 2:
+				// alloc
+				atom_alloc_array(x->nbcoeffs, &i, &array, &err);
+				
 				dictionary_appendsym(d, gensym("typeID"), gensym("SPECTRAL"));
+				
 				for (idx=0; idx<nbstates; idx++)
 				{
 					current = x->data[idx];
@@ -440,16 +471,20 @@ extern "C"
 					// pitch
 					dictionary_appendlong(ditem, sym_pitch, ((O_spectral*)current)->get_pitch());
 					// MFCCs
+					sp_data = (float*)calloc(x->nbcoeffs, sizeof(float));
 					sp_data = ((O_spectral*)current)->get_coeffs(sp_data);
-					if (sp_data)
-						atom_setfloat_array(x->nbcoeffs, array, x->nbcoeffs, sp_data);
+					atom_setfloat_array(x->nbcoeffs, array, x->nbcoeffs, sp_data);
 					dictionary_appendatoms(ditem, sym_coeffs, x->nbcoeffs, array);
 					// add to the data array
 					atom_setobj(&datab[idx], ditem);
 				}
 				break;
 			case 1:
+				// alloc
+				atom_alloc_array(3, &i, &array, &err);
+				
 				dictionary_appendsym(d, gensym("typeID"), gensym("MIDI_MONO"));
+				
 				for (idx=0; idx<nbstates; idx++)
 				{
 					current = x->data[idx];
@@ -473,7 +508,11 @@ extern "C"
 				}
 				break;
 			default:
+				// alloc
+				atom_alloc_array(2, &i, &array, &err);
+				
 				dictionary_appendsym(d, gensym("typeID"), gensym("LETTERS"));
+				
 				for (idx=0; idx<nbstates; idx++)
 				{
 					current = x->data[idx];
@@ -497,16 +536,320 @@ extern "C"
 				break;
 		}
 		dictionary_appendlong(d, gensym("type"), x->datatype);
+		if (x->datatype == 2)
+			dictionary_appendlong(d, gensym("#coeffs"), x->nbcoeffs);
 		dictionary_appendlong(d, gensym("size"), nbstates);
 		dictionary_appendatoms(d, gensym("data"), nbstates, datab);
 		
-		dictionary_write(d, filename, path);
+		err = dictionary_write(d, filename, path);
+		if (err)
+			object_error((t_object*)x, "Error writing file");
+		else 
+			object_post((t_object*)x, "Written data of oracle %s in file %s", x->oname->s_name, filename);
+
 		
 		sysmem_freeptr(array);
 		sysmem_freeptr(datab);
 		free(note_data);
 		free(sp_data);
 		object_free(d);
+	}
+	
+	void OMax_data_doread(t_OMax_data *x, t_symbol *s)
+	{
+		char err;
+		short path;
+		int date = 0;
+		long datatype, size, nbcoeffs;
+		long i, idx;
+		char filename[MAX_PATH_CHARS];
+		long type = FOUR_CHAR_CODE('JSON');
+		t_symbol *symdata = NULL;
+		t_atom *data = NULL;
+		t_dictionary *d = NULL;
+		
+		if (s == gensym(""))
+		{
+			if (open_dialog(filename, &path, &type, &type, 1))
+				return;
+		}
+		else
+		{
+			strcpy(filename, s->s_name);
+			if (locatefile_extended(filename, &path, &type, &type, 1))
+			{
+				object_error((t_object *)x, "can't find file %s", filename);
+				return;
+			}
+		}
+		
+		dictionary_read(filename, path, &d);
+		if (d)
+		{
+			dictionary_getsym(d, gensym("name"), &symdata);
+			dictionary_getlong(d, gensym("type"), &datatype);
+			if (datatype!=x->datatype)
+			{
+				object_error((t_object*)x, "data type mismatch");
+				return;
+			}
+			
+			if (x->datatype == 2 )
+			{
+				dictionary_getlong(d, gensym("#coeffs"), &nbcoeffs);
+				if (nbcoeffs != x->nbcoeffs)
+				{
+					x->nbcoeffs = nbcoeffs;
+					object_post((t_object*)x, "Number of coefficients changed");
+					object_post((t_object*)x,"New number : %d coefficients", x->nbcoeffs);
+				}
+			}
+			
+			OMax_data_reset(x);
+			
+			t_symbol* sym_state = gensym("state");
+			t_symbol* sym_time = gensym("time");
+			t_symbol* sym_seg = gensym("seg");
+			t_symbol* sym_letter = gensym("letter");
+			t_symbol* sym_note = gensym("note");
+			t_symbol* sym_pitch = gensym("pitch");
+			t_symbol* sym_coeffs = gensym("coeffs");
+			t_symbol* sym_slice = gensym("slice");
+			t_symbol* sym_notes = gensym("notes");
+			
+			
+			dictionary_getlong(d, gensym("size"), &size);
+			dictionary_getatoms(d, gensym("data"), &size, &data);
+			
+			if (x->readcount==0 && x->wflag==0)
+			{
+				// vars
+				long statenb;
+				t_atom *array = NULL;
+				t_dictionary *ditem = NULL;
+				
+				// alloc
+				/*if (x->nbcoeffs>2)
+					atom_alloc_array(x->nbcoeffs, &i, &array, &err);
+				else
+					atom_alloc_array(3, &i, &array, &err);*/
+				
+				ATOMIC_INCREMENT(&x->wflag);
+				switch (datatype)
+				{
+					case 3:
+						
+						for (idx=1; idx<size; idx++)
+						{
+							int j;
+							long k,l;
+							O_MIDI_poly* newstate;
+							t_atom* notes = NULL;
+							t_atom* notetime = NULL;
+							t_dictionary* notedic = NULL;
+							list<O_MIDI_note> notelist;
+							ditem = (t_dictionary*)atom_getobj(&data[idx]);
+							if (ditem)
+							{
+								newstate = new O_MIDI_poly();
+								
+								// get state number
+								dictionary_getlong(ditem, sym_state, &statenb);
+								newstate->set_statenb(statenb);
+								
+								i = 0;
+								// get time data (buffer date & duration)
+								dictionary_getatoms(ditem, sym_time, &i, &array);
+								if (i==2)
+								{
+									date = atom_getlong(array);
+									newstate->set_bufferef(date);
+									newstate->set_duration(atom_getlong(array+1));
+								}
+								
+								i = 0;
+								// get segmentation data (phrase and section)
+								dictionary_getatoms(ditem, sym_seg, &i, &array);
+								if (i==2)
+								{
+									newstate->set_section(atom_getlong(array));
+									newstate->set_phrase(atom_getlong(array+1));
+								}
+								
+								i = 0;
+								// get slice data (virtual pitch & mean velocity)
+								dictionary_getatoms(ditem, sym_slice, &i, &array);
+								if (i==2)
+								{
+									newstate->set_vpitch(atom_getfloat(array));
+									newstate->set_mvelocity(atom_getfloat(array+1));
+								}
+								
+								i = 0;
+								// get notes
+								dictionary_getatoms(ditem, sym_notes, &i, &notes);
+								for (j=0; j<i; j++)
+								{
+									notedic = (t_dictionary*)atom_getobj(&notes[j]);
+									dictionary_getatoms(notedic, sym_note, &k, &array);
+									dictionary_getatoms(notedic, sym_time, &l, &notetime);
+									if (k==3 && l==2)
+									{
+										O_MIDI_note newnote (atom_getlong(array), atom_getlong(array+1), atom_getlong(array+2), atom_getlong(notetime), atom_getlong(notetime+1));
+										notelist.push_back(newnote);
+									}
+									
+								}
+								newstate->set_notes(notelist);
+								notelist.clear();
+								
+								// add to the data structure
+								x->data.add<O_MIDI_poly>(date,(O_label*)newstate);
+							}
+						}
+						break;
+					case 2:
+						
+						for (idx=1; idx<size; idx++)
+						{
+							int j;
+							long pitch;
+							list<float> coeffs;
+							O_spectral* newstate;
+							ditem = (t_dictionary*)atom_getobj(&data[idx]);
+							if (ditem)
+							{
+								newstate = new O_spectral();
+								
+								// get state number
+								dictionary_getlong(ditem, sym_state, &statenb);
+								newstate->set_statenb(statenb);
+								
+								i = 0;
+								// get time data (buffer date & duration)
+								dictionary_getatoms(ditem, sym_time, &i, &array);
+								if (i==2)
+								{
+									date = atom_getlong(array);
+									newstate->set_bufferef(date);
+									newstate->set_duration(atom_getlong(array+1));
+								}
+								
+								i = 0;
+								// get segmentation data (phrase and section)
+								dictionary_getatoms(ditem, sym_seg, &i, &array);
+								if (i==2)
+								{
+									newstate->set_section(atom_getlong(array));
+									newstate->set_phrase(atom_getlong(array+1));
+								}
+								
+								// get pitch
+								dictionary_getlong(ditem, sym_pitch, &pitch);
+								newstate->set_pitch(pitch);
+								
+								i = 0;
+								// get spectral coefficients
+								dictionary_getatoms(ditem, sym_coeffs, &i, &array);
+								if (i == x->nbcoeffs)
+								{
+									for (j=0; j<x->nbcoeffs; j++)
+										coeffs.push_back(atom_getfloat(&array[j]));
+									newstate->set_coeffs(coeffs);
+								}
+								
+								// add to the data structure
+								x->data.add<O_spectral>(date,(O_label*)newstate);
+							}
+						}
+						break;
+					case 1:
+						for (idx=1; idx<size; idx++)
+						{
+							O_MIDI_mono* newstate;
+							ditem = (t_dictionary*)atom_getobj(&data[idx]);
+							if (ditem)
+							{
+								newstate = new O_MIDI_mono();
+								
+								// get state number
+								dictionary_getlong(ditem, sym_state, &statenb);
+								newstate->set_statenb(statenb);
+								
+								i=0;
+								// get note data (pitch, velocity, channel)
+								dictionary_getatoms(ditem, sym_note, &i, &array);
+								if (i==3)
+								{
+									newstate->set_pitch(atom_getlong(array));
+									newstate->set_velocity(atom_getlong(array+1));
+									newstate->set_channel(atom_getlong(array+2));
+								}
+								
+								i=0;
+								// get time data (buffer date & duration)
+								dictionary_getatoms(ditem, sym_time, &i, &array);
+								if (i==2)
+								{
+									date = atom_getlong(array);
+									newstate->set_bufferef(date);
+									newstate->set_duration(atom_getlong(array+1));
+								}
+								
+								i = 0;
+								// get segmentation data (phrase and section)
+								dictionary_getatoms(ditem, sym_seg, &i, &array);
+								if (i==2)
+								{
+									newstate->set_section(atom_getlong(array));
+									newstate->set_phrase(atom_getlong(array+1));
+								}
+								// add to the data structure
+								x->data.add<O_MIDI_mono>(atom_getlong(array),(O_label*)newstate);
+							}
+						}
+						break;
+					default:
+						for (idx=1; idx<size; idx++)
+						{
+							t_symbol* letter;
+							O_char* newstate;
+							ditem = (t_dictionary*)atom_getobj(&data[idx]);
+							if (ditem)
+							{
+								// get letter and #state
+								dictionary_getlong(ditem, sym_state, &statenb);
+								dictionary_getsym(ditem, sym_letter, &letter);
+								newstate = new O_char(letter->s_name[0]);
+								newstate->set_statenb(statenb);
+								
+								// get time data (buffer date & duration)
+								dictionary_getatoms(ditem, sym_time, &i, &array);
+								if (i==2)
+								{
+									date = atom_getlong(array);
+									newstate->set_bufferef(date);
+									newstate->set_duration(atom_getlong(array+1));
+								}
+								i = 0;
+								
+								// get segmentation data (phrase and section)
+								dictionary_getatoms(ditem, sym_seg, &i, &array);
+								if (i==2)
+								{
+									newstate->set_section(atom_getlong(array));
+									newstate->set_phrase(atom_getlong(array+1));
+								}
+								// add to the data structure
+								x->data.add<O_char>(date,(O_label*)newstate);
+							}
+						}
+						break;
+				}
+				ATOMIC_DECREMENT(&x->wflag);
+			}
+			object_post((t_object *)x, "Loaded data from oracle %s", symdata->s_name);
+		}
 	}
 	
 	//@}

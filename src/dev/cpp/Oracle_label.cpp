@@ -287,7 +287,6 @@ float* O_spectral::get_coeffs(float* dataout)
 		dataout = (float*)malloc(coeffs.size()*sizeof(float));
 	for (fit = coeffs.begin(); fit != coeffs.end(); fit++)
 		dataout[i++]=*fit;
-	cout<<endl;
 	return dataout;
 }
 
@@ -542,11 +541,6 @@ void O_MIDI_poly::set_notes(O_MIDI_note* note1,...)
 	}
 	va_end(notelist);
 	notes.sort();
-	/* Del
-	//@remarks Compute also the virtual fundamental and the mean velocity, calling O_MIDI_poly::set_vpitch and O_MIDI_poly::set_mvelocity
-	set_vpitch(1.);
-	set_mvelocity();
-	 */
 }
 
 list<int> O_MIDI_poly::get_pitches() const
