@@ -132,6 +132,7 @@ using namespace std;
 	 * @brief Object destruction */	
 	void OMax_oracle_free(t_OMax_oracle *x)
 	{
+		//ATOMIC_INCREMENT(x->wflag);
 		if (x->oname->s_thing == (t_object*)x)
 			x->oname->s_thing = NULL;
 		///@remarks Deletes the whole FO structure
@@ -205,6 +206,7 @@ using namespace std;
 	void OMax_oracle_read(t_OMax_oracle *x, t_symbol *s)
 	{
 		defer(x, (method)OMax_oracle_doread, s, 0, 0L);
+		outlet_int(x->out0,(long)x->oracle.get_size()-1);
 	}
 
 	void OMax_oracle_dates(t_OMax_oracle *x)
@@ -235,23 +237,50 @@ using namespace std;
 	 */	
 	void OMax_oracle_dowrite(t_OMax_oracle *x, t_symbol *s)
 	{
+		short err = 0;
 		long filetype = 'TEXT';
 		long outtype = 'TEXT';
+		short path, newpath = 0;
 		short numtypes = 1;
-		char filename[512];
-		short path;
+		char* foldername = NULL;
+		char temp[256];
+		char fullpath[MAX_PATH_CHARS];
+		char filename[MAX_FILENAME_CHARS];
 		
 		if (s == gensym(""))
 		{      // if no argument supplied, ask for file
-			if (saveasdialog_extended(filename, &path, &outtype, &filetype, numtypes))     // non-zero: user cancelled
+			if (saveasdialog_extended(filename, &newpath, &outtype, &filetype, numtypes))     // non-zero: user cancelled
 				return;
 		}
 		else
 		{
-			strcpy(filename, s->s_name);
-			path = path_getdefault();
+			strcpy(fullpath, s->s_name);
+			path_frompotentialpathname(fullpath, &path, filename);
+			foldername = strrchr(fullpath, '/');
+			if (foldername)
+			{
+				*foldername = 0;
+				foldername = strrchr(fullpath, '/');
+				if (foldername)
+				{
+					*foldername = 0;
+					foldername++;
+					err = path_frompathname(fullpath, &path, temp);
+					if (!err)
+						err = path_createfolder(path, foldername, &newpath);
+					if (err)
+						object_error((t_object*)x, "error creating folder", err);
+				}
+				else
+					path_frompathname(fullpath, &newpath, temp);
+			}
+			else
+			{
+				newpath = path_getdefault();
+				strcpy(filename, s->s_name);
+			}
 		}
-		OMax_oracle_writefile(x, filename, path);
+		OMax_oracle_writefile(x, filename, newpath);
 	}
 	
 	/**@public @memberof t_OMax_oracle
@@ -313,7 +342,7 @@ using namespace std;
 		OMax_oracle_parsefile(x,buffer,size);
 		sysmem_freeptr(buffer);     // must free allocated memory
 		savelock = lockout_set(1);
-		outlet_int(x->out0,(long)x->oracle.get_size());
+		//outlet_int(x->out0,(long)x->oracle.get_size());
 		lockout_set(savelock);
 		}
 	}

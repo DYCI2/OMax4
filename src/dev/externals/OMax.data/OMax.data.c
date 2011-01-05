@@ -36,7 +36,7 @@ extern "C"
 	
 	// Internal routines
 	t_symbol * OMax_data_name(t_symbol * oname);
-	void OMax_data_dowrite(t_OMax_data *x, t_symbol *s);
+	void OMax_data_dowrite(t_OMax_data *x, t_symbol *s, long argc, t_atom *argv);
 	void OMax_data_writefile(t_OMax_data *x, char *filename, short path);
 	void OMax_data_doread(t_OMax_data *x, t_symbol *s);
 	
@@ -174,6 +174,7 @@ extern "C"
 	 * @brief Object destruction */
 	void OMax_data_free(t_OMax_data *x)
 	{
+		//ATOMIC_INCREMENT(x->wflag);
 		///@details Depending on t_OMax_data::noDelete value, erase every state of the Data Sequence by calling O_data::freestates or keeps it */	
 		if (!(x->noDelete))
 		{
@@ -310,7 +311,7 @@ extern "C"
 	void OMax_data_read(t_OMax_data *x, t_symbol *s)
 	{
 		defer(x, (method)OMax_data_doread, s, 0, NULL);
-		outlet_int(x->out0,(long)x->data.get_size());
+		outlet_int(x->out0,(long)x->data.get_size()-1);
 	}
 	
 	//@}
@@ -332,34 +333,52 @@ extern "C"
 	/**@public @memberof t_OMax_data
 	 * @brief Prepare writing a JSON file
 	 */	
-	void OMax_data_dowrite(t_OMax_data *x, t_symbol *s)
+	void OMax_data_dowrite(t_OMax_data *x, t_symbol *s, long argc, t_atom* argv)
 	{
+		short err = 0;
 		long filetype = 'TEXT';
 		long outtype = 'TEXT';
+		short path, newpath = 0;
 		short numtypes = 1;
-		char foldername[MAX_FILENAME_CHARS];
+		char* foldername = NULL;
+		char temp[256];
+		char fullpath[MAX_PATH_CHARS];
 		char filename[MAX_FILENAME_CHARS];
-		short path;
-		short newpath;
 		
 		if (s == gensym(""))
 		{      // if no argument supplied, ask for file
-			if (saveasdialog_extended(filename, &path, &outtype, &filetype, numtypes))     // non-zero: user cancelled
+			if (saveasdialog_extended(filename, &newpath, &outtype, &filetype, numtypes))     // non-zero: user cancelled
 				return;
 		}
 		else
 		{
-			path_frompotentialpathname(s->s_name, &path, filename);
-			cout<<"potential path : "<<path<<" file : "<<filename<<endl;
-			path_frompathname(s->s_name, &path, filename);
-			cout<<"path : "<<path<<" file : "<<filename<<endl;
-			path_getname(path, foldername, &newpath);
-			cout<<"getname : "<<foldername<<" newpath : "<<newpath<<endl;
-			//path_createfolder(path, &foldername, &newpath);
-			//strcpy(filename, s->s_name);
-			//path = path_getdefault();
+			strcpy(fullpath, s->s_name);
+			path_frompotentialpathname(fullpath, &path, filename);
+			foldername = strrchr(fullpath, '/');
+			if (foldername)
+			{
+				*foldername = 0;
+				foldername = strrchr(fullpath, '/');
+				if (foldername)
+				{
+					*foldername = 0;
+					foldername++;
+					err = path_frompathname(fullpath, &path, temp);
+					if (!err)
+						err = path_createfolder(path, foldername, &newpath);
+					if (err)
+						object_error((t_object*)x, "error creating folder", err);
+				}
+				else
+					path_frompathname(fullpath, &newpath, temp);
+			}
+			else
+			{
+				newpath = path_getdefault();
+				strcpy(filename, s->s_name);
+			}
 		}
-		OMax_data_writefile(x, filename, path);
+		OMax_data_writefile(x, filename, newpath);
 	}
 	
 	/**@public @memberof t_OMax_data
@@ -637,8 +656,7 @@ extern "C"
 				ATOMIC_INCREMENT(&x->wflag);
 				switch (datatype)
 				{
-					case 3:
-						
+					case 3: // MIDI_poly
 						for (idx=1; idx<size; idx++)
 						{
 							int j;
@@ -708,8 +726,8 @@ extern "C"
 							}
 						}
 						break;
-					case 2:
 						
+					case 2: // Spectral
 						for (idx=1; idx<size; idx++)
 						{
 							int j;
@@ -763,7 +781,8 @@ extern "C"
 							}
 						}
 						break;
-					case 1:
+						
+					case 1: // MIDI_mono
 						for (idx=1; idx<size; idx++)
 						{
 							O_MIDI_mono* newstate;
@@ -805,11 +824,12 @@ extern "C"
 									newstate->set_phrase(atom_getlong(array+1));
 								}
 								// add to the data structure
-								x->data.add<O_MIDI_mono>(atom_getlong(array),(O_label*)newstate);
+								x->data.add<O_MIDI_mono>(date,(O_label*)newstate);
 							}
 						}
 						break;
-					default:
+						
+					default: // Letters
 						for (idx=1; idx<size; idx++)
 						{
 							t_symbol* letter;

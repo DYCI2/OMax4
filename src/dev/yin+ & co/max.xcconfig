@@ -10,7 +10,7 @@ FRAMEWORK_SEARCH_PATHS = "$(C74SUPPORT)/max-includes" "$(C74SUPPORT)/msp-include
 DSTROOT = $(SRCROOT)/../build/
 // (This next path is relative to DSTROOT)
 INSTALL_PATH = /
-TARGET_BUILD_DIR = $(SRCROOT)/../build/
+TARGET_BUILD_DIR = $(SRCROOT)/../../build/
 
 
 // Special Files
@@ -29,5 +29,5 @@ MACOSX_DEPLOYMENT_TARGET = 10.5
 // Static Configuration (don't change these)
 WRAPPER_EXTENSION = mxo;
 WARNING_CFLAGS = -Wmost -Wno-four-char-constants -Wno-unknown-pragmas
-DEPLOYMENT_LOCATION = YES
+//DEPLOYMENT_LOCATION = YES
 GENERATE_PKGINFO_FILE = YES
