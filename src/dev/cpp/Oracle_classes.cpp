@@ -144,6 +144,7 @@ list<pair<O_state*,int> >* O_state::rec_downSLT(list<pair<O_state*,int> >* SLTli
 ///@details
 ///@param SLTlist A pointer to a list of pairs of state reference and @e lrs to push every state along the path
 ///@param ctxtmin A minimal context (@e lrs) to select reverse suffix links (default is 0 and the algorithm visites all the states of FO).
+///@param ctxt Current context passed on for recursion
 list<pair<O_state*,int> >* O_state::rec_sortSLT(list<pair<O_state*,int> >* SLTlist, int ctxtmin, int ctxt)
 {
 	list<pair<O_state*,int> > sorted_rsuff = rsuff;
@@ -159,7 +160,7 @@ list<pair<O_state*,int> >* O_state::rec_sortSLT(list<pair<O_state*,int> >* SLTli
 			SLTlist->push_back((node));
 		}
 	}
-	///@return The pointer to the list which contains, after the running of the function, every visited state in decreasing @e lrs order.
+	///@returns The pointer to the list which contains, after the running of the function, every visited state in decreasing @e lrs order.
 	return SLTlist;
 }
 

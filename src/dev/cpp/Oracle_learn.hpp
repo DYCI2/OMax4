@@ -183,6 +183,7 @@ int O_learner::add(O_DataType & dataIn)
 	pair<O_state*,int> * rsuff = new pair<O_state*,int>(newstate,newsuffix.second);
 	oracle->state_vect[newsuffix.first]->add_rsuff(*rsuff);
 	
+	///@returns number of the state just added
 	return (newstatenb);
 }
 
@@ -244,6 +245,7 @@ int O_learner::search_trans(O_state & statein, O_DataType & dataIn)
 			found = true;
 		}
 	}
+	///@returns state number pointed by the transition if found
 	return intout;
 }
 

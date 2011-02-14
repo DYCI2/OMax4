@@ -186,6 +186,7 @@
 		};
 		2FBBEAD108F335010078DB84 /* Deployment */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FB8481760F9A43D20068E0A7 /* OMax.xcconfig */;
 			buildSettings = {
 			};
 			name = Deployment;

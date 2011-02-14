@@ -197,12 +197,14 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = FB38FE520F6D60F0000A583F /* OMax.xcconfig */;
 			buildSettings = {
+				GCC_WARN_ABOUT_INVALID_OFFSETOF_MACRO = NO;
 			};
 			name = Development;
 		};
 		2FBBEAD108F335010078DB84 /* Deployment */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				GCC_WARN_ABOUT_INVALID_OFFSETOF_MACRO = NO;
 			};
 			name = Deployment;
 		};

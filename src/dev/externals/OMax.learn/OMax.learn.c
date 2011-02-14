@@ -34,6 +34,7 @@ extern "C"
 		t_symbol*	oname;		///< Pointer to FO name
 		O_DataType	datatype;	///< Type of data
 		int			nbcoeffs;	///< Number of coefficients for spectral
+		char		a_modulo;	///< Modulo attribute
 		t_symbol*	dataname;	///< Pointer to Data Sequence name
 		bool		obound;		///< Binding flag
 		O_learner	builder;	///< Learner
@@ -61,6 +62,8 @@ extern "C"
 	// Internal routines
 	t_symbol * OMax_learn_dataname(t_symbol * oname);
 	bool OMax_learn_bind(t_OMax_learn *x);
+	//t_max_err OMax_learn_get_modulo(t_OMax_learn *x, void *attr, long *ac, t_atom **av);
+	t_max_err OMax_learn_set_modulo(t_OMax_learn *x, void *attr, long ac, t_atom *av);
 	
 	// Global class pointer variable
 	t_class *OMax_learn_class;
@@ -82,6 +85,12 @@ extern "C"
 		// input methods
 		class_addmethod(c, (method)OMax_learn_add, "add", A_GIMME, 0);
 		class_addmethod(c, (method)OMax_learn_note, "note", A_GIMME, 0);
+		
+		// attributes
+		CLASS_ATTR_CHAR(c, "modulo", 0, t_OMax_learn, a_modulo);
+		CLASS_ATTR_STYLE_LABEL(c, "modulo", 0, "onoff", "Modulo 12");
+		CLASS_ATTR_SAVE(c, "modulo", 0);
+		CLASS_ATTR_ACCESSORS(c,"modulo",NULL,(method)OMax_learn_set_modulo);
 		
 		class_register(CLASS_BOX, c); /* CLASS_NOBOX */
 		OMax_learn_class = c;
@@ -117,12 +126,18 @@ extern "C"
 					x->dataname = OMax_learn_dataname(x->oname);
 					
 					///@details Allocates memory for note stacking
-					x->maxnotes = 12;
+					x->maxnotes = MAX_NOTES;
 					x->notecount = 0;
 					x->notes = (O_MIDI_note*)malloc(x->maxnotes*sizeof(O_MIDI_note));
+					
+					///@details Default value for modulo is 0
+					x->a_modulo = 0;
+					modulo = x->a_modulo;
 				}
-				
 			}
+			
+			// process attr args, if any
+			attr_args_process(x, argc, argv);
 			
 			// color
 			t_object *box;
@@ -218,6 +233,27 @@ extern "C"
 		}
 		// If binding is ok, then don't do it next time.
 		return x->obound;
+	}
+	
+	/*t_max_err OMax_learn_get_modulo(t_OMax_learn *x, void *attr, long *ac, t_atom **av)
+	{
+		
+	}*/
+	
+	t_max_err OMax_learn_set_modulo(t_OMax_learn *x, void *attr, long ac, t_atom *av)
+	{
+		if (ac&&av)
+		{
+			x->a_modulo = atom_getlong(av);
+			modulo = x->a_modulo;
+		}
+		else
+		{
+			x->a_modulo = 0;
+			modulo = x->a_modulo;
+		}
+		return MAX_ERR_NONE;
+
 	}
 	
 	//@}
@@ -340,7 +376,7 @@ extern "C"
 						if (!(((t_OMax_oracle *)(x->oname->s_thing))->readcount)
 							&& !(((t_OMax_data *)(x->dataname->s_thing))->readcount))
 						{
-							/// Add state to both structures
+							// Add state to both structures
 							out = x->builder.add(*newdata);
 						}
 						else
@@ -421,7 +457,7 @@ extern "C"
 						if (!(((t_OMax_oracle *)(x->oname->s_thing))->readcount)
 							&& !(((t_OMax_data *)(x->dataname->s_thing))->readcount))
 						{
-							/// Add state to both structures
+							// Add state to both structures
 							out = x->builder.add(*newdata);
 						}
 						else
@@ -497,7 +533,7 @@ extern "C"
 						}
 						if (valid)
 						{
-							/// Add accumulated notes to the frame
+							// Add accumulated notes to the frame
 							int i;
 							list<O_MIDI_note> notes;
 							for (i=0;i<x->notecount;i++)
@@ -509,7 +545,7 @@ extern "C"
 							if (!(((t_OMax_oracle *)(x->oname->s_thing))->readcount)
 								&& !(((t_OMax_data *)(x->dataname->s_thing))->readcount))
 							{
-								/// Add state to both structures
+								// Add state to both structures
 								out = x->builder.add(*newdata);
 							}
 							else
@@ -517,7 +553,7 @@ extern "C"
 							ATOMIC_DECREMENT(&((t_OMax_oracle *)(x->oname->s_thing))->wflag);
 							ATOMIC_DECREMENT(&((t_OMax_data *)(x->dataname->s_thing))->wflag);
 							
-							/// Clear accumulated notes
+							// Clear accumulated notes
 							x->notecount = 0;
 							
 							break;

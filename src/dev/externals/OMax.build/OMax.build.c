@@ -235,7 +235,8 @@ extern "C"
 				object_error((t_object *)x,"No new data declared to write");
 			}
 		}
-		///@remarks This binding @b do @b not check that the two Data Sequences hold the same type of data
+		///@remarks This binding @b do not @b check that the two Data Sequences hold the same type of data
+		///@returns TRUE if binding succeeded (FALSE otherwise)
 		return (x->odatabound && x->idatabound);
 	}
 	

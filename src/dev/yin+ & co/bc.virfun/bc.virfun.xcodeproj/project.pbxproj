@@ -8,15 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		7B186A8F12875167000A07FB /* max.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 7B186A8E12875167000A07FB /* max.xcconfig */; };
-		7B4B72881222D6F800D57FEA /* MaxAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B4B72871222D6F800D57FEA /* MaxAPI.framework */; };
 		7B64664E125F2406003ABC96 /* bc.virfun.c in Sources */ = {isa = PBXBuildFile; fileRef = 7B64664D125F2406003ABC96 /* bc.virfun.c */; };
+		7BFC727012E44E900071CD76 /* MaxAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BFC726F12E44E900071CD76 /* MaxAPI.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		7B186A8E12875167000A07FB /* max.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = max.xcconfig; path = ../max.xcconfig; sourceTree = SOURCE_ROOT; };
-		7B4B72871222D6F800D57FEA /* MaxAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MaxAPI.framework; path = "c74support/max-includes/MaxAPI.framework"; sourceTree = "<group>"; };
 		7B4B731B1222DB8400D57FEA /* bc.virfun.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = bc.virfun.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B64664D125F2406003ABC96 /* bc.virfun.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = bc.virfun.c; sourceTree = "<group>"; };
+		7BFC726F12E44E900071CD76 /* MaxAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MaxAPI.framework; path = "../../../../../../../Max5/MaxSDK-5.1.6/c74support/max-includes/MaxAPI.framework"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -24,7 +24,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7B4B72881222D6F800D57FEA /* MaxAPI.framework in Frameworks */,
+				7BFC727012E44E900071CD76 /* MaxAPI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -45,7 +45,7 @@
 		089C1671FE841209C02AAC07 /* External Frameworks and Libraries */ = {
 			isa = PBXGroup;
 			children = (
-				7B4B72871222D6F800D57FEA /* MaxAPI.framework */,
+				7BFC726F12E44E900071CD76 /* MaxAPI.framework */,
 			);
 			name = "External Frameworks and Libraries";
 			sourceTree = "<group>";
@@ -165,6 +165,10 @@
 		2FBBEAE108F335360078DB84 /* Default */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../../../../../Max5/MaxSDK-5.1.6/c74support/max-includes\"",
+				);
 			};
 			name = Default;
 		};

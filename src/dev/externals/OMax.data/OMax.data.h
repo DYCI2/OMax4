@@ -14,7 +14,14 @@
 #include "jgraphics.h"			// required for the color
 #include "ext_atomic.h"			// required for atomic operation for thread saf
 
-#define MAX_NOTES 10
+#define MAX_NOTES 12
+
+/**@brief Use modulo 12 calculation
+ @details modulo is a global variable used in the C++ classes.
+ It conditions the comparison of the overloaded operator==. 
+ Setting and getting this variable is handled together with
+ a corresponding attribute of the OMax.learn external */
+int modulo=1;
 
 /**@ingroup externals
  * @brief Types of data

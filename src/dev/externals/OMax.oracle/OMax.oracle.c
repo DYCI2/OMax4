@@ -132,7 +132,7 @@ using namespace std;
 	 * @brief Object destruction */	
 	void OMax_oracle_free(t_OMax_oracle *x)
 	{
-		//ATOMIC_INCREMENT(x->wflag);
+		ATOMIC_INCREMENT(&x->wflag);
 		if (x->oname->s_thing == (t_object*)x)
 			x->oname->s_thing = NULL;
 		///@remarks Deletes the whole FO structure
@@ -183,7 +183,10 @@ using namespace std;
 	 * @remarks Input message in Max5: @c write with the name a file (opens a browser otherwise) */
 	void OMax_oracle_write(t_OMax_oracle *x, t_symbol *s)
 	{
-		defer(x, (method)OMax_oracle_dowrite, s, 0, NULL);
+		if (x->oracle.get_size())
+			defer(x, (method)OMax_oracle_dowrite, s, 0, NULL);
+		else
+			object_post((t_object*)x, "Oracle %s empty",x->oracle.get_name().c_str());
 	}
 	
 	/**@public @memberof t_OMax_oracle
@@ -199,7 +202,9 @@ using namespace std;
 	 * @remarks Input message in Max5: @c reset*/
 	void OMax_oracle_reset(t_OMax_oracle *x)
 	{
+		ATOMIC_INCREMENT(&x->wflag);
 		x->oracle.freestates();
+		ATOMIC_DECREMENT(&x->wflag);
 		outlet_int(x->out0,(long)x->oracle.get_size());
 	}
 	

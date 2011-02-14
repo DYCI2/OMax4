@@ -71,7 +71,7 @@ public:
 	pair<O_state*,int> get_suffix();
 	/// Set the suffix link (without @e lrs)
 	void set_suffstate(O_state*);
-	/// Set the @lrs of suffix link
+	/// Set the @e lrs of suffix link
 	void set_lrs(int);
 	/// Set the suffix link and associated @e lrs
 	void set_suffix(O_state*,int);

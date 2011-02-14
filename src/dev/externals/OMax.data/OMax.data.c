@@ -65,7 +65,6 @@ extern "C"
 		class_addmethod(c, (method)OMax_data_write, "write", A_DEFSYM, 0);
 		class_addmethod(c, (method)OMax_data_read, "read", A_DEFSYM, 0);
 		
-		
 		class_register(CLASS_BOX, c); /* CLASS_NOBOX */
 		OMax_data_class = c;
 		
@@ -174,7 +173,7 @@ extern "C"
 	 * @brief Object destruction */
 	void OMax_data_free(t_OMax_data *x)
 	{
-		//ATOMIC_INCREMENT(x->wflag);
+		ATOMIC_INCREMENT(&x->wflag);
 		///@details Depending on t_OMax_data::noDelete value, erase every state of the Data Sequence by calling O_data::freestates or keeps it */	
 		if (!(x->noDelete))
 		{
@@ -262,6 +261,7 @@ extern "C"
 	 * @remarks Input message in Max5: @c reset*/
 	void OMax_data_reset(t_OMax_data *x)
 	{
+		ATOMIC_INCREMENT(&x->wflag);
 		///@details Depending on t_OMax_data::noDelete value, erases every state of the Data Sequence by calling O_data::freestates or keeps it and calls O_data::clear_vect instead
 		if (x->noDelete)
 		{
@@ -286,6 +286,7 @@ extern "C"
 		}
 		x->data.reset_D2S();
 		x->data.reset_S2D();
+		ATOMIC_DECREMENT(&x->wflag);
 		outlet_int(x->out0,(long)x->data.get_size());
 	}
 	
@@ -302,7 +303,10 @@ extern "C"
 	 * @remarks Input message in Max5: @c write with the name a file (opens a browser otherwise) */
 	void OMax_data_write(t_OMax_data *x, t_symbol *s)
 	{
-		defer(x, (method)OMax_data_dowrite, s, 0, NULL);
+		if (x->data.get_size())
+			defer(x, (method)OMax_data_dowrite, s, 0, NULL);
+		else
+			object_post((t_object*)x, "Data of oracle %s empty",x->oname->s_name);
 	}
 	
 	/**@public @memberof t_OMax_data

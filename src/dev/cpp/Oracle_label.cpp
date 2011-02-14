@@ -198,6 +198,7 @@ int* O_MIDI_mono::get_data(int* dataout)
 	dataout[0]=pitch;
 	dataout[1]=velocity;
 	dataout[2]=channel;
+	///@returns pointer to data
 	return dataout;
 }
 
@@ -287,6 +288,7 @@ float* O_spectral::get_coeffs(float* dataout)
 		dataout = (float*)malloc(coeffs.size()*sizeof(float));
 	for (fit = coeffs.begin(); fit != coeffs.end(); fit++)
 		dataout[i++]=*fit;
+	///@returns pointer to data
 	return dataout;
 }
 
@@ -425,6 +427,7 @@ int* O_MIDI_note::get_note(int* noteout)
 	noteout[2]=channel;
 	noteout[3]=offset;
 	noteout[4]=duration;
+	///@returns pointer to data
 	return noteout;
 }
 
@@ -522,11 +525,6 @@ int* O_MIDI_poly::get_notes(int* notesout)
 void O_MIDI_poly::set_notes(list<O_MIDI_note> notesin)
 {
 	notes = notesin;
-	/*
-	//@remarks Compute also the virtual fundamental and the mean velocity, calling O_MIDI_poly::set_vpitch and O_MIDI_poly::set_mvelocity
-	set_vpitch();
-	set_mvelocity();
-	 */
 }
 
 void O_MIDI_poly::set_notes(O_MIDI_note* note1,...)
@@ -572,74 +570,6 @@ void O_MIDI_poly::set_mvelocity(float mveloin)
 {
 	mvelocity = mveloin;
 }
-
-/*
-// calculations
-float O_MIDI_poly::midi2freq_approx(float midi)
-{
-	return pow(2,(midi/12.))-1.;
-}
-
-float O_MIDI_poly::rec_virfun(float* freqs, float* end, float divmin, float divmax, float approx)
-{
-	float inf,sup;
-	float quo_min, quo_max;
-	float quotient;
-	float resu = 0;
-	if (divmin <= divmax)
-	{
-		if (freqs==end)
-			return((divmin + divmax) / 2.);
-		else
-		{
-			sup = freqs[0] * (1 + approx);
-			inf = freqs[0] / (1 + approx);
-			quo_min = ceil(inf/divmax);
-			quo_max = floor(sup/divmin);
-			quotient = quo_min;
-			while (quotient <= quo_max)
-			{
-				resu = rec_virfun(freqs+1,end, max(inf/quotient, divmin), min(sup/quotient, divmax), approx);
-				if ((int)resu)
-					return resu;
-				quotient++;
-			}
-			return 0.;
-		}
-
-	}
-	return 0.;
-}
-
-float O_MIDI_poly::set_vpitch(float approx)
-{
-	int i=0;
-	int s=notes.size();
-	float approxf = midi2freq_approx(approx);	
-	list<O_MIDI_note>::iterator notit;
-	float freqs[s];
-	for (notit=notes.begin(); notit!=notes.end(); notit++)
-	{
-		freqs[i]=notit->midi2freq(notit->get_pitch());
-		i++;
-	}
-	vpitch = notes.begin()->freq2midi(rec_virfun(freqs, freqs+s, 0.1, freqs[0]*(1.0+approxf), approxf));
-	vpitch = (floor(vpitch/approx))*approx;
-	//@returns Virtual fundamental of the frame
-	return vpitch;
-}
-
-int O_MIDI_poly::set_mvelocity()
-{
-	int accum = 0;
-	list<O_MIDI_note>::iterator noteit;
-	for (noteit = notes.begin(); noteit!= notes.end(); noteit++)
-		accum += noteit->velocity;
-	mvelocity = (int)floor(accum/(float)notes.size()+0.5);
-	//@returns mean velocity of all notes in the frame
-	return mvelocity;
-}
-*/
  
 // Operator Overload
 
@@ -655,15 +585,22 @@ bool O_MIDI_poly::operator== (const O_MIDI_poly & other) const
 	pitches.unique();
 	return(pitches.size()== nbpitches);*/
 	
+	extern int modulo;
+	
 	// comparaison modulo 12
 	
-	/*float div1 = vpitch/12.;
-	float div2 = other.get_vpitch()/12.;
+	if (modulo)
+	{
+		float div1 = vpitch/12.;
+		float div2 = other.get_vpitch()/12.;
 	
-	return (((div1 - floor(div1))*12.)==((div2 - floor(div2))*12.));*/
-	
+		return (((div1 - floor(div1))*12.)==((div2 - floor(div2))*12.));
+	}
+	else
+	{
 	// Comparaison exacte
 	return(vpitch == other.get_vpitch());
+	}
 	
 }
 
