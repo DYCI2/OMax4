@@ -2,7 +2,7 @@
 
 <pattrstorage name = "pattr">
 	<slot number = "1" name = "Default">
-		<patcher name = "Dual-Yin+">
+		<patcher name = "Yin+">
 			<pattr name = "pattrstorage" value = "-1" />
 			<pattr name = "Level" value = "50" />
 			<pattr name = "Pitch" value = "1" />
@@ -90,7 +90,7 @@
 			<pattr name = "Transposition" value = "0." />
 			<pattr name = "Xfade" value = "30" />
 		</patcher>
-		<patcher name = "Dual-MFCCs">
+		<patcher name = "MFCCs">
 			<pattr name = "pattr" value = "-1" />
 			<pattr name = "Dmax" value = "5." />
 			<pattr name = "Spectral" value = "1" />
@@ -274,7 +274,7 @@
 		</patcher>
 	</slot>
 	<slot number = "2" name = "SaxT/ClarBb">
-		<patcher name = "Dual-Yin+">
+		<patcher name = "Yin+">
 			<pattr name = "pattrstorage" value = "-1" />
 			<pattr name = "Level" value = "50" />
 			<pattr name = "Pitch" value = "1" />
@@ -362,7 +362,7 @@
 			<pattr name = "Transposition" value = "0." />
 			<pattr name = "Xfade" value = "30" />
 		</patcher>
-		<patcher name = "Dual-MFCCs">
+		<patcher name = "MFCCs">
 			<pattr name = "pattr" value = "-1" />
 			<pattr name = "Dmax" value = "5." />
 			<pattr name = "Spectral" value = "1" />
@@ -546,7 +546,7 @@
 		</patcher>
 	</slot>
 	<slot number = "3" name = "ClarBasse">
-		<patcher name = "Dual-Yin+">
+		<patcher name = "Yin+">
 			<pattr name = "pattrstorage" value = "-1" />
 			<pattr name = "Level" value = "50" />
 			<pattr name = "Pitch" value = "1" />
@@ -634,7 +634,7 @@
 			<pattr name = "Transposition" value = "0." />
 			<pattr name = "Xfade" value = "30" />
 		</patcher>
-		<patcher name = "Dual-MFCCs">
+		<patcher name = "MFCCs">
 			<pattr name = "pattr" value = "-1" />
 			<pattr name = "Dmax" value = "4." />
 			<pattr name = "Spectral" value = "1" />
@@ -818,7 +818,7 @@
 		</patcher>
 	</slot>
 	<slot number = "4" name = "Basse">
-		<patcher name = "Dual-Yin+">
+		<patcher name = "Yin+">
 			<pattr name = "pattrstorage" value = "-1" />
 			<pattr name = "Level" value = "50" />
 			<pattr name = "Pitch" value = "1" />
@@ -906,7 +906,7 @@
 			<pattr name = "Transposition" value = "0." />
 			<pattr name = "Xfade" value = "30" />
 		</patcher>
-		<patcher name = "Dual-MFCCs">
+		<patcher name = "MFCCs">
 			<pattr name = "pattr" value = "-1" />
 			<pattr name = "Dmax" value = "4." />
 			<pattr name = "Spectral" value = "1" />
@@ -1090,7 +1090,7 @@
 		</patcher>
 	</slot>
 	<slot number = "5" name = "Fagott">
-		<patcher name = "Dual-Yin+">
+		<patcher name = "Yin+">
 			<pattr name = "pattrstorage" value = "-1" />
 			<pattr name = "Level" value = "50" />
 			<pattr name = "Pitch" value = "1" />
@@ -1178,7 +1178,7 @@
 			<pattr name = "Transposition" value = "0." />
 			<pattr name = "Xfade" value = "30" />
 		</patcher>
-		<patcher name = "Dual-MFCCs">
+		<patcher name = "MFCCs">
 			<pattr name = "pattr" value = "-1" />
 			<pattr name = "Dmax" value = "3." />
 			<pattr name = "Spectral" value = "1" />
@@ -1362,7 +1362,7 @@
 		</patcher>
 	</slot>
 	<slot number = "6" name = "Guitar">
-		<patcher name = "Dual-Yin+">
+		<patcher name = "Yin+">
 			<pattr name = "pattrstorage" value = "-1" />
 			<pattr name = "Level" value = "50" />
 			<pattr name = "Pitch" value = "1" />
@@ -1450,7 +1450,7 @@
 			<pattr name = "Transposition" value = "0." />
 			<pattr name = "Xfade" value = "30" />
 		</patcher>
-		<patcher name = "Dual-MFCCs">
+		<patcher name = "MFCCs">
 			<pattr name = "pattr" value = "-1" />
 			<pattr name = "Dmax" value = "5." />
 			<pattr name = "Spectral" value = "1" />
@@ -1634,7 +1634,7 @@
 		</patcher>
 	</slot>
 	<slot number = "7" name = "Percussion">
-		<patcher name = "Dual-Yin+">
+		<patcher name = "Yin+">
 			<pattr name = "pattrstorage" value = "-1" />
 			<pattr name = "Level" value = "50" />
 			<pattr name = "Pitch" value = "1" />
@@ -1722,7 +1722,7 @@
 			<pattr name = "Transposition" value = "0." />
 			<pattr name = "Xfade" value = "30" />
 		</patcher>
-		<patcher name = "Dual-MFCCs">
+		<patcher name = "MFCCs">
 			<pattr name = "pattr" value = "-1" />
 			<pattr name = "Dmax" value = "5." />
 			<pattr name = "Spectral" value = "1" />
@@ -1906,7 +1906,7 @@
 		</patcher>
 	</slot>
 	<slot number = "8" name = "Voice">
-		<patcher name = "Dual-Yin+">
+		<patcher name = "Yin+">
 			<pattr name = "pattrstorage" value = "-1" />
 			<pattr name = "Level" value = "50" />
 			<pattr name = "Pitch" value = "1" />
@@ -1994,7 +1994,7 @@
 			<pattr name = "Transposition" value = "0." />
 			<pattr name = "Xfade" value = "30" />
 		</patcher>
-		<patcher name = "Dual-MFCCs">
+		<patcher name = "MFCCs">
 			<pattr name = "pattr" value = "-1" />
 			<pattr name = "Dmax" value = "6." />
 			<pattr name = "Spectral" value = "1" />
@@ -2178,7 +2178,7 @@
 		</patcher>
 	</slot>
 	<slot number = "9" name = "Sound_Poetry">
-		<patcher name = "Dual-Yin+">
+		<patcher name = "Yin+MFCCs">
 			<pattr name = "pattrstorage" value = "-1" />
 			<pattr name = "Level" value = "50" />
 			<pattr name = "Pitch" value = "1" />
@@ -2266,7 +2266,7 @@
 			<pattr name = "Transposition" value = "0." />
 			<pattr name = "Xfade" value = "30" />
 		</patcher>
-		<patcher name = "Dual-MFCCs">
+		<patcher name = "MFCCs">
 			<pattr name = "pattr" value = "-1" />
 			<pattr name = "Dmax" value = "9." />
 			<pattr name = "Spectral" value = "1" />
