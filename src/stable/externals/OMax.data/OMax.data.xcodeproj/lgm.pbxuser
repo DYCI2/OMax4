@@ -1,0 +1,218 @@
+// !$*UTF8*$!
+{
+	089C1669FE841209C02AAC07 /* Project object */ = {
+		activeBuildConfigurationName = Development;
+		activeExecutable = FBCF3A4D0F71136C007C84EC /* Max5 runtime */;
+		activeTarget = 2FBBEAD608F335360078DB84 /* max-external */;
+		addToTargets = (
+			2FBBEAD608F335360078DB84 /* max-external */,
+		);
+		breakpoints = (
+		);
+		codeSenseManager = FB3521B00F7007EE00B535EC /* Code sense */;
+		executables = (
+			FBCF3A4D0F71136C007C84EC /* Max5 runtime */,
+		);
+		perUserDictionary = {
+			PBXConfiguration.PBXFileTableDataSource3.PBXErrorsWarningsDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXErrorsWarningsDataSource_MessageID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					593,
+					381,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXErrorsWarningsDataSource_TypeID,
+					PBXErrorsWarningsDataSource_MessageID,
+					PBXErrorsWarningsDataSource_LocationID,
+				);
+			};
+			PBXConfiguration.PBXFileTableDataSource3.PBXExecutablesDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXExecutablesDataSource_NameID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					22,
+					300,
+					670.58349609375,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXExecutablesDataSource_ActiveFlagID,
+					PBXExecutablesDataSource_NameID,
+					PBXExecutablesDataSource_CommentsID,
+				);
+			};
+			PBXConfiguration.PBXFileTableDataSource3.PBXFileTableDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					784,
+					20,
+					48,
+					43,
+					43,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+					PBXFileDataSource_Target_ColumnID,
+				);
+			};
+			PBXPerProjectTemplateStateSaveDate = 268699523;
+			PBXWorkspaceStateSaveDate = 268699523;
+		};
+		perUserProjectItems = {
+			FB1E105C1003DC6B0017FD00 /* PBXTextBookmark */ = FB1E105C1003DC6B0017FD00 /* PBXTextBookmark */;
+			FB1E105D1003DC6B0017FD00 /* PBXTextBookmark */ = FB1E105D1003DC6B0017FD00 /* PBXTextBookmark */;
+			FB35220C0F70126600B535EC /* PBXTextBookmark */ = FB35220C0F70126600B535EC /* PBXTextBookmark */;
+			FB4B6116100407C6000900EC /* PBXTextBookmark */ = FB4B6116100407C6000900EC /* PBXTextBookmark */;
+			FB4B611810040895000900EC /* PBXTextBookmark */ = FB4B611810040895000900EC /* PBXTextBookmark */;
+		};
+		sourceControlManager = FB3521AF0F7007EE00B535EC /* Source Control */;
+		userBuildSettings = {
+		};
+	};
+	2FBBEAD608F335360078DB84 /* max-external */ = {
+		activeExec = 0;
+	};
+	FB1E105C1003DC6B0017FD00 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = FB3521C40F70096800B535EC /* OMax.data.h */;
+		name = "OMax.data.h: 11";
+		rLen = 103;
+		rLoc = 255;
+		rType = 0;
+		vrLen = 1208;
+		vrLoc = 0;
+	};
+	FB1E105D1003DC6B0017FD00 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = FB3521C40F70096800B535EC /* OMax.data.h */;
+		name = "OMax.data.h: 11";
+		rLen = 103;
+		rLoc = 255;
+		rType = 0;
+		vrLen = 1208;
+		vrLoc = 0;
+	};
+	FB3521AF0F7007EE00B535EC /* Source Control */ = {
+		isa = PBXSourceControlManager;
+		fallbackIsa = XCSourceControlManager;
+		isSCMEnabled = 0;
+		scmConfiguration = {
+		};
+	};
+	FB3521B00F7007EE00B535EC /* Code sense */ = {
+		isa = PBXCodeSenseManager;
+		indexTemplatePath = "";
+	};
+	FB3521B20F70080E00B535EC /* OMax.xcconfig */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1275, 991}}";
+			sepNavSelRange = "{464, 0}";
+			sepNavVisRange = "{0, 1070}";
+		};
+	};
+	FB3521C40F70096800B535EC /* OMax.data.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {962, 588}}";
+			sepNavSelRange = "{255, 103}";
+			sepNavVisRange = "{0, 1208}";
+			sepNavWindowFrame = "{{71, 399}, {762, 778}}";
+		};
+	};
+	FB35220C0F70126600B535EC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = FB647E560F6139EE00824DA2 /* OMax.data.c */;
+		name = "OMax.data.c: 10";
+		rLen = 0;
+		rLoc = 282;
+		rType = 0;
+		vrLen = 1903;
+		vrLoc = 0;
+	};
+	FB4B6116100407C6000900EC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = FB647E560F6139EE00824DA2 /* OMax.data.c */;
+		name = "OMax.data.c: 12";
+		rLen = 0;
+		rLoc = 282;
+		rType = 0;
+		vrLen = 964;
+		vrLoc = 0;
+	};
+	FB4B611810040895000900EC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = FB647E560F6139EE00824DA2 /* OMax.data.c */;
+		name = "OMax.data.c: 9";
+		rLen = 0;
+		rLoc = 252;
+		rType = 0;
+		vrLen = 964;
+		vrLoc = 0;
+	};
+	FB647E560F6139EE00824DA2 /* OMax.data.c */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {962, 3570}}";
+			sepNavSelRange = "{252, 0}";
+			sepNavVisRange = "{0, 964}";
+		};
+	};
+	FBCF3A4D0F71136C007C84EC /* Max5 runtime */ = {
+		isa = PBXExecutable;
+		activeArgIndices = (
+		);
+		argumentStrings = (
+		);
+		autoAttachOnCrash = 1;
+		breakpointsEnabled = 1;
+		configStateDict = {
+			"PBXLSLaunchAction-0" = {
+				PBXLSLaunchAction = 0;
+				PBXLSLaunchStartAction = 1;
+				PBXLSLaunchStdioStyle = 2;
+				PBXLSLaunchStyle = 0;
+				class = PBXLSRunLaunchConfig;
+				commandLineArgs = (
+				);
+				displayName = "Executable Runner";
+				environment = {
+				};
+				identifier = com.apple.Xcode.launch.runConfig;
+				remoteHostInfo = "";
+				startActionInfo = "";
+			};
+		};
+		customDataFormattersEnabled = 1;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		dylibVariantSuffix = "";
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		launchableReference = FBCF3A4E0F71136C007C84EC /* MaxMSP Runtime.app */;
+		libgmallocEnabled = 0;
+		name = "Max5 runtime";
+		savedGlobals = {
+		};
+		sourceDirectories = (
+		);
+		variableFormatDictionary = {
+		};
+	};
+	FBCF3A4E0F71136C007C84EC /* MaxMSP Runtime.app */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = wrapper.application;
+		name = "MaxMSP Runtime.app";
+		path = "/Applications/Max5/MaxMSP Runtime.app";
+		sourceTree = "<absolute>";
+	};
+}
