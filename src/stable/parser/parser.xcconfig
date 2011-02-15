@@ -1,0 +1,6 @@
+//
+//  parser.xcconfig
+//  Created by Benjamin Levy on 15/04/10.
+//
+
+OTHER_LDFLAGS = -lfl
