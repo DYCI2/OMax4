@@ -3,7 +3,7 @@
  * Created BenCello
  *------------------*/
 
-///@file DOT.l DOT lexer file
+/**@file DOT.l DOT lexer file*/
 
 %{
 #include <stdio.h>
