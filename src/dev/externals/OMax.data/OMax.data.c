@@ -428,7 +428,7 @@ extern "C"
 		
 		switch (x->datatype)
 		{
-			case 3:
+			case MIDI_POLY:
 				// vars & alloc
 				t_dictionary* notedic;
 				atom_alloc_array(5, &i, &array, &err);
@@ -450,8 +450,8 @@ extern "C"
 					atom_setlong(array+1, current->get_phrase());
 					dictionary_appendatoms(ditem, sym_seg, 2, array);
 					// slice data
-					atom_setlong(array, ((O_MIDI_poly*)current)->get_vpitch());
-					atom_setlong(array+1, ((O_MIDI_poly*)current)->get_mvelocity());
+					atom_setfloat(array, ((O_MIDI_poly*)current)->get_vpitch());
+					atom_setfloat(array+1, ((O_MIDI_poly*)current)->get_mvelocity());
 					dictionary_appendatoms(ditem, sym_slice, 2, array);
 					// notes
 					list<O_MIDI_note> notes = ((O_MIDI_poly*)current)->get_notes();
@@ -471,7 +471,7 @@ extern "C"
 					atom_setobj(&datab[idx], ditem);
 				}
 				break;
-			case 2:
+			case SPECTRAL:
 				// alloc
 				atom_alloc_array(x->nbcoeffs, &i, &array, &err);
 				
@@ -502,7 +502,7 @@ extern "C"
 					atom_setobj(&datab[idx], ditem);
 				}
 				break;
-			case 1:
+			case MIDI_MONO:
 				// alloc
 				atom_alloc_array(3, &i, &array, &err);
 				
@@ -580,7 +580,7 @@ extern "C"
 	
 	void OMax_data_doread(t_OMax_data *x, t_symbol *s)
 	{
-		char err;
+		//char err;
 		short path;
 		int date = 0;
 		long datatype, size, nbcoeffs;
