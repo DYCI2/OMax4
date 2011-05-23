@@ -129,6 +129,7 @@ extern "C"
 			
 			///@details Check first argument of the Max5 object for a FO name
 			x->obound = FALSE;
+			x->oname = NULL;
 			if (argc == 0)
 				object_error((t_object *)x,"Missing name of the Oracle data to read");
 			else
@@ -222,40 +223,45 @@ extern "C"
 		///@remarks Do this binding only once
 		if (x->obound == FALSE)
 		{
-			///@details Check if @c name_data points to an existing @link t_OMax_data OMax.data @endlink object. If so, set t_OMax_render::data to point to the Data Sequence structure (t_OMax_data::data member)
-			x->dataname = OMax_render_name(x->oname);
-			if ((x->dataname->s_thing) && (ob_sym(x->dataname->s_thing) == gensym("OMax.data")))
+			if (x->oname != NULL)
 			{
-				x->data = &(((t_OMax_data*)(x->dataname->s_thing))->data);
-				// If binding is ok, then don't do it next time.
-				x->obound = TRUE;
-				///@remarks Sets @link t_OMax_render::datatype data type @endlink too
-				x->datatype = ((t_OMax_data*)(x->dataname->s_thing))->datatype;
-				if (x->datatype == SPECTRAL) // allocate memory for the output
+				///@details Check if @c name_data points to an existing @link t_OMax_data OMax.data @endlink object. If so, set t_OMax_render::data to point to the Data Sequence structure (t_OMax_data::data member)
+				x->dataname = OMax_render_name(x->oname);
+				if ((x->dataname->s_thing) && (ob_sym(x->dataname->s_thing) == gensym("OMax.data")))
 				{
-					x->nbcoeffs = ((t_OMax_data*)(x->dataname->s_thing))->nbcoeffs;
-					// allocation for coeff output
-					x->coeflist = new list<float>(x->nbcoeffs);
-					x->coeftab = (float*)malloc((x->nbcoeffs)*sizeof(float));
-					char err;
-					long i = 0;
-					atom_alloc_array(x->nbcoeffs, &i, &x->coefout, &err);
-					if (!err || i!=x->nbcoeffs)
-						object_error((t_object*)x, "Allocation error");
+					x->data = &(((t_OMax_data*)(x->dataname->s_thing))->data);
+					// If binding is ok, then don't do it next time.
+					x->obound = TRUE;
+					///@remarks Sets @link t_OMax_render::datatype data type @endlink too
+					x->datatype = ((t_OMax_data*)(x->dataname->s_thing))->datatype;
+					if (x->datatype == SPECTRAL) // allocate memory for the output
+					{
+						x->nbcoeffs = ((t_OMax_data*)(x->dataname->s_thing))->nbcoeffs;
+						// allocation for coeff output
+						x->coeflist = new list<float>(x->nbcoeffs);
+						x->coeftab = (float*)malloc((x->nbcoeffs)*sizeof(float));
+						char err;
+						long i = 0;
+						atom_alloc_array(x->nbcoeffs, &i, &x->coefout, &err);
+						if (!err || i!=x->nbcoeffs)
+							object_error((t_object*)x, "Allocation error");
+					}
+					if (x->datatype == MIDI_POLY) // allocate memory for the output
+					{
+						char err;
+						long i = 0;
+						atom_alloc_array(6, &i, &x->coefout, &err);
+						if (!err || i<6)
+							object_error((t_object*)x, "Allocation error");
+					}
 				}
-				if (x->datatype == MIDI_POLY) // allocate memory for the output
+				else
 				{
-					char err;
-					long i = 0;
-					atom_alloc_array(6, &i, &x->coefout, &err);
-					if (!err || i<6)
-						object_error((t_object*)x, "Allocation error");
+					object_error((t_object *)x,"No data for Oracle %s declared", x->oname->s_name);
 				}
 			}
 			else
-			{
-				object_error((t_object *)x,"No data for Oracle %s declared", x->oname->s_name);
-			}
+				object_error((t_object *)x,"Missing name of the Oracle data to read");
 		}
 		return x->obound;
 	}
@@ -386,7 +392,7 @@ extern "C"
 			if(!(((t_OMax_data *)(x->dataname->s_thing))->wflag))
 			{
 				int i,size = x->data->get_size();
-				int phrase = 0;//section = 0;
+				int phrase = -1;//section = 0;
 				O_label * finger;
 				for (i=0; i<size; i++)
 				{

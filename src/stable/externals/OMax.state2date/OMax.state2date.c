@@ -104,6 +104,7 @@ extern "C"
 			
 			///@details Check first argument of the Max5 object for a FO name
 			x->obound = FALSE;
+			x->oname = NULL;
 			if (argc == 0)
 				object_error((t_object *)x,"Missing name of the Oracle data to read");
 			else
@@ -176,20 +177,25 @@ extern "C"
 		///@remarks Do this binding only once
 		if (x->obound == FALSE)
 		{
-			///@details Check if @c name_data points to an existing @link t_OMax_data OMax.data @endlink object. If so, set t_OMax_date2state::data to point to the Data Sequence structure (t_OMax_data::data member)
-			x->dataname = OMax_state2date_name(x->oname);
-			if ((x->dataname->s_thing) && (ob_sym(x->dataname->s_thing) == gensym("OMax.data")))
+			if (x->oname != NULL)
 			{
-				x->data = &(((t_OMax_data*)(x->dataname->s_thing))->data);
-				// If binding is ok, then don't do it next time.
-				x->obound = TRUE;
-				///@remarks Sets @link t_OMax_state2date::datatype data type @endlink too
-				x->datatype = ((t_OMax_data*)(x->dataname->s_thing))->datatype;
+				///@details Check if @c name_data points to an existing @link t_OMax_data OMax.data @endlink object. If so, set t_OMax_date2state::data to point to the Data Sequence structure (t_OMax_data::data member)
+				x->dataname = OMax_state2date_name(x->oname);
+				if ((x->dataname->s_thing) && (ob_sym(x->dataname->s_thing) == gensym("OMax.data")))
+				{
+					x->data = &(((t_OMax_data*)(x->dataname->s_thing))->data);
+					// If binding is ok, then don't do it next time.
+					x->obound = TRUE;
+					///@remarks Sets @link t_OMax_state2date::datatype data type @endlink too
+					x->datatype = ((t_OMax_data*)(x->dataname->s_thing))->datatype;
+				}
+				else
+				{
+					object_error((t_object *)x,"No data for Oracle %s declared", x->oname->s_name);
+				}
 			}
 			else
-			{
-				object_error((t_object *)x,"No data for Oracle %s declared", x->oname->s_name);
-			}
+				object_error((t_object *)x,"Missing name of the Oracle data to read");
 		}
 		return x->obound;
 	}

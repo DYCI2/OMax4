@@ -104,6 +104,7 @@ extern "C"
 			
 			///@details Check first argument of the Max5 object for a FO name
 			x->obound = FALSE;
+			x->oname = NULL;
 			if (argc == 0)
 				object_error((t_object *)x,"Missing name of the Oracle to read");
 			else
@@ -180,17 +181,22 @@ extern "C"
 		///@remarks Do this binding only once
 		if (x->obound == FALSE)
 		{
-			///@details Check if FO name points to an existing @link t_OMax_oracle OMax.oracle @endlink object. If so, set t_OMax_read::oracle to point to the FO structure (t_OMax_oracle::oracle member)
-			if ((x->oname->s_thing) && (ob_sym(x->oname->s_thing) == gensym("OMax.oracle")))
+			if (x->oname != NULL)
 			{
-				x->oracle = &(((t_OMax_oracle*)(x->oname->s_thing))->oracle);
-				// If binding is ok, then don't do it next time.
-				x->obound = TRUE;
+				///@details Check if FO name points to an existing @link t_OMax_oracle OMax.oracle @endlink object. If so, set t_OMax_read::oracle to point to the FO structure (t_OMax_oracle::oracle member)
+				if ((x->oname->s_thing) && (ob_sym(x->oname->s_thing) == gensym("OMax.oracle")))
+				{
+					x->oracle = &(((t_OMax_oracle*)(x->oname->s_thing))->oracle);
+					// If binding is ok, then don't do it next time.
+					x->obound = TRUE;
+				}
+				else
+				{
+					object_error((t_object *)x,"No oracle %s declared", x->oname->s_name);
+				}
 			}
 			else
-			{
-				object_error((t_object *)x,"No oracle %s declared", x->oname->s_name);
-			}
+				object_error((t_object *)x,"Missing name of the Oracle to read");
 		}
 		return x->obound;
 	}

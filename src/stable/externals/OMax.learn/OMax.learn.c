@@ -114,6 +114,7 @@ extern "C"
 			
 			///@details Check first argument of the Max5 object for a FO name.
 			x->obound = FALSE;
+			x->oname = NULL;
 			if (argc == 0)
 				object_error((t_object *)x,"Missing name of the Oracle to build");
 			else
@@ -204,32 +205,37 @@ extern "C"
 		///@remarks Do this binding only once
 		if (x->obound == FALSE)
 		{
-			///@details Check if FO name points to an existing @link t_OMax_oracle OMax.oracle @endlink object. If so, binds t_OMax_learn::oname with the actual FO structure (t_OMax_oracle::oracle member).
-			if ((x->oname->s_thing) && (ob_sym(x->oname->s_thing) == gensym("OMax.oracle")))
+			if (x->oname != NULL)
 			{
-				x->builder.set_oracle((((t_OMax_oracle*)(x->oname->s_thing))->oracle));
-				object_post((t_object *)x,"Learner bound to Oracle %s", x->oname->s_name);
+				///@details Check if FO name points to an existing @link t_OMax_oracle OMax.oracle @endlink object. If so, binds t_OMax_learn::oname with the actual FO structure (t_OMax_oracle::oracle member).
+				if ((x->oname->s_thing) && (ob_sym(x->oname->s_thing) == gensym("OMax.oracle")))
+				{
+					x->builder.set_oracle((((t_OMax_oracle*)(x->oname->s_thing))->oracle));
+					object_post((t_object *)x,"Learner bound to Oracle %s", x->oname->s_name);
+				}
+				else
+				{
+					object_error((t_object *)x,"No oracle %s declared", x->oname->s_name);
+				}
+				
+				/// Do the same for Data Sequence with member t_OMax_learn::dataname and the related @link t_OMax_data OMax.data @endlink object.
+				if ((x->dataname->s_thing) && (ob_sym(x->dataname->s_thing) == gensym("OMax.data")))
+				{
+					x->builder.set_data((((t_OMax_data*)(x->dataname->s_thing))->data));
+					x->obound = TRUE;
+					x->datatype = ((t_OMax_data*)(x->dataname->s_thing))->datatype;
+					if (x->datatype == SPECTRAL)
+						x->nbcoeffs = ((t_OMax_data*)(x->dataname->s_thing))->nbcoeffs;
+					((t_OMax_data*)(x->dataname->s_thing))->noDelete = FALSE;
+					object_post((t_object *)x,"Learner bound to Data of Oracle %s", x->oname->s_name);
+				}
+				else
+				{
+					object_error((t_object *)x,"No data for oracle %s declared", x->oname->s_name);
+				}
 			}
 			else
-			{
-				object_error((t_object *)x,"No oracle %s declared", x->oname->s_name);
-			}
-			
-			/// Do the same for Data Sequence with member t_OMax_learn::dataname and the related @link t_OMax_data OMax.data @endlink object.
-			if ((x->dataname->s_thing) && (ob_sym(x->dataname->s_thing) == gensym("OMax.data")))
-			{
-				x->builder.set_data((((t_OMax_data*)(x->dataname->s_thing))->data));
-				x->obound = TRUE;
-				x->datatype = ((t_OMax_data*)(x->dataname->s_thing))->datatype;
-				if (x->datatype == SPECTRAL)
-					x->nbcoeffs = ((t_OMax_data*)(x->dataname->s_thing))->nbcoeffs;
-				((t_OMax_data*)(x->dataname->s_thing))->noDelete = FALSE;
-				object_post((t_object *)x,"Learner bound to Data of Oracle %s", x->oname->s_name);
-			}
-			else
-			{
-				object_error((t_object *)x,"No data for oracle %s declared", x->oname->s_name);
-			}
+				object_error((t_object *)x,"Missing name of the Oracle to build");
 		}
 		// If binding is ok, then don't do it next time.
 		return x->obound;
