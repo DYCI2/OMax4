@@ -8,12 +8,12 @@
 				"data" : 				{
 					"Dmax" : [ 5.0 ],
 					"Oracle_MIDI" : [  ],
-					"Oracle_SP" : [  ],
-					"Pitch" : [  ],
+					"Oracle_SP" : [ 1 ],
+					"Pitch" : [ 1 ],
 					"Proba" : [ 0.56 ],
 					"Quality" : [ 0.52 ],
-					"Spectral" : [  ],
-					"Weights" : [  ],
+					"Spectral" : [ 1 ],
+					"Weights" : [ 0 ],
 					"Window" : [ 55 ],
 					"YinFreq" : [ 100 ],
 					"YinSampl" : [ 1 ]
@@ -169,6 +169,119 @@
 					"Window" : [ 57 ],
 					"YinFreq" : [ 47 ],
 					"YinSampl" : [ 2 ]
+				}
+
+			}
+,
+			"10" : 			{
+				"id" : 10,
+				"name" : "Michel Doneda",
+				"data" : 				{
+					"Dmax" : [ 12.0 ],
+					"Oracle_MIDI" : [ 0 ],
+					"Oracle_SP" : [ 1 ],
+					"Pitch" : [ 0 ],
+					"Proba" : [ 0.56 ],
+					"Quality" : [ 0.52 ],
+					"Spectral" : [ 1 ],
+					"Weights" : [ 4 ],
+					"Window" : [ 55 ],
+					"YinFreq" : [ 100 ],
+					"YinSampl" : [ 1 ]
+				}
+
+			}
+,
+			"11" : 			{
+				"id" : 11,
+				"name" : "Beñat Achiary",
+				"data" : 				{
+					"Dmax" : [ 8.0 ],
+					"Oracle_MIDI" : [ 1 ],
+					"Oracle_SP" : [ 1 ],
+					"Pitch" : [ 1 ],
+					"Proba" : [ 0.6 ],
+					"Quality" : [ 0.6 ],
+					"Spectral" : [ 1 ],
+					"Weights" : [ 0 ],
+					"Window" : [ 75 ],
+					"YinFreq" : [ 80 ],
+					"YinSampl" : [ 2 ]
+				}
+
+			}
+,
+			"12" : 			{
+				"id" : 12,
+				"name" : "Médéric Collignon",
+				"data" : 				{
+					"Dmax" : [ 9.0 ],
+					"Oracle_MIDI" : [ 1 ],
+					"Oracle_SP" : [ 1 ],
+					"Pitch" : [ 1 ],
+					"Proba" : [ 0.43 ],
+					"Quality" : [ 0.32 ],
+					"Spectral" : [ 1 ],
+					"Weights" : [ 0 ],
+					"Window" : [ 55 ],
+					"YinFreq" : [ 50 ],
+					"YinSampl" : [ 2 ]
+				}
+
+			}
+,
+			"13" : 			{
+				"id" : 13,
+				"name" : "Brice Martin",
+				"data" : 				{
+					"Dmax" : [ 3.0 ],
+					"Oracle_MIDI" : [ 1 ],
+					"Oracle_SP" : [ 1 ],
+					"Pitch" : [ 1 ],
+					"Proba" : [ 0.45 ],
+					"Quality" : [ 0.31 ],
+					"Spectral" : [ 1 ],
+					"Weights" : [ 2 ],
+					"Window" : [ 57 ],
+					"YinFreq" : [ 45 ],
+					"YinSampl" : [ 2 ]
+				}
+
+			}
+,
+			"14" : 			{
+				"id" : 14,
+				"name" : "Mari Kimura",
+				"data" : 				{
+					"Dmax" : [ 5.0 ],
+					"Oracle_MIDI" : [  ],
+					"Oracle_SP" : [  ],
+					"Pitch" : [  ],
+					"Proba" : [ 0.5 ],
+					"Quality" : [ 0.4 ],
+					"Spectral" : [  ],
+					"Weights" : [ 5 ],
+					"Window" : [ 45 ],
+					"YinFreq" : [ 96 ],
+					"YinSampl" : [ 1 ]
+				}
+			}
+,
+			"15" : 			{
+				"id" : 15,
+				"name" : "MIDI",
+				"data" : 				{
+					"Dmax" : [ 5.0 ],
+					"Oracle_MIDI" : [  ],
+					"Oracle_SP" : [ 0 ],
+					"Pitch" : [ 0 ],
+					"Proba" : [ 0.56 ],
+					"Quality" : [ 0.52 ],
+					"Spectral" : [ 0 ],
+					"Weights" : [  ],
+					"Window" : [ 0 ],
+					"YinFreq" : [ 100 ],
+					"YinSampl" : [ 1 ]
 				}
 
 			}

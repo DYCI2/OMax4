@@ -22,13 +22,13 @@
 				"box" : 				{
 					"maxclass" : "newobj",
 					"text" : "in 2",
-					"numoutlets" : 1,
-					"fontsize" : 12.0,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 48.0, 55.0, 30.0, 20.0 ],
 					"id" : "obj-5",
 					"fontname" : "Arial",
+					"patching_rect" : [ 48.0, 55.0, 30.0, 20.0 ],
 					"numinlets" : 1,
+					"fontsize" : 12.0,
+					"numoutlets" : 1,
 					"saved_object_attributes" : 					{
 
 					}
@@ -40,12 +40,12 @@
 				"box" : 				{
 					"maxclass" : "newobj",
 					"text" : "out 1",
-					"numoutlets" : 0,
-					"fontsize" : 12.0,
-					"patching_rect" : [ 25.0, 143.0, 37.0, 20.0 ],
 					"id" : "obj-3",
 					"fontname" : "Arial",
+					"patching_rect" : [ 25.0, 143.0, 37.0, 20.0 ],
 					"numinlets" : 1,
+					"fontsize" : 12.0,
+					"numoutlets" : 0,
 					"saved_object_attributes" : 					{
 						"attr_comment" : ""
 					}
@@ -57,13 +57,13 @@
 				"box" : 				{
 					"maxclass" : "newobj",
 					"text" : "zsa.mfcc~ @bands 10 @fbe 1",
-					"numoutlets" : 1,
-					"fontsize" : 12.0,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 25.0, 109.0, 172.0, 20.0 ],
 					"id" : "obj-2",
 					"fontname" : "Arial",
-					"numinlets" : 2
+					"patching_rect" : [ 25.0, 109.0, 172.0, 20.0 ],
+					"numinlets" : 2,
+					"fontsize" : 12.0,
+					"numoutlets" : 1
 				}
 
 			}
@@ -71,13 +71,13 @@
 				"box" : 				{
 					"maxclass" : "newobj",
 					"text" : "fftin~ 1 hanning",
-					"numoutlets" : 3,
-					"fontsize" : 12.0,
 					"outlettype" : [ "signal", "signal", "signal" ],
-					"patching_rect" : [ 25.0, 26.0, 241.0, 20.0 ],
 					"id" : "obj-1",
 					"fontname" : "Arial",
-					"numinlets" : 1
+					"patching_rect" : [ 25.0, 26.0, 241.0, 20.0 ],
+					"numinlets" : 1,
+					"fontsize" : 12.0,
+					"numoutlets" : 3
 				}
 
 			}
@@ -85,13 +85,13 @@
 				"box" : 				{
 					"maxclass" : "message",
 					"text" : "bands $1",
-					"numoutlets" : 1,
-					"fontsize" : 12.0,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 48.0, 80.0, 58.0, 18.0 ],
 					"id" : "obj-4",
 					"fontname" : "Arial",
-					"numinlets" : 2
+					"patching_rect" : [ 48.0, 80.0, 58.0, 18.0 ],
+					"numinlets" : 2,
+					"fontsize" : 12.0,
+					"numoutlets" : 1
 				}
 
 			}
