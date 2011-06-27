@@ -131,20 +131,15 @@ void *bc_yinstats_new(t_symbol *s, long argc, t_atom *argv)
 		// process arguments
 		switch (argc)
 		{
-			/*
-			case 3:
-				if ((argv + 2)->a_type == A_FLOAT);
-					x->minproba = atom_getfloat(argv + 2);
-			case 2:
-				if ((argv + 1)->a_type == A_LONG);
-					x->window = atom_getlong(argv + 1);
-			 */
-			case 1:
-				if (argv->a_type == A_LONG)
-					x->nbstats = atom_getlong(argv);
+			case 0:
+				object_error((t_object *)x, "Number of stat agents needed");
 				break;
 			default:
-				object_error((t_object *)x, "Number of stat agents needed");
+				if (argv->a_type == A_LONG)
+					x->nbstats = atom_getlong(argv);
+				else
+					object_error((t_object *)x, "Number of stat agents needed as first argument");
+				break;
 		}
 		
 		// process attributes
