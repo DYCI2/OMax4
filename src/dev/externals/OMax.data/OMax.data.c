@@ -429,6 +429,7 @@ extern "C"
 		switch (x->datatype)
 		{
 			case MIDI_POLY:
+            {
 				// vars & alloc
 				t_dictionary* notedic;
 				atom_alloc_array(5, &i, &array, &err);
@@ -471,7 +472,9 @@ extern "C"
 					atom_setobj(&datab[idx], ditem);
 				}
 				break;
+            }
 			case SPECTRAL:
+            {
 				// alloc
 				atom_alloc_array(x->nbcoeffs, &i, &array, &err);
 				
@@ -502,7 +505,9 @@ extern "C"
 					atom_setobj(&datab[idx], ditem);
 				}
 				break;
+            }
 			case MIDI_MONO:
+            {
 				// alloc
 				atom_alloc_array(3, &i, &array, &err);
 				
@@ -530,7 +535,9 @@ extern "C"
 					atom_setobj(&datab[idx], ditem);
 				}
 				break;
+            }
 			default:
+            {
 				// alloc
 				atom_alloc_array(2, &i, &array, &err);
 				
@@ -557,6 +564,7 @@ extern "C"
 					atom_setobj(&datab[idx], ditem);
 				}
 				break;
+            }
 		}
 		dictionary_appendlong(d, gensym("type"), x->datatype);
 		if (x->datatype == 2)

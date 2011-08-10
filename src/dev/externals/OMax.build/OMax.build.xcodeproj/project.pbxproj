@@ -7,23 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7B44BDF413E814E600BE30A2 /* MaxAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B44BDF313E814E600BE30A2 /* MaxAPI.framework */; };
 		FB1E10A31003EC610017FD00 /* Oracle_label.hpp in Headers */ = {isa = PBXBuildFile; fileRef = FB1E10A11003EC610017FD00 /* Oracle_label.hpp */; };
 		FB1E10A41003EC610017FD00 /* Oracle_data.hpp in Headers */ = {isa = PBXBuildFile; fileRef = FB1E10A21003EC610017FD00 /* Oracle_data.hpp */; };
 		FB1E10A61003EC700017FD00 /* Oracle_label.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FB1E10A51003EC700017FD00 /* Oracle_label.cpp */; };
 		FB647E570F6139EE00824DA2 /* OMax.build.c in Sources */ = {isa = PBXBuildFile; fileRef = FB647E560F6139EE00824DA2 /* OMax.build.c */; };
 		FB8481950F9A45230068E0A7 /* OMax.data.h in Headers */ = {isa = PBXBuildFile; fileRef = FB8481940F9A45230068E0A7 /* OMax.data.h */; };
-		FBAA2BC70F612FBC003D72AB /* MaxAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBAA2BC60F612FBC003D72AB /* MaxAPI.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		2FBBEAE508F335360078DB84 /* OMax.build.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OMax.build.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
+		7B44BDF313E814E600BE30A2 /* MaxAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MaxAPI.framework; path = "../../../../../../../Max5/MaxSDK-5.1.7/c74support/max-includes/MaxAPI.framework"; sourceTree = "<group>"; };
 		FB1E10A11003EC610017FD00 /* Oracle_label.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Oracle_label.hpp; path = ../../cpp/Oracle_label.hpp; sourceTree = SOURCE_ROOT; };
 		FB1E10A21003EC610017FD00 /* Oracle_data.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Oracle_data.hpp; path = ../../cpp/Oracle_data.hpp; sourceTree = SOURCE_ROOT; };
 		FB1E10A51003EC700017FD00 /* Oracle_label.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Oracle_label.cpp; path = ../../cpp/Oracle_label.cpp; sourceTree = SOURCE_ROOT; };
 		FB647E560F6139EE00824DA2 /* OMax.build.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = OMax.build.c; sourceTree = SOURCE_ROOT; };
 		FB8481760F9A43D20068E0A7 /* OMax.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = OMax.xcconfig; path = ../OMax.xcconfig; sourceTree = SOURCE_ROOT; };
 		FB8481940F9A45230068E0A7 /* OMax.data.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OMax.data.h; path = ../OMax.data/OMax.data.h; sourceTree = SOURCE_ROOT; };
-		FBAA2BC60F612FBC003D72AB /* MaxAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MaxAPI.framework; path = "/Volumes/Data/lgm/Max5/MaxSDK-5.0.6/c74support/max-includes/MaxAPI.framework"; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,7 +31,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FBAA2BC70F612FBC003D72AB /* MaxAPI.framework in Frameworks */,
+				7B44BDF413E814E600BE30A2 /* MaxAPI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -53,7 +53,7 @@
 		089C1671FE841209C02AAC07 /* External Frameworks and Libraries */ = {
 			isa = PBXGroup;
 			children = (
-				FBAA2BC60F612FBC003D72AB /* MaxAPI.framework */,
+				7B44BDF313E814E600BE30A2 /* MaxAPI.framework */,
 			);
 			name = "External Frameworks and Libraries";
 			sourceTree = "<group>";
@@ -194,6 +194,10 @@
 		2FBBEAE108F335360078DB84 /* Development */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../../../../../Max5/MaxSDK-5.1.7/c74support/max-includes\"",
+				);
 			};
 			name = Development;
 		};
@@ -208,6 +212,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../../MaxSDK-5.0.6/c74support/max-includes\"",
+					"\"$(SRCROOT)/../../../../../../../Max5/MaxSDK-5.1.7/c74support/max-includes\"",
 				);
 			};
 			name = Deployment;
