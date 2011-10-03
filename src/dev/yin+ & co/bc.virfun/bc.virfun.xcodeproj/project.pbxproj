@@ -165,10 +165,6 @@
 		2FBBEAE108F335360078DB84 /* Default */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/../../../../../../../Max5/MaxSDK-5.1.6/c74support/max-includes\"",
-				);
 			};
 			name = Default;
 		};

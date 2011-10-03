@@ -6,11 +6,10 @@ MAX5_SDK = ~/Max5/MaxSDK-5.1.7
 C74SUPPORT = $(MAX5_SDK)/c74support
 HEADER_SEARCH_PATHS = /Developer/Headers/FlatCarbon "$(C74SUPPORT)/max-includes" "$(C74SUPPORT)/msp-includes"
 FRAMEWORK_SEARCH_PATHS = "$(C74SUPPORT)/max-includes" "$(C74SUPPORT)/msp-includes"
-//DSTROOT = $(SRCROOT)
+DSTROOT = $(SRCROOT)/../../build
 // (This next path is relative to DSTROOT)
-//INSTALL_PATH = /
+INSTALL_PATH = /
 //SKIP_INSTALL = NO
-TARGET_BUILD_DIR = $(SRCROOT)/../../build
 
 
 // Special Files
@@ -23,12 +22,12 @@ GCC_INPUT_FILETYPE = sourcecode.cpp.cpp
 SDKROOT[arch=i386] = /Developer/SDKs/MacOSX10.6.sdk
 SDKROOT[arch=ppc] = /Developer/SDKs/MacOSX10.6.sdk
 GCC_VERSION[arch=i386] = 4.2
-GCC_VERSION[arch=ppc] = 4.2
+//GCC_VERSION[arch=ppc] = 4.2
 MACOSX_DEPLOYMENT_TARGET = 10.6
 
 
 // Static Configuration (don't change these)
 WRAPPER_EXTENSION = mxo;
 WARNING_CFLAGS = -Wmost -Wno-four-char-constants -Wno-unknown-pragmas
-//DEPLOYMENT_LOCATION = YES
-//GENERATE_PKGINFO_FILE = YES
+DEPLOYMENT_LOCATION = YES
+GENERATE_PKGINFO_FILE = YES
