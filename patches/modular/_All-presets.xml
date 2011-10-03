@@ -2,6 +2,8 @@
 
 <pattrstorage name = "Input">
 	<slot number = "1" name = "Default">
+		<patcher name = "Duo_MIDI_Suffixes">
+		</patcher>
 		<patcher name = "Yin+">
 			<pattr name = "pattrstorage" value = "-1" />
 			<pattr name = "Level" value = "50" />
@@ -12,11 +14,7 @@
 			<pattr name = "YinFreq" value = "100" />
 			<pattr name = "YinSampl" value = "1" />
 		</patcher>
-		<patcher name = "Impro1">
-		</patcher>
 		<patcher name = "Player">
-		</patcher>
-		<patcher name = "Impro2">
 		</patcher>
 		<patcher name = "Player[2]">
 		</patcher>
@@ -29,45 +27,36 @@
 			<pattr name = "Thresh" value = "25" />
 			<pattr name = "Weights" value = "0 0 0 0 0 0 0 0 0" />
 		</patcher>
-		<patcher name = "Impro3">
-		</patcher>
-		<patcher name = "Impro4">
-		</patcher>
 		<patcher name = "Player[4]">
 		</patcher>
 		<patcher name = "Player[3]">
 		</patcher>
-		<patcher name = "MIDI-Slicer">
-			<pattr name = "pattrstorage" value = "" />
-			<pattr name = "Channel" value = "" />
-			<pattr name = "Notein" value = "" />
-			<pattr name = "Tolerance" value = "" />
-			<pattr name = "Tolerance[1]" value = "" />
+		<patcher name = "Impros-Pitch">
+			<patcher name = "Impro2_YIN1">
+			</patcher>
+			<patcher name = "Impro2_YIN2">
+			</patcher>
+			<patcher name = "Impro2_YIN3">
+			</patcher>
+			<patcher name = "Impro2_YIN4">
+			</patcher>
 		</patcher>
-		<patcher name = "ImproM1">
+		<patcher name = "Impros-Spectral">
+			<patcher name = "Impro2_SP1">
+			</patcher>
+			<patcher name = "Impro2_SP2">
+			</patcher>
+			<patcher name = "Impro2_SP3">
+			</patcher>
+			<patcher name = "Impro2_SP4">
+			</patcher>
 		</patcher>
-		<patcher name = "Player[6]">
-		</patcher>
-		<patcher name = "Player[5]">
-		</patcher>
-		<patcher name = "DeSlicer">
-		</patcher>
-		<patcher name = "DeSlicer[1]">
-		</patcher>
-		<patcher name = "ImproM2">
-		</patcher>
-		<patcher name = "Player[7]">
-		</patcher>
-		<patcher name = "DeSlicer[2]">
-		</patcher>
-		<patcher name = "Dual_MIDI_Suffixes">
-		</patcher>
-		<patcher name = "Dual_SP_Suffixes">
-		</patcher>
-		<patcher name = "Dual_MIDI_Suffixes[1]">
+		<patcher name = "Duo_SP_Suffixes">
 		</patcher>
 	</slot>
 	<slot number = "2" name = "SaxT/ClarBb">
+		<patcher name = "Duo_MIDI_Suffixes">
+		</patcher>
 		<patcher name = "Yin+">
 			<pattr name = "pattrstorage" value = "-1" />
 			<pattr name = "Level" value = "50" />
@@ -78,11 +67,7 @@
 			<pattr name = "YinFreq" value = "100" />
 			<pattr name = "YinSampl" value = "1" />
 		</patcher>
-		<patcher name = "Impro1">
-		</patcher>
 		<patcher name = "Player">
-		</patcher>
-		<patcher name = "Impro2">
 		</patcher>
 		<patcher name = "Player[2]">
 		</patcher>
@@ -95,45 +80,36 @@
 			<pattr name = "Thresh" value = "25" />
 			<pattr name = "Weights" value = "0 0 0 0 0 0 0 0 0" />
 		</patcher>
-		<patcher name = "Impro3">
-		</patcher>
-		<patcher name = "Impro4">
-		</patcher>
 		<patcher name = "Player[4]">
 		</patcher>
 		<patcher name = "Player[3]">
 		</patcher>
-		<patcher name = "MIDI-Slicer">
-			<pattr name = "pattrstorage" value = "" />
-			<pattr name = "Channel" value = "" />
-			<pattr name = "Notein" value = "" />
-			<pattr name = "Tolerance" value = "" />
-			<pattr name = "Tolerance[1]" value = "" />
+		<patcher name = "Impros-Pitch">
+			<patcher name = "Impro2_YIN1">
+			</patcher>
+			<patcher name = "Impro2_YIN2">
+			</patcher>
+			<patcher name = "Impro2_YIN3">
+			</patcher>
+			<patcher name = "Impro2_YIN4">
+			</patcher>
 		</patcher>
-		<patcher name = "ImproM1">
+		<patcher name = "Impros-Spectral">
+			<patcher name = "Impro2_SP1">
+			</patcher>
+			<patcher name = "Impro2_SP2">
+			</patcher>
+			<patcher name = "Impro2_SP3">
+			</patcher>
+			<patcher name = "Impro2_SP4">
+			</patcher>
 		</patcher>
-		<patcher name = "Player[6]">
-		</patcher>
-		<patcher name = "Player[5]">
-		</patcher>
-		<patcher name = "DeSlicer">
-		</patcher>
-		<patcher name = "DeSlicer[1]">
-		</patcher>
-		<patcher name = "ImproM2">
-		</patcher>
-		<patcher name = "Player[7]">
-		</patcher>
-		<patcher name = "DeSlicer[2]">
-		</patcher>
-		<patcher name = "Dual_MIDI_Suffixes">
-		</patcher>
-		<patcher name = "Dual_SP_Suffixes">
-		</patcher>
-		<patcher name = "Dual_MIDI_Suffixes[1]">
+		<patcher name = "Duo_SP_Suffixes">
 		</patcher>
 	</slot>
 	<slot number = "3" name = "ClarBasse">
+		<patcher name = "Duo_MIDI_Suffixes">
+		</patcher>
 		<patcher name = "Yin+">
 			<pattr name = "pattrstorage" value = "-1" />
 			<pattr name = "Level" value = "50" />
@@ -144,11 +120,7 @@
 			<pattr name = "YinFreq" value = "47" />
 			<pattr name = "YinSampl" value = "2" />
 		</patcher>
-		<patcher name = "Impro1">
-		</patcher>
 		<patcher name = "Player">
-		</patcher>
-		<patcher name = "Impro2">
 		</patcher>
 		<patcher name = "Player[2]">
 		</patcher>
@@ -161,45 +133,36 @@
 			<pattr name = "Thresh" value = "25" />
 			<pattr name = "Weights" value = "-4 -2 -1 0 0 0 0 0 0" />
 		</patcher>
-		<patcher name = "Impro3">
-		</patcher>
-		<patcher name = "Impro4">
-		</patcher>
 		<patcher name = "Player[4]">
 		</patcher>
 		<patcher name = "Player[3]">
 		</patcher>
-		<patcher name = "MIDI-Slicer">
-			<pattr name = "pattrstorage" value = "" />
-			<pattr name = "Channel" value = "" />
-			<pattr name = "Notein" value = "" />
-			<pattr name = "Tolerance" value = "" />
-			<pattr name = "Tolerance[1]" value = "" />
+		<patcher name = "Impros-Pitch">
+			<patcher name = "Impro2_YIN1">
+			</patcher>
+			<patcher name = "Impro2_YIN2">
+			</patcher>
+			<patcher name = "Impro2_YIN3">
+			</patcher>
+			<patcher name = "Impro2_YIN4">
+			</patcher>
 		</patcher>
-		<patcher name = "ImproM1">
+		<patcher name = "Impros-Spectral">
+			<patcher name = "Impro2_SP1">
+			</patcher>
+			<patcher name = "Impro2_SP2">
+			</patcher>
+			<patcher name = "Impro2_SP3">
+			</patcher>
+			<patcher name = "Impro2_SP4">
+			</patcher>
 		</patcher>
-		<patcher name = "Player[6]">
-		</patcher>
-		<patcher name = "Player[5]">
-		</patcher>
-		<patcher name = "DeSlicer">
-		</patcher>
-		<patcher name = "DeSlicer[1]">
-		</patcher>
-		<patcher name = "ImproM2">
-		</patcher>
-		<patcher name = "Player[7]">
-		</patcher>
-		<patcher name = "DeSlicer[2]">
-		</patcher>
-		<patcher name = "Dual_MIDI_Suffixes">
-		</patcher>
-		<patcher name = "Dual_SP_Suffixes">
-		</patcher>
-		<patcher name = "Dual_MIDI_Suffixes[1]">
+		<patcher name = "Duo_SP_Suffixes">
 		</patcher>
 	</slot>
 	<slot number = "4" name = "Basse">
+		<patcher name = "Duo_MIDI_Suffixes">
+		</patcher>
 		<patcher name = "Yin+">
 			<pattr name = "pattrstorage" value = "-1" />
 			<pattr name = "Level" value = "50" />
@@ -210,11 +173,7 @@
 			<pattr name = "YinFreq" value = "41" />
 			<pattr name = "YinSampl" value = "2" />
 		</patcher>
-		<patcher name = "Impro1">
-		</patcher>
 		<patcher name = "Player">
-		</patcher>
-		<patcher name = "Impro2">
 		</patcher>
 		<patcher name = "Player[2]">
 		</patcher>
@@ -227,45 +186,36 @@
 			<pattr name = "Thresh" value = "25" />
 			<pattr name = "Weights" value = "-4 -2 -1 0 0 0 0 0 0" />
 		</patcher>
-		<patcher name = "Impro3">
-		</patcher>
-		<patcher name = "Impro4">
-		</patcher>
 		<patcher name = "Player[4]">
 		</patcher>
 		<patcher name = "Player[3]">
 		</patcher>
-		<patcher name = "MIDI-Slicer">
-			<pattr name = "pattrstorage" value = "" />
-			<pattr name = "Channel" value = "" />
-			<pattr name = "Notein" value = "" />
-			<pattr name = "Tolerance" value = "" />
-			<pattr name = "Tolerance[1]" value = "" />
+		<patcher name = "Impros-Pitch">
+			<patcher name = "Impro2_YIN1">
+			</patcher>
+			<patcher name = "Impro2_YIN2">
+			</patcher>
+			<patcher name = "Impro2_YIN3">
+			</patcher>
+			<patcher name = "Impro2_YIN4">
+			</patcher>
 		</patcher>
-		<patcher name = "ImproM1">
+		<patcher name = "Impros-Spectral">
+			<patcher name = "Impro2_SP1">
+			</patcher>
+			<patcher name = "Impro2_SP2">
+			</patcher>
+			<patcher name = "Impro2_SP3">
+			</patcher>
+			<patcher name = "Impro2_SP4">
+			</patcher>
 		</patcher>
-		<patcher name = "Player[6]">
-		</patcher>
-		<patcher name = "Player[5]">
-		</patcher>
-		<patcher name = "DeSlicer">
-		</patcher>
-		<patcher name = "DeSlicer[1]">
-		</patcher>
-		<patcher name = "ImproM2">
-		</patcher>
-		<patcher name = "Player[7]">
-		</patcher>
-		<patcher name = "DeSlicer[2]">
-		</patcher>
-		<patcher name = "Dual_MIDI_Suffixes">
-		</patcher>
-		<patcher name = "Dual_SP_Suffixes">
-		</patcher>
-		<patcher name = "Dual_MIDI_Suffixes[1]">
+		<patcher name = "Duo_SP_Suffixes">
 		</patcher>
 	</slot>
 	<slot number = "5" name = "Fagott">
+		<patcher name = "Duo_MIDI_Suffixes">
+		</patcher>
 		<patcher name = "Yin+">
 			<pattr name = "pattrstorage" value = "-1" />
 			<pattr name = "Level" value = "50" />
@@ -276,11 +226,7 @@
 			<pattr name = "YinFreq" value = "47" />
 			<pattr name = "YinSampl" value = "2" />
 		</patcher>
-		<patcher name = "Impro1">
-		</patcher>
 		<patcher name = "Player">
-		</patcher>
-		<patcher name = "Impro2">
 		</patcher>
 		<patcher name = "Player[2]">
 		</patcher>
@@ -293,45 +239,36 @@
 			<pattr name = "Thresh" value = "25" />
 			<pattr name = "Weights" value = "-4 -2 -1 0 0 0 0 0 0" />
 		</patcher>
-		<patcher name = "Impro3">
-		</patcher>
-		<patcher name = "Impro4">
-		</patcher>
 		<patcher name = "Player[4]">
 		</patcher>
 		<patcher name = "Player[3]">
 		</patcher>
-		<patcher name = "MIDI-Slicer">
-			<pattr name = "pattrstorage" value = "" />
-			<pattr name = "Channel" value = "" />
-			<pattr name = "Notein" value = "" />
-			<pattr name = "Tolerance" value = "" />
-			<pattr name = "Tolerance[1]" value = "" />
+		<patcher name = "Impros-Pitch">
+			<patcher name = "Impro2_YIN1">
+			</patcher>
+			<patcher name = "Impro2_YIN2">
+			</patcher>
+			<patcher name = "Impro2_YIN3">
+			</patcher>
+			<patcher name = "Impro2_YIN4">
+			</patcher>
 		</patcher>
-		<patcher name = "ImproM1">
+		<patcher name = "Impros-Spectral">
+			<patcher name = "Impro2_SP1">
+			</patcher>
+			<patcher name = "Impro2_SP2">
+			</patcher>
+			<patcher name = "Impro2_SP3">
+			</patcher>
+			<patcher name = "Impro2_SP4">
+			</patcher>
 		</patcher>
-		<patcher name = "Player[6]">
-		</patcher>
-		<patcher name = "Player[5]">
-		</patcher>
-		<patcher name = "DeSlicer">
-		</patcher>
-		<patcher name = "DeSlicer[1]">
-		</patcher>
-		<patcher name = "ImproM2">
-		</patcher>
-		<patcher name = "Player[7]">
-		</patcher>
-		<patcher name = "DeSlicer[2]">
-		</patcher>
-		<patcher name = "Dual_MIDI_Suffixes">
-		</patcher>
-		<patcher name = "Dual_SP_Suffixes">
-		</patcher>
-		<patcher name = "Dual_MIDI_Suffixes[1]">
+		<patcher name = "Duo_SP_Suffixes">
 		</patcher>
 	</slot>
 	<slot number = "6" name = "Guitar">
+		<patcher name = "Duo_MIDI_Suffixes">
+		</patcher>
 		<patcher name = "Yin+">
 			<pattr name = "pattrstorage" value = "-1" />
 			<pattr name = "Level" value = "50" />
@@ -342,11 +279,7 @@
 			<pattr name = "YinFreq" value = "75" />
 			<pattr name = "YinSampl" value = "2" />
 		</patcher>
-		<patcher name = "Impro1">
-		</patcher>
 		<patcher name = "Player">
-		</patcher>
-		<patcher name = "Impro2">
 		</patcher>
 		<patcher name = "Player[2]">
 		</patcher>
@@ -354,50 +287,41 @@
 		</patcher>
 		<patcher name = "MFCCs">
 			<pattr name = "pattrstorage" value = "" />
-			<pattr name = "Dmax" value = "5." />
+			<pattr name = "Dmax" value = "4." />
 			<pattr name = "Spectral" value = "1" />
 			<pattr name = "Thresh" value = "25" />
 			<pattr name = "Weights" value = "-2 -1 0 0 0 0 -1 -2 -4" />
-		</patcher>
-		<patcher name = "Impro3">
-		</patcher>
-		<patcher name = "Impro4">
 		</patcher>
 		<patcher name = "Player[4]">
 		</patcher>
 		<patcher name = "Player[3]">
 		</patcher>
-		<patcher name = "MIDI-Slicer">
-			<pattr name = "pattrstorage" value = "" />
-			<pattr name = "Channel" value = "" />
-			<pattr name = "Notein" value = "" />
-			<pattr name = "Tolerance" value = "" />
-			<pattr name = "Tolerance[1]" value = "" />
+		<patcher name = "Impros-Pitch">
+			<patcher name = "Impro2_YIN1">
+			</patcher>
+			<patcher name = "Impro2_YIN2">
+			</patcher>
+			<patcher name = "Impro2_YIN3">
+			</patcher>
+			<patcher name = "Impro2_YIN4">
+			</patcher>
 		</patcher>
-		<patcher name = "ImproM1">
+		<patcher name = "Impros-Spectral">
+			<patcher name = "Impro2_SP1">
+			</patcher>
+			<patcher name = "Impro2_SP2">
+			</patcher>
+			<patcher name = "Impro2_SP3">
+			</patcher>
+			<patcher name = "Impro2_SP4">
+			</patcher>
 		</patcher>
-		<patcher name = "Player[6]">
-		</patcher>
-		<patcher name = "Player[5]">
-		</patcher>
-		<patcher name = "DeSlicer">
-		</patcher>
-		<patcher name = "DeSlicer[1]">
-		</patcher>
-		<patcher name = "ImproM2">
-		</patcher>
-		<patcher name = "Player[7]">
-		</patcher>
-		<patcher name = "DeSlicer[2]">
-		</patcher>
-		<patcher name = "Dual_MIDI_Suffixes">
-		</patcher>
-		<patcher name = "Dual_SP_Suffixes">
-		</patcher>
-		<patcher name = "Dual_MIDI_Suffixes[1]">
+		<patcher name = "Duo_SP_Suffixes">
 		</patcher>
 	</slot>
 	<slot number = "7" name = "Percussion">
+		<patcher name = "Duo_MIDI_Suffixes">
+		</patcher>
 		<patcher name = "Yin+">
 			<pattr name = "pattrstorage" value = "-1" />
 			<pattr name = "Level" value = "50" />
@@ -408,11 +332,7 @@
 			<pattr name = "YinFreq" value = "40" />
 			<pattr name = "YinSampl" value = "3" />
 		</patcher>
-		<patcher name = "Impro1">
-		</patcher>
 		<patcher name = "Player">
-		</patcher>
-		<patcher name = "Impro2">
 		</patcher>
 		<patcher name = "Player[2]">
 		</patcher>
@@ -425,45 +345,36 @@
 			<pattr name = "Thresh" value = "25" />
 			<pattr name = "Weights" value = "-4 -2 -1 0 0 0 0 -1 -2" />
 		</patcher>
-		<patcher name = "Impro3">
-		</patcher>
-		<patcher name = "Impro4">
-		</patcher>
 		<patcher name = "Player[4]">
 		</patcher>
 		<patcher name = "Player[3]">
 		</patcher>
-		<patcher name = "MIDI-Slicer">
-			<pattr name = "pattrstorage" value = "" />
-			<pattr name = "Channel" value = "" />
-			<pattr name = "Notein" value = "" />
-			<pattr name = "Tolerance" value = "" />
-			<pattr name = "Tolerance[1]" value = "" />
+		<patcher name = "Impros-Pitch">
+			<patcher name = "Impro2_YIN1">
+			</patcher>
+			<patcher name = "Impro2_YIN2">
+			</patcher>
+			<patcher name = "Impro2_YIN3">
+			</patcher>
+			<patcher name = "Impro2_YIN4">
+			</patcher>
 		</patcher>
-		<patcher name = "ImproM1">
+		<patcher name = "Impros-Spectral">
+			<patcher name = "Impro2_SP1">
+			</patcher>
+			<patcher name = "Impro2_SP2">
+			</patcher>
+			<patcher name = "Impro2_SP3">
+			</patcher>
+			<patcher name = "Impro2_SP4">
+			</patcher>
 		</patcher>
-		<patcher name = "Player[6]">
-		</patcher>
-		<patcher name = "Player[5]">
-		</patcher>
-		<patcher name = "DeSlicer">
-		</patcher>
-		<patcher name = "DeSlicer[1]">
-		</patcher>
-		<patcher name = "ImproM2">
-		</patcher>
-		<patcher name = "Player[7]">
-		</patcher>
-		<patcher name = "DeSlicer[2]">
-		</patcher>
-		<patcher name = "Dual_MIDI_Suffixes">
-		</patcher>
-		<patcher name = "Dual_SP_Suffixes">
-		</patcher>
-		<patcher name = "Dual_MIDI_Suffixes[1]">
+		<patcher name = "Duo_SP_Suffixes">
 		</patcher>
 	</slot>
 	<slot number = "8" name = "Voice">
+		<patcher name = "Duo_MIDI_Suffixes">
+		</patcher>
 		<patcher name = "Yin+">
 			<pattr name = "pattrstorage" value = "-1" />
 			<pattr name = "Level" value = "45" />
@@ -474,11 +385,7 @@
 			<pattr name = "YinFreq" value = "80" />
 			<pattr name = "YinSampl" value = "2" />
 		</patcher>
-		<patcher name = "Impro1">
-		</patcher>
 		<patcher name = "Player">
-		</patcher>
-		<patcher name = "Impro2">
 		</patcher>
 		<patcher name = "Player[2]">
 		</patcher>
@@ -491,45 +398,36 @@
 			<pattr name = "Thresh" value = "25" />
 			<pattr name = "Weights" value = "0 0 0 0 0 0 0 0 0" />
 		</patcher>
-		<patcher name = "Impro3">
-		</patcher>
-		<patcher name = "Impro4">
-		</patcher>
 		<patcher name = "Player[4]">
 		</patcher>
 		<patcher name = "Player[3]">
 		</patcher>
-		<patcher name = "MIDI-Slicer">
-			<pattr name = "pattrstorage" value = "" />
-			<pattr name = "Channel" value = "" />
-			<pattr name = "Notein" value = "" />
-			<pattr name = "Tolerance" value = "" />
-			<pattr name = "Tolerance[1]" value = "" />
+		<patcher name = "Impros-Pitch">
+			<patcher name = "Impro2_YIN1">
+			</patcher>
+			<patcher name = "Impro2_YIN2">
+			</patcher>
+			<patcher name = "Impro2_YIN3">
+			</patcher>
+			<patcher name = "Impro2_YIN4">
+			</patcher>
 		</patcher>
-		<patcher name = "ImproM1">
+		<patcher name = "Impros-Spectral">
+			<patcher name = "Impro2_SP1">
+			</patcher>
+			<patcher name = "Impro2_SP2">
+			</patcher>
+			<patcher name = "Impro2_SP3">
+			</patcher>
+			<patcher name = "Impro2_SP4">
+			</patcher>
 		</patcher>
-		<patcher name = "Player[6]">
-		</patcher>
-		<patcher name = "Player[5]">
-		</patcher>
-		<patcher name = "DeSlicer">
-		</patcher>
-		<patcher name = "DeSlicer[1]">
-		</patcher>
-		<patcher name = "ImproM2">
-		</patcher>
-		<patcher name = "Player[7]">
-		</patcher>
-		<patcher name = "DeSlicer[2]">
-		</patcher>
-		<patcher name = "Dual_MIDI_Suffixes">
-		</patcher>
-		<patcher name = "Dual_SP_Suffixes">
-		</patcher>
-		<patcher name = "Dual_MIDI_Suffixes[1]">
+		<patcher name = "Duo_SP_Suffixes">
 		</patcher>
 	</slot>
 	<slot number = "9" name = "Sound_Poetry">
+		<patcher name = "Duo_MIDI_Suffixes">
+		</patcher>
 		<patcher name = "Yin+">
 			<pattr name = "pattrstorage" value = "" />
 			<pattr name = "Level" value = "50" />
@@ -540,11 +438,7 @@
 			<pattr name = "YinFreq" value = "50" />
 			<pattr name = "YinSampl" value = "2" />
 		</patcher>
-		<patcher name = "Impro1">
-		</patcher>
 		<patcher name = "Player">
-		</patcher>
-		<patcher name = "Impro2">
 		</patcher>
 		<patcher name = "Player[2]">
 		</patcher>
@@ -557,45 +451,36 @@
 			<pattr name = "Thresh" value = "25" />
 			<pattr name = "Weights" value = "0 0 0 0 0 0 0 0 0" />
 		</patcher>
-		<patcher name = "Impro3">
-		</patcher>
-		<patcher name = "Impro4">
-		</patcher>
 		<patcher name = "Player[4]">
 		</patcher>
 		<patcher name = "Player[3]">
 		</patcher>
-		<patcher name = "MIDI-Slicer">
-			<pattr name = "pattrstorage" value = "" />
-			<pattr name = "Channel" value = "" />
-			<pattr name = "Notein" value = "" />
-			<pattr name = "Tolerance" value = "" />
-			<pattr name = "Tolerance[1]" value = "" />
+		<patcher name = "Impros-Pitch">
+			<patcher name = "Impro2_YIN1">
+			</patcher>
+			<patcher name = "Impro2_YIN2">
+			</patcher>
+			<patcher name = "Impro2_YIN3">
+			</patcher>
+			<patcher name = "Impro2_YIN4">
+			</patcher>
 		</patcher>
-		<patcher name = "ImproM1">
+		<patcher name = "Impros-Spectral">
+			<patcher name = "Impro2_SP1">
+			</patcher>
+			<patcher name = "Impro2_SP2">
+			</patcher>
+			<patcher name = "Impro2_SP3">
+			</patcher>
+			<patcher name = "Impro2_SP4">
+			</patcher>
 		</patcher>
-		<patcher name = "Player[6]">
-		</patcher>
-		<patcher name = "Player[5]">
-		</patcher>
-		<patcher name = "DeSlicer">
-		</patcher>
-		<patcher name = "DeSlicer[1]">
-		</patcher>
-		<patcher name = "ImproM2">
-		</patcher>
-		<patcher name = "Player[7]">
-		</patcher>
-		<patcher name = "DeSlicer[2]">
-		</patcher>
-		<patcher name = "Dual_MIDI_Suffixes">
-		</patcher>
-		<patcher name = "Dual_SP_Suffixes">
-		</patcher>
-		<patcher name = "Dual_MIDI_Suffixes[1]">
+		<patcher name = "Duo_SP_Suffixes">
 		</patcher>
 	</slot>
 	<slot number = "10" name = "DiDonato">
+		<patcher name = "Duo_MIDI_Suffixes">
+		</patcher>
 		<patcher name = "Yin+">
 			<pattr name = "pattrstorage" value = "-1" />
 			<pattr name = "Level" value = "44" />
@@ -606,11 +491,7 @@
 			<pattr name = "YinFreq" value = "100" />
 			<pattr name = "YinSampl" value = "1" />
 		</patcher>
-		<patcher name = "Impro1">
-		</patcher>
 		<patcher name = "Player">
-		</patcher>
-		<patcher name = "Impro2">
 		</patcher>
 		<patcher name = "Player[2]">
 		</patcher>
@@ -623,45 +504,36 @@
 			<pattr name = "Thresh" value = "20" />
 			<pattr name = "Weights" value = "-4 -2 -1 0 0 0 0 0 0" />
 		</patcher>
-		<patcher name = "Impro3">
-		</patcher>
-		<patcher name = "Impro4">
-		</patcher>
 		<patcher name = "Player[4]">
 		</patcher>
 		<patcher name = "Player[3]">
 		</patcher>
-		<patcher name = "MIDI-Slicer">
-			<pattr name = "pattrstorage" value = "" />
-			<pattr name = "Channel" value = "" />
-			<pattr name = "Notein" value = "" />
-			<pattr name = "Tolerance" value = "" />
-			<pattr name = "Tolerance[1]" value = "" />
+		<patcher name = "Impros-Pitch">
+			<patcher name = "Impro2_YIN1">
+			</patcher>
+			<patcher name = "Impro2_YIN2">
+			</patcher>
+			<patcher name = "Impro2_YIN3">
+			</patcher>
+			<patcher name = "Impro2_YIN4">
+			</patcher>
 		</patcher>
-		<patcher name = "ImproM1">
+		<patcher name = "Impros-Spectral">
+			<patcher name = "Impro2_SP1">
+			</patcher>
+			<patcher name = "Impro2_SP2">
+			</patcher>
+			<patcher name = "Impro2_SP3">
+			</patcher>
+			<patcher name = "Impro2_SP4">
+			</patcher>
 		</patcher>
-		<patcher name = "Player[6]">
-		</patcher>
-		<patcher name = "Player[5]">
-		</patcher>
-		<patcher name = "DeSlicer">
-		</patcher>
-		<patcher name = "DeSlicer[1]">
-		</patcher>
-		<patcher name = "ImproM2">
-		</patcher>
-		<patcher name = "Player[7]">
-		</patcher>
-		<patcher name = "DeSlicer[2]">
-		</patcher>
-		<patcher name = "Dual_MIDI_Suffixes">
-		</patcher>
-		<patcher name = "Dual_SP_Suffixes">
-		</patcher>
-		<patcher name = "Dual_MIDI_Suffixes[1]">
+		<patcher name = "Duo_SP_Suffixes">
 		</patcher>
 	</slot>
 	<slot number = "11" name = "Coleman Hawkins">
+		<patcher name = "Duo_MIDI_Suffixes">
+		</patcher>
 		<patcher name = "Yin+">
 			<pattr name = "pattrstorage" value = "-1" />
 			<pattr name = "Level" value = "60" />
@@ -672,11 +544,7 @@
 			<pattr name = "YinFreq" value = "100" />
 			<pattr name = "YinSampl" value = "1" />
 		</patcher>
-		<patcher name = "Impro1">
-		</patcher>
 		<patcher name = "Player">
-		</patcher>
-		<patcher name = "Impro2">
 		</patcher>
 		<patcher name = "Player[2]">
 		</patcher>
@@ -689,45 +557,36 @@
 			<pattr name = "Thresh" value = "20" />
 			<pattr name = "Weights" value = "0 0 0 0 0 0 0 0 0" />
 		</patcher>
-		<patcher name = "Impro3">
-		</patcher>
-		<patcher name = "Impro4">
-		</patcher>
 		<patcher name = "Player[4]">
 		</patcher>
 		<patcher name = "Player[3]">
 		</patcher>
-		<patcher name = "MIDI-Slicer">
-			<pattr name = "pattrstorage" value = "" />
-			<pattr name = "Channel" value = "" />
-			<pattr name = "Notein" value = "" />
-			<pattr name = "Tolerance" value = "" />
-			<pattr name = "Tolerance[1]" value = "" />
+		<patcher name = "Impros-Pitch">
+			<patcher name = "Impro2_YIN1">
+			</patcher>
+			<patcher name = "Impro2_YIN2">
+			</patcher>
+			<patcher name = "Impro2_YIN3">
+			</patcher>
+			<patcher name = "Impro2_YIN4">
+			</patcher>
 		</patcher>
-		<patcher name = "ImproM1">
+		<patcher name = "Impros-Spectral">
+			<patcher name = "Impro2_SP1">
+			</patcher>
+			<patcher name = "Impro2_SP2">
+			</patcher>
+			<patcher name = "Impro2_SP3">
+			</patcher>
+			<patcher name = "Impro2_SP4">
+			</patcher>
 		</patcher>
-		<patcher name = "Player[6]">
-		</patcher>
-		<patcher name = "Player[5]">
-		</patcher>
-		<patcher name = "DeSlicer">
-		</patcher>
-		<patcher name = "DeSlicer[1]">
-		</patcher>
-		<patcher name = "ImproM2">
-		</patcher>
-		<patcher name = "Player[7]">
-		</patcher>
-		<patcher name = "DeSlicer[2]">
-		</patcher>
-		<patcher name = "Dual_MIDI_Suffixes">
-		</patcher>
-		<patcher name = "Dual_SP_Suffixes">
-		</patcher>
-		<patcher name = "Dual_MIDI_Suffixes[1]">
+		<patcher name = "Duo_SP_Suffixes">
 		</patcher>
 	</slot>
 	<slot number = "12" name = "Raphael Imbert">
+		<patcher name = "Duo_MIDI_Suffixes">
+		</patcher>
 		<patcher name = "Yin+">
 			<pattr name = "pattrstorage" value = "-1" />
 			<pattr name = "Level" value = "5" />
@@ -738,11 +597,7 @@
 			<pattr name = "YinFreq" value = "100" />
 			<pattr name = "YinSampl" value = "1" />
 		</patcher>
-		<patcher name = "Impro1">
-		</patcher>
 		<patcher name = "Player">
-		</patcher>
-		<patcher name = "Impro2">
 		</patcher>
 		<patcher name = "Player[2]">
 		</patcher>
@@ -755,45 +610,36 @@
 			<pattr name = "Thresh" value = "50" />
 			<pattr name = "Weights" value = "0 0 0 0 0 0 0 0 0" />
 		</patcher>
-		<patcher name = "Impro3">
-		</patcher>
-		<patcher name = "Impro4">
-		</patcher>
 		<patcher name = "Player[4]">
 		</patcher>
 		<patcher name = "Player[3]">
 		</patcher>
-		<patcher name = "MIDI-Slicer">
-			<pattr name = "pattrstorage" value = "" />
-			<pattr name = "Channel" value = "" />
-			<pattr name = "Notein" value = "" />
-			<pattr name = "Tolerance" value = "" />
-			<pattr name = "Tolerance[1]" value = "" />
+		<patcher name = "Impros-Pitch">
+			<patcher name = "Impro2_YIN1">
+			</patcher>
+			<patcher name = "Impro2_YIN2">
+			</patcher>
+			<patcher name = "Impro2_YIN3">
+			</patcher>
+			<patcher name = "Impro2_YIN4">
+			</patcher>
 		</patcher>
-		<patcher name = "ImproM1">
+		<patcher name = "Impros-Spectral">
+			<patcher name = "Impro2_SP1">
+			</patcher>
+			<patcher name = "Impro2_SP2">
+			</patcher>
+			<patcher name = "Impro2_SP3">
+			</patcher>
+			<patcher name = "Impro2_SP4">
+			</patcher>
 		</patcher>
-		<patcher name = "Player[6]">
-		</patcher>
-		<patcher name = "Player[5]">
-		</patcher>
-		<patcher name = "DeSlicer">
-		</patcher>
-		<patcher name = "DeSlicer[1]">
-		</patcher>
-		<patcher name = "ImproM2">
-		</patcher>
-		<patcher name = "Player[7]">
-		</patcher>
-		<patcher name = "DeSlicer[2]">
-		</patcher>
-		<patcher name = "Dual_MIDI_Suffixes">
-		</patcher>
-		<patcher name = "Dual_SP_Suffixes">
-		</patcher>
-		<patcher name = "Dual_MIDI_Suffixes[1]">
+		<patcher name = "Duo_SP_Suffixes">
 		</patcher>
 	</slot>
 	<slot number = "13" name = "Michel Doneda">
+		<patcher name = "Duo_MIDI_Suffixes">
+		</patcher>
 		<patcher name = "Yin+">
 			<pattr name = "pattrstorage" value = "-1" />
 			<pattr name = "Level" value = "25" />
@@ -804,11 +650,7 @@
 			<pattr name = "YinFreq" value = "100" />
 			<pattr name = "YinSampl" value = "1" />
 		</patcher>
-		<patcher name = "Impro1">
-		</patcher>
 		<patcher name = "Player">
-		</patcher>
-		<patcher name = "Impro2">
 		</patcher>
 		<patcher name = "Player[2]">
 		</patcher>
@@ -821,45 +663,36 @@
 			<pattr name = "Thresh" value = "50" />
 			<pattr name = "Weights" value = "0 1 2 1 0 0 -1 -2 -4" />
 		</patcher>
-		<patcher name = "Impro3">
-		</patcher>
-		<patcher name = "Impro4">
-		</patcher>
 		<patcher name = "Player[4]">
 		</patcher>
 		<patcher name = "Player[3]">
 		</patcher>
-		<patcher name = "MIDI-Slicer">
-			<pattr name = "pattrstorage" value = "" />
-			<pattr name = "Channel" value = "" />
-			<pattr name = "Notein" value = "" />
-			<pattr name = "Tolerance" value = "" />
-			<pattr name = "Tolerance[1]" value = "" />
+		<patcher name = "Impros-Pitch">
+			<patcher name = "Impro2_YIN1">
+			</patcher>
+			<patcher name = "Impro2_YIN2">
+			</patcher>
+			<patcher name = "Impro2_YIN3">
+			</patcher>
+			<patcher name = "Impro2_YIN4">
+			</patcher>
 		</patcher>
-		<patcher name = "ImproM1">
+		<patcher name = "Impros-Spectral">
+			<patcher name = "Impro2_SP1">
+			</patcher>
+			<patcher name = "Impro2_SP2">
+			</patcher>
+			<patcher name = "Impro2_SP3">
+			</patcher>
+			<patcher name = "Impro2_SP4">
+			</patcher>
 		</patcher>
-		<patcher name = "Player[6]">
-		</patcher>
-		<patcher name = "Player[5]">
-		</patcher>
-		<patcher name = "DeSlicer">
-		</patcher>
-		<patcher name = "DeSlicer[1]">
-		</patcher>
-		<patcher name = "ImproM2">
-		</patcher>
-		<patcher name = "Player[7]">
-		</patcher>
-		<patcher name = "DeSlicer[2]">
-		</patcher>
-		<patcher name = "Dual_MIDI_Suffixes">
-		</patcher>
-		<patcher name = "Dual_SP_Suffixes">
-		</patcher>
-		<patcher name = "Dual_MIDI_Suffixes[1]">
+		<patcher name = "Duo_SP_Suffixes">
 		</patcher>
 	</slot>
 	<slot number = "14" name = "Beñat Achiary">
+		<patcher name = "Duo_MIDI_Suffixes">
+		</patcher>
 		<patcher name = "Yin+">
 			<pattr name = "pattrstorage" value = "-1" />
 			<pattr name = "Level" value = "25" />
@@ -870,11 +703,7 @@
 			<pattr name = "YinFreq" value = "80" />
 			<pattr name = "YinSampl" value = "2" />
 		</patcher>
-		<patcher name = "Impro1">
-		</patcher>
 		<patcher name = "Player">
-		</patcher>
-		<patcher name = "Impro2">
 		</patcher>
 		<patcher name = "Player[2]">
 		</patcher>
@@ -887,45 +716,36 @@
 			<pattr name = "Thresh" value = "50" />
 			<pattr name = "Weights" value = "0 0 0 0 0 0 0 0 0" />
 		</patcher>
-		<patcher name = "Impro3">
-		</patcher>
-		<patcher name = "Impro4">
-		</patcher>
 		<patcher name = "Player[4]">
 		</patcher>
 		<patcher name = "Player[3]">
 		</patcher>
-		<patcher name = "MIDI-Slicer">
-			<pattr name = "pattrstorage" value = "" />
-			<pattr name = "Channel" value = "" />
-			<pattr name = "Notein" value = "" />
-			<pattr name = "Tolerance" value = "" />
-			<pattr name = "Tolerance[1]" value = "" />
+		<patcher name = "Impros-Pitch">
+			<patcher name = "Impro2_YIN1">
+			</patcher>
+			<patcher name = "Impro2_YIN2">
+			</patcher>
+			<patcher name = "Impro2_YIN3">
+			</patcher>
+			<patcher name = "Impro2_YIN4">
+			</patcher>
 		</patcher>
-		<patcher name = "ImproM1">
+		<patcher name = "Impros-Spectral">
+			<patcher name = "Impro2_SP1">
+			</patcher>
+			<patcher name = "Impro2_SP2">
+			</patcher>
+			<patcher name = "Impro2_SP3">
+			</patcher>
+			<patcher name = "Impro2_SP4">
+			</patcher>
 		</patcher>
-		<patcher name = "Player[6]">
-		</patcher>
-		<patcher name = "Player[5]">
-		</patcher>
-		<patcher name = "DeSlicer">
-		</patcher>
-		<patcher name = "DeSlicer[1]">
-		</patcher>
-		<patcher name = "ImproM2">
-		</patcher>
-		<patcher name = "Player[7]">
-		</patcher>
-		<patcher name = "DeSlicer[2]">
-		</patcher>
-		<patcher name = "Dual_MIDI_Suffixes">
-		</patcher>
-		<patcher name = "Dual_SP_Suffixes">
-		</patcher>
-		<patcher name = "Dual_MIDI_Suffixes[1]">
+		<patcher name = "Duo_SP_Suffixes">
 		</patcher>
 	</slot>
 	<slot number = "15" name = "Mari Kimura">
+		<patcher name = "Duo_MIDI_Suffixes">
+		</patcher>
 		<patcher name = "Yin+">
 			<pattr name = "pattrstorage" value = "-1" />
 			<pattr name = "Level" value = "25" />
@@ -936,11 +756,7 @@
 			<pattr name = "YinFreq" value = "96" />
 			<pattr name = "YinSampl" value = "1" />
 		</patcher>
-		<patcher name = "Impro1">
-		</patcher>
 		<patcher name = "Player">
-		</patcher>
-		<patcher name = "Impro2">
 		</patcher>
 		<patcher name = "Player[2]">
 		</patcher>
@@ -953,45 +769,36 @@
 			<pattr name = "Thresh" value = "20" />
 			<pattr name = "Weights" value = "-2 -1 0 0 0 0 -1 -2 -4" />
 		</patcher>
-		<patcher name = "Impro3">
-		</patcher>
-		<patcher name = "Impro4">
-		</patcher>
 		<patcher name = "Player[4]">
 		</patcher>
 		<patcher name = "Player[3]">
 		</patcher>
-		<patcher name = "MIDI-Slicer">
-			<pattr name = "pattrstorage" value = "" />
-			<pattr name = "Channel" value = "" />
-			<pattr name = "Notein" value = "" />
-			<pattr name = "Tolerance" value = "" />
-			<pattr name = "Tolerance[1]" value = "" />
+		<patcher name = "Impros-Pitch">
+			<patcher name = "Impro2_YIN1">
+			</patcher>
+			<patcher name = "Impro2_YIN2">
+			</patcher>
+			<patcher name = "Impro2_YIN3">
+			</patcher>
+			<patcher name = "Impro2_YIN4">
+			</patcher>
 		</patcher>
-		<patcher name = "ImproM1">
+		<patcher name = "Impros-Spectral">
+			<patcher name = "Impro2_SP1">
+			</patcher>
+			<patcher name = "Impro2_SP2">
+			</patcher>
+			<patcher name = "Impro2_SP3">
+			</patcher>
+			<patcher name = "Impro2_SP4">
+			</patcher>
 		</patcher>
-		<patcher name = "Player[6]">
-		</patcher>
-		<patcher name = "Player[5]">
-		</patcher>
-		<patcher name = "DeSlicer">
-		</patcher>
-		<patcher name = "DeSlicer[1]">
-		</patcher>
-		<patcher name = "ImproM2">
-		</patcher>
-		<patcher name = "Player[7]">
-		</patcher>
-		<patcher name = "DeSlicer[2]">
-		</patcher>
-		<patcher name = "Dual_MIDI_Suffixes">
-		</patcher>
-		<patcher name = "Dual_SP_Suffixes">
-		</patcher>
-		<patcher name = "Dual_MIDI_Suffixes[1]">
+		<patcher name = "Duo_SP_Suffixes">
 		</patcher>
 	</slot>
 	<slot number = "16" name = "SteveL">
+		<patcher name = "Duo_MIDI_Suffixes">
+		</patcher>
 		<patcher name = "Yin+">
 			<pattr name = "pattrstorage" value = "-1" />
 			<pattr name = "Level" value = "40" />
@@ -1002,11 +809,7 @@
 			<pattr name = "YinFreq" value = "100" />
 			<pattr name = "YinSampl" value = "1" />
 		</patcher>
-		<patcher name = "Impro1">
-		</patcher>
 		<patcher name = "Player">
-		</patcher>
-		<patcher name = "Impro2">
 		</patcher>
 		<patcher name = "Player[2]">
 		</patcher>
@@ -1019,109 +822,138 @@
 			<pattr name = "Thresh" value = "25" />
 			<pattr name = "Weights" value = "0 0 0 0 0 0 0 0 0" />
 		</patcher>
-		<patcher name = "Impro3">
+		<patcher name = "Player[4]">
 		</patcher>
-		<patcher name = "Impro4">
+		<patcher name = "Player[3]">
+		</patcher>
+		<patcher name = "Impros-Pitch">
+			<patcher name = "Impro2_YIN1">
+			</patcher>
+			<patcher name = "Impro2_YIN2">
+			</patcher>
+			<patcher name = "Impro2_YIN3">
+			</patcher>
+			<patcher name = "Impro2_YIN4">
+			</patcher>
+		</patcher>
+		<patcher name = "Impros-Spectral">
+			<patcher name = "Impro2_SP1">
+			</patcher>
+			<patcher name = "Impro2_SP2">
+			</patcher>
+			<patcher name = "Impro2_SP3">
+			</patcher>
+			<patcher name = "Impro2_SP4">
+			</patcher>
+		</patcher>
+		<patcher name = "Duo_SP_Suffixes">
+		</patcher>
+	</slot>
+	<slot number = "17" name = "Harmonica">
+		<patcher name = "Duo_MIDI_Suffixes">
+		</patcher>
+		<patcher name = "Yin+">
+			<pattr name = "pattrstorage" value = "" />
+			<pattr name = "Level" value = "50" />
+			<pattr name = "Pitch" value = "1" />
+			<pattr name = "Proba" value = "0.55" />
+			<pattr name = "Quality" value = "0.5" />
+			<pattr name = "Window" value = "50" />
+			<pattr name = "YinFreq" value = "50" />
+			<pattr name = "YinSampl" value = "2" />
+		</patcher>
+		<patcher name = "Player">
+		</patcher>
+		<patcher name = "Player[2]">
+		</patcher>
+		<patcher name = "Player[1]">
+		</patcher>
+		<patcher name = "MFCCs">
+			<pattr name = "pattrstorage" value = "" />
+			<pattr name = "Dmax" value = "7." />
+			<pattr name = "Spectral" value = "1" />
+			<pattr name = "Thresh" value = "20" />
+			<pattr name = "Weights" value = "0 1 2 1 0 0 -1 -2 -4" />
 		</patcher>
 		<patcher name = "Player[4]">
 		</patcher>
 		<patcher name = "Player[3]">
 		</patcher>
-		<patcher name = "MIDI-Slicer">
-			<pattr name = "pattrstorage" value = "" />
-			<pattr name = "Channel" value = "" />
-			<pattr name = "Notein" value = "" />
-			<pattr name = "Tolerance" value = "" />
-			<pattr name = "Tolerance[1]" value = "" />
+		<patcher name = "Impros-Pitch">
+			<patcher name = "Impro2_YIN1">
+			</patcher>
+			<patcher name = "Impro2_YIN2">
+			</patcher>
+			<patcher name = "Impro2_YIN3">
+			</patcher>
+			<patcher name = "Impro2_YIN4">
+			</patcher>
 		</patcher>
-		<patcher name = "ImproM1">
+		<patcher name = "Impros-Spectral">
+			<patcher name = "Impro2_SP1">
+			</patcher>
+			<patcher name = "Impro2_SP2">
+			</patcher>
+			<patcher name = "Impro2_SP3">
+			</patcher>
+			<patcher name = "Impro2_SP4">
+			</patcher>
 		</patcher>
-		<patcher name = "Player[6]">
-		</patcher>
-		<patcher name = "Player[5]">
-		</patcher>
-		<patcher name = "DeSlicer">
-		</patcher>
-		<patcher name = "DeSlicer[1]">
-		</patcher>
-		<patcher name = "ImproM2">
-		</patcher>
-		<patcher name = "Player[7]">
-		</patcher>
-		<patcher name = "DeSlicer[2]">
-		</patcher>
-		<patcher name = "Dual_MIDI_Suffixes">
-		</patcher>
-		<patcher name = "Dual_SP_Suffixes">
-		</patcher>
-		<patcher name = "Dual_MIDI_Suffixes[1]">
+		<patcher name = "Duo_SP_Suffixes">
 		</patcher>
 	</slot>
-	<clientstate>
-		<path name = "Yin+" active = "1" />
-		<path name = "Yin+::pattrstorage" active = "0" />
-		<path name = "Yin+::u897015915" active = "0" />
-		<path name = "Yin+::Level" active = "0" />
-		<path name = "Yin+::Pitch" active = "0" />
-		<path name = "Yin+::Proba" active = "0" />
-		<path name = "Yin+::Quality" active = "0" />
-		<path name = "Yin+::Window" active = "0" />
-		<path name = "Yin+::YinFreq" active = "0" />
-		<path name = "Yin+::YinSampl" active = "0" />
-		<path name = "Impro1" active = "0" />
-		<path name = "Impro1::u237015913" active = "0" />
-		<path name = "Player" active = "0" />
-		<path name = "Player::u684015911" active = "0" />
-		<path name = "Impro2" active = "0" />
-		<path name = "Impro2::u146015909" active = "0" />
-		<path name = "Player[2]" active = "0" />
-		<path name = "Player[2]::u264015907" active = "0" />
-		<path name = "Player[1]" active = "0" />
-		<path name = "Player[1]::u130015905" active = "0" />
-		<path name = "MFCCs" active = "1" />
-		<path name = "MFCCs::pattrstorage" active = "0" />
-		<path name = "MFCCs::u041015903" active = "0" />
-		<path name = "MFCCs::Dmax" active = "0" />
-		<path name = "MFCCs::Spectral" active = "0" />
-		<path name = "MFCCs::Thresh" active = "0" />
-		<path name = "MFCCs::Weights" active = "0" />
-		<path name = "Impro3" active = "0" />
-		<path name = "Impro3::u539015901" active = "0" />
-		<path name = "Impro4" active = "0" />
-		<path name = "Impro4::u128015899" active = "0" />
-		<path name = "Player[4]" active = "0" />
-		<path name = "Player[4]::u884015897" active = "0" />
-		<path name = "Player[3]" active = "0" />
-		<path name = "Player[3]::u425015895" active = "0" />
-		<path name = "MIDI-Slicer" active = "1" />
-		<path name = "MIDI-Slicer::pattrstorage" active = "0" />
-		<path name = "MIDI-Slicer::u292015893" active = "0" />
-		<path name = "MIDI-Slicer::Channel" active = "0" />
-		<path name = "MIDI-Slicer::Notein" active = "0" />
-		<path name = "MIDI-Slicer::Tolerance" active = "0" />
-		<path name = "MIDI-Slicer::Tolerance[1]" active = "0" />
-		<path name = "ImproM1" active = "0" />
-		<path name = "ImproM1::u757015891" active = "0" />
-		<path name = "Player[6]" active = "0" />
-		<path name = "Player[6]::u447015889" active = "0" />
-		<path name = "Player[5]" active = "0" />
-		<path name = "Player[5]::u320015887" active = "0" />
-		<path name = "DeSlicer" active = "0" />
-		<path name = "DeSlicer::u976015885" active = "0" />
-		<path name = "DeSlicer[1]" active = "0" />
-		<path name = "DeSlicer[1]::u264015883" active = "0" />
-		<path name = "ImproM2" active = "0" />
-		<path name = "ImproM2::u917015881" active = "0" />
-		<path name = "Player[7]" active = "0" />
-		<path name = "Player[7]::u571015879" active = "0" />
-		<path name = "DeSlicer[2]" active = "0" />
-		<path name = "DeSlicer[2]::u503015877" active = "0" />
-		<path name = "Dual_MIDI_Suffixes" active = "0" />
-		<path name = "Dual_MIDI_Suffixes::u939015875" active = "0" />
-		<path name = "Dual_SP_Suffixes" active = "0" />
-		<path name = "Dual_SP_Suffixes::u093015873" active = "0" />
-		<path name = "Dual_MIDI_Suffixes[1]" active = "0" />
-		<path name = "Dual_MIDI_Suffixes[1]::u583015871" active = "0" />
-	</clientstate>
+	<slot number = "18" name = "Flute">
+		<patcher name = "Duo_MIDI_Suffixes">
+		</patcher>
+		<patcher name = "Yin+">
+			<pattr name = "pattrstorage" value = "" />
+			<pattr name = "Level" value = "40" />
+			<pattr name = "Pitch" value = "1" />
+			<pattr name = "Proba" value = "0.7" />
+			<pattr name = "Quality" value = "0.56" />
+			<pattr name = "Window" value = "60" />
+			<pattr name = "YinFreq" value = "50" />
+			<pattr name = "YinSampl" value = "2" />
+		</patcher>
+		<patcher name = "Player">
+		</patcher>
+		<patcher name = "Player[2]">
+		</patcher>
+		<patcher name = "Player[1]">
+		</patcher>
+		<patcher name = "MFCCs">
+			<pattr name = "pattrstorage" value = "" />
+			<pattr name = "Dmax" value = "4." />
+			<pattr name = "Spectral" value = "1" />
+			<pattr name = "Thresh" value = "20" />
+			<pattr name = "Weights" value = "0 0 0 0 0 0 0 0 0" />
+		</patcher>
+		<patcher name = "Player[4]">
+		</patcher>
+		<patcher name = "Player[3]">
+		</patcher>
+		<patcher name = "Impros-Pitch">
+			<patcher name = "Impro2_YIN1">
+			</patcher>
+			<patcher name = "Impro2_YIN2">
+			</patcher>
+			<patcher name = "Impro2_YIN3">
+			</patcher>
+			<patcher name = "Impro2_YIN4">
+			</patcher>
+		</patcher>
+		<patcher name = "Impros-Spectral">
+			<patcher name = "Impro2_SP1">
+			</patcher>
+			<patcher name = "Impro2_SP2">
+			</patcher>
+			<patcher name = "Impro2_SP3">
+			</patcher>
+			<patcher name = "Impro2_SP4">
+			</patcher>
+		</patcher>
+		<patcher name = "Duo_SP_Suffixes">
+		</patcher>
+	</slot>
 </pattrstorage>
 
