@@ -164,8 +164,8 @@ list<pair<O_state*,int> >* O_state::rec_sortSLT(list<pair<O_state*,int> >* SLTli
 	return SLTlist;
 }
 
-///@details
-///@param ctxtmin A minimal context (@e lrs) to select reverse suffix links (default is 0 and the algorithm visites all the states of FO).
+///@details Navigate the SLT with respect to decreasing order of common suffix with the given state. And outputs visited nodes with their common suffix length.
+///@param ctxtmin A minimal context to select reverse suffix links (default is 0 and the algorithm visites all the states of FO).
 ///@param nbMaxSol A maximal number of solution to collect (default is @b INT_MAX and the algorithm collects all the solutions)
 list<pair<O_state*,int> >* O_state::sortedSLT(int ctxtmin, int nbMaxSol)
 {

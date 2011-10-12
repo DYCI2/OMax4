@@ -108,6 +108,7 @@ void O_learner::set_data(O_data & dataIn)
 	data = &dataIn;
 }
 
+///@details The sufffix algorithm of Suffix Oracle is done in three steps corresponding to three articles improving the heuristic of it.
 template<class O_DataType>
 pair<int,int> O_learner::suffix(O_state* statein, O_DataType* datain)
 {
@@ -115,6 +116,7 @@ pair<int,int> O_learner::suffix(O_state* statein, O_DataType* datain)
 	pair<int,int> suffixout;
 	O_state* butlast = (*oracle)[statein->get_statenb()-1];
 	j = butlast->get_statenb();
+    ///@details First run the backward search for the suffix as described in <em>Factor oracle, Suffix oracle</em> from Cyril Allauzen, Maxime Crochemore and Mathieu Raffinot (June 1999).
 	if(butlast->get_suffix().first)
 		k = butlast->get_suffix().first->get_statenb();
 	else
@@ -133,8 +135,27 @@ pair<int,int> O_learner::suffix(O_state* statein, O_DataType* datain)
 	else
 		suffixout.first = search_trans(*oracle->state_vect[k], *datain);
 	
-	
+	///@details Then run the length of repeated suffix (O_learner::lrs) algorithm added 2000 in <em>Computing repeated factors with a factor oracle</em> by Arnaud Lefebvre and Thierry Lecroq.
 	suffixout.second = lrs(*(*oracle)[j],*(*oracle)[suffixout.first]); // lrs
+    
+    ///@details Eventually run the checking algorithm developped 2002 in <em>Drastic improvements over repeats found with factor oracle </em> by Arnaud Levebvre, Thierry Lecroq and Joel Alexandre
+	list<pair<O_state*, int> > rsufflist = oracle->state_vect[suffixout.first]->get_rsuff();
+	list<pair<O_state*, int> >::iterator rsuffit;
+	for (rsuffit=rsufflist.begin(); rsuffit!=rsufflist.end(); rsuffit++)
+	{
+		if ((*rsuffit).second == suffixout.second)
+		{
+			if (*(O_DataType*)(*data)[(*rsuffit).first->get_statenb()-(*rsuffit).second] == *(O_DataType*)(*data)[statein->get_statenb()-(*rsuffit).second])
+			{
+				suffixout.first=(*rsuffit).first->get_statenb();
+				suffixout.second++;
+				break;
+				//cout << "found better: "<<(*rsuffit).first->get_statenb()<<"<--"<<statein->get_statenb()<<endl;
+			}
+		}
+	}
+    
+    ///@returns a int pair with the state number of the suffix and the length of the repeated suffix
 	return suffixout;
 }
 
@@ -187,6 +208,7 @@ int O_learner::add(O_DataType & dataIn)
 	return (newstatenb);
 }
 
+///@details This function builds the Factor Oracle exactly as done in O_learner::add but does not create a new data state.
 template<class O_DataType>
 int O_learner::addfrom(O_DataType * dataIn)
 {
@@ -205,6 +227,7 @@ int O_learner::addfrom(O_DataType * dataIn)
 	O_label * last_data = (O_label *)(data->state_vect.back());
 
 	// add existing data
+    ///@remarks Uses the pointer to the existing data
 	int newdate =last_data->get_duration()+data->get_date(last_data->get_statenb());
 	data->add<O_DataType>(newdate,(O_label*)dataIn);
 	
@@ -226,6 +249,7 @@ int O_learner::addfrom(O_DataType * dataIn)
 	pair<O_state*,int> * rsuff = new pair<O_state*,int>(newstate,newsuffix.second);
 	oracle->state_vect[newsuffix.first]->add_rsuff(*rsuff);
 	
+    ///@returns Number of the added state
 	return (newstatenb);
 }
 
@@ -245,7 +269,7 @@ int O_learner::search_trans(O_state & statein, O_DataType & dataIn)
 			found = true;
 		}
 	}
-	///@returns state number pointed by the transition if found
+	///@returns state number pointed by the transition if found, -1 otherwise
 	return intout;
 }
 
