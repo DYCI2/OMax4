@@ -33,6 +33,8 @@ protected:
 	int statenb;
 	/// Time reference in the buffer in ms
 	int bufferef;
+    /// Abstract letter in the alphabet
+    int letter;
 	///@brief List of transitions of the state
 	///@details Each pointer in the list represents a transition from the state to the pointed state.
 	list<O_state*> trans;
@@ -47,8 +49,8 @@ public:
 	//@{
 	/// Default constructor
 	O_state();
-	/// Create a state with its number
-	O_state(int, int = -1);
+	/// Create a state with its number and letter (and optionally its bufferef)
+	O_state(int, int, int = -1);
 	/// Copy constructor
 	O_state(const O_state &);
 	/// Standard destructor
@@ -65,6 +67,10 @@ public:
 	int get_bufferef();
 	/// Set the time reference in the buffer of the state (in ms)
 	void set_bufferef(int);
+    /// Return the abstract letter in the alphabet
+    int get_letter();
+    /// Set the abstract letter in the alphabet
+    void set_letter(int);
 	/// Return the list transitions
 	list<O_state*> get_trans();
 	/// Return the suffix link and the associated @e lrs
@@ -109,7 +115,7 @@ public:
 	//@}
 };
 
-// Sorting function based on @e  lrs
+// Sorting function based on @e lrs
 bool sort_rsuff (pair<O_state*,int>, pair<O_state*,int>);
 
 /* FO class */
@@ -159,6 +165,18 @@ public:
 	
 	/// Initialisation
 	void start();
+    
+    /// @name Construction functions
+    //@{
+    /// Creates and add a state and corresponding arrows in FO
+	int add(int, int = -1);
+    /// Run the suffix oracle core algorithm
+	pair<int,int> suffix(O_state &, int);
+    /// Compute the length of common suffix
+    int lrs(O_state &, O_state &);
+    /// Find transition
+    int search_trans(O_state &, int);
+    //@}
 	
 	/// @name Operators Overload
 	//@{

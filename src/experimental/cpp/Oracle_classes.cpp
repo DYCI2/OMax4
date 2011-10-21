@@ -18,9 +18,10 @@ O_state::O_state()
 	suff.second = -1;
 }
 
-O_state::O_state(int nb, int bufferefin)
+O_state::O_state(int nb, int letterin,int bufferefin)
 {
 	statenb = nb;
+    letter = letterin;
 	bufferef = bufferefin;
 	///@remarks Suffix (@b suff) is initialise to <NULL,-1>
 	suff.first = NULL;
@@ -54,6 +55,16 @@ int O_state::get_bufferef()
 void O_state::set_bufferef(int bufferefin)
 {
 	bufferef = bufferefin;
+}
+
+int O_state::get_letter()
+{
+    return letter;
+}
+
+void O_state::set_letter(int letterin)
+{
+    letter = letterin;
 }
 
 list<O_state*> O_state::get_trans()
@@ -339,11 +350,140 @@ void O_oracle::start()
 {
 	if(size <= 0)
 	{
-		O_state * newstate = new O_state(0);
+		O_state * newstate = new O_state(0, -1);
 		state_vect.push_back(newstate);
 		size = state_vect.size();
 	}
 }
+
+// build
+///@details This function adds a state in Factor Oracle following the construction described in <em>Computing repeated factors with a factor oracle</em> from Arnaud Lefebvre and Thierry Lecroq (June 2000). This implementation adds the reverse suffix links described in  <em>Navigating the Oracle: a Heuristic Approach</em> by Gérard Assayag and Georges Bloch (2007)
+int O_oracle::add(int letterIn, int bufferefIn)
+{
+	// initialisation if needed
+	if (state_vect.size()<1)
+	{
+		this->start();
+	}
+	
+	int newstatenb;
+	
+	O_state * O_it = state_vect.back(); // old last
+	newstatenb = O_it->get_statenb()+1; // new number
+	
+	// create new state
+	O_state * newstate = new O_state(newstatenb, letterIn, bufferefIn);
+	state_vect.push_back(newstate); // add
+	size = state_vect.size(); // update size
+	
+	// basic transition
+	O_it->add_trans(newstate);
+	
+	// suffix algorithm
+	pair<int,int> newsuffix=suffix(*newstate, letterIn); //<LRS inside
+	
+	state_vect.back()->set_suffix(state_vect[newsuffix.first],newsuffix.second);
+	
+	// reversed suffix
+	pair<O_state*,int> * rsuff = new pair<O_state*,int>(newstate,newsuffix.second);
+	state_vect[newsuffix.first]->add_rsuff(*rsuff);
+	
+	///@returns number of the state just added
+	return (newstatenb);
+}
+
+///@details Run the suffix oracle core algorithm backtracking the suffix path and adding transistions until the correct suffix is found
+pair<int,int> O_oracle::suffix(O_state & statein, int letterIn)
+{
+	int j,k;
+	pair<int,int> suffixout;
+	O_state* butlast = state_vect[statein.get_statenb()-1];
+	j = butlast->get_statenb();
+    ///@details First run the backward search for the suffix as described in <em>Factor oracle, Suffix oracle</em> from Cyril Allauzen, Maxime Crochemore and Mathieu Raffinot (June 1999).
+	if(butlast->get_suffix().first)
+		k = butlast->get_suffix().first->get_statenb();
+	else
+		k = -1;
+	while (k>=0 && search_trans(*state_vect[k], letterIn)==-1)
+	{
+		state_vect[k]->add_trans(&statein);
+		j = k;
+		if(state_vect[k]->get_suffix().first)
+			k = state_vect[k]->get_suffix().first->get_statenb();
+		else
+			k = -1;
+	}
+	if (k==-1)
+		suffixout.first = 0;
+	else
+		suffixout.first = search_trans(*state_vect[k], letterIn);
+    
+	///@details Then run the length of repeated suffix (O_learner::lrs) algorithm added 2000 in <em>Computing repeated factors with a factor oracle</em> by Arnaud Lefebvre and Thierry Lecroq.
+	suffixout.second = lrs(*state_vect[j],*state_vect[suffixout.first]); //lrs
+    
+    ///@details Eventually run the checking algorithm developped 2002 in <em>Drastic improvements over repeats found with factor oracle </em> by Arnaud Levebvre, Thierry Lecroq and Joel Alexandre
+	list<pair<O_state*, int> > rsufflist = state_vect[suffixout.first]->get_rsuff();
+	list<pair<O_state*, int> >::iterator rsuffit;
+	for (rsuffit=rsufflist.begin(); rsuffit!=rsufflist.end(); rsuffit++)
+	{
+		if ((*rsuffit).second == suffixout.second)
+		{
+			if ((state_vect[(*rsuffit).first->get_statenb()-(*rsuffit).second])->get_letter() == (state_vect[statein.get_statenb()-(*rsuffit).second])->get_letter())
+			{
+				suffixout.first=(*rsuffit).first->get_statenb();
+				suffixout.second++;
+				break;
+				//cout << "found better: "<<(*rsuffit).first->get_statenb()<<"<--"<<statein->get_statenb()<<endl;
+			}
+		}
+	}
+    
+    ///@returns a int pair with the state number of the suffix and the length of the repeated suffix
+	return suffixout;
+}
+
+///@details Backtrack the suffix path to calculate the length of the common suffix (@e lrs) between @b state1 and @b state2. This algorithm is described in <em>Computing repeated factors with a factor oracle</em> from Arnaud Lefebvre and Thierry Lecroq (June 2000).
+int O_oracle::lrs(O_state & state1, O_state & state2)
+{
+	if(state2.get_statenb() == 0)
+		return 0;
+	else
+	{
+		O_state * pi2 = state_vect[state2.get_statenb()-1];
+		if (pi2->get_statenb() == state1.get_suffix().first->get_statenb())
+			return(state1.get_suffix().second + 1);
+		else
+		{
+			while (pi2->get_suffix().first != state1.get_suffix().first)
+				pi2 = pi2->get_suffix().first;
+			if (state1.get_suffix().second> pi2->get_suffix().second)
+				return(pi2->get_suffix().second + 1);
+			else
+				return(state1.get_suffix().second + 1);
+			///@returns The @e lrs
+		}
+	}
+}
+
+///@details Search for a transition of state @b statein, pointing to a state with the letter @b letterIn
+int O_oracle::search_trans(O_state & statein, int letterIn)
+{
+	int intout = -1;
+	bool found = false;
+	list<O_state*> thistrans = statein.get_trans();
+	list<O_state*>::iterator transit;
+	for (transit = thistrans.begin(); (!found) && (transit != thistrans.end()); transit++)
+	{
+		if ((*transit)->get_letter() == letterIn) // Comparison of the letters
+		{
+			intout = (*transit)->get_statenb();
+			found = true;
+		}
+	}
+	///@returns state number pointed by the transition if found
+	return intout;
+}
+
 
 // operators overload
 ///@remarks State numbers start from 0

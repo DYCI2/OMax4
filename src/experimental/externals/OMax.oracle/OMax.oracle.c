@@ -39,6 +39,9 @@ using namespace std;
 	void OMax_oracle_init(t_OMax_oracle *x);
 	void OMax_oracle_reset(t_OMax_oracle *x);
 	void OMax_oracle_dates(t_OMax_oracle *x);
+
+    // from learner
+    void OMax_oracle_add(t_OMax_oracle *x, t_symbol *s, short ac, t_atom * av);
 	
 	// Internal routines
 	void OMax_oracle_dowrite(t_OMax_oracle *x, t_symbol *s);
@@ -214,6 +217,8 @@ using namespace std;
 		outlet_int(x->out0,(long)x->oracle.get_size()-1);
 	}
 
+    /**@public @memberof t_OMax_oracle
+     * @brief Ouput every state and its corresponding date in the buffer */
 	void OMax_oracle_dates(t_OMax_oracle *x)
 	{
 		char err;

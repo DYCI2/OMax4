@@ -11,21 +11,47 @@ using namespace std;
 #include "Oracle_classes.hpp"
 #include "Oracle_label.hpp"
 #include "Oracle_data.hpp"
-#include "Oracle_learn.hpp"
 #include "virfun.h"
+
+// variable globale
+int modulo=1;
 
 
 int main (int argc, char * const argv[]) {
 	O_oracle oracle;
 	O_data data;
 	
-	/*O_char a ('a');
+	O_char a ('a');
 	O_char b ('b');
-	O_char c ('c');*/
+	O_char c ('c');
+    O_char d ('d');
 	
 	oracle.set_name("Pouet");
 	oracle.start();
-	data.start<O_MIDI_poly>();
+    oracle.add(1);
+    data.add<O_char>(1, (O_label*)&a);
+    oracle.add(2);
+    data.add<O_char>(2, (O_label*)&b);
+    oracle.add(2);
+    data.add<O_char>(3, (O_label*)&b);
+    oracle.add(3);
+    data.add<O_char>(4, (O_label*)&c);
+    oracle.add(1);
+    data.add<O_char>(5, (O_label*)&a);
+    oracle.add(2);
+    data.add<O_char>(6, (O_label*)&b);
+    oracle.add(3);
+    data.add<O_char>(7, (O_label*)&c);
+    oracle.add(4);
+    data.add<O_char>(8, (O_label*)&d);
+    oracle.add(1);
+    data.add<O_char>(9, (O_label*)&a);
+    oracle.add(2);
+    data.add<O_char>(10, (O_label*)&b);
+    oracle.add(3);
+    data.add<O_char>(11, (O_label*)&c);
+	
+    /*data.start<O_MIDI_poly>();
 	
 	O_learner build (oracle,data);
 	
@@ -74,7 +100,7 @@ int main (int argc, char * const argv[]) {
 	build.add(frame1);
 	build.add(frame1);
 	build.add(frame3);
-	build.add(frame2);
+	build.add(frame2);*/
 	
 	
 	/*cout<<frame1.set_mvelocity()<<endl;
@@ -84,7 +110,10 @@ int main (int argc, char * const argv[]) {
 	cout<<(frame1==frame2)<<endl;
 	cout<<(frame3==frame2)<<endl;*/
 	
+    cout<<endl<<"---------------------"<<endl<<endl;
 	cout<<oracle;
+    cout<<endl<<"---------------------"<<endl<<endl;
+    //cout<<data;
 	
 	/*O_oracle copy;
 	O_data copy_data;

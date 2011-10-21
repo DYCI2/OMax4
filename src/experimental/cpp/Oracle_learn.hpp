@@ -82,10 +82,8 @@ O_learner::O_learner()
 	data = NULL;
 }
 
-O_learner::O_learner(O_oracle & oraclin, O_data & datain)
+O_learner::O_learner(O_oracle & oraclin, O_data & datain): oracle(&oraclin), data(&datain)
 {
-	oracle = &oraclin;
-	data = &datain;
 }
 
 O_oracle * O_learner::get_oracle()

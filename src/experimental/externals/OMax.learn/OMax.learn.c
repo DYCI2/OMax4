@@ -107,7 +107,7 @@ extern "C"
 	{
 		t_OMax_learn *x = NULL;
 		
-		if (x = (t_OMax_learn *)object_alloc(OMax_learn_class))
+		if ((x = (t_OMax_learn *)object_alloc(OMax_learn_class)))
 		{
 			// inlets & outlets
 			x->stateout = intout(x);

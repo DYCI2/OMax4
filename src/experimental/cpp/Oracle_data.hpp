@@ -109,7 +109,7 @@ public:
 // Functions //
 ///////////////
 
-O_data::O_data()
+O_data::O_data(): state_vect()
 {
 	///@remarks @b Size is initialised to -1 and hash tables references (@b states2dates and @b dates2states) to NULL
 	size = -1;
@@ -117,11 +117,8 @@ O_data::O_data()
 	dates2states = NULL;
 }
 
-O_data::O_data(const O_data & datain)
+O_data::O_data(const O_data & datain): size(datain.size),state_vect(datain.state_vect), dates2states(datain.dates2states), states2dates(datain.states2dates)
 {
-	size = datain.size;
-	dates2states = datain.dates2states;
-	state_vect = datain.state_vect;
 }
 
 O_data::~O_data()

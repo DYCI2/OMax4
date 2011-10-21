@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7B4C5D79127080B300BB3721 /* virfun.c in Sources */ = {isa = PBXBuildFile; fileRef = 7B4C5D78127080B300BB3721 /* virfun.c */; };
+		7B6BAAB7143B0C2000DA1A15 /* virfun.c in Sources */ = {isa = PBXBuildFile; fileRef = 7B6BAAB6143B0C2000DA1A15 /* virfun.c */; };
 		8DD76F650486A84900D96B5E /* Oracle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 08FB7796FE84155DC02AAC07 /* Oracle.cpp */; settings = {ATTRIBUTES = (); }; };
 		FB3F7CD20F651D1D00F81945 /* Oracle_classes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FB3F7CD10F651D1D00F81945 /* Oracle_classes.cpp */; };
 		FB3F7CD80F651DEB00F81945 /* Oracle_label.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FB3F7CD70F651DEB00F81945 /* Oracle_label.cpp */; };
@@ -27,15 +27,14 @@
 
 /* Begin PBXFileReference section */
 		08FB7796FE84155DC02AAC07 /* Oracle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Oracle.cpp; sourceTree = "<group>"; };
-		7B4C5D78127080B300BB3721 /* virfun.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = virfun.c; sourceTree = "<group>"; };
-		7B4C5DB11270826B00BB3721 /* virfun.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = virfun.h; sourceTree = "<group>"; };
+		7B6BAAB5143B0C1A00DA1A15 /* virfun.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = virfun.h; sourceTree = "<group>"; };
+		7B6BAAB6143B0C2000DA1A15 /* virfun.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = virfun.c; sourceTree = "<group>"; };
 		8DD76F6C0486A84900D96B5E /* OracleCPP */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = OracleCPP; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB3F7CAC0F65140500F81945 /* Oracle_classes.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Oracle_classes.hpp; sourceTree = "<group>"; };
 		FB3F7CD10F651D1D00F81945 /* Oracle_classes.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Oracle_classes.cpp; sourceTree = "<group>"; };
 		FB3F7CD60F651DEB00F81945 /* Oracle_label.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Oracle_label.hpp; sourceTree = "<group>"; };
 		FB3F7CD70F651DEB00F81945 /* Oracle_label.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Oracle_label.cpp; sourceTree = "<group>"; };
 		FBF337AF0F76B68800C69F8E /* Oracle_data.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Oracle_data.hpp; sourceTree = "<group>"; };
-		FBF337B00F76B6AE00C69F8E /* Oracle_learn.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Oracle_learn.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,7 +61,7 @@
 		08FB7795FE84155DC02AAC07 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				7B4C5D78127080B300BB3721 /* virfun.c */,
+				7B6BAAB6143B0C2000DA1A15 /* virfun.c */,
 				08FB7796FE84155DC02AAC07 /* Oracle.cpp */,
 				FB3F7CD70F651DEB00F81945 /* Oracle_label.cpp */,
 				FB3F7CD10F651D1D00F81945 /* Oracle_classes.cpp */,
@@ -81,8 +80,7 @@
 		FB3F7CA90F65130700F81945 /* Headers */ = {
 			isa = PBXGroup;
 			children = (
-				7B4C5DB11270826B00BB3721 /* virfun.h */,
-				FBF337B00F76B6AE00C69F8E /* Oracle_learn.hpp */,
+				7B6BAAB5143B0C1A00DA1A15 /* virfun.h */,
 				FBF337AF0F76B68800C69F8E /* Oracle_data.hpp */,
 				FB3F7CD60F651DEB00F81945 /* Oracle_label.hpp */,
 				FB3F7CAC0F65140500F81945 /* Oracle_classes.hpp */,
@@ -143,7 +141,7 @@
 				8DD76F650486A84900D96B5E /* Oracle.cpp in Sources */,
 				FB3F7CD20F651D1D00F81945 /* Oracle_classes.cpp in Sources */,
 				FB3F7CD80F651DEB00F81945 /* Oracle_label.cpp in Sources */,
-				7B4C5D79127080B300BB3721 /* virfun.c in Sources */,
+				7B6BAAB7143B0C2000DA1A15 /* virfun.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -172,7 +170,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_MODEL_TUNING = G5;
 				INSTALL_PATH = /usr/local/bin;
 				PRODUCT_NAME = OracleCPP;
@@ -183,15 +180,28 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
-				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_CHECK_RETURN_VALUE_OF_OPERATOR_NEW = YES;
+				GCC_C_LANGUAGE_STANDARD = "compiler-default";
 				GCC_INPUT_FILETYPE = sourcecode.cpp.cpp;
 				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_VERSION = 4.2;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_HIDDEN_VIRTUAL_FUNCTIONS = YES;
+				GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = YES;
+				GCC_WARN_MULTIPLE_DEFINITION_TYPES_FOR_SELECTOR = YES;
 				GCC_WARN_PEDANTIC = NO;
+				GCC_WARN_PROTOTYPE_CONVERSION = YES;
+				GCC_WARN_SIGN_COMPARE = YES;
+				GCC_WARN_STRICT_SELECTOR_MATCH = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_LABEL = YES;
+				GCC_WARN_UNUSED_PARAMETER = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PREBINDING = NO;
-				SDKROOT = macosx10.5;
+				SDKROOT = macosx10.6;
 			};
 			name = Debug;
 		};
@@ -199,14 +209,27 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
-				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_CHECK_RETURN_VALUE_OF_OPERATOR_NEW = YES;
+				GCC_C_LANGUAGE_STANDARD = "compiler-default";
 				GCC_INPUT_FILETYPE = sourcecode.cpp.cpp;
+				GCC_VERSION = 4.2;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_HIDDEN_VIRTUAL_FUNCTIONS = YES;
+				GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = YES;
+				GCC_WARN_MULTIPLE_DEFINITION_TYPES_FOR_SELECTOR = YES;
 				GCC_WARN_PEDANTIC = NO;
+				GCC_WARN_PROTOTYPE_CONVERSION = YES;
+				GCC_WARN_SIGN_COMPARE = YES;
+				GCC_WARN_STRICT_SELECTOR_MATCH = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_LABEL = YES;
+				GCC_WARN_UNUSED_PARAMETER = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PREBINDING = NO;
-				SDKROOT = macosx10.5;
+				SDKROOT = macosx10.6;
 			};
 			name = Release;
 		};
