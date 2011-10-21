@@ -97,10 +97,12 @@ public:
 	//@{
 	/// Access states of the sequence
 	O_label* operator[] (int) const;
+    /// Output all the states of the data structure on a standard stream
+	friend ostream & operator<< (ostream &, const O_data &);
 	//@}
 	
 	// friends
-	friend class O_learner;
+	//friend class O_learner;
 };
 
 /**@}*/
@@ -250,6 +252,27 @@ O_label * O_data::operator[] (int i) const
 		return state_vect[i];
 	else
 		return NULL;
+}
+
+ostream & operator<< (ostream & out, const O_data & dataIn)
+{
+    vector<O_label*>::const_iterator O_it;
+    out<<"{"<<endl;
+    out<<"\"name\" : "<<", "<<endl; // à compléter
+    out<<"\"typeID\" : "<<", "<<endl; // à compléter
+    out<<"\"type\" : "<<", "<<endl; // à compléter
+    out<<"\"size\" : "<<dataIn.size<<", "<<endl;
+    out<<"\"data\" : ["<<endl;
+    
+    for(O_it = dataIn.state_vect.begin();O_it!=dataIn.state_vect.end();O_it++)
+    {
+        if (O_it!=dataIn.state_vect.begin())
+            out<<", "<<endl;
+        out<<**O_it;
+    }
+    out<<endl<<"      ]"<<endl;
+    out<<"}"<<endl;
+    return out;
 }
 
 #endif

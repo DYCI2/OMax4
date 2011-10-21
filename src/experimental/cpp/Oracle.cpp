@@ -25,37 +25,39 @@ int main (int argc, char * const argv[]) {
 	O_char b ('b');
 	O_char c ('c');
     O_char d ('d');
-	
+    
+    //cout<<a;
+    
 	oracle.set_name("Pouet");
 	oracle.start();
     oracle.add(1);
-    data.add<O_char>(1, (O_label*)&a);
+    //data.add<O_char>(1, (O_label*)&a);
     oracle.add(2);
-    data.add<O_char>(2, (O_label*)&b);
+    //data.add<O_char>(2, (O_label*)&b);
     oracle.add(2);
-    data.add<O_char>(3, (O_label*)&b);
+    //data.add<O_char>(3, (O_label*)&b);
     oracle.add(3);
-    data.add<O_char>(4, (O_label*)&c);
+    //data.add<O_char>(4, (O_label*)&c);
     oracle.add(1);
-    data.add<O_char>(5, (O_label*)&a);
+    //data.add<O_char>(5, (O_label*)&a);
     oracle.add(2);
-    data.add<O_char>(6, (O_label*)&b);
+    //data.add<O_char>(6, (O_label*)&b);
     oracle.add(3);
-    data.add<O_char>(7, (O_label*)&c);
+    //data.add<O_char>(7, (O_label*)&c);
     oracle.add(4);
-    data.add<O_char>(8, (O_label*)&d);
+    //data.add<O_char>(8, (O_label*)&d);
     oracle.add(1);
-    data.add<O_char>(9, (O_label*)&a);
+    //data.add<O_char>(9, (O_label*)&a);
     oracle.add(2);
-    data.add<O_char>(10, (O_label*)&b);
+    //data.add<O_char>(10, (O_label*)&b);
     oracle.add(3);
-    data.add<O_char>(11, (O_label*)&c);
+    //data.add<O_char>(11, (O_label*)&c);
 	
     /*data.start<O_MIDI_poly>();
 	
-	O_learner build (oracle,data);
+	O_learner build (oracle,data);*/
 	
-	O_MIDI_note C4 (60,100,1);
+	/*O_MIDI_note C4 (60,100,1);
 	O_MIDI_note D4 (62,80,1);
 	O_MIDI_note F4 (65, 110, 1);
 	O_MIDI_note F5 (77, 100, 1);
@@ -69,23 +71,32 @@ int main (int argc, char * const argv[]) {
 	freqs[1]=midi2freq(D4.get_pitch());
 	freqs[2]=midi2freq(F4.get_pitch());
 	frame1.set_vpitch(rec_virfun(freqs, freqs+3, 0.1, freqs[0]*(1.0+approxf), approxf));
-	cout<<frame1.get_vpitch()<<endl;
+	//cout<<frame1.get_vpitch()<<endl;
 	O_MIDI_poly frame2;
 	frame2.set_notes(&F4,&D4,&F5,NULL);
 	freqs[0]=midi2freq(F4.get_pitch());
 	freqs[1]=midi2freq(D4.get_pitch());
 	freqs[2]=midi2freq(F5.get_pitch());
 	frame2.set_vpitch(rec_virfun(freqs, freqs+3, 0.1, freqs[0]*(1.0+approxf), approxf));
-	cout<<frame2.get_vpitch()<<endl;
+	//cout<<frame2.get_vpitch()<<endl;
 	O_MIDI_poly frame3;
 	frame3.set_notes(&F4,&E3,&C4,NULL);
 	freqs[0]=midi2freq(F4.get_pitch());
 	freqs[1]=midi2freq(E3.get_pitch());
 	freqs[2]=midi2freq(C4.get_pitch());
 	frame3.set_vpitch(rec_virfun(freqs, freqs+3, 0.1, freqs[0]*(1.0+approxf), approxf));
-	cout<<frame3.get_vpitch()<<endl;
+	//cout<<frame3.get_vpitch()<<endl;
+    
+    data.add<O_MIDI_poly>(1, (O_label*)&frame1);
+    data.add<O_MIDI_poly>(2, (O_label*)&frame2);
+    data.add<O_MIDI_poly>(3, (O_label*)&frame2);
+    data.add<O_MIDI_poly>(4, (O_label*)&frame3);*/
+    
+    
+    //cout<<C4;
+    //cout<<frame1<<endl;
 	
-	build.add(frame1);
+	/*build.add(frame1);
 	build.add(frame2);
 	build.add(frame3);
 	build.add(frame1);
@@ -101,6 +112,10 @@ int main (int argc, char * const argv[]) {
 	build.add(frame1);
 	build.add(frame3);
 	build.add(frame2);*/
+    
+    /*list<float> coeffs (5,2.);
+    O_spectral sp (69, coeffs);
+    cout<<sp;*/
 	
 	
 	/*cout<<frame1.set_mvelocity()<<endl;
@@ -113,7 +128,7 @@ int main (int argc, char * const argv[]) {
     cout<<endl<<"---------------------"<<endl<<endl;
 	cout<<oracle;
     cout<<endl<<"---------------------"<<endl<<endl;
-    //cout<<data;
+    cout<<data;
 	
 	/*O_oracle copy;
 	O_data copy_data;

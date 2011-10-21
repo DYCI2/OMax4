@@ -33,6 +33,10 @@ protected:
 	int phrase;
 	/// Number of the section the state belongs to
 	int section;
+    
+    /// Virtual output function (operator<< can't be virtual)
+    virtual void print(ostream&) const;
+    
 public:
 	///@name Constructors & Destructors
 	//@{
@@ -69,6 +73,13 @@ public:
 	/// Set the number of the section the state belongs to
 	void set_section(int);
 	//@}
+    
+    ///@name Operators Overload
+	//@{
+	/// Output the attributes of the state on a standard stream
+	friend ostream & operator<< (ostream &, const O_label &);
+	//@}
+    
 };
 
 /// State of a letter sequence
@@ -77,6 +88,9 @@ class O_char : public O_label
 protected:
 	/// Letter labelling the state
 	char letter;
+    
+    /// Specialized output function
+    virtual void print(ostream &) const;
 	
 public:
 	///@name Constructors & Destructors
@@ -102,7 +116,7 @@ public:
 	/// Compare two states of a letter sequence
 	bool operator== (const O_char &) const;
 	/// Output the @b letter attribute on a standard stream
-	friend ostream & operator<< (ostream &, const O_char &);
+    friend ostream & operator<< (ostream &, const O_char &);
 	//@}
 };
 
@@ -113,6 +127,9 @@ protected:
 	int pitch;		///< MIDI pitch
 	int velocity;	///< MIDI velocity
 	int channel;	///< MIDI channel
+    
+    /// Specialized output function
+    virtual void print(ostream &) const;
 	
 public:
 	///@name Constructors & Destructors
@@ -161,7 +178,10 @@ protected:
 	int pitch;			///< Instantaneous pitch
 	float energy;		///< Overall energy of the slice (first MFCC coefficient)
 	list<float> coeffs; ///< List of spectral coefficients
-
+    
+    /// Specialized output function
+    virtual void print(ostream &) const;
+    
 public:
 	///@name Constructors & Desctructors
 	//@{
@@ -217,6 +237,9 @@ protected:
 	int offset;		///< Offset in the slice (ms)
 	int duration;	///< @brief Duration (ms)
 					///< @details Negativ if the note is still pending
+    
+    /// Specialized output function
+    virtual void print(ostream &) const;
 	
 public:
 	///@name Constructors & Destructors
@@ -297,6 +320,9 @@ protected:
 	float vpitch;		///< Virtual pitch of the slice
 	float mvelocity;	///< Average veloctiy
 	list<O_MIDI_note> notes; ///< List of notes in the slice
+    
+    /// Specialized output function
+    virtual void print(ostream &) const;
 	
 public:
 	/* Del

@@ -90,6 +90,22 @@ void O_label::set_section(int sectionin)
 	section = sectionin;
 }
 
+///@remarks Function "print" is not virtual pure
+void O_label::print(ostream & out) const
+{
+    //cout<<"{"<<endl;
+    out<<"    \"state\" : "<<this->statenb<<","<<endl;
+    out<<"    \"time\" : [ "<<this->bufferef<<", "<<this->duration<<" ],"<<endl;
+    out<<"    \"seg\" : [ "<<this->phrase<<", "<<this->section<<" ]";
+    //return out;
+}
+
+ostream & operator<< (ostream & out, const O_label & labelin)
+{
+    labelin.print(out);
+    return out;
+}
+
 ////////////////////
 /* char functions */
 ////////////////////
@@ -126,10 +142,21 @@ bool O_char::operator== (const O_char & other) const
 	return(letter == other.letter);
 }
 
+void O_char::print(ostream& out) const
+{
+    out<<"{"<<endl;
+    ///@remarks Specialized "print" calls the base class (O_label) "print" function
+    O_label::print(out);
+    out<<","<<endl;
+	out<<"    \"letter\" : "<<this->letter<<endl;
+    out<<"}";
+}
+
+///@remarks operator<< can be neither virtual nor template. Therefore we use a virtual function "print" spectialized by every derived classes
 ostream & operator<< (ostream & out, const O_char & charin)
 {
-	out<<charin.letter;
-	return(out);
+    charin.print(out);
+    return out;
 }
 
 /////////////////////////
@@ -202,20 +229,26 @@ int* O_MIDI_mono::get_data(int* dataout)
 	return dataout;
 }
 
-// Operators Overload
 bool O_MIDI_mono::operator== (const O_MIDI_mono & other) const
 {
 	///@returns The comparison between pitches modulo 12
 	return((pitch % 12) == (other.pitch % 12));
 }
 
-/**@details Output format is @verbatim pitch velocity phrase bufferef
- @endverbatim*/
+void O_MIDI_mono::print(ostream & out) const
+{
+    out<<"{"<<endl;
+    ///@remarks Specialized "print" calls the base class (O_label) "print" function
+    O_label::print(out);
+    out<<","<<endl;
+	out<<"    \"note\" : ["<<this->pitch<<", "<<this->velocity<<", "<<this->channel<<" ]"<<endl;
+    out<<"}";
+}
+
 ostream & operator<< (ostream & out, const O_MIDI_mono & midin)
 {
-	out<<midin.pitch<<" "<<midin.velocity<<" ";
-	out<<midin.phrase<<" "<<midin.bufferef<<endl;
-	return(out);
+    midin.print(out);
+    return out;
 }
 
 ////////////////////////
@@ -325,14 +358,30 @@ bool O_spectral::operator== (const O_spectral & other) const
 	return out;
 }
 
+void O_spectral::print(ostream & out) const
+{
+    out<<"{"<<endl;
+    ///@remarks Specialized "print" calls the base class (O_label) "print" function
+    O_label::print(out);
+    out<<","<<endl;
+    
+	out<<"    \"pitch\" : "<<this->pitch<<", "<<endl;
+    out<<"    \"coeffs\" : [ ";
+	list<float>::const_iterator it;
+	for (it = this->coeffs.begin(); it!= this->coeffs.end(); it++)
+    {
+        if (it!=this->coeffs.begin())
+            out<<", ";
+		out<<showpoint<<(*it);
+    }
+    out<<" ]"<<endl;
+    out<<"}";
+}
+
 ostream & operator<< (ostream & out, const O_spectral & spectralin)
 {
-	out<<spectralin.pitch<<" : ";
-	list<float>::const_iterator it;
-	for (it = spectralin.coeffs.begin(); it!= spectralin.coeffs.end(); it++)
-		out<<(*it)<<" ";
-	out<<" : "<<spectralin.phrase<<" "<<spectralin.bufferef<<endl;
-	return(out);
+    spectralin.print(out);
+    return out;
 }
 
 /////////////////////////
@@ -463,10 +512,18 @@ bool O_MIDI_note::operator< (const O_MIDI_note & other) const
 	return(pitch < other.pitch);
 }
 
+void O_MIDI_note::print(ostream & out) const
+{
+	out<<"        \"note\" : [";
+    out<<this->pitch<<", "<<this->velocity<<", "<<this->channel<<" ],"<<endl;
+    out<<"        \"time\" : [";
+    out<<this->offset<<", "<<this->duration<<" ]"<<endl;
+}
+
 ostream & operator<< (ostream & out, const O_MIDI_note & notein)
 {
-	out<<notein.pitch<<" "<<notein.velocity<<" "<<notein.channel<<" "<<notein.offset;
-	return(out);
+    notein.print(out);
+    return out;
 }
 
 /////////////////////////
@@ -570,8 +627,6 @@ void O_MIDI_poly::set_mvelocity(float mveloin)
 {
 	mvelocity = mveloin;
 }
- 
-// Operator Overload
 
 bool O_MIDI_poly::operator== (const O_MIDI_poly & other) const
 {
@@ -604,11 +659,31 @@ bool O_MIDI_poly::operator== (const O_MIDI_poly & other) const
 	
 }
 
+void O_MIDI_poly::print(ostream & out) const
+{
+    out<<"{"<<endl;
+    ///@remarks Specialized "print" calls the base class (O_label) "print" function
+    O_label::print(out);
+    out<<","<<endl;
+    
+    out<<"    \"slice\" : [ "<<this->vpitch<<", "<<this->mvelocity<<" ],"<<endl;
+    out<<"    \"notes\" : ["<<endl;
+	list<O_MIDI_note>::const_iterator noteit;
+	for (noteit = this->notes.begin(); noteit!= this->notes.end(); noteit++)
+    {
+        if (noteit!=this->notes.begin())
+            out<<", "<<endl;;
+        out<<"    {"<<endl;
+        noteit->print(out);
+        out<<"    }";
+    }
+    out<<endl;
+    out<<"              ]"<<endl;
+    out<<"}";
+}
+
 ostream & operator<< (ostream & out, const O_MIDI_poly & framein)
 {
-	list<O_MIDI_note>::const_iterator noteit;
-	for (noteit = framein.notes.begin(); noteit!= framein.notes.end(); noteit++)
-		out<<" "<<(*noteit)<<endl;
-	out<<framein.vpitch<<" "<<framein.mvelocity<<" "<<framein.phrase<<" "<<framein.bufferef<<endl;
-	return(out);
+    framein.print(out);
+    return out;
 }
