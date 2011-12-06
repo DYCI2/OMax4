@@ -121,7 +121,7 @@ public:
 };
 
 ///State of a monophonic MIDI sequence
-class O_MIDI_mono : public O_label
+class O_pitch : public O_label
 {
 protected:
 	int pitch;		///< MIDI pitch
@@ -135,13 +135,13 @@ public:
 	///@name Constructors & Destructors
 	//@{
 	/// Default constructor
-	O_MIDI_mono();
+	O_pitch();
 	/// Create a monophonic MIDI state from data
-	O_MIDI_mono(int, int = 0, int = 0, int = 0, int = 0, int = 0, int = 0);
+	O_pitch(int, int = 0, int = 0, int = 0, int = 0, int = 0, int = 0);
 	/// Copy constructor
-	O_MIDI_mono(const O_MIDI_mono &);
+	O_pitch(const O_pitch &);
 	/// Standard destructor
-	~O_MIDI_mono(){};
+	~O_pitch(){};
 	//@}
 	
 	///@name Set & Get
@@ -165,9 +165,9 @@ public:
 	///@name Operators Overload
 	//@{
 	/// Compare two states based on pitch
-	bool operator== (const O_MIDI_mono &) const;
+	bool operator== (const O_pitch &) const;
 	/// Output data on a standard stream
-	friend ostream & operator<< (ostream &, const O_MIDI_mono &);
+	friend ostream & operator<< (ostream &, const O_pitch &);
 	//@}
 };
 
@@ -302,7 +302,7 @@ public:
 	//@}
 	
 	// friends
-	friend class O_MIDI_poly;
+	friend class O_MIDI;
 };
 
 /*enum Comp
@@ -314,7 +314,7 @@ public:
 };*/
 
 ///State of a polyphonic MIDI sequence
-class O_MIDI_poly : public O_label
+class O_MIDI : public O_label
 {
 protected:
 	float vpitch;		///< Virtual pitch of the slice
@@ -334,13 +334,13 @@ public:
 	///@name Constructors & Destructors
 	//@{
 	/// Default constructor
-	O_MIDI_poly();
+	O_MIDI();
 	/// Copy constructor
-	O_MIDI_poly(const O_MIDI_poly &);
-	/// Create a MIDI_poly state from list of notes and data
-	O_MIDI_poly(list<O_MIDI_note>&, int=0, int=0, int=0, int=0, int=0);
+	O_MIDI(const O_MIDI &);
+	/// Create a MIDI state from list of notes and data
+	O_MIDI(list<O_MIDI_note>&, int=0, int=0, int=0, int=0, int=0);
 	/// Standard destructor
-	~O_MIDI_poly(){};
+	~O_MIDI(){};
 	//@}
 	
 	///@name Set & Get
@@ -377,9 +377,9 @@ public:
 	///@name Operators Overload
 	//@{
 	/// Compare two states based on exact comparisons of pitches in the frame
-	bool operator== (const O_MIDI_poly &) const;
+	bool operator== (const O_MIDI &) const;
 	/// Output note on a standard stream
-	friend ostream & operator<< (ostream &, const O_MIDI_poly &);
+	friend ostream & operator<< (ostream &, const O_MIDI &);
 	//@}
 };
 

@@ -13,8 +13,8 @@
 
 #include <string.h>
 
-extern "C"
-{
+//extern "C"
+//{
 	#include "OMax.data.h"		// object structure
 	
 	////////////////
@@ -33,6 +33,10 @@ extern "C"
 	void OMax_data_type(t_OMax_data *x);
 	void OMax_data_write(t_OMax_data *x, t_symbol *s);
 	void OMax_data_read(t_OMax_data *x, t_symbol *s);
+
+    // from learner
+    void OMax_data_add(t_OMax_data *x, t_symbol *s, short ac, t_atom * av);
+    void OMax_data_note(t_OMax_data *x, t_symbol *s, short ac, t_atom * av);
 	
 	// Internal routines
 	t_symbol * OMax_data_name(t_symbol * oname);
@@ -64,6 +68,8 @@ extern "C"
 		class_addmethod(c, (method)OMax_data_type, "type", 0);
 		class_addmethod(c, (method)OMax_data_write, "write", A_DEFSYM, 0);
 		class_addmethod(c, (method)OMax_data_read, "read", A_DEFSYM, 0);
+        class_addmethod(c, (method)OMax_data_add, "add", A_GIMME, 0);
+		class_addmethod(c, (method)OMax_data_note, "note", A_GIMME, 0);
 		
 		class_register(CLASS_BOX, c); /* CLASS_NOBOX */
 		OMax_data_class = c;
@@ -80,7 +86,7 @@ extern "C"
 	{
 		t_OMax_data *x = NULL;
 		
-		if (x = (t_OMax_data *)object_alloc(OMax_data_class))
+		if ((x = (t_OMax_data *)object_alloc(OMax_data_class)))
 		{
 			// outlets
 			x->out0 = outlet_new(x, NULL);
@@ -114,10 +120,10 @@ extern "C"
 							object_post((t_object *)x,"No data type, using LETTERS");
 						else
 						{
-							if (atom_getsym(argv+1) == gensym("MIDI_MONO"))
+							if (atom_getsym(argv+1) == gensym("PITCH"))
 							{
-								x->datatype = MIDI_MONO;
-								datatype = "MIDI_MONO";
+								x->datatype = PITCH;
+								datatype = "PITCH";
 							}
 							else { 
 								if (atom_getsym(argv+1) == gensym("SPECTRAL"))
@@ -133,10 +139,14 @@ extern "C"
 									}
 								}
 								else {
-									if (atom_getsym(argv+1) == gensym("MIDI_POLY"))
+									if (atom_getsym(argv+1) == gensym("MIDI"))
 									{
-										x->datatype = MIDI_POLY;
-										datatype = "MIDI_POLY";
+										x->datatype = MIDI;
+										datatype = "MIDI";
+                                        ///@details Allocates memory for note stacking in MIDI mode
+                                        x->maxnotes = MAX_NOTES;
+                                        x->notecount = 0;
+                                        x->notes = (O_MIDI_note*)malloc(x->maxnotes*sizeof(O_MIDI_note));
 									}
 									else { 
 										if (atom_getsym(argv+1) == gensym("LETTERS"));
@@ -182,11 +192,11 @@ extern "C"
 				case SPECTRAL:
 					x->data.freestates<O_spectral>();
 					break;
-				case MIDI_MONO:
-					x->data.freestates<O_MIDI_mono>();
+				case PITCH:
+					x->data.freestates<O_pitch>();
 					break;
-				case MIDI_POLY:
-					x->data.freestates<O_MIDI_poly>();
+				case MIDI:
+					x->data.freestates<O_MIDI>();
 					break;
 				default:
 					x->data.freestates<O_char>();
@@ -245,11 +255,11 @@ extern "C"
 			case SPECTRAL:
 				x->data.start<O_spectral>();
 				break;
-			case MIDI_MONO:
-				x->data.start<O_MIDI_mono>();
+			case PITCH:
+				x->data.start<O_pitch>();
 				break;
-			case MIDI_POLY:
-				x->data.start<O_MIDI_poly>();
+			case MIDI:
+				x->data.start<O_MIDI>();
 				break;
 			default:
 				x->data.start<O_char>();
@@ -274,11 +284,11 @@ extern "C"
 				case SPECTRAL:
 					x->data.freestates<O_spectral>();
 					break;
-				case MIDI_MONO:
-					x->data.freestates<O_MIDI_mono>();
+				case PITCH:
+					x->data.freestates<O_pitch>();
 					break;
-				case MIDI_POLY:
-					x->data.freestates<O_MIDI_poly>();
+				case MIDI:
+					x->data.freestates<O_MIDI>();
 					break;
 				default:
 					x->data.freestates<O_char>();
@@ -319,7 +329,337 @@ extern "C"
 	}
 	
 	//@}
-	
+
+
+    /**@public @memberof t_OMax_learn
+     * @brief Add state in both FO and Data Structure
+     * @remarks Input message in Max5: @c add*/
+    void OMax_data_add(t_OMax_data *x, t_symbol *s, short ac, t_atom * av)
+    {
+        int out;				
+        if (ac>0)
+        {
+            /// Create new Data state from the input message
+            switch (x->datatype)
+            {
+                case LETTERS:
+                {
+                    if (av->a_type == A_SYM)
+                    {
+                        int date;
+                        O_char* newdata = new O_char(*atom_getsym(av)->s_name);
+                        date = x->data.get_size()-1;
+                        if (date>0)
+                            newdata->set_bufferef(date);
+                        else
+                            newdata->set_bufferef(0);
+                        newdata->set_duration(1);
+                        
+                        ATOMIC_INCREMENT(&x->wflag);
+                        if (!x->readcount)
+                        {
+                            /// Add state to data structure
+                            out = x->data.add<O_char>(date,(O_label*)(newdata));
+                        }
+                        else
+                            object_error((t_object *)x,"Oracle %s being read (%d)",x->oname->s_name, x->readcount);
+                        ATOMIC_DECREMENT(&x->wflag);
+                    }
+                    else
+                        object_error((t_object *)x,"Wrong type of data");
+                    break;
+                    
+                }
+                case PITCH:
+                {
+                    O_pitch * newdata = new O_pitch();
+                    bool valid = TRUE;
+                    switch(ac)
+                    {
+                        case 6:
+                            if ((av+5)->a_type == A_LONG)
+                                ((O_label*)newdata)->set_duration(atom_getlong(av+5));
+                            else
+                            {
+                                object_error((t_object *)x, "Error in input, duration must be int");
+                                valid = FALSE;
+                                break;
+                            }
+                        case 5:
+                            if ((av+4)->a_type == A_LONG)
+                                ((O_label*)newdata)->set_bufferef(atom_getlong(av+4));
+                            else
+                            {
+                                object_error((t_object *)x, "Error in input, buffer reference must be int");
+                                valid = FALSE;
+                                break;
+                            }
+                        case 4:
+                            if ((av+3)->a_type == A_LONG)
+                                ((O_label*)newdata)->set_section(atom_getlong(av+3));
+                            else
+                            {
+                                object_error((t_object *)x, "Error in input, section must be int");
+                                valid = FALSE;
+                                break;
+                            }
+                        case 3:
+                            if ((av+2)->a_type == A_LONG)
+                                ((O_label*)newdata)->set_phrase(atom_getlong(av+2));
+                            else
+                            {
+                                object_error((t_object *)x, "Error in input, phrase must be int");
+                                valid = FALSE;
+                                break;
+                            }
+                        case 2:
+                            if ((av+1)->a_type == A_LONG)
+                                newdata->set_velocity(atom_getlong(av+1));
+                            else
+                            {
+                                object_error((t_object *)x, "Error in input, velocity must be int");
+                                valid = FALSE;
+                                break;
+                            }
+                        case 1:
+                            if (av->a_type == A_LONG)
+                                newdata->set_pitch(atom_getlong(av));
+                            else
+                            {
+                                object_error((t_object *)x, "Error in input, pitch must be int");
+                                valid = FALSE;
+                            }
+                            break;
+                        default:
+                            object_error((t_object *)x, "Error in input, too many arguments");
+                            valid = FALSE;
+                            break;
+                    }
+                    ATOMIC_INCREMENT(&x->wflag);
+                    if (!x->readcount)
+                    {
+                        // Add state to data structure
+                        out = x->data.add<O_pitch>(atom_getlong(av+4),(O_label*)newdata);
+                    }
+                    else
+                        object_error((t_object *)x,"Oracle %s being read (%d)",x->oname->s_name, x->readcount);
+                    ATOMIC_DECREMENT(&x->wflag);
+                    break;
+                }
+                case SPECTRAL:
+                {
+                    int pitchin = 0;
+                    int coeffcount;
+                    bool valid = TRUE;
+                    O_spectral * newdata = new O_spectral();
+                    if(ac < (x->nbcoeffs+1)) {
+                        object_error((t_object *)x, "Missing coefficients");
+                        valid = FALSE;
+                    }
+                    else
+                    {
+                        if ((av)->a_type == A_LONG)
+                            pitchin = atom_getlong(av);
+                        else
+                            valid = FALSE;
+                        list<float> coeffsin;
+                        for (coeffcount = 0; coeffcount < x->nbcoeffs; coeffcount++)
+                        {
+                            if((av+coeffcount+1)->a_type == A_FLOAT)
+                                coeffsin.push_back(atom_getfloat(av+coeffcount+1));
+                            else {
+                                object_error((t_object *)x, "Wrong types in coefficents");
+                                valid = FALSE;
+                            }
+                        }
+                        newdata = new O_spectral(pitchin, coeffsin);
+                        if (ac >= x->nbcoeffs+2) {
+                            if ((av+x->nbcoeffs+1)->a_type == A_LONG)
+                                ((O_label*)newdata)->set_phrase(atom_getlong(av+x->nbcoeffs+1));
+                            else
+                            {
+                                object_error((t_object *)x, "Error in input, phrase must be int");
+                                valid = FALSE;
+                            }
+                            if (ac >= x->nbcoeffs+3) {
+                                if ((av+x->nbcoeffs+2)->a_type == A_LONG)
+                                    ((O_label*)newdata)->set_section(atom_getlong(av+x->nbcoeffs+2));
+                                else
+                                {
+                                    object_error((t_object *)x, "Error in input, section must be int");
+                                    valid = FALSE;
+                                }
+                                if (ac >= x->nbcoeffs+4) {
+                                    if ((av+x->nbcoeffs+3)->a_type == A_LONG)
+                                        ((O_label*)newdata)->set_bufferef(atom_getlong(av+x->nbcoeffs+3));
+                                    else
+                                    {
+                                        object_error((t_object *)x, "Error in input, buffer reference must be int");
+                                        valid = FALSE;
+                                    }
+                                    if (ac == x->nbcoeffs+5) {
+                                        if ((av+x->nbcoeffs+4)->a_type == A_LONG)
+                                            ((O_label*)newdata)->set_duration(atom_getlong(av+x->nbcoeffs+4));
+                                        else
+                                        {
+                                            object_error((t_object *)x, "Error in input, duration must be int");
+                                            valid = FALSE;
+                                        }
+                                        
+                                    }
+                                    else {
+                                        object_error((t_object *)x, "Error in input, too many arguments");
+                                        valid = FALSE;
+                                    }
+                                }}}
+                    }
+                    ATOMIC_INCREMENT(&x->wflag);
+                    if (!x->readcount)
+                    {
+                        // Add state to data structure
+                        out = x->data.add<O_spectral>(atom_getlong(av+x->nbcoeffs+3),(O_label*)newdata);
+                    }
+                    else
+                        object_error((t_object *)x,"Oracle %s being read (%d)",x->oname->s_name, x->readcount);
+                    ATOMIC_DECREMENT(&x->wflag);
+                    break;
+                }
+                case MIDI:
+                {
+                    bool valid = TRUE;
+                    O_MIDI * newdata = new O_MIDI();
+                    switch (ac)
+                    {
+                        case 6:
+                            if ((av+5)->a_type == A_LONG)
+                                ((O_label*)newdata)->set_duration(atom_getlong(av+5));
+                            else
+                            {
+                                object_error((t_object *)x, "Error in input, duration must be int");
+                                valid = FALSE;
+                                break;
+                            }
+                        case 5:
+                            if ((av+4)->a_type == A_LONG)
+                                ((O_label*)newdata)->set_bufferef(atom_getlong(av+4));
+                            else
+                            {
+                                object_error((t_object *)x, "Error in input, buffer reference must be int");
+                                valid = FALSE;
+                                break;
+                            }
+                        case 4:
+                            if ((av+3)->a_type == A_LONG)
+                                ((O_label*)newdata)->set_section(atom_getlong(av+3));
+                            else
+                            {
+                                object_error((t_object *)x, "Error in input, section must be int");
+                                valid = FALSE;
+                                break;
+                            }
+                        case 3:
+                            if ((av+2)->a_type == A_LONG)
+                                ((O_label*)newdata)->set_phrase(atom_getlong(av+2));
+                            else
+                            {
+                                object_error((t_object *)x, "Error in input, phrase must be int");
+                                valid = FALSE;
+                                break;
+                            }
+                        case 2:
+                            if ((av+1)->a_type == A_FLOAT)
+                                newdata->set_mvelocity(atom_getfloat(av+1));
+                            else
+                            {
+                                object_error((t_object *)x, "Error in input, mean velocity must be float");
+                                valid = FALSE;
+                                break;
+                            }
+                        case 1:
+                            if (av->a_type == A_FLOAT)
+                                newdata->set_vpitch(atom_getfloat(av));
+                            else
+                            {
+                                object_error((t_object *)x, "Error in input, virtual pitch must be float");
+                                valid = FALSE;
+                            }
+                            break;
+                        default:
+                            object_error((t_object *)x, "Error in input, too many arguments");
+                            valid = FALSE;
+                            break;
+                    }
+                    if (valid)
+                    {
+                        // Add accumulated notes to the frame
+                        int i;
+                        list<O_MIDI_note> notes;
+                        for (i=0;i<x->notecount;i++)
+                            notes.push_back(x->notes[i]);
+                        newdata->set_notes(notes);
+                        
+                        ATOMIC_INCREMENT(&x->wflag);
+                        if (!x->readcount)
+                        {
+                            // Add state to both structures
+                            out = x->data.add<O_MIDI>(atom_getlong(av+4),(O_label*)newdata);
+                        }
+                        else
+                            object_error((t_object *)x,"Oracle %s being read (%d)",x->oname->s_name, x->readcount);
+                        ATOMIC_DECREMENT(&x->wflag);
+                        
+                        // Clear accumulated notes
+                        x->notecount = 0;
+                        
+                        break;
+                    }
+                }
+            }
+            /// Output the index of the added state (identical in both structures)
+            outlet_int(x->out0, (long)x->data.get_size());
+        }
+        else
+            object_error((t_object *)x,"Error in input, too few arguments");
+    }
+
+    /**@public @memberof t_OMax_data
+     * @brief Stack notes for polyphonic data
+     * @remarks Input message in Max5: @c note*/
+    void OMax_data_note(t_OMax_data *x, t_symbol *s, short ac, t_atom * av)
+    {
+        long count = (long)ac;
+        long vals[5];
+        if (x->datatype!=MIDI)
+            object_error((t_object*)x, "No note stacking allowed in this type");
+        else
+        {
+            if (!atom_getlong_array((long)ac, av, count, vals))
+            {
+                switch (count) {
+                    case 2:
+                        x->notes[x->notecount] = O_MIDI_note(vals[0],vals[1]);
+                        x->notecount++;
+                        break;
+                    case 3:
+                        x->notes[x->notecount] = O_MIDI_note(vals[0],vals[1],vals[2]);
+                        x->notecount++;
+                        break;
+                    case 4:
+                        x->notes[x->notecount] = O_MIDI_note(vals[0],vals[1],vals[2],vals[3]);
+                        x->notecount++;
+                        break;
+                    case 5:
+                        x->notes[x->notecount] = O_MIDI_note(vals[0],vals[1],vals[2],vals[3],vals[4]);
+                        x->notecount++;
+                        break;
+                    default:
+                        object_error((t_object*)x, "Wrong number of argument for a note");
+                        break;
+                }
+            }
+        }
+    }
+
 	///@name Internal routines
 	//@{
 	
@@ -428,14 +768,14 @@ extern "C"
 		
 		switch (x->datatype)
 		{
-			case MIDI_POLY:
+			case MIDI:
             {
 				// vars & alloc
 				t_dictionary* notedic;
 				atom_alloc_array(5, &i, &array, &err);
 				t_atom* notesarray = (t_atom*)sysmem_newptr(MAX_NOTES*sizeof(t_atom));
 				
-				dictionary_appendsym(d, gensym("typeID"), gensym("MIDI_POLY"));
+				dictionary_appendsym(d, gensym("typeID"), gensym("MIDI"));
 				for (idx=0; idx<nbstates; idx++)
 				{
 					current = x->data[idx];
@@ -451,11 +791,11 @@ extern "C"
 					atom_setlong(array+1, current->get_phrase());
 					dictionary_appendatoms(ditem, sym_seg, 2, array);
 					// slice data
-					atom_setfloat(array, ((O_MIDI_poly*)current)->get_vpitch());
-					atom_setfloat(array+1, ((O_MIDI_poly*)current)->get_mvelocity());
+					atom_setfloat(array, ((O_MIDI*)current)->get_vpitch());
+					atom_setfloat(array+1, ((O_MIDI*)current)->get_mvelocity());
 					dictionary_appendatoms(ditem, sym_slice, 2, array);
 					// notes
-					list<O_MIDI_note> notes = ((O_MIDI_poly*)current)->get_notes();
+					list<O_MIDI_note> notes = ((O_MIDI*)current)->get_notes();
 					list<O_MIDI_note>::iterator notit;
 					i = 0;
 					for (notit = notes.begin(); notit != notes.end() ; notit++)
@@ -506,12 +846,12 @@ extern "C"
 				}
 				break;
             }
-			case MIDI_MONO:
+			case PITCH:
             {
 				// alloc
 				atom_alloc_array(3, &i, &array, &err);
 				
-				dictionary_appendsym(d, gensym("typeID"), gensym("MIDI_MONO"));
+				dictionary_appendsym(d, gensym("typeID"), gensym("PITCH"));
 				
 				for (idx=0; idx<nbstates; idx++)
 				{
@@ -528,7 +868,7 @@ extern "C"
 					atom_setlong(array+1, current->get_phrase());
 					dictionary_appendatoms(ditem, sym_seg, 2, array);
 					// note
-					note_data = ((O_MIDI_mono*)current)->get_data(note_data);
+					note_data = ((O_pitch*)current)->get_data(note_data);
 					atom_setlong_array(3, array, 3, (long*)note_data);
 					dictionary_appendatoms(ditem, sym_note, 3, array);
 					// add to the data array
@@ -668,12 +1008,12 @@ extern "C"
 				ATOMIC_INCREMENT(&x->wflag);
 				switch (datatype)
 				{
-					case 3: // MIDI_poly
+					case 3: // MIDI
 						for (idx=1; idx<size; idx++)
 						{
 							int j;
 							long k,l;
-							O_MIDI_poly* newstate;
+							O_MIDI* newstate;
 							t_atom* notes = NULL;
 							t_atom* notetime = NULL;
 							t_dictionary* notedic = NULL;
@@ -681,7 +1021,7 @@ extern "C"
 							ditem = (t_dictionary*)atom_getobj(&data[idx]);
 							if (ditem)
 							{
-								newstate = new O_MIDI_poly();
+								newstate = new O_MIDI();
 								
 								// get state number
 								dictionary_getlong(ditem, sym_state, &statenb);
@@ -734,7 +1074,7 @@ extern "C"
 								notelist.clear();
 								
 								// add to the data structure
-								x->data.add<O_MIDI_poly>(date,(O_label*)newstate);
+								x->data.add<O_MIDI>(date,(O_label*)newstate);
 							}
 						}
 						break;
@@ -794,14 +1134,14 @@ extern "C"
 						}
 						break;
 						
-					case 1: // MIDI_mono
+					case 1: // pitch
 						for (idx=1; idx<size; idx++)
 						{
-							O_MIDI_mono* newstate;
+							O_pitch* newstate;
 							ditem = (t_dictionary*)atom_getobj(&data[idx]);
 							if (ditem)
 							{
-								newstate = new O_MIDI_mono();
+								newstate = new O_pitch();
 								
 								// get state number
 								dictionary_getlong(ditem, sym_state, &statenb);
@@ -836,7 +1176,7 @@ extern "C"
 									newstate->set_phrase(atom_getlong(array+1));
 								}
 								// add to the data structure
-								x->data.add<O_MIDI_mono>(date,(O_label*)newstate);
+								x->data.add<O_pitch>(date,(O_label*)newstate);
 							}
 						}
 						break;
@@ -886,6 +1226,6 @@ extern "C"
 	
 	//@}
 	
-}
+//}
 
 #endif

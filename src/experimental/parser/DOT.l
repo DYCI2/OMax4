@@ -23,8 +23,9 @@ ID		[a-zA-Z][a-zA-Z0-9_]*
 digraph {return DIGRAPH;}
 
 label   {return LABEL;}
+xlabel  {return XLABEL;}
 
-target	{return TARGET;}
+id      {return DOTID;}
 
 {STRING} {
         yylval.ALPHANUM = strdup(yytext);

@@ -10,15 +10,13 @@
 
 #include <list>
 #include <vector>
+#include <map>
 #include <iostream>
 #include <utility>
 #include <algorithm>
 #include <string>
 
 using namespace std;
-
-/* class annonce */ // needed for friendship
-class O_learner;
 
 /**@defgroup oracle Factor Oracle structure
  *@{*/
@@ -50,7 +48,7 @@ public:
 	/// Default constructor
 	O_state();
 	/// Create a state with its number and letter (and optionally its bufferef)
-	O_state(int, int, int = -1);
+	O_state(int, int = -1, int = -1); // !! temporairement -1 par défaut pour la lettre ¡¡
 	/// Copy constructor
 	O_state(const O_state &);
 	/// Standard destructor
@@ -130,6 +128,15 @@ protected:
 	int size;
 	/// Vector of references to all the state of FO
 	vector<O_state*> state_vect;
+    
+    ///@name Hash tables
+	//@{
+	/// Hash table to convert dates (ms) to state numbers
+	map<int,int> * IDs2states;
+	/// Hash table to convert state numbers to dates (ms)
+	map<int,int> * states2IDs;
+	//@}
+    
 public:
 	///@name Constructors & Destructors
 	//@{
@@ -177,6 +184,34 @@ public:
     /// Find transition
     int search_trans(O_state &, int);
     //@}
+    
+    ///@name Dates to States functions
+	//@{
+	
+    /// Reference a date from data
+	//void add_date(O_label &);
+	
+    /// Reference a date with a state number
+	void add_date(int,int);
+	/// Find a state from a date
+	int get_state(int);
+	/// Reset hash table
+	void reset_D2S();
+	//@}
+    
+    ///@name States to Dates functions
+	//@{
+	
+    /// Reference a state from data
+	//void add_state(O_label &);
+    
+	/// Reference a state from its date and number
+	void add_state(int,int);
+	/// Find the date of a state
+	int get_date(int);
+	/// Reset hash table
+	void reset_S2D();
+	//@}
 	
 	/// @name Operators Overload
 	//@{
@@ -186,8 +221,6 @@ public:
 	friend ostream & operator<< (ostream &, const O_oracle &);
 	//@}
 	
-	// friends
-	friend class O_learner;
 };
 
 /**@}*/

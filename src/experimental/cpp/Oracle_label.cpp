@@ -160,65 +160,65 @@ ostream & operator<< (ostream & out, const O_char & charin)
 }
 
 /////////////////////////
-/* MIDI_mono functions */
+/* pitch functions */
 /////////////////////////
 
 ///@details @b Pitch is set to 60, @b velocity to 0 and @b channel to 128
 ///@remarks Calls the O_label default constructor
-O_MIDI_mono::O_MIDI_mono() : O_label()
+O_pitch::O_pitch() : O_label()
 {
-	pitch = 60;
+	pitch = 0;
 	velocity = 0;
 	channel = 128;
 }
 
 ///@details Pitch is set to @b pitchin. If given, @b velocity is set to @b veloictyin.
 ///@remarks All the following arguments are passed to the O_label constructor.
-O_MIDI_mono::O_MIDI_mono(int pitchin, int velocityin, int statenbin, int bufferefin, int durationin, int phrasein, int sectionin) : O_label(statenbin, bufferefin, durationin, phrasein, sectionin)
+O_pitch::O_pitch(int pitchin, int velocityin, int statenbin, int bufferefin, int durationin, int phrasein, int sectionin) : O_label(statenbin, bufferefin, durationin, phrasein, sectionin)
 {
 	pitch = pitchin;
 	velocity = velocityin;
 }
 
-O_MIDI_mono::O_MIDI_mono(const O_MIDI_mono & midin) : O_label(midin)
+O_pitch::O_pitch(const O_pitch & midin) : O_label(midin)
 {
 	pitch = midin.pitch;
 	velocity = midin.velocity;
 	channel = midin.channel;
 }
 
-int O_MIDI_mono::get_pitch()
+int O_pitch::get_pitch()
 {
 	return pitch;
 }
 
-void O_MIDI_mono::set_pitch(int pitchin)
+void O_pitch::set_pitch(int pitchin)
 {
 	pitch = pitchin;
 }
 
-int O_MIDI_mono::get_velocity()
+int O_pitch::get_velocity()
 {
 	return velocity;
 }
 
-void O_MIDI_mono::set_velocity(int velocityin)
+void O_pitch::set_velocity(int velocityin)
 {
 	velocity = velocityin;
 }
 
-int O_MIDI_mono::get_channel()
+int O_pitch::get_channel()
 {
 	return channel;
 }
 
-void O_MIDI_mono::set_channel(int chanin)
+void O_pitch::set_channel(int chanin)
 {
 	channel = chanin;
 }
 
 ///@remarks If passed NULL, allocates memory
-int* O_MIDI_mono::get_data(int* dataout)
+int* O_pitch::get_data(int* dataout)
 {
 	if (dataout == NULL)
 		dataout = (int*)malloc(3*sizeof(int));
@@ -229,13 +229,13 @@ int* O_MIDI_mono::get_data(int* dataout)
 	return dataout;
 }
 
-bool O_MIDI_mono::operator== (const O_MIDI_mono & other) const
+bool O_pitch::operator== (const O_pitch & other) const
 {
 	///@returns The comparison between pitches modulo 12
 	return((pitch % 12) == (other.pitch % 12));
 }
 
-void O_MIDI_mono::print(ostream & out) const
+void O_pitch::print(ostream & out) const
 {
     out<<"{"<<endl;
     ///@remarks Specialized "print" calls the base class (O_label) "print" function
@@ -245,7 +245,7 @@ void O_MIDI_mono::print(ostream & out) const
     out<<"}";
 }
 
-ostream & operator<< (ostream & out, const O_MIDI_mono & midin)
+ostream & operator<< (ostream & out, const O_pitch & midin)
 {
     midin.print(out);
     return out;
@@ -259,7 +259,7 @@ ostream & operator<< (ostream & out, const O_MIDI_mono & midin)
 ///@remarks Calls the O_label default constructor
 O_spectral::O_spectral() : O_label()
 {
-	pitch = 60;
+	pitch = 0;
 	energy = 0.0;
 }
 
@@ -390,7 +390,7 @@ ostream & operator<< (ostream & out, const O_spectral & spectralin)
 
 O_MIDI_note::O_MIDI_note()
 {
-	pitch = 60;
+	pitch = 0;
 	velocity = 0;
 	channel = 128;
 	offset = 0;
@@ -527,19 +527,19 @@ ostream & operator<< (ostream & out, const O_MIDI_note & notein)
 }
 
 /////////////////////////
-/* MIDI_poly functions */
+/* MIDI functions */
 /////////////////////////
 
 ///@details @b virtual pitch is set to 0, @b velocity to 0
 ///@remarks Calls the O_label default constructor
-O_MIDI_poly::O_MIDI_poly() : O_label()
+O_MIDI::O_MIDI() : O_label()
 {
 	vpitch = 0;
 	mvelocity = 0;
 	notes = list<O_MIDI_note>();
 }
 
-O_MIDI_poly::O_MIDI_poly(const O_MIDI_poly & framein) : O_label(framein)
+O_MIDI::O_MIDI(const O_MIDI & framein) : O_label(framein)
 {
 	vpitch = framein.vpitch;
 	mvelocity = framein.mvelocity;
@@ -548,19 +548,19 @@ O_MIDI_poly::O_MIDI_poly(const O_MIDI_poly & framein) : O_label(framein)
 
 ///@details The virtual fondamental pitch @b vpitch is computed on the notes as well as the mean velocity
 ///@remarks All the following arguments are passed to the O_label constructor
-O_MIDI_poly::O_MIDI_poly(list<O_MIDI_note> & notesin, int statenbin, int bufferefin, int durationin, int phrasein, int sectionin) : O_label(statenbin, bufferefin, durationin, phrasein, sectionin)
+O_MIDI::O_MIDI(list<O_MIDI_note> & notesin, int statenbin, int bufferefin, int durationin, int phrasein, int sectionin) : O_label(statenbin, bufferefin, durationin, phrasein, sectionin)
 {
 	notes = notesin;
 }
 
 // Set & Get
 
-list<O_MIDI_note> O_MIDI_poly::get_notes()
+list<O_MIDI_note> O_MIDI::get_notes()
 {
 	return notes;
 }
 
-int* O_MIDI_poly::get_notes(int* notesout)
+int* O_MIDI::get_notes(int* notesout)
 {
 	int i;
 	i = notes.size();
@@ -579,12 +579,12 @@ int* O_MIDI_poly::get_notes(int* notesout)
 	return notesout;
 }
 
-void O_MIDI_poly::set_notes(list<O_MIDI_note> notesin)
+void O_MIDI::set_notes(list<O_MIDI_note> notesin)
 {
 	notes = notesin;
 }
 
-void O_MIDI_poly::set_notes(O_MIDI_note* note1,...)
+void O_MIDI::set_notes(O_MIDI_note* note1,...)
 {
 	va_list notelist;
 	va_start(notelist,note1);
@@ -598,7 +598,7 @@ void O_MIDI_poly::set_notes(O_MIDI_note* note1,...)
 	notes.sort();
 }
 
-list<int> O_MIDI_poly::get_pitches() const
+list<int> O_MIDI::get_pitches() const
 {
 	list<int> pitches;
 	list<O_MIDI_note>::const_iterator noteit;
@@ -608,27 +608,27 @@ list<int> O_MIDI_poly::get_pitches() const
 	return pitches;
 }
 
-float O_MIDI_poly::get_vpitch() const
+float O_MIDI::get_vpitch() const
 {
 	return vpitch;
 }
 
-void O_MIDI_poly::set_vpitch(float vpitchin)
+void O_MIDI::set_vpitch(float vpitchin)
 {
 	vpitch = vpitchin;
 }
 
-float O_MIDI_poly::get_mvelocity() const
+float O_MIDI::get_mvelocity() const
 {
 	return mvelocity;
 }
 
-void O_MIDI_poly::set_mvelocity(float mveloin)
+void O_MIDI::set_mvelocity(float mveloin)
 {
 	mvelocity = mveloin;
 }
 
-bool O_MIDI_poly::operator== (const O_MIDI_poly & other) const
+bool O_MIDI::operator== (const O_MIDI & other) const
 {
 	//returns The (lazy) pairwise comparison of the pitches
 	/*list<int> pitches = get_pitches();
@@ -659,7 +659,7 @@ bool O_MIDI_poly::operator== (const O_MIDI_poly & other) const
 	
 }
 
-void O_MIDI_poly::print(ostream & out) const
+void O_MIDI::print(ostream & out) const
 {
     out<<"{"<<endl;
     ///@remarks Specialized "print" calls the base class (O_label) "print" function
@@ -682,7 +682,7 @@ void O_MIDI_poly::print(ostream & out) const
     out<<"}";
 }
 
-ostream & operator<< (ostream & out, const O_MIDI_poly & framein)
+ostream & operator<< (ostream & out, const O_MIDI & framein)
 {
     framein.print(out);
     return out;

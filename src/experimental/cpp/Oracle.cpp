@@ -29,7 +29,9 @@ int main (int argc, char * const argv[]) {
     //cout<<a;
     
 	oracle.set_name("Pouet");
+    data.set_name("Truc");
 	oracle.start();
+    data.start<O_char>();
     oracle.add(1);
     //data.add<O_char>(1, (O_label*)&a);
     oracle.add(2);

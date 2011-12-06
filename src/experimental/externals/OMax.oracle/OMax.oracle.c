@@ -22,6 +22,9 @@ using namespace std;
 	
 	#include "DOT.yy.h"				// Lexer header
 	extern int yyparse (O_oracle* NewOracle); // Parser prototype
+//    extern void yy_delete_buffer (YY_BUFFER_STATE b  );
+//    extern YY_BUFFER_STATE yy_scan_string (yyconst char *yy_str  );
+    
 
 	////////////////
 	// Prototypes //
@@ -41,7 +44,8 @@ using namespace std;
 	void OMax_oracle_dates(t_OMax_oracle *x);
 
     // from learner
-    void OMax_oracle_add(t_OMax_oracle *x, t_symbol *s, short ac, t_atom * av);
+    void OMax_oracle_add(t_OMax_oracle *x, long letter);
+    void OMax_oracle_add2(t_OMax_oracle *x, t_symbol *s, short ac, t_atom *av);
 	
 	// Internal routines
 	void OMax_oracle_dowrite(t_OMax_oracle *x, t_symbol *s);
@@ -74,7 +78,9 @@ using namespace std;
 		class_addmethod(c, (method)OMax_oracle_init, "init", 0);
 		class_addmethod(c, (method)OMax_oracle_reset, "reset", 0);
 		class_addmethod(c, (method)OMax_oracle_dates, "dates", 0);
-				
+        class_addmethod(c, (method)OMax_oracle_add, "add", A_LONG, 0);
+        class_addmethod(c, (method)OMax_oracle_add, "int", A_LONG, 0);
+        class_addmethod(c, (method)OMax_oracle_add2, "list", A_GIMME, 0);
 		
 		class_register(CLASS_BOX, c); /* CLASS_NOBOX */
 		OMax_oracle_class = c;
@@ -92,7 +98,7 @@ using namespace std;
 
 		t_OMax_oracle *x = NULL;
 		
-		if (x = (t_OMax_oracle *)object_alloc(OMax_oracle_class))
+		if ((x = (t_OMax_oracle *)object_alloc(OMax_oracle_class)))
 		{
 			x->oracle = O_oracle();
 			x->out0 = outlet_new(x, NULL);
@@ -214,7 +220,7 @@ using namespace std;
 	void OMax_oracle_read(t_OMax_oracle *x, t_symbol *s)
 	{
 		defer(x, (method)OMax_oracle_doread, s, 0, 0L);
-		outlet_int(x->out0,(long)x->oracle.get_size()-1);
+		outlet_int(x->out0,(long)x->oracle.get_size());
 	}
 
     /**@public @memberof t_OMax_oracle
@@ -236,6 +242,40 @@ using namespace std;
 		}
 		sysmem_freeptr(datesout);
 	}
+    
+    /**@public @memberof t_OMax_oracle
+     *@brief Add a state to the oracle given its letter and output the size of FO afterwards*/
+    void OMax_oracle_add(t_OMax_oracle *x, long letterIn)
+    {
+        ATOMIC_INCREMENT(&x->wflag);
+        if (!x->readcount)
+        {
+            x->oracle.add(letterIn);
+            outlet_int(x->out0,(long)x->oracle.get_size());
+        }
+        else
+            object_error((t_object *)x,"Oracle %s being read (%d)",x->oname->s_name, x->readcount);
+        ATOMIC_DECREMENT(&x->wflag);
+    }
+
+
+    void OMax_oracle_add2(t_OMax_oracle *x, t_symbol *s, short ac, t_atom *av)
+    {
+        ATOMIC_INCREMENT(&x->wflag);
+        if (!x->readcount)
+        {
+            if(ac==2 | atom_gettype(av)==A_LONG | atom_gettype(av+1)==A_LONG)
+            {
+                x->oracle.add(atom_getlong(av),atom_getlong(av+1));
+                outlet_int(x->out0,(long)x->oracle.get_size());
+            }
+            else
+                object_error((t_object*)x, "OMax.oracle doesn't understand this list");
+        }
+        else
+            object_error((t_object *)x,"Oracle %s being read (%d)",x->oname->s_name, x->readcount);
+        ATOMIC_DECREMENT(&x->wflag);
+    }
 
 	//@}
 	
@@ -386,7 +426,8 @@ using namespace std;
 		int err = -1;
 		
 		YY_BUFFER_STATE scan_buffer;
-		OMax_oracle_reset(x);
+        if (x->oracle.get_size())
+            OMax_oracle_reset(x);
 		scan_buffer = yy_scan_string(buffer);
 		err = yyparse(&x->oracle);
 		if (err)

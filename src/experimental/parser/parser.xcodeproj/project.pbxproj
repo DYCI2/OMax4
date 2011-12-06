@@ -171,7 +171,6 @@
 					"_GLIBCXX_DEBUG=1",
 					"_GLIBCXX_DEBUG_PEDANTIC=1",
 				);
-				INSTALL_PATH = /usr/local/bin;
 				PRODUCT_NAME = parser;
 			};
 			name = Debug;
@@ -180,9 +179,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_MODEL_TUNING = G5;
-				INSTALL_PATH = /usr/local/bin;
 				PRODUCT_NAME = parser;
 			};
 			name = Release;
@@ -191,16 +188,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7BE1975D117763A800325EC0 /* parser.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				GCC_C_LANGUAGE_STANDARD = ansi;
 				GCC_INPUT_FILETYPE = sourcecode.cpp.cpp;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_PEDANTIC = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				ONLY_ACTIVE_ARCH = YES;
 				PREBINDING = NO;
-				SDKROOT = macosx10.6;
 				WARNING_CFLAGS = "-Wall";
 				YACCFLAGS = "-v";
 				YACC_GENERATE_DEBUGGING_DIRECTIVES = NO;
@@ -211,13 +205,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7BE1975D117763A800325EC0 /* parser.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				GCC_C_LANGUAGE_STANDARD = ansi;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_PEDANTIC = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PREBINDING = NO;
-				SDKROOT = macosx10.6;
 				WARNING_CFLAGS = "-Wall";
 				YACCFLAGS = "-v";
 				YACC_GENERATE_DEBUGGING_DIRECTIVES = NO;

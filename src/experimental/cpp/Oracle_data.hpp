@@ -26,6 +26,8 @@ using namespace std;
 class O_data
 {
 protected:
+    /// Name of the Data Structure
+	char name[512];
 	/// Current size of the sequence
 	int size;
 	///@name Hash tables
@@ -60,13 +62,21 @@ public:
 	void clear_vect();
 	//@}
 	
-	///@name Add & Size
+    /// @name Set & Get
+	//@{
+	/// Return the name of the Data Structure
+	string get_name();
+	/// Set the name of the Data Structure
+	void set_name(const char*);
+	/// Return the current size of the sequence
+	int get_size();
+	//@}
+    
+	///@name Add
 	//@{
 	/// Add state to the sequence
 	template<class O_DataType>
 	int add(int, O_label*);
-	/// Return the current size of the sequence
-	int get_size();
 	//@}
 	
 	///@name Dates to States functions
@@ -101,8 +111,6 @@ public:
 	friend ostream & operator<< (ostream &, const O_data &);
 	//@}
 	
-	// friends
-	//friend class O_learner;
 };
 
 /**@}*/
@@ -119,7 +127,7 @@ O_data::O_data(): state_vect()
 	dates2states = NULL;
 }
 
-O_data::O_data(const O_data & datain): size(datain.size),state_vect(datain.state_vect), dates2states(datain.dates2states), states2dates(datain.states2dates)
+O_data::O_data(const O_data & datain): size(datain.size),dates2states(datain.dates2states), states2dates(datain.states2dates),state_vect(datain.state_vect)
 {
 }
 
@@ -128,6 +136,21 @@ O_data::~O_data()
 	///@remarks Deletes and frees memory of hash tables.
 	delete dates2states;
 	delete states2dates;
+}
+
+string O_data::get_name()
+{
+	return name;
+}
+
+void O_data::set_name(const char *namein)
+{
+	strcpy(name, namein);
+}
+
+int O_data::get_size()
+{
+	return state_vect.size();
 }
 
 ///@details Delete and free the memory for every states of the sequence and resets size
@@ -144,12 +167,7 @@ void O_data::freestates()
 	size = state_vect.size();
 }
 
-int O_data::get_size()
-{
-	return state_vect.size();
-}
-
-///@details Create the first state (numbered 0), sets @b size to 1, instantiates hash tables and adds state 0 corresponding to date 0
+///@details Set data type, create the first state (numbered 0), sets @b size to 1, instantiates hash tables and adds state 0 corresponding to date 0
 template<class O_DataType>
 void O_data::start()
 {
@@ -258,7 +276,7 @@ ostream & operator<< (ostream & out, const O_data & dataIn)
 {
     vector<O_label*>::const_iterator O_it;
     out<<"{"<<endl;
-    out<<"\"name\" : "<<", "<<endl; // à compléter
+    out<<"\"name\" : "<<dataIn.name<<", "<<endl; // à compléter
     out<<"\"typeID\" : "<<", "<<endl; // à compléter
     out<<"\"type\" : "<<", "<<endl; // à compléter
     out<<"\"size\" : "<<dataIn.size<<", "<<endl;

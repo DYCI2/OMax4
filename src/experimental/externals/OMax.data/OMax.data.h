@@ -28,10 +28,10 @@ int modulo=1;
  */
 typedef enum
 	{
-		LETTERS,				///< class O_char
-		MIDI_MONO,				///< class O_MIDI_mono
-		SPECTRAL,				///< class O_spectral
-		MIDI_POLY				///< class O_MIDI_poly
+		LETTERS,			///< class O_char
+		PITCH,              ///< class O_pitch
+		SPECTRAL,           ///< class O_spectral
+		MIDI				///< class O_MIDI
 	} O_DataType;
 
 /**@ingroup label
@@ -49,6 +49,9 @@ typedef struct _OMax_data
 		t_int32_atomic	wflag;		///< Writing flag
 		t_int32_atomic	readcount;	///< Reader Count
 		bool			noDelete;	///< Keep Data states
+        int             maxnotes;	///< Max number of note for a slice (controls memory allocation)
+		O_MIDI_note*    notes;		///< Note array for polyphonic
+		int             notecount;	///< Number of note currently hold
 		void*			out0;		///< Outlet 0 (leftmost)
 	} t_OMax_data;
 

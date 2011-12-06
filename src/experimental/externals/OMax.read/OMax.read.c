@@ -93,7 +93,7 @@ extern "C"
 	{
 		t_OMax_read *x = NULL;
 		
-		if (x = (t_OMax_read *)object_alloc(OMax_read_class))
+		if ((x = (t_OMax_read *)object_alloc(OMax_read_class)))
 		{
 			// outlet init
 			x->out_statenb = intout(x); // rightmost
@@ -104,9 +104,7 @@ extern "C"
 			
 			///@details Check first argument of the Max5 object for a FO name
 			x->obound = FALSE;
-			if (argc == 0)
-				object_error((t_object *)x,"Missing name of the Oracle to read");
-			else
+			if (argc > 0)
 			{
 				if (argv->a_type != A_SYM)
 					object_error((t_object *)x,"First argument must be a symbol (name of an existing Oracle)");

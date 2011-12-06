@@ -24,7 +24,7 @@ int yyerror(O_oracle*,char*);
 %start	oracle
 
 %token <ALPHANUM> ORACLE_ID STRING
-%token	DIGRAPH LABEL TARGET
+%token	DIGRAPH LABEL XLABEL DOTID
 %token	LINK EQ COMMA
 %token	NEW_LINE O_BRACKET C_BRACKET O_SBRACKET C_SBRACKET O_SQBRACKET C_SQBRACKET
 %token 	<NUM> NUMBER
@@ -90,14 +90,20 @@ node_nb:	NUMBER
 				NewOracle->push_state(NewState);
 				//printf("Node %d\n",$1);
 			}
-			O_SQBRACKET target C_SQBRACKET NEW_LINE
-;
+			O_SQBRACKET dotid COMMA xlabel C_SQBRACKET NEW_LINE
+            ;
 
-target:		TARGET EQ NUMBER
-			{
-				((*NewOracle)[NewOracle->get_size()-1])->set_bufferef($3);
-				//printf("target %d\n",$3);
-			}
+dotid:      DOTID EQ NUMBER
+            {
+                ((*NewOracle)[NewOracle->get_size()-1])->set_bufferef($3);
+                //printf("id : %d\n",$3);
+            }
+
+xlabel:     XLABEL EQ NUMBER
+            {
+                ((*NewOracle)[NewOracle->get_size()-1])->set_letter($3);
+                //printf("xlabel : %d\n",$3);
+            }
 
 stmt_list:  /* empty */
             | attr_stmt NEW_LINE

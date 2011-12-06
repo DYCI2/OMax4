@@ -13,6 +13,7 @@ O_state::O_state()
 {
 	///@remarks State number is initialised to 0 and suffix (@b suff) to <NULL,-1>
 	statenb = -1;
+    letter = -1;
 	bufferef = 0;
 	suff.first = NULL;
 	suff.second = -1;
@@ -31,6 +32,7 @@ O_state::O_state(int nb, int letterin,int bufferefin)
 O_state::O_state(const O_state & statein)
 {
 	statenb = statein.statenb;
+    letter = statein.letter;
 	bufferef = statein.bufferef;
 	trans = statein.trans;
 	suff = statein.suff;
@@ -246,7 +248,7 @@ ostream & operator<< (ostream & out, O_state & statein)
 {
 	list<O_state*>::const_iterator transit;
 	out<<"	{"<<endl;
-	out<<"		"<<statein.statenb<<" [target = "<<statein.get_bufferef()<<"]"<<endl;
+	out<<"		"<<statein.statenb<<" [id = "<<statein.get_bufferef()<<", xlabel = "<<statein.get_letter()<<"]"<<endl;
 	for (transit = statein.trans.begin(); transit != statein.trans.end(); transit++)
 	{
 		if (transit == statein.trans.begin())
@@ -278,6 +280,8 @@ O_oracle::O_oracle()
 	//FOname = "Oracle";
 	///@remarks @b Size is initialise to -1
 	size = -1;
+    IDs2states = NULL;
+    states2IDs = NULL;
 }
 
 ///@remarks Delete and free the memory for every state of FO
@@ -286,6 +290,8 @@ O_oracle::~O_oracle()
 	vector<O_state*>::iterator O_it;
 	for(O_it = state_vect.begin();O_it != state_vect.end();O_it++)
 		delete *O_it;
+    delete IDs2states;
+    delete states2IDs;
 }
 
 void O_oracle::push_state(O_state * statein)
@@ -329,11 +335,6 @@ string O_oracle::get_name()
 	return name;
 }
 
-/*void O_oracle::set_name(string namein)
-{
-	FOname = namein;
-}*/
-
 void O_oracle::set_name(const char *namein)
 {
 	strcpy(name, namein);
@@ -353,6 +354,10 @@ void O_oracle::start()
 		O_state * newstate = new O_state(0, -1);
 		state_vect.push_back(newstate);
 		size = state_vect.size();
+        IDs2states = new map<int,int>();
+		(*IDs2states)[0]=0;
+		states2IDs = new map<int,int>();
+		(*states2IDs)[0]=0;
 	}
 }
 
@@ -387,6 +392,10 @@ int O_oracle::add(int letterIn, int bufferefIn)
 	// reversed suffix
 	pair<O_state*,int> * rsuff = new pair<O_state*,int>(newstate,newsuffix.second);
 	state_vect[newsuffix.first]->add_rsuff(*rsuff);
+    
+    // update hashtables
+    add_state(newstatenb, bufferefIn);
+    add_date(bufferefIn, newstatenb);
 	
 	///@returns number of the state just added
 	return (newstatenb);
@@ -484,6 +493,62 @@ int O_oracle::search_trans(O_state & statein, int letterIn)
 	return intout;
 }
 
+// dates to states functions
+
+/*void O_oracle::add_date(O_label & labelin)
+{
+	(*IDs2states)[labelin.get_bufferef()]=labelin.get_statenb();
+}*/
+
+///@param datein date to reference
+///@param statenb number of the state to reference
+void O_oracle::add_date(int datein, int statenb)
+{
+	(*IDs2states)[datein]=statenb;
+}
+
+///@details Retreive the first state finishing at or after the given date
+int O_oracle::get_state(int date)
+{
+	map<int,int>::iterator mapit;
+	mapit = IDs2states->upper_bound(date);
+	--mapit;
+	///@return The state number
+	return (*mapit).second;
+}
+
+void O_oracle::reset_D2S()
+{
+	if (IDs2states != NULL)
+		IDs2states->clear();
+}
+
+// states to dates functions
+
+/*void O_oracle::add_state(O_label & labelin)
+{
+	(*states2IDs)[labelin.get_statenb()]=labelin.get_bufferef();
+}*/
+
+///@param statenb number of the state to reference
+///@param datein date of the state
+void O_oracle::add_state(int statenb, int datein)
+{
+	(*states2IDs)[statenb]=datein;
+}
+
+int O_oracle::get_date(int statenb)
+{
+	///@return The date of the given state
+	return (*states2IDs)[statenb];
+}
+
+void O_oracle::reset_S2D()
+{
+	if (states2IDs != NULL)
+		states2IDs->clear();
+}
+
 
 // operators overload
 ///@remarks State numbers start from 0
@@ -513,7 +578,8 @@ ostream & operator<< (ostream & out, const O_oracle & oraclein)
 	out<<"{"<<endl;
 	out<<"	graph [rankdir=LR];"<<endl;
 	out<<"	node [shape=circle];"<<endl;
-	out<<"	nodesep = 0.2;"<<endl<<endl;
+	out<<"	nodesep = 0.2;"<<endl;
+    out<<"	forcelabels = true;"<<endl<<endl;
 		
 	for(O_it = oraclein.state_vect.begin(); O_it != oraclein.state_vect.end(); O_it++)
 		out<<**O_it<<endl;
