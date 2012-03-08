@@ -40,9 +40,9 @@
 		<patcher name = "MIDI-Slicer">
 			<pattr name = "pattrstorage" value = "-1" />
 			<pattr name = "Channel" value = "-1" />
-			<pattr name = "Legato" value = "100" />
 			<pattr name = "Notein" value = "1" />
 			<pattr name = "Tolerance" value = "50" />
+			<pattr name = "Tolerance[1]" value = "" />
 		</patcher>
 		<patcher name = "ImproM1">
 		</patcher>
@@ -106,9 +106,9 @@
 		<patcher name = "MIDI-Slicer">
 			<pattr name = "pattrstorage" value = "-1" />
 			<pattr name = "Channel" value = "-1" />
-			<pattr name = "Legato" value = "100" />
 			<pattr name = "Notein" value = "1" />
 			<pattr name = "Tolerance" value = "50" />
+			<pattr name = "Tolerance[1]" value = "" />
 		</patcher>
 		<patcher name = "ImproM1">
 		</patcher>
@@ -172,9 +172,9 @@
 		<patcher name = "MIDI-Slicer">
 			<pattr name = "pattrstorage" value = "-1" />
 			<pattr name = "Channel" value = "-1" />
-			<pattr name = "Legato" value = "100" />
 			<pattr name = "Notein" value = "1" />
 			<pattr name = "Tolerance" value = "50" />
+			<pattr name = "Tolerance[1]" value = "" />
 		</patcher>
 		<patcher name = "ImproM1">
 		</patcher>
@@ -238,9 +238,9 @@
 		<patcher name = "MIDI-Slicer">
 			<pattr name = "pattrstorage" value = "-1" />
 			<pattr name = "Channel" value = "-1" />
-			<pattr name = "Legato" value = "100" />
 			<pattr name = "Notein" value = "1" />
 			<pattr name = "Tolerance" value = "50" />
+			<pattr name = "Tolerance[1]" value = "" />
 		</patcher>
 		<patcher name = "ImproM1">
 		</patcher>
@@ -304,9 +304,9 @@
 		<patcher name = "MIDI-Slicer">
 			<pattr name = "pattrstorage" value = "-1" />
 			<pattr name = "Channel" value = "-1" />
-			<pattr name = "Legato" value = "100" />
 			<pattr name = "Notein" value = "1" />
 			<pattr name = "Tolerance" value = "50" />
+			<pattr name = "Tolerance[1]" value = "" />
 		</patcher>
 		<patcher name = "ImproM1">
 		</patcher>
@@ -370,9 +370,9 @@
 		<patcher name = "MIDI-Slicer">
 			<pattr name = "pattrstorage" value = "-1" />
 			<pattr name = "Channel" value = "-1" />
-			<pattr name = "Legato" value = "100" />
 			<pattr name = "Notein" value = "1" />
 			<pattr name = "Tolerance" value = "50" />
+			<pattr name = "Tolerance[1]" value = "" />
 		</patcher>
 		<patcher name = "ImproM1">
 		</patcher>
@@ -436,9 +436,9 @@
 		<patcher name = "MIDI-Slicer">
 			<pattr name = "pattrstorage" value = "-1" />
 			<pattr name = "Channel" value = "-1" />
-			<pattr name = "Legato" value = "100" />
 			<pattr name = "Notein" value = "1" />
 			<pattr name = "Tolerance" value = "50" />
+			<pattr name = "Tolerance[1]" value = "" />
 		</patcher>
 		<patcher name = "ImproM1">
 		</patcher>
@@ -502,9 +502,9 @@
 		<patcher name = "MIDI-Slicer">
 			<pattr name = "pattrstorage" value = "-1" />
 			<pattr name = "Channel" value = "-1" />
-			<pattr name = "Legato" value = "100" />
 			<pattr name = "Notein" value = "1" />
 			<pattr name = "Tolerance" value = "50" />
+			<pattr name = "Tolerance[1]" value = "" />
 		</patcher>
 		<patcher name = "ImproM1">
 		</patcher>
@@ -568,9 +568,9 @@
 		<patcher name = "MIDI-Slicer">
 			<pattr name = "pattrstorage" value = "-1" />
 			<pattr name = "Channel" value = "-1" />
-			<pattr name = "Legato" value = "100" />
 			<pattr name = "Notein" value = "1" />
 			<pattr name = "Tolerance" value = "50" />
+			<pattr name = "Tolerance[1]" value = "" />
 		</patcher>
 		<patcher name = "ImproM1">
 		</patcher>
@@ -597,45 +597,45 @@
 	</slot>
 	<clientstate>
 		<path name = "Impro1" active = "0" />
-		<path name = "Impro1::u400011498" active = "0" />
+		<path name = "Impro1::u110013297" active = "0" />
 		<path name = "Player" active = "0" />
-		<path name = "Player::u037011496" active = "0" />
+		<path name = "Player::u158013295" active = "0" />
 		<path name = "Impro2" active = "0" />
-		<path name = "Impro2::u225011494" active = "0" />
+		<path name = "Impro2::u232013293" active = "0" />
 		<path name = "Player[2]" active = "0" />
-		<path name = "Player[2]::u218011492" active = "0" />
+		<path name = "Player[2]::u505013291" active = "0" />
 		<path name = "Player[1]" active = "0" />
-		<path name = "Player[1]::u441011490" active = "0" />
+		<path name = "Player[1]::u676013289" active = "0" />
 		<path name = "Impro3" active = "0" />
-		<path name = "Impro3::u196011486" active = "0" />
+		<path name = "Impro3::u156013285" active = "0" />
 		<path name = "Impro4" active = "0" />
-		<path name = "Impro4::u679011484" active = "0" />
+		<path name = "Impro4::u866013283" active = "0" />
 		<path name = "Player[4]" active = "0" />
-		<path name = "Player[4]::u186011482" active = "0" />
+		<path name = "Player[4]::u255013281" active = "0" />
 		<path name = "Player[3]" active = "0" />
-		<path name = "Player[3]::u035011480" active = "0" />
+		<path name = "Player[3]::u867013279" active = "0" />
 		<path name = "ImproM1" active = "0" />
-		<path name = "ImproM1::u485011476" active = "0" />
+		<path name = "ImproM1::u709013275" active = "0" />
 		<path name = "Player[6]" active = "0" />
-		<path name = "Player[6]::u812011474" active = "0" />
+		<path name = "Player[6]::u964013273" active = "0" />
 		<path name = "Player[5]" active = "0" />
-		<path name = "Player[5]::u021011472" active = "0" />
+		<path name = "Player[5]::u292013271" active = "0" />
 		<path name = "DeSlicer" active = "0" />
-		<path name = "DeSlicer::u007011470" active = "0" />
+		<path name = "DeSlicer::u437013269" active = "0" />
 		<path name = "DeSlicer[1]" active = "0" />
-		<path name = "DeSlicer[1]::u686011468" active = "0" />
+		<path name = "DeSlicer[1]::u308013267" active = "0" />
 		<path name = "ImproM2" active = "0" />
-		<path name = "ImproM2::u748011466" active = "0" />
+		<path name = "ImproM2::u262013265" active = "0" />
 		<path name = "Player[7]" active = "0" />
-		<path name = "Player[7]::u673011464" active = "0" />
+		<path name = "Player[7]::u984013263" active = "0" />
 		<path name = "DeSlicer[2]" active = "0" />
-		<path name = "DeSlicer[2]::u205011462" active = "0" />
+		<path name = "DeSlicer[2]::u113013261" active = "0" />
 		<path name = "Dual_MIDI_Suffixes" active = "0" />
-		<path name = "Dual_MIDI_Suffixes::u559011460" active = "0" />
+		<path name = "Dual_MIDI_Suffixes::u087013259" active = "0" />
 		<path name = "Dual_SP_Suffixes" active = "0" />
-		<path name = "Dual_SP_Suffixes::u645011458" active = "0" />
+		<path name = "Dual_SP_Suffixes::u421013257" active = "0" />
 		<path name = "Dual_MIDI_Suffixes[1]" active = "0" />
-		<path name = "Dual_MIDI_Suffixes[1]::u640011456" active = "0" />
+		<path name = "Dual_MIDI_Suffixes[1]::u134013255" active = "0" />
 	</clientstate>
 </pattrstorage>
 
