@@ -14,6 +14,8 @@ using namespace std;
 #include "Oracle_learn.hpp"
 #include "virfun.h"
 
+// variable globale
+int modulo=1;
 
 int main (int argc, char * const argv[]) {
 	O_oracle oracle;
@@ -34,30 +36,35 @@ int main (int argc, char * const argv[]) {
 	O_MIDI_note F4 (65, 110, 1);
 	O_MIDI_note F5 (77, 100, 1);
 	O_MIDI_note E3 (52, 90, 1);
+    O_MIDI_note E4 (64, 90, 1);
+    O_MIDI_note E5 (76, 100, 1);
 	
 	float freqs[3];
 	float approxf=midi2freq_approx(0.5);
 	O_MIDI_poly frame1;
-	frame1.set_notes(&C4,&D4,&F4,NULL);
-	freqs[0]=midi2freq(C4.get_pitch());
-	freqs[1]=midi2freq(D4.get_pitch());
-	freqs[2]=midi2freq(F4.get_pitch());
-	frame1.set_vpitch(rec_virfun(freqs, freqs+3, 0.1, freqs[0]*(1.0+approxf), approxf));
-	cout<<frame1.get_vpitch()<<endl;
+	frame1.set_notes(&C4,NULL);
+	//freqs[0]=midi2freq(C4.get_pitch());
+	//freqs[1]=midi2freq(D4.get_pitch());
+	//freqs[2]=midi2freq(F4.get_pitch());
+	//frame1.set_vpitch(rec_virfun(freqs, freqs+3, 0.1, freqs[0]*(1.0+approxf), approxf));
+    frame1.set_vpitch(60.);
+	//cout<<frame1.get_vpitch()<<endl;
 	O_MIDI_poly frame2;
-	frame2.set_notes(&F4,&D4,&F5,NULL);
-	freqs[0]=midi2freq(F4.get_pitch());
-	freqs[1]=midi2freq(D4.get_pitch());
-	freqs[2]=midi2freq(F5.get_pitch());
-	frame2.set_vpitch(rec_virfun(freqs, freqs+3, 0.1, freqs[0]*(1.0+approxf), approxf));
-	cout<<frame2.get_vpitch()<<endl;
+	frame2.set_notes(&E4,NULL);
+	//freqs[0]=midi2freq(F4.get_pitch());
+	//freqs[1]=midi2freq(D4.get_pitch());
+	//freqs[2]=midi2freq(F5.get_pitch());
+	//frame2.set_vpitch(rec_virfun(freqs, freqs+3, 0.1, freqs[0]*(1.0+approxf), approxf));
+    frame2.set_vpitch(40.);
+	//cout<<frame2.get_vpitch()<<endl;
 	O_MIDI_poly frame3;
-	frame3.set_notes(&F4,&E3,&C4,NULL);
-	freqs[0]=midi2freq(F4.get_pitch());
-	freqs[1]=midi2freq(E3.get_pitch());
-	freqs[2]=midi2freq(C4.get_pitch());
-	frame3.set_vpitch(rec_virfun(freqs, freqs+3, 0.1, freqs[0]*(1.0+approxf), approxf));
-	cout<<frame3.get_vpitch()<<endl;
+	frame3.set_notes(&E5,NULL);
+	//freqs[0]=midi2freq(F4.get_pitch());
+	//freqs[1]=midi2freq(E3.get_pitch());
+	//freqs[2]=midi2freq(C4.get_pitch());
+	//frame3.set_vpitch(rec_virfun(freqs, freqs+3, 0.1, freqs[0]*(1.0+approxf), approxf));
+    frame3.set_vpitch(40.);
+	//cout<<frame3.get_vpitch()<<endl;
 	
 	build.add(frame1);
 	build.add(frame2);

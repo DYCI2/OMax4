@@ -16,7 +16,7 @@
 typedef struct _statelem
 	{
 		bool	enable;		///< Status of the agent
-		long	pitch;		///< Pitch of the agent
+		double	pitch;		///< Pitch of the agent
 		double	nbOcc;		///< # of occurences of this pitch
 		double	nbtot;		///< # of pitches received
 		double	ampacc;		///< Sum of the amplitudes from this pitch
@@ -58,12 +58,13 @@ void bc_yinstats_assist(t_bc_yinstats *x, void *b, long m, long a, char *s);
 // Input/ouput routines
 void bc_yinstats_amp(t_bc_yinstats *x, double ampin);
 void bc_yinstats_pitch(t_bc_yinstats *x, long pitchin);
+void bc_yinstats_pitchf(t_bc_yinstats *x, double pitchin);
 void bc_yinstats_out(bc_statelem *stat);
 void bc_yinstats_stop(t_bc_yinstats *x);
 
 // Internal routines
-bool bc_yinstats_addocc(t_bc_yinstats *x, long pitchin, double ampin);
-long bc_yinstats_addstat(t_bc_yinstats *x, long pitchin, double ampin);
+bool bc_yinstats_addocc(t_bc_yinstats *x, double pitchin, double ampin);
+long bc_yinstats_addstat(t_bc_yinstats *x, double pitchin, double ampin);
 void bc_yinstats_reset(t_bc_yinstats *x, bc_statelem *stat);
 
 // Global class pointer variable
@@ -87,6 +88,7 @@ int main(void)
 	
 	// input methods
 	class_addmethod(c, (method)bc_yinstats_pitch, "int", A_LONG, 0);
+	class_addmethod(c, (method)bc_yinstats_pitchf, "float", A_FLOAT, 0);
 	class_addmethod(c, (method)bc_yinstats_amp, "ft1", A_FLOAT, 0);
 	class_addmethod(c, (method)bc_yinstats_stop, "stop", 0);
 		
@@ -123,7 +125,7 @@ void *bc_yinstats_new(t_symbol *s, long argc, t_atom *argv)
 		// outlets
 		x->out_proba = floatout(x);
 		x->out_amp = floatout(x);
-		x->out_pitch = intout(x);
+		x->out_pitch = floatout(x);
 		
 		x->nbstats = 100;
 		x->minproba = 0.;
@@ -217,9 +219,18 @@ void bc_yinstats_amp(t_bc_yinstats *x, double ampin)
  * @brief Raw pitches */
 void bc_yinstats_pitch(t_bc_yinstats *x, long pitchin)
 {
+	x->lastpitch = (double)pitchin;
+	bc_yinstats_addocc(x, x->lastpitch, x->lastamp);
+	bc_yinstats_addstat(x, x->lastpitch, x->lastamp);
+}
+
+/**@memberof t_bc_yinstats
+ * @brief Raw pitches (floats) */
+void bc_yinstats_pitchf(t_bc_yinstats *x, double pitchin)
+{
 	x->lastpitch = pitchin;
-	bc_yinstats_addocc(x, pitchin, x->lastamp);
-	bc_yinstats_addstat(x, pitchin, x->lastamp);
+	bc_yinstats_addocc(x, x->lastpitch, x->lastamp);
+	bc_yinstats_addstat(x, x->lastpitch, x->lastamp);
 }
 
 /**@memberof t_bc_yinstats
@@ -243,7 +254,7 @@ void bc_yinstats_stop(t_bc_yinstats *x)
 
 /**@memberof t_bc_yinstats
  * @brief  Adds a pitch to every enabled statistics agent */
-bool bc_yinstats_addocc(t_bc_yinstats *x, long pitchin, double ampin)
+bool bc_yinstats_addocc(t_bc_yinstats *x, double pitchin, double ampin)
 {
 	long i;
 	bool found = FALSE;
@@ -266,7 +277,7 @@ bool bc_yinstats_addocc(t_bc_yinstats *x, long pitchin, double ampin)
 
 /**@memberof t_bc_yinstats
  * @brief Enables a new statistics agent */
-long bc_yinstats_addstat(t_bc_yinstats *x, long pitchin, double ampin)
+long bc_yinstats_addstat(t_bc_yinstats *x, double pitchin, double ampin)
 {
 	long i = 0;
 	while (x->stats[i].enable && i<x->nbstats)
@@ -318,7 +329,7 @@ void bc_yinstats_out(bc_statelem *stat)
 	{
 		outlet_float(x->out_proba, stat->proba);
 		outlet_float(x->out_amp, stat->ampacc / stat->nbOcc);
-		outlet_int(x->out_pitch, stat->pitch);
+		outlet_float(x->out_pitch, stat->pitch);
 	}
 	stat->enable = FALSE;
 }

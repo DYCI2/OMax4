@@ -591,10 +591,7 @@ bool O_MIDI_poly::operator== (const O_MIDI_poly & other) const
 	
 	if (modulo)
 	{
-		float div1 = vpitch/12.;
-		float div2 = other.get_vpitch()/12.;
-	
-		return (((div1 - floor(div1))*12.)==((div2 - floor(div2))*12.));
+		return (fmod(vpitch,12.)==fmod(other.get_vpitch(),12.));
 	}
 	else
 	{

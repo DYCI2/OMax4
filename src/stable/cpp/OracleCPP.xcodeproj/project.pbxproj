@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7B4C5D79127080B300BB3721 /* virfun.c in Sources */ = {isa = PBXBuildFile; fileRef = 7B4C5D78127080B300BB3721 /* virfun.c */; };
+		7B65B5D11508C90B00E22AF0 /* virfun.c in Sources */ = {isa = PBXBuildFile; fileRef = 7B65B5D01508C90B00E22AF0 /* virfun.c */; };
 		8DD76F650486A84900D96B5E /* Oracle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 08FB7796FE84155DC02AAC07 /* Oracle.cpp */; settings = {ATTRIBUTES = (); }; };
 		FB3F7CD20F651D1D00F81945 /* Oracle_classes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FB3F7CD10F651D1D00F81945 /* Oracle_classes.cpp */; };
 		FB3F7CD80F651DEB00F81945 /* Oracle_label.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FB3F7CD70F651DEB00F81945 /* Oracle_label.cpp */; };
@@ -27,8 +27,8 @@
 
 /* Begin PBXFileReference section */
 		08FB7796FE84155DC02AAC07 /* Oracle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Oracle.cpp; sourceTree = "<group>"; };
-		7B4C5D78127080B300BB3721 /* virfun.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = virfun.c; sourceTree = "<group>"; };
-		7B4C5DB11270826B00BB3721 /* virfun.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = virfun.h; sourceTree = "<group>"; };
+		7B65B5CF1508C90B00E22AF0 /* virfun.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = virfun.h; sourceTree = "<group>"; };
+		7B65B5D01508C90B00E22AF0 /* virfun.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = virfun.c; sourceTree = "<group>"; };
 		8DD76F6C0486A84900D96B5E /* OracleCPP */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = OracleCPP; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB3F7CAC0F65140500F81945 /* Oracle_classes.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Oracle_classes.hpp; sourceTree = "<group>"; };
 		FB3F7CD10F651D1D00F81945 /* Oracle_classes.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Oracle_classes.cpp; sourceTree = "<group>"; };
@@ -62,7 +62,7 @@
 		08FB7795FE84155DC02AAC07 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				7B4C5D78127080B300BB3721 /* virfun.c */,
+				7B65B5D01508C90B00E22AF0 /* virfun.c */,
 				08FB7796FE84155DC02AAC07 /* Oracle.cpp */,
 				FB3F7CD70F651DEB00F81945 /* Oracle_label.cpp */,
 				FB3F7CD10F651D1D00F81945 /* Oracle_classes.cpp */,
@@ -81,7 +81,7 @@
 		FB3F7CA90F65130700F81945 /* Headers */ = {
 			isa = PBXGroup;
 			children = (
-				7B4C5DB11270826B00BB3721 /* virfun.h */,
+				7B65B5CF1508C90B00E22AF0 /* virfun.h */,
 				FBF337B00F76B6AE00C69F8E /* Oracle_learn.hpp */,
 				FBF337AF0F76B68800C69F8E /* Oracle_data.hpp */,
 				FB3F7CD60F651DEB00F81945 /* Oracle_label.hpp */,
@@ -143,7 +143,7 @@
 				8DD76F650486A84900D96B5E /* Oracle.cpp in Sources */,
 				FB3F7CD20F651D1D00F81945 /* Oracle_classes.cpp in Sources */,
 				FB3F7CD80F651DEB00F81945 /* Oracle_label.cpp in Sources */,
-				7B4C5D79127080B300BB3721 /* virfun.c in Sources */,
+				7B65B5D11508C90B00E22AF0 /* virfun.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

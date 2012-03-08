@@ -487,8 +487,11 @@ extern "C"
 	 * @remarks Input message in Max5: the new minimal context (@c int) in the right inlet */
 	void OMax_ctxt(t_OMax_SLT* x, long ctxtin)
 	{
-		x->context = ctxtin;
-	}
+        if (ctxtin>=0)
+            x->context = ctxtin;
+        else
+            object_error((t_object*)x, "Minimal context must be positive");
+    }
 	
 	//@}
 }
