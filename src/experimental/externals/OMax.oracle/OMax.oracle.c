@@ -251,11 +251,14 @@ using namespace std;
         if (!x->readcount)
         {
             x->oracle.add(letterIn);
+            ATOMIC_DECREMENT(&x->wflag);
             outlet_int(x->out0,(long)x->oracle.get_size());
         }
         else
+        {
+            ATOMIC_DECREMENT(&x->wflag);
             object_error((t_object *)x,"Oracle %s being read (%d)",x->oname->s_name, x->readcount);
-        ATOMIC_DECREMENT(&x->wflag);
+        }
     }
 
 
@@ -267,14 +270,20 @@ using namespace std;
             if(ac==2 | atom_gettype(av)==A_LONG | atom_gettype(av+1)==A_LONG)
             {
                 x->oracle.add(atom_getlong(av),atom_getlong(av+1));
+                ATOMIC_DECREMENT(&x->wflag);
                 outlet_int(x->out0,(long)x->oracle.get_size());
             }
             else
+            {
+                ATOMIC_DECREMENT(&x->wflag);
                 object_error((t_object*)x, "OMax.oracle doesn't understand this list");
+            }
         }
         else
+        {
+            ATOMIC_DECREMENT(&x->wflag);
             object_error((t_object *)x,"Oracle %s being read (%d)",x->oname->s_name, x->readcount);
-        ATOMIC_DECREMENT(&x->wflag);
+        }
     }
 
 	//@}

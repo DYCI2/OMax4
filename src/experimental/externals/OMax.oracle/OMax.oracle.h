@@ -23,8 +23,8 @@ typedef struct _OMax_oracle
 		t_object		ob;			///< Pointer to the object itself
 		O_oracle		oracle;		///< Factor Oracle structure
 		t_symbol*		oname;		///< Pointer to FO name
-		t_int32_atomic	wflag;		///< Writing flag
-		t_int32_atomic	readcount;	///< Reader Count
+		volatile t_int32_atomic	wflag;		///< Writing flag
+		volatile t_int32_atomic	readcount;	///< Reader Count
 		void*			out0;		///< Outlet 0 (leftmost)
 	} t_OMax_oracle;
 

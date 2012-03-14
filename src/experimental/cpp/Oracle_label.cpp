@@ -136,12 +136,6 @@ char O_char::get_letter()
 	return letter;
 }
 
-bool O_char::operator== (const O_char & other) const
-{
-	///@returns The result of the comparison @b letter == @b other.letter (as char)
-	return(letter == other.letter);
-}
-
 void O_char::print(ostream& out) const
 {
     out<<"{"<<endl;
@@ -227,12 +221,6 @@ int* O_pitch::get_data(int* dataout)
 	dataout[2]=channel;
 	///@returns pointer to data
 	return dataout;
-}
-
-bool O_pitch::operator== (const O_pitch & other) const
-{
-	///@returns The comparison between pitches modulo 12
-	return((pitch % 12) == (other.pitch % 12));
 }
 
 void O_pitch::print(ostream & out) const
@@ -340,23 +328,6 @@ void O_spectral::set_coeffs(int nb, float val)
 }
 
 // Operator Overload
-bool O_spectral::operator== (const O_spectral & other) const
-{
-	///@returns The (lazy) pairwise comparison of the spectral coefficients excluding the first one (energy)
-	///@remarks Returns @b FALSE if the number of coefficients differs
-	bool out = true;
-	if (coeffs.size()!=other.coeffs.size())
-		return false;
-	list<float>::const_iterator it = ++coeffs.begin();
-	list<float>::const_iterator otherit = ++other.coeffs.begin();
-	while (out == true && it!=coeffs.end())
-	{
-		out = (*it == *otherit);
-		it++;
-		otherit++;
-	}
-	return out;
-}
 
 void O_spectral::print(ostream & out) const
 {
@@ -489,24 +460,6 @@ void O_MIDI_note::set_note(int pitchin, int velocityin, int channelin, int offse
 	duration = durationin;
 }
 
-/*
-// Tools
-float O_MIDI_note::freq2midi(float freqin)
-{
-	return 69+12*log2(freqin/440.);
-}
-
-float O_MIDI_note::midi2freq(float midin)
-{
-	return 440.*pow(2, (midin-69.)/12.);
-}
-*/
-
-bool O_MIDI_note::operator== (const O_MIDI_note & other) const
-{
-	return(pitch == other.pitch);
-}
-
 bool O_MIDI_note::operator< (const O_MIDI_note & other) const
 {
 	return(pitch < other.pitch);
@@ -626,37 +579,6 @@ float O_MIDI::get_mvelocity() const
 void O_MIDI::set_mvelocity(float mveloin)
 {
 	mvelocity = mveloin;
-}
-
-bool O_MIDI::operator== (const O_MIDI & other) const
-{
-	//returns The (lazy) pairwise comparison of the pitches
-	/*list<int> pitches = get_pitches();
-	list<int> other_pitches = other.get_pitches();
-	int nbpitches = pitches.size();
-	if (other_pitches.size()!=nbpitches)
-		return false;
-	pitches.merge(other_pitches);
-	pitches.unique();
-	return(pitches.size()== nbpitches);*/
-	
-	extern int modulo;
-	
-	// comparaison modulo 12
-	
-	if (modulo)
-	{
-		float div1 = vpitch/12.;
-		float div2 = other.get_vpitch()/12.;
-	
-		return (((div1 - floor(div1))*12.)==((div2 - floor(div2))*12.));
-	}
-	else
-	{
-	// Comparaison exacte
-	return(vpitch == other.get_vpitch());
-	}
-	
 }
 
 void O_MIDI::print(ostream & out) const

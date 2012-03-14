@@ -108,6 +108,8 @@ extern "C"
 				else
 					x->oname = atom_getsym(argv);
 			}
+            else
+                x->oname = NULL;
 			
 			// color
 			t_object *box;
@@ -161,7 +163,7 @@ extern "C"
 		if (x->obound == FALSE)
 		{
 			///@details Check if @c oname points to an existing @link t_OMax_oracle OMax.oracle @endlink object. If so, set t_OMax_date2state::data to point to the Data Sequence structure (t_OMax_data::data member)
-			if ((x->oname->s_thing) && (ob_sym(x->oname->s_thing) == gensym("OMax.oracle")))
+			if ((x->oname) && (x->oname->s_thing) && (ob_sym(x->oname->s_thing) == gensym("OMax.oracle")))
 			{
 				x->oracle = &(((t_OMax_oracle*)(x->oname->s_thing))->oracle);
 				// If binding is ok, then don't do it next time.
@@ -169,7 +171,10 @@ extern "C"
 			}
 			else
 			{
+                if (x->oname)
 				object_error((t_object *)x,"No Oracle %s declared", x->oname->s_name);
+                else
+                    object_error((t_object *)x,"No oracle name given");
 			}
 		}
 		return x->obound;

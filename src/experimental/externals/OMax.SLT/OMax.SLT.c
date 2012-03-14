@@ -83,7 +83,7 @@ extern "C"
 		class_addmethod(c, (method)OMax_path, "path", A_LONG, 0);
 		class_addmethod(c, (method)OMax_fullpath, "fullpath", A_LONG, 0);
 		class_addmethod(c, (method)OMax_sortedSLT, "sorted", A_LONG, 0);
-		//class_addmethod(c, (method)OMax_sortedSLTbis, "sorted", A_LONG, A_LONG, 0);
+		class_addmethod(c, (method)OMax_sortedSLTbis, "sorted", A_LONG, A_LONG, 0);
 		class_addmethod(c, (method)OMax_ctxt, "in1", A_LONG, 0);
 		class_addmethod(c, (method)OMax_setname, "set", A_DEFSYM, 0);
 		
@@ -102,7 +102,7 @@ extern "C"
 	{
 		t_OMax_SLT *x = NULL;
 		
-		if (x = (t_OMax_SLT *)object_alloc(OMax_SLT_class))
+		if ((x = (t_OMax_SLT *)object_alloc(OMax_SLT_class)))
 		{
 			// inlets
 			intin(x, 1); // right inlet
@@ -114,22 +114,31 @@ extern "C"
 			
 			///@details Check first argument of the Max5 object for a FO name
 			x->obound = FALSE;
-			if (argc == 0)
-				object_error((t_object *)x,"Missing name of the Oracle to read");
-			else
-			{
-				if (argv->a_type != A_SYM)
-					object_error((t_object *)x,"First argument must be a symbol (name of an existing Oracle)");
-				else
-				{
-					x->oname = atom_getsym(argv);
-					
-					///@details Set the minimal context to the value of the 2nd argument of the Max5 object if given (set to 1 otherwise)
-					if ((argv+1)->a_type == A_LONG)
+            switch(argc)
+            {
+                case 2:
+                {
+                    if ((argv+1)->a_type == A_LONG)
 						x->context = atom_getlong(argv+1);
 					else
-						x->context = 1;
-				}
+                        ///@details Set the minimal context to the value of the 2nd argument of the Max5 object if given (set to 3 otherwise)
+						x->context = 3;
+                }
+                case 1:
+                {
+                    if (argv->a_type != A_SYM)
+                        object_error((t_object *)x,"First argument must be a symbol (name of an existing Oracle)");
+                    else
+                    {
+                        x->oname = atom_getsym(argv);
+                        break;
+                    }
+                }
+                case 0:
+                {
+                    x->oname = NULL;
+                    x->context = 3;
+                }
 			}
 			
 			// color
@@ -195,7 +204,7 @@ extern "C"
 		if (x->obound == FALSE)
 		{
 			///@details Check if FO name points to an existing @link t_OMax_oracle OMax.oracle @endlink object. If so, set t_OMax_SLT::oracle to point to the FO structure (t_OMax_oracle::oracle member)
-			if ((x->oname->s_thing) && (ob_sym(x->oname->s_thing) == gensym("OMax.oracle")))
+			if ((x->oname) && (x->oname->s_thing) && (ob_sym(x->oname->s_thing) == gensym("OMax.oracle")))
 			{
 				x->oracle = &(((t_OMax_oracle*)(x->oname->s_thing))->oracle);
 				// If binding is ok, then don't do it next time.
@@ -203,7 +212,10 @@ extern "C"
 			}
 			else
 			{
-				object_error((t_object *)x,"No oracle %s declared", x->oname->s_name);
+                if (x->oname)
+                    object_error((t_object *)x,"No oracle %s declared", x->oname->s_name);
+                else
+                    object_error((t_object *)x,"No oracle name given");
 			}
 		}
 		return x->obound;
@@ -268,7 +280,7 @@ extern "C"
 					list<pair<O_state*,int> >::iterator it;
 					
 					root->rec_downSLT(&SLT, x->context);
-
+                    
 					long vals[2];
 					t_atom * SLTout = NULL;
 					atom_alloc_array(2, &i, &SLTout, &err);

@@ -200,6 +200,7 @@ int O_data::add(int date, O_label* labelin)
 		start<O_DataType>();
 	}
 	
+    labelin->set_statenb(size);
 	state_vect.push_back(labelin);
 	add_state(size, date);
 	add_date(date, size);

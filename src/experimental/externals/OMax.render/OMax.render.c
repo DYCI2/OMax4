@@ -43,7 +43,8 @@ extern "C"
         t_atom*		coefout;	///< Array for spectral output
         list<float>*coeflist;	///< List to get spectral coeffs
         float*		coeftab;	///< Float array to transfert spectral coeffs
-        void*		out_statenb;///< Outlet 0 (leftmost): state number
+        void*       in_ms;      ///< Inlet 1: milliseconds to access ID
+        void*		out_statenb;///< Outlet 0 (leftmost): seq index
         void*		out_buf;	///< Outlet 1: buffer reference & duration (ms)
         void*		out_sectphr;///< Outlet 2: section & phrase numbers
         void*		out_data;	///< Outlet 3: descriptor data
@@ -63,6 +64,7 @@ extern "C"
     
     // Input/ouput routines
     void OMax_render_read(t_OMax_render *x, long statnb);
+    void OMax_render_readid(t_OMax_render *x, long id);
     void OMax_render_setname(t_OMax_render *x, t_symbol *newname);
     void OMax_render_phrases(t_OMax_render *x);
     
@@ -89,6 +91,7 @@ extern "C"
         
         // input methods
         class_addmethod(c, (method)OMax_render_read,"int", A_LONG, 0);
+        class_addmethod(c, (method)OMax_render_readid,"in1", A_LONG, 0);
         class_addmethod(c, (method)OMax_render_setname, "set", A_DEFSYM, 0);
         class_addmethod(c, (method)OMax_render_phrases, "phrases",0);
         
@@ -120,7 +123,10 @@ extern "C"
             x->coeflist = NULL;
             x->coeftab = NULL;
             
-            // outlet init
+            // inlets
+            x->in_ms = intin(x,1);
+            
+            // outlets
             x->out_statenb = intout(x); // rightmost
             x->out_buf = listout(x);
             x->out_sectphr = listout(x);
@@ -136,6 +142,8 @@ extern "C"
                 else
                     x->oname = atom_getsym(argv);
             }
+            else
+                x->oname = NULL;
             
             // color
             t_object *box;
@@ -170,7 +178,10 @@ extern "C"
                 switch (index)
             {
                 case 0: // leftmost
-                    sprintf(s, "state to read, set [symbol] changes sequence to read");
+                    sprintf(s, "index to read, set [symbol] changes sequence to read");
+                    break;
+                case 1:
+                    sprintf(s, "ID(ms) to read");
                     break;
             }
                 break;
@@ -190,7 +201,7 @@ extern "C"
                     sprintf(s, "buffer date & duration");
                     break;
                 case 4:
-                    sprintf(s, "state number");
+                    sprintf(s, "index");
                     break;
             }
                 break;
@@ -221,6 +232,8 @@ extern "C"
         if (x->obound == FALSE)
         {
             ///@details Check if @c name_data points to an existing @link t_OMax_data OMax.data @endlink object. If so, set t_OMax_render::data to point to the Data Sequence structure (t_OMax_data::data member)
+            if (x->oname)
+            {
             x->dataname = OMax_render_name(x->oname);
             if ((x->dataname->s_thing) && (ob_sym(x->dataname->s_thing) == gensym("OMax.data")))
             {
@@ -254,6 +267,9 @@ extern "C"
             {
                 object_error((t_object *)x,"No data for Oracle %s declared", x->oname->s_name);
             }
+            }
+            else
+                object_error((t_object*)x, "No data name given");
         }
         return x->obound;
     }
@@ -370,6 +386,17 @@ extern "C"
                 object_error((t_object *)x,"Data of Oracle %s busy",x->oname->s_name);
             ATOMIC_DECREMENT(&(((t_OMax_data *)(x->dataname->s_thing))->readcount));
         }
+    }
+    
+    /**@public @memberof t_OMax_render
+     * @brief Output all the information of a Data state
+     * @remarks Input message in Max5: a state number (@c int) */
+    void OMax_render_readid(t_OMax_render *x, long idin)
+    {
+        int statenb = 0;
+        if (OMax_render_bind(x))
+            statenb = x->data->get_state(idin);
+        OMax_render_read(x,statenb);
     }
     
     /**@public @memberof t_OMax_render

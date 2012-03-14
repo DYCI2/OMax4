@@ -52,6 +52,14 @@ typedef struct _OMax_data
         int             maxnotes;	///< Max number of note for a slice (controls memory allocation)
 		O_MIDI_note*    notes;		///< Note array for polyphonic
 		int             notecount;	///< Number of note currently hold
+        long            ID;         ///< ID of next state
+        long            Duration;   ///< Duration of next state
+        long            Section;    ///< Section of next state
+        long            Phrase;     ///< Phrase of next state
+        void*           inID;       ///< Inlet 1
+        void*           inDuration; ///< Inlet 2
+        void*           inSection;  ///< Inlet 3
+        void*           inPhrase;   ///< Inlet 4
 		void*			out0;		///< Outlet 0 (leftmost)
 	} t_OMax_data;
 

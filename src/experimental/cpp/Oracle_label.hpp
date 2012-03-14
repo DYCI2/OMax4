@@ -113,8 +113,6 @@ public:
 	
 	///@name Operators Overload
 	//@{
-	/// Compare two states of a letter sequence
-	bool operator== (const O_char &) const;
 	/// Output the @b letter attribute on a standard stream
     friend ostream & operator<< (ostream &, const O_char &);
 	//@}
@@ -164,8 +162,6 @@ public:
 	
 	///@name Operators Overload
 	//@{
-	/// Compare two states based on pitch
-	bool operator== (const O_pitch &) const;
 	/// Output data on a standard stream
 	friend ostream & operator<< (ostream &, const O_pitch &);
 	//@}
@@ -220,8 +216,6 @@ public:
 	
 	///@name Operators Overload
 	//@{
-	/// Compare two states based on the spectral coefficients excluding the energy (first coefficient)
-	bool operator== (const O_spectral &) const;
 	/// Output data on a standard stream
 	friend ostream & operator<< (ostream &, const O_spectral &);
 	//@}
@@ -282,19 +276,8 @@ public:
 	void set_note(int=60,int=0,int=128,int=0, int=0);
 	//@}
 	
-	/*
-	///@name Tools
-	/// Convert from Hz to MIDI
-	float freq2midi(float);
-	/// Convert from MIDI to Hz
-	float midi2freq(float);
-	//@}
-	 */
-	
 	///@name Operators Overload
 	//@{
-	/// Compare two notes based solely on pitches
-	bool operator== (const O_MIDI_note & other) const;
 	/// Strict order between notes solely based on pitches
 	bool operator< (const O_MIDI_note & other) const;
 	/// Output note on a standard stream
@@ -304,14 +287,6 @@ public:
 	// friends
 	friend class O_MIDI;
 };
-
-/*enum Comp
-{
-	notes_strict,
-	notes_mod12,
-	vpitch_stric,
-	vpitch_mod12
-};*/
 
 ///State of a polyphonic MIDI sequence
 class O_MIDI : public O_label
@@ -325,11 +300,6 @@ protected:
     virtual void print(ostream &) const;
 	
 public:
-	/* Del
-	///Convert a MIDI cent approximation (additive) to a Hz approximation (multiplicative)
-	float midi2freq_approx(float);
-	///Internal recursive function for virtual fundamental frequency calculation
-	float rec_virfun (float*, float*, float, float, float);*/
 	
 	///@name Constructors & Destructors
 	//@{
@@ -365,23 +335,42 @@ public:
 	void set_mvelocity(float);
 	//@}
 	
-	/* Del
-	///@name Internal calculations on frame data
-	//@{
-	/// Computes and set the virtual fondamental pitch from the list of notes
-	float set_vpitch(float);
-	/// Computes and set the mean velocity from the list of notes
-	int set_mvelocity();
-	//@} */
-	
 	///@name Operators Overload
 	//@{
-	/// Compare two states based on exact comparisons of pitches in the frame
-	bool operator== (const O_MIDI &) const;
 	/// Output note on a standard stream
 	friend ostream & operator<< (ostream &, const O_MIDI &);
 	//@}
 };
+
+///State of a generic data sequence
+class O_float : public O_label
+{
+protected:
+    list<double> floats;    ///< Generic data of the state
+    
+    /// Specialized output function
+    virtual void print(ostream &) const;
+    
+public:
+    ///@name Constructors & Destructors
+    //@{
+    ///Default constructor
+    O_float();
+    /// Create a generic state from floats
+    O_float(double, ...);
+    /// Copy constructor
+    O_float(const O_float &);
+    /// Standard desctructor
+    ~O_float();
+    //@}
+    
+    ///@name Operators Overload
+    //@{
+    /// Output the @b floats on a standard stream
+    friend ostream & operator<< (ostream &, const O_float &);
+    //@}
+};
+
 
 /**@}*/
 
