@@ -56,10 +56,17 @@ typedef struct _OMax_data
         long            Duration;   ///< Duration of next state
         long            Section;    ///< Section of next state
         long            Phrase;     ///< Phrase of next state
-        void*           inID;       ///< Inlet 1
-        void*           inDuration; ///< Inlet 2
-        void*           inSection;  ///< Inlet 3
-        void*           inPhrase;   ///< Inlet 4
+        double          inBeatF[2]; ///< Float beat info of next state
+        long            inBeatI[2]; ///< Integer beat info of next state
+        void*           inID;       ///< Inlet 1 (for ID only)
+//        void*           inDuration; ///< Inlet 2
+//        void*           inSection;  ///< Inlet 3
+//        void*           inPhrase;   ///< Inlet 4
+        long            proxinlet;  ///< Inlet number for proxy
+        void*           proxy1;     ///< Proxy & Inlet 1
+        void*           proxy2;     ///< Proxy & Inlet 2
+        void*           proxy3;     ///< Proxy & Inlet 3
+        void*           proxy4;     ///< Proxy & Inlet 4
 		void*			out0;		///< Outlet 0 (leftmost)
 	} t_OMax_data;
 

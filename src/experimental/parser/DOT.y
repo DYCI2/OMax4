@@ -9,7 +9,7 @@
 #include <stdio.h>
 #include "Oracle_classes.hpp"
 int yylex(void);
-int yyerror(O_oracle*,char*);
+int yyerror(O_oracle*,const char*);
 %}
 
 %union
@@ -152,7 +152,7 @@ trans_link:		NUMBER LINK NUMBER O_SQBRACKET attr_list C_SQBRACKET
 				
 %%
 
-int yyerror(O_oracle*, char *s)
+int yyerror(O_oracle*, const char *s)
 {
   extern int yylineno;	/* defined and maintained in lex.c */
   extern char *yytext;	/* defined and maintained in lex.c */

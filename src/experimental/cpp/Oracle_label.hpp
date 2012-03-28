@@ -33,6 +33,15 @@ protected:
 	int phrase;
 	/// Number of the section the state belongs to
 	int section;
+    /// Phase (rhythm) information of the state
+    double phase;
+    /// Tempo information of the state
+    double tempo;
+    /// Additional rhythm information for the state
+    int binfo1;
+    /// Additional rhythm information for the state
+    int binfo2;
+    
     
     /// Virtual output function (operator<< can't be virtual)
     virtual void print(ostream&) const;
@@ -43,7 +52,7 @@ public:
 	/// Default constructor
 	O_label();
 	/// Create a state from data
-	O_label(int, int = 0, int = 0, int = 0, int = 0);
+	O_label(int, int = 0, int = 0, int = 0, int = 0, double = 0., double = 0., int = 0, int = 0);
 	/// Copy constructor
 	O_label(const O_label & labelin);
 	/// Standard destructor
@@ -72,6 +81,23 @@ public:
 	int get_section();
 	/// Set the number of the section the state belongs to
 	void set_section(int);
+    /// Set the phase of the state
+    void set_phase(double);
+    /// Return the phase of the state
+    double get_phase();
+    /// Set the tempo of the state
+    void set_tempo(double);
+    /// Return the tempo of the state
+    double get_tempo();
+    /// Set the first additional info of the state
+    void set_binfo1(int);
+    /// Return the first additional info of the state
+    int get_binfo1();
+    /// Set the second additional info of the state
+    void set_binfo2(int);
+    /// Return the second additional info of the state
+    int get_binfo2();
+    
 	//@}
     
     ///@name Operators Overload

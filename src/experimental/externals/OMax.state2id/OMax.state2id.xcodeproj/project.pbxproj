@@ -179,6 +179,7 @@
 		};
 		2FBBEAD108F335010078DB84 /* Deployment */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FBE61F880F7BC6D800BCD651 /* OMax.xcconfig */;
 			buildSettings = {
 			};
 			name = Deployment;
@@ -186,29 +187,12 @@
 		2FBBEAE108F335360078DB84 /* Development */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/../../../../../../../Max5/MaxSDK-5.1.7/c74support/max-includes\"",
-					"\"$(SRCROOT)/../../../../../../../Max6/MaxSDK-6.0.0/c74support/max-includes\"",
-				);
-				PRODUCT_NAME = OMax.state2id;
 			};
 			name = Development;
 		};
 		2FBBEAE208F335360078DB84 /* Deployment */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					ppc,
-					i386,
-				);
-				COPY_PHASE_STRIP = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/../../MaxSDK-5.0.6/c74support/max-includes\"",
-					"\"$(SRCROOT)/../../../../../../../Max5/MaxSDK-5.1.7/c74support/max-includes\"",
-					"\"$(SRCROOT)/../../../../../../../Max6/MaxSDK-6.0.0/c74support/max-includes\"",
-				);
 			};
 			name = Deployment;
 		};

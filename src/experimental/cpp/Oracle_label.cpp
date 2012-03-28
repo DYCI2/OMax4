@@ -19,16 +19,24 @@ O_label::O_label()
 	duration = 0;
 	section = 0;
 	phrase = 0;
+    phase = 0.;
+    tempo = 0.;
+    binfo1 = 0;
+    binfo2 = 0;
 }
 
 ///@details State number is set to @b statenbin. If given, the state is pointing to @b bufferefin, duration is @b durationnin and the state belongs to phrase @b phrasein and section @b sectionin
-O_label::O_label(int statenbin, int bufferefin, int durationin, int phrasein, int sectionin)
+O_label::O_label(int statenbin, int bufferefin, int durationin, int phrasein, int sectionin, double phasein, double tempoin, int binfo1in, int binfo2in)
 {
 	statenb = statenbin;
 	bufferef = bufferefin;
 	duration = durationin;
 	phrase = phrasein;
 	section = sectionin;
+    phase = phasein;
+    tempo = tempoin;
+    binfo1 = binfo1in;
+    binfo2 = binfo2in;
 }
 
 O_label::O_label(const O_label & labelin)
@@ -38,6 +46,10 @@ O_label::O_label(const O_label & labelin)
 	duration = labelin.duration;
 	section = labelin.section;
 	phrase = labelin.phrase;
+    phase = labelin.phase;
+    tempo = labelin.tempo;
+    binfo1 = labelin.binfo1;
+    binfo2 = labelin.binfo2;
 }
 
 int O_label::get_statenb()
@@ -89,6 +101,47 @@ void O_label::set_section(int sectionin)
 {
 	section = sectionin;
 }
+
+double O_label::get_phase()
+{
+	return phase;
+}
+
+void O_label::set_phase(double phasein)
+{
+	phase = phasein;
+}
+
+double O_label::get_tempo()
+{
+	return tempo;
+}
+
+void O_label::set_tempo(double tempoin)
+{
+	tempo = tempoin;
+}
+
+int O_label::get_binfo1()
+{
+	return binfo1;
+}
+
+void O_label::set_binfo1(int binfoin)
+{
+	binfo1 = binfoin;
+}
+
+int O_label::get_binfo2()
+{
+	return binfo2;
+}
+
+void O_label::set_binfo2(int binfoin)
+{
+	binfo2 = binfoin;
+}
+
 
 ///@remarks Function "print" is not virtual pure
 void O_label::print(ostream & out) const
@@ -153,9 +206,9 @@ ostream & operator<< (ostream & out, const O_char & charin)
     return out;
 }
 
-/////////////////////////
+/////////////////////
 /* pitch functions */
-/////////////////////////
+/////////////////////
 
 ///@details @b Pitch is set to 60, @b velocity to 0 and @b channel to 128
 ///@remarks Calls the O_label default constructor
@@ -479,9 +532,9 @@ ostream & operator<< (ostream & out, const O_MIDI_note & notein)
     return out;
 }
 
-/////////////////////////
+////////////////////
 /* MIDI functions */
-/////////////////////////
+////////////////////
 
 ///@details @b virtual pitch is set to 0, @b velocity to 0
 ///@remarks Calls the O_label default constructor

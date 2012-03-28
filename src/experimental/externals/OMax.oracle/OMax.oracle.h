@@ -20,12 +20,12 @@
  * @details This external object ports Factor Oracle structure into Max5. Input handeled are messages @c size, @c write, @c init, and @c reset*/
 typedef struct _OMax_oracle 
 	{
-		t_object		ob;			///< Pointer to the object itself
-		O_oracle		oracle;		///< Factor Oracle structure
-		t_symbol*		oname;		///< Pointer to FO name
+		t_object	ob;                     ///< Pointer to the object itself
+		O_oracle	oracle;                 ///< Factor Oracle structure
+		t_symbol*	oname;                  ///< Pointer to FO name
 		volatile t_int32_atomic	wflag;		///< Writing flag
 		volatile t_int32_atomic	readcount;	///< Reader Count
-		void*			out0;		///< Outlet 0 (leftmost)
+		void*       out0;                   ///< Outlet 0 (leftmost)
 	} t_OMax_oracle;
 
 //@}

@@ -44,11 +44,13 @@ extern "C"
         list<float>*coeflist;	///< List to get spectral coeffs
         float*		coeftab;	///< Float array to transfert spectral coeffs
         void*       in_ms;      ///< Inlet 1: milliseconds to access ID
-        void*		out_statenb;///< Outlet 0 (leftmost): seq index
-        void*		out_buf;	///< Outlet 1: buffer reference & duration (ms)
-        void*		out_sectphr;///< Outlet 2: section & phrase numbers
-        void*		out_data;	///< Outlet 3: descriptor data
-        void*		out_bang;	///< Outlet 4: bang when done
+        void*		out_statenb;///< Outlet 6 (rightmost): seq index
+        void*       out_add;    ///< Outlet 5: additional data
+        void*       out_beat;   ///< Outlet 4: beat info
+        void*		out_sectphr;///< Outlet 3: section & phrase numbers
+        void*		out_buf;	///< Outlet 2: buffer reference & duration (ms)
+        void*		out_data;	///< Outlet 1: descriptor data
+        void*		out_bang;	///< Outlet 0: bang when done
     } t_OMax_render;
     
     //@}
@@ -115,8 +117,8 @@ extern "C"
             // allocation
             char err;
             long i = 0;
-            atom_alloc_array(2, &i, &x->twout, &err);
-            if (!err || i!=2)
+            atom_alloc_array(4, &i, &x->twout, &err);
+            if (!err || i!=4)
                 object_error((t_object*)x, "Allocation error");
             
             x->coefout = NULL;
@@ -128,8 +130,10 @@ extern "C"
             
             // outlets
             x->out_statenb = intout(x); // rightmost
-            x->out_buf = listout(x);
+            x->out_add = outlet_new(x,NULL);
+            x->out_beat = listout(x);
             x->out_sectphr = listout(x);
+            x->out_buf = listout(x);
             x->out_data = outlet_new(x,NULL);
             x->out_bang= bangout(x);
             
@@ -181,7 +185,7 @@ extern "C"
                     sprintf(s, "index to read, set [symbol] changes sequence to read");
                     break;
                 case 1:
-                    sprintf(s, "ID(ms) to read");
+                    sprintf(s, "ID(bufferef) to read");
                     break;
             }
                 break;
@@ -195,12 +199,18 @@ extern "C"
                     sprintf(s, "data");
                     break;
                 case 2:
-                    sprintf(s, "section & phrase");
+                    sprintf(s, "ID (bufferef) & Duration");
                     break;
                 case 3:
-                    sprintf(s, "buffer date & duration");
+                    sprintf(s, "Section & Phrase #");
                     break;
                 case 4:
+                    sprintf(s, "[f,f,i,i] Beat info");
+                    break;
+                case 5:
+                    sprintf(s, "(inactive) Additional data");
+                    break;
+                case 6:
                     sprintf(s, "index");
                     break;
             }
@@ -306,15 +316,22 @@ extern "C"
                     // state number
                     outlet_int(x->out_statenb, labL->get_statenb()); // output
                     
-                    // date & duration
-                    atom_setlong(x->twout, labL->get_bufferef());
-                    atom_setlong(x->twout+1, labL->get_duration());
-                    outlet_list(x->out_buf, NULL, 2, x->twout); // output
+                    // beat info
+                    atom_setfloat(x->twout, labL->get_tempo());
+                    atom_setfloat(x->twout+1, labL->get_phase());
+                    atom_setlong(x->twout+2, labL->get_binfo1());
+                    atom_setlong(x->twout+3, labL->get_binfo2());
+                    outlet_list(x->out_beat, NULL, 4, x->twout); // output             
                     
                     // section & phrase
                     atom_setlong(x->twout, labL->get_section());
                     atom_setlong(x->twout+1, labL->get_phrase());
                     outlet_list(x->out_sectphr, NULL, 2, x->twout); // output
+                    
+                    // date & duration
+                    atom_setlong(x->twout, labL->get_bufferef());
+                    atom_setlong(x->twout+1, labL->get_duration());
+                    outlet_list(x->out_buf, NULL, 2, x->twout); // output
                     
                     // data
                     switch(x->datatype)

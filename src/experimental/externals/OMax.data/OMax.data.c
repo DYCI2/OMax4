@@ -34,10 +34,12 @@ void OMax_data_type(t_OMax_data *x);
 void OMax_data_write(t_OMax_data *x, t_symbol *s);
 void OMax_data_read(t_OMax_data *x, t_symbol *s);
 
+void OMax_data_list(t_OMax_data *x, t_symbol *s, long argc, t_atom *argv);
+
 void OMax_data_setID(t_OMax_data *x, long n);
-void OMax_data_setDuration(t_OMax_data *x, long n);
-void OMax_data_setSection(t_OMax_data *x, long n);
-void OMax_data_setPhrase(t_OMax_data *x, long n);
+//void OMax_data_setDuration(t_OMax_data *x, long n);
+//void OMax_data_setSection(t_OMax_data *x, long n);
+//void OMax_data_setPhrase(t_OMax_data *x, long n);
 
 // from learner
 void OMax_data_add(t_OMax_data *x, t_symbol *s, short ac, t_atom * av);
@@ -77,10 +79,13 @@ int main(void)
     class_addmethod(c, (method)OMax_data_add, "add", A_GIMME, 0);
     class_addmethod(c, (method)OMax_data_note, "note", A_GIMME, 0);
     
-    class_addmethod(c, (method)OMax_data_setID, "in1", A_LONG, 0);
-    class_addmethod(c, (method)OMax_data_setDuration, "in2", A_LONG, 0);
-    class_addmethod(c, (method)OMax_data_setSection, "in3", A_LONG, 0);
-    class_addmethod(c, (method)OMax_data_setPhrase, "in4", A_LONG, 0);
+    //class_addmethod(c, (method)OMax_data_setID, "in1", A_LONG, 0);
+    //class_addmethod(c, (method)OMax_data_setDuration, "in2", A_LONG, 0);
+    //class_addmethod(c, (method)OMax_data_setSection, "in3", A_LONG, 0);
+    //class_addmethod(c, (method)OMax_data_setPhrase, "in4", A_LONG, 0);
+    
+    class_addmethod(c, (method)OMax_data_setID, "int", A_LONG, 0);
+    class_addmethod(c, (method)OMax_data_list, "list", A_GIMME, 0);
     
     class_register(CLASS_BOX, c); /* CLASS_NOBOX */
     OMax_data_class = c;
@@ -99,12 +104,18 @@ void *OMax_data_new(t_symbol *s, long argc, t_atom *argv)
     
     if ((x = (t_OMax_data *)object_alloc(OMax_data_class)))
     {
-        // inlets
-        x->inPhrase = intin(x, 4);
-        x->inSection = intin(x,3);
-        x->inDuration = intin(x,2);
-        x->inID = intin(x,1);
+        // Proxies (< Inlets included)
+        x->proxy4 = proxy_new((t_object *)x, 4, &x->proxinlet);
+        x->proxy3 = proxy_new((t_object *)x, 3, &x->proxinlet);
+        x->proxy2 = proxy_new((t_object *)x, 2, &x->proxinlet);
+        x->proxy1 = proxy_new((t_object *)x, 1, &x->proxinlet);
         
+        // inlets
+        //x->inPhrase = inlet_new(x, "list");
+        //x->inSection = inlet_new(x,"list");
+        //x->inDuration = inlet_new(x,"list");
+        //x->inID = intin(x,1);
+            
         // outlets
         x->out0 = outlet_new(x, NULL);
         
@@ -221,6 +232,12 @@ void OMax_data_free(t_OMax_data *x)
     }
     if (x->dataname->s_thing == (t_object *)x)
         x->dataname->s_thing = NULL;
+    
+    // Proxies
+    freeobject((t_object *)x->proxy1);
+    freeobject((t_object *)x->proxy2);
+    freeobject((t_object *)x->proxy3);
+    freeobject((t_object *)x->proxy4);
 }
 
 /**@public @memberof t_OMax_data
@@ -237,16 +254,16 @@ void OMax_data_assist(t_OMax_data *x, void *b, long io, long index, char *s)
                 sprintf(s, "messages (init, reset, size, type, write, read, add, note)");
                 break;
             case 1:
-                sprintf(s, "ID (bufferef) of next data");
+                sprintf(s, "ID (bufferef) & Duration of the next data");
                 break;
             case 2:
-                sprintf(s, "Duration (ms) of next data");
+                sprintf(s, "Section & Phrase # of next data");
                 break;
             case 3:
-                sprintf(s, "Section # of next data");
+                sprintf(s, "[f,f,i,i] Beat info of next data");
                 break;
             case 4:
-                sprintf(s, "Phrase # of next data");
+                sprintf(s, "(inactive) Additional data of next data");
                 break;
         }
             break;
@@ -374,7 +391,7 @@ void OMax_data_add(t_OMax_data *x, t_symbol *s, short ac, t_atom * av)
                 bool valid = TRUE;
                 if (av->a_type == A_SYM)
                 {
-                    O_char* newdata = new O_char(*atom_getsym(av)->s_name);
+                    O_char* newdata = new O_char(atom_getsym(av)->s_name[0]);
                     valid = OMax_data_setCommon(x, (O_label*)newdata);
                     if (valid)
                     {
@@ -589,10 +606,14 @@ void OMax_data_note(t_OMax_data *x, t_symbol *s, short ac, t_atom * av)
 
 void OMax_data_setID(t_OMax_data *x, long n)
 {
-    x->ID = n;
+    if(proxy_getinlet((t_object*)x)==1)
+        x->ID = n;
+    else
+        object_error((t_object*)x, "OMax.data doesn't understand \"int\" except ID in the second inlet");
+    //x->Duration = m;
 }
 
-void OMax_data_setDuration(t_OMax_data *x, long n)
+/*void OMax_data_setDuration(t_OMax_data *x, long n)
 {
     x->Duration = n;
 }
@@ -605,6 +626,54 @@ void OMax_data_setSection(t_OMax_data *x, long n)
 void OMax_data_setPhrase(t_OMax_data *x, long n)
 {
     x->Phrase = n;
+}*/
+
+void OMax_data_list(t_OMax_data *x, t_symbol *s, long argc, t_atom *argv)
+{
+    //object_post((t_object *)x, "list receive in inlet %ld", proxy_getinlet((t_object *)x));
+    switch(proxy_getinlet((t_object*)x))
+    {
+        case 3:
+        {
+            if (argc==4 && (atom_gettype(argv)==A_FLOAT) && (atom_gettype(argv+1)==A_FLOAT) && (atom_gettype(argv+2)==A_LONG) && (atom_gettype(argv+3)==A_LONG))
+            {
+                x->inBeatF[0] = atom_getfloat(argv);
+                x->inBeatF[1] = atom_getfloat(argv+1);
+                x->inBeatI[0] = atom_getlong(argv+2);
+                x->inBeatI[1] = atom_getlong(argv+3);
+            }
+            else
+                object_error((t_object *)x,"Beat info must be 2 floats & 2 ints");
+            break;
+        }
+        case 2:
+        {
+            if (argc==2 && (atom_gettype(argv)==A_LONG) && (atom_gettype(argv+1)==A_LONG))
+            {
+                x->Section = atom_getlong(argv);
+                x->Phrase = atom_getlong(argv+1);
+            }
+            else
+                object_error((t_object *)x,"Section & Phrase # must be a pair of int");
+            break;
+        }
+        case 1:
+        {
+            if (argc==2 && (atom_gettype(argv)==A_LONG) && (atom_gettype(argv+1)==A_LONG))
+            {
+                x->ID = atom_getlong(argv);
+                x->Duration = atom_getlong(argv+1);
+            }
+            else
+                object_error((t_object *)x,"ID & Duration must be a pair of int");
+            break;
+        }
+        case 0:
+            ;
+        default:
+            object_post((t_object *)x, "list receive in inlet %ld", proxy_getinlet((t_object *)x));
+    }
+    
 }
 
 //@}
@@ -637,6 +706,10 @@ bool OMax_data_setCommon(t_OMax_data *x, O_label* newdata)
     newdata->set_duration(x->Duration);
     newdata->set_section(x->Section);
     newdata->set_phrase(x->Phrase);
+    newdata->set_tempo(x->inBeatF[0]);
+    newdata->set_phase(x->inBeatF[1]);
+    newdata->set_binfo1(x->inBeatI[0]);
+    newdata->set_binfo2(x->inBeatI[1]);
     return TRUE;
 }
 
@@ -717,6 +790,7 @@ void OMax_data_writefile(t_OMax_data *x, char *filename, short path)
     t_symbol* sym_coeffs = gensym("coeffs");
     t_symbol* sym_slice = gensym("slice");
     t_symbol* sym_notes = gensym("notes");
+    t_symbol* sym_beat = gensym("beat");
     
     t_atom* datab = (t_atom*)sysmem_newptr(nbstates*sizeof(t_atom));
     t_atom* array = NULL;
@@ -757,6 +831,12 @@ void OMax_data_writefile(t_OMax_data *x, char *filename, short path)
                 atom_setlong(array, current->get_section());
                 atom_setlong(array+1, current->get_phrase());
                 dictionary_appendatoms(ditem, sym_seg, 2, array);
+                // beat data
+                atom_setfloat(array, current->get_tempo());
+                atom_setfloat(array+1, current->get_phase());
+                atom_setlong(array+2, current->get_binfo1());
+                atom_setlong(array+3, current->get_binfo2());
+                dictionary_appendatoms(ditem, sym_beat, 4, array);
                 // slice data
                 atom_setfloat(array, ((O_MIDI*)current)->get_vpitch());
                 atom_setfloat(array+1, ((O_MIDI*)current)->get_mvelocity());
@@ -801,6 +881,12 @@ void OMax_data_writefile(t_OMax_data *x, char *filename, short path)
                 atom_setlong(array, current->get_section());
                 atom_setlong(array+1, current->get_phrase());
                 dictionary_appendatoms(ditem, sym_seg, 2, array);
+                // beat data
+                atom_setfloat(array, current->get_tempo());
+                atom_setfloat(array+1, current->get_phase());
+                atom_setlong(array+2, current->get_binfo1());
+                atom_setlong(array+3, current->get_binfo2());
+                dictionary_appendatoms(ditem, sym_beat, 4, array);
                 // pitch
                 dictionary_appendlong(ditem, sym_pitch, ((O_spectral*)current)->get_pitch());
                 // MFCCs
@@ -834,6 +920,12 @@ void OMax_data_writefile(t_OMax_data *x, char *filename, short path)
                 atom_setlong(array, current->get_section());
                 atom_setlong(array+1, current->get_phrase());
                 dictionary_appendatoms(ditem, sym_seg, 2, array);
+                // beat data
+                atom_setfloat(array, current->get_tempo());
+                atom_setfloat(array+1, current->get_phase());
+                atom_setlong(array+2, current->get_binfo1());
+                atom_setlong(array+3, current->get_binfo2());
+                dictionary_appendatoms(ditem, sym_beat, 4, array);
                 // note
                 note_data = ((O_pitch*)current)->get_data(note_data);
                 atom_setlong_array(3, array, 3, (long*)note_data);
@@ -864,6 +956,12 @@ void OMax_data_writefile(t_OMax_data *x, char *filename, short path)
                 atom_setlong(array, current->get_section());
                 atom_setlong(array+1, current->get_phrase());
                 dictionary_appendatoms(ditem, sym_seg, 2, array);
+                // beat data
+                atom_setfloat(array, current->get_tempo());
+                atom_setfloat(array+1, current->get_phase());
+                atom_setlong(array+2, current->get_binfo1());
+                atom_setlong(array+3, current->get_binfo2());
+                dictionary_appendatoms(ditem, sym_beat, 4, array);
                 // letter
                 letter[0] = ((O_char*)current)->get_letter();
                 dictionary_appendsym(ditem, sym_letter, gensym(letter));
@@ -954,6 +1052,7 @@ void OMax_data_doread(t_OMax_data *x, t_symbol *s)
         t_symbol* sym_coeffs = gensym("coeffs");
         t_symbol* sym_slice = gensym("slice");
         t_symbol* sym_notes = gensym("notes");
+        t_symbol* sym_beat = gensym("beat");
         
         
         dictionary_getlong(d, gensym("size"), &size);
@@ -1011,6 +1110,17 @@ void OMax_data_doread(t_OMax_data *x, t_symbol *s)
                             {
                                 newstate->set_section(atom_getlong(array));
                                 newstate->set_phrase(atom_getlong(array+1));
+                            }
+                            
+                            i = 0;
+                            // get beat data (tempo, phase, binfo1, binfo2)
+                            dictionary_getatoms(ditem, sym_beat, &i, &array);
+                            if (i==4)
+                            {
+                                newstate->set_tempo(atom_getfloat(array));
+                                newstate->set_phase(atom_getfloat(array+1));
+                                newstate->set_binfo1(atom_getlong(array+2));
+                                newstate->set_binfo2(atom_getlong(array+3));
                             }
                             
                             i = 0;
@@ -1081,6 +1191,17 @@ void OMax_data_doread(t_OMax_data *x, t_symbol *s)
                                 newstate->set_phrase(atom_getlong(array+1));
                             }
                             
+                            i = 0;
+                            // get beat data (tempo, phase, binfo1, binfo2)
+                            dictionary_getatoms(ditem, sym_beat, &i, &array);
+                            if (i==4)
+                            {
+                                newstate->set_tempo(atom_getfloat(array));
+                                newstate->set_phase(atom_getfloat(array+1));
+                                newstate->set_binfo1(atom_getlong(array+2));
+                                newstate->set_binfo2(atom_getlong(array+3));
+                            }
+                            
                             // get pitch
                             dictionary_getlong(ditem, sym_pitch, &pitch);
                             newstate->set_pitch(pitch);
@@ -1115,16 +1236,6 @@ void OMax_data_doread(t_OMax_data *x, t_symbol *s)
                             newstate->set_statenb(statenb);
                             
                             i=0;
-                            // get note data (pitch, velocity, channel)
-                            dictionary_getatoms(ditem, sym_note, &i, &array);
-                            if (i==3)
-                            {
-                                newstate->set_pitch(atom_getlong(array));
-                                newstate->set_velocity(atom_getlong(array+1));
-                                newstate->set_channel(atom_getlong(array+2));
-                            }
-                            
-                            i=0;
                             // get time data (buffer date & duration)
                             dictionary_getatoms(ditem, sym_time, &i, &array);
                             if (i==2)
@@ -1142,6 +1253,28 @@ void OMax_data_doread(t_OMax_data *x, t_symbol *s)
                                 newstate->set_section(atom_getlong(array));
                                 newstate->set_phrase(atom_getlong(array+1));
                             }
+                            
+                            i = 0;
+                            // get beat data (tempo, phase, binfo1, binfo2)
+                            dictionary_getatoms(ditem, sym_beat, &i, &array);
+                            if (i==4)
+                            {
+                                newstate->set_tempo(atom_getfloat(array));
+                                newstate->set_phase(atom_getfloat(array+1));
+                                newstate->set_binfo1(atom_getlong(array+2));
+                                newstate->set_binfo2(atom_getlong(array+3));
+                            }
+                            
+                            i=0;
+                            // get note data (pitch, velocity, channel)
+                            dictionary_getatoms(ditem, sym_note, &i, &array);
+                            if (i==3)
+                            {
+                                newstate->set_pitch(atom_getlong(array));
+                                newstate->set_velocity(atom_getlong(array+1));
+                                newstate->set_channel(atom_getlong(array+2));
+                            }
+                            
                             // add to the data structure
                             x->data.add<O_pitch>(date,(O_label*)newstate);
                         }
@@ -1179,6 +1312,18 @@ void OMax_data_doread(t_OMax_data *x, t_symbol *s)
                                 newstate->set_section(atom_getlong(array));
                                 newstate->set_phrase(atom_getlong(array+1));
                             }
+                            
+                            i = 0;
+                            // get beat data (tempo, phase, binfo1, binfo2)
+                            dictionary_getatoms(ditem, sym_beat, &i, &array);
+                            if (i==4)
+                            {
+                                newstate->set_tempo(atom_getfloat(array));
+                                newstate->set_phase(atom_getfloat(array+1));
+                                newstate->set_binfo1(atom_getlong(array+2));
+                                newstate->set_binfo2(atom_getlong(array+3));
+                            }
+                            
                             // add to the data structure
                             x->data.add<O_char>(date,(O_label*)newstate);
                         }
