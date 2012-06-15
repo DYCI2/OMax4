@@ -120,6 +120,7 @@ extern "C"
 			///@details Check first & second arguments of the Max5 object for a FO name and another Data Sequence name
 			x->odatabound = FALSE;
 			x->idatabound = FALSE;
+            x->oname = NULL;
 			if (argc < 2)
 				object_error((t_object *)x,"Missing arguments (oracle's data & new sequence's data)");
 			else
@@ -205,35 +206,38 @@ extern "C"
 		///@remarks Do this binding only once
 		if ((x->odatabound==FALSE) || (x->idatabound==FALSE))
 		{
-			///@details Check if first name points to an existing @link t_OMax_data OMax.data @endlink object. If so, binds t_OMax_build::odata with the Data Sequence structure (t_OMax_data::data member).
-			if ((x->odataname->s_thing) && (ob_sym(x->odataname->s_thing) == gensym("OMax.data")))
+            if (x->oname != NULL)
 			{
-				x->odata = &(((t_OMax_data*)(x->odataname->s_thing))->data);
-				x->odatabound = TRUE;
-				object_post((t_object *)x,"Builder bound to Data of Oracle %s", x->oname->s_name);
+                ///@details Check if first name points to an existing @link t_OMax_data OMax.data @endlink object. If so, binds t_OMax_build::odata with the Data Sequence structure (t_OMax_data::data member).
+                if ((x->odataname->s_thing) && (ob_sym(x->odataname->s_thing) == gensym("OMax.data")))
+                {
+                    x->odata = &(((t_OMax_data*)(x->odataname->s_thing))->data);
+                    x->odatabound = TRUE;
+                    object_post((t_object *)x,"Builder bound to Data of Oracle %s", x->oname->s_name);
+                }
+                else
+                {
+                    object_error((t_object *)x,"No data for Oracle %s declared", x->oname->s_name);
+                }
+                ///@details Check if second name points to an existing @link t_OMax_data OMax.data @endlink object. If so, binds t_OMax_build::idata with the Data Sequence structure (t_OMax_data::data member).
+                if ((x->idataname->s_thing) && (ob_sym(x->idataname->s_thing) == gensym("OMax.data")))
+                {
+                    if (((t_OMax_data*)(x->idataname->s_thing))->datatype == ((t_OMax_data*)(x->odataname->s_thing))->datatype 
+                        && ((t_OMax_data*)(x->idataname->s_thing))->noDelete == TRUE)
+                    {
+                        x->idata = &(((t_OMax_data*)(x->idataname->s_thing))->data);
+                        x->idatabound = TRUE;
+                        x->datatype = ((t_OMax_data*)(x->odataname->s_thing))->datatype;
+                        object_post((t_object *)x,"Builder writing Sequence %s", x->idataname->s_name);
+                    }
+                    else
+                        object_error((t_object *)x,"Data type mismatch");
+                }
+                else
+                    object_error((t_object *)x,"No new data declared to write");
 			}
 			else
-			{
-				object_error((t_object *)x,"No data for Oracle %s declared", x->oname->s_name);
-			}
-			///@details Check if second name points to an existing @link t_OMax_data OMax.data @endlink object. If so, binds t_OMax_build::idata with the Data Sequence structure (t_OMax_data::data member).
-			if ((x->idataname->s_thing) && (ob_sym(x->idataname->s_thing) == gensym("OMax.data")))
-			{
-				if (((t_OMax_data*)(x->idataname->s_thing))->datatype == ((t_OMax_data*)(x->odataname->s_thing))->datatype 
-					&& ((t_OMax_data*)(x->idataname->s_thing))->noDelete == TRUE)
-				{
-					x->idata = &(((t_OMax_data*)(x->idataname->s_thing))->data);
-					x->idatabound = TRUE;
-					x->datatype = ((t_OMax_data*)(x->odataname->s_thing))->datatype;
-					object_post((t_object *)x,"Builder writing Sequence %s", x->idataname->s_name);
-				}
-				else
-					object_error((t_object *)x,"Data type mismatch");
-			}
-			else
-			{
-				object_error((t_object *)x,"No new data declared to write");
-			}
+				object_error((t_object *)x,"Missing arguments (oracle's data & new sequence's data)");
 		}
 		///@remarks This binding @b do not @b check that the two Data Sequences hold the same type of data
 		///@returns TRUE if binding succeeded (FALSE otherwise)

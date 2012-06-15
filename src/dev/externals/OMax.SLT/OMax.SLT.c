@@ -485,7 +485,7 @@ extern "C"
             x->context = ctxtin;
         else
             object_error((t_object*)x, "Minimal context must be positive");
-	}
+    }
 	
 	//@}
 }

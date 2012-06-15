@@ -91,7 +91,10 @@ using namespace std;
 		
 		if (x = (t_OMax_oracle *)object_alloc(OMax_oracle_class))
 		{
+            // new oracle
 			x->oracle = O_oracle();
+            
+            // outlets
 			x->out0 = outlet_new(x, NULL);
 			
 			if (argc == 0)
@@ -130,14 +133,17 @@ using namespace std;
 	
 	/**@public @memberof t_OMax_oracle
 	 * @brief Object destruction */	
-	void OMax_oracle_free(t_OMax_oracle *x)
-	{
-		ATOMIC_INCREMENT(&x->wflag);
-		if (x->oname->s_thing == (t_object*)x)
-			x->oname->s_thing = NULL;
-		///@remarks Deletes the whole FO structure
-		x->oracle.freestates();
-	}
+    void OMax_oracle_free(t_OMax_oracle *x)
+    {
+        if (x->oname!= NULL)
+        {
+            ATOMIC_INCREMENT(&x->wflag);
+            if (x->oname->s_thing == (t_object*)x)
+                x->oname->s_thing = NULL;
+            ///@remarks Deletes the whole FO structure
+            x->oracle.freestates();
+        }
+    }
 	
 	/**@public @memberof t_OMax_oracle
 	 * @brief Inlet/Outlet contextual information when patching in Max5

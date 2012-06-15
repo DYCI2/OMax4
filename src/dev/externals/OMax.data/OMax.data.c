@@ -80,7 +80,7 @@ extern "C"
 	{
 		t_OMax_data *x = NULL;
 		
-		if (x = (t_OMax_data *)object_alloc(OMax_data_class))
+		if ((x = (t_OMax_data *)object_alloc(OMax_data_class)))
 		{
 			// outlets
 			x->out0 = outlet_new(x, NULL);
@@ -173,27 +173,30 @@ extern "C"
 	 * @brief Object destruction */
 	void OMax_data_free(t_OMax_data *x)
 	{
-		ATOMIC_INCREMENT(&x->wflag);
-		///@details Depending on t_OMax_data::noDelete value, erase every state of the Data Sequence by calling O_data::freestates or keeps it */	
-		if (!(x->noDelete))
-		{
-			switch (x->datatype)
-			{
-				case SPECTRAL:
-					x->data.freestates<O_spectral>();
-					break;
-				case MIDI_MONO:
-					x->data.freestates<O_MIDI_mono>();
-					break;
-				case MIDI_POLY:
-					x->data.freestates<O_MIDI_poly>();
-					break;
-				default:
-					x->data.freestates<O_char>();
-			}
-		}
-		if (x->dataname->s_thing == (t_object *)x)
-			x->dataname->s_thing = NULL;
+        if (x->oname!= NULL)
+        {
+            ATOMIC_INCREMENT(&x->wflag);
+            ///@details Depending on t_OMax_data::noDelete value, erase every state of the Data Sequence by calling O_data::freestates or keeps it */	
+            if (!(x->noDelete))
+            {
+                switch (x->datatype)
+                {
+                    case SPECTRAL:
+                        x->data.freestates<O_spectral>();
+                        break;
+                    case MIDI_MONO:
+                        x->data.freestates<O_MIDI_mono>();
+                        break;
+                    case MIDI_POLY:
+                        x->data.freestates<O_MIDI_poly>();
+                        break;
+                    default:
+                        x->data.freestates<O_char>();
+                }
+            }
+            if (x->dataname->s_thing == (t_object *)x)
+                x->dataname->s_thing = NULL;
+        }
 	}
 	
 	/**@public @memberof t_OMax_data
