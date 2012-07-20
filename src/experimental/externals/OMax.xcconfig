@@ -1,11 +1,10 @@
 // Name & Version
 PRODUCT_NAME = $(PROJECT_NAME)
-//PRODUCT_VERSION = 6.0.0
 
 // Paths
-//MAX5_SDK = ~/Max5/MaxSDK-5.1.7
-MAX6_SDK = ~/Max6/MaxSDK-6.0.4
-C74SUPPORT = $(MAX6_SDK)/c74support
+//MAX_SDK = ~/Max5/MaxSDK-5.1.7
+MAX_SDK = ~/Max6/MaxSDK-6.0.4
+C74SUPPORT = $(MAX_SDK)/c74support
 HEADER_SEARCH_PATHS = /Developer/Headers/FlatCarbon "$(C74SUPPORT)/max-includes"
 FRAMEWORK_SEARCH_PATHS = "$(C74SUPPORT)/max-includes"
 DSTROOT = $(SRCROOT)/../../build
@@ -20,12 +19,15 @@ GCC_PREFIX_HEADER = $(C74SUPPORT)/max-includes/macho-prefix.pch
 
 
 // Architecture and Deployment
+ARCHS = i386
 SDKROOT = /Developer/SDKs/MacOSX10.6.sdk
 MACOSX_DEPLOYMENT_TARGET = 10.6
 
 
 // Complilation
 GCC_VERSION = 4.2
+// GCC_VERSION = com.apple.compilers.llvmgcc42
+// GCC_VERSION = com.apple.compilers.llvm.clang.1_0
 GCC_INPUT_FILETYPE = sourcecode.cpp.cpp
 
 

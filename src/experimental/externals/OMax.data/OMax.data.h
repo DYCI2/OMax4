@@ -15,6 +15,7 @@
 #include "ext_atomic.h"			// required for atomic operation for thread saf
 
 #define MAX_NOTES 12
+#define MAX_EXTRAS 20
 
 /**@brief Use modulo 12 calculation
  @details modulo is a global variable used in the C++ classes.
@@ -62,6 +63,7 @@ typedef struct _OMax_data
 //        void*           inDuration; ///< Inlet 2
 //        void*           inSection;  ///< Inlet 3
 //        void*           inPhrase;   ///< Inlet 4
+        list<float>*    inExtras;   ///< List of extra info of the next state
         long            proxinlet;  ///< Inlet number for proxy
         void*           proxy1;     ///< Proxy & Inlet 1
         void*           proxy2;     ///< Proxy & Inlet 2

@@ -142,6 +142,29 @@ void O_label::set_binfo2(int binfoin)
 	binfo2 = binfoin;
 }
 
+list<float> O_label::get_extras()
+{
+    return extras;
+}
+
+///@remarks If passed NULL, allocates memory
+float* O_label::get_extras(float* dataout)
+{
+	int i = 0;
+	list<float>::iterator fit;
+	if (dataout == NULL)
+		dataout = (float*)malloc(extras.size()*sizeof(float));
+	for (fit = extras.begin(); fit != extras.end(); fit++)
+		dataout[i++]=*fit;
+	///@returns pointer to data
+	return dataout;
+}
+
+void O_label::set_extras(list<float> extrasin)
+{
+    extras = extrasin;
+}
+
 
 ///@remarks Function "print" is not virtual pure
 void O_label::print(ostream & out) const

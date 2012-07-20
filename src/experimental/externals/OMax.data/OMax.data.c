@@ -104,6 +104,9 @@ void *OMax_data_new(t_symbol *s, long argc, t_atom *argv)
     
     if ((x = (t_OMax_data *)object_alloc(OMax_data_class)))
     {
+        // List for extras
+        x->inExtras = new list<float>();
+        
         // Proxies (< Inlets included)
         x->proxy4 = proxy_new((t_object *)x, 4, &x->proxinlet);
         x->proxy3 = proxy_new((t_object *)x, 3, &x->proxinlet);
@@ -230,7 +233,7 @@ void OMax_data_free(t_OMax_data *x)
                 x->data.freestates<O_char>();
         }
     }
-    if (x->dataname->s_thing == (t_object *)x)
+    if (x->dataname && x->dataname->s_thing == (t_object *)x)
         x->dataname->s_thing = NULL;
     
     // Proxies
@@ -263,7 +266,7 @@ void OMax_data_assist(t_OMax_data *x, void *b, long io, long index, char *s)
                 sprintf(s, "[f,f,i,i] Beat info of next data");
                 break;
             case 4:
-                sprintf(s, "(inactive) Additional data of next data");
+                sprintf(s, "Additional data of next data (float list)");
                 break;
         }
             break;
@@ -633,6 +636,19 @@ void OMax_data_list(t_OMax_data *x, t_symbol *s, long argc, t_atom *argv)
     //object_post((t_object *)x, "list receive in inlet %ld", proxy_getinlet((t_object *)x));
     switch(proxy_getinlet((t_object*)x))
     {
+        case 4:
+        {
+            int l;
+            x->inExtras->clear();
+            for (l=0;l<argc;l++)
+            {
+                if (atom_gettype(argv+l)==A_FLOAT)
+                    x->inExtras->push_back(atom_getfloat(argv+l));
+                else
+                    object_error((t_object *)x,"Extras must be a list of floats");
+            }
+            break;
+        }
         case 3:
         {
             if (argc==4 && (atom_gettype(argv)==A_FLOAT) && (atom_gettype(argv+1)==A_FLOAT) && (atom_gettype(argv+2)==A_LONG) && (atom_gettype(argv+3)==A_LONG))
@@ -710,6 +726,7 @@ bool OMax_data_setCommon(t_OMax_data *x, O_label* newdata)
     newdata->set_phase(x->inBeatF[1]);
     newdata->set_binfo1(x->inBeatI[0]);
     newdata->set_binfo2(x->inBeatI[1]);
+    newdata->set_extras(*x->inExtras);
     return TRUE;
 }
 
@@ -773,6 +790,8 @@ void OMax_data_writefile(t_OMax_data *x, char *filename, short path)
     char err;
     int* note_data = NULL;
     float* sp_data = NULL;
+    int extras_nb = 0;
+    float* extras_data = (float*)malloc(MAX_EXTRAS*sizeof(float));
     long i = 0;
     long idx = 0;
     long nbstates = x->data.get_size();
@@ -791,6 +810,7 @@ void OMax_data_writefile(t_OMax_data *x, char *filename, short path)
     t_symbol* sym_slice = gensym("slice");
     t_symbol* sym_notes = gensym("notes");
     t_symbol* sym_beat = gensym("beat");
+    t_symbol* sym_extras = gensym("extras");
     
     t_atom* datab = (t_atom*)sysmem_newptr(nbstates*sizeof(t_atom));
     t_atom* array = NULL;
@@ -813,7 +833,7 @@ void OMax_data_writefile(t_OMax_data *x, char *filename, short path)
         {
             // vars & alloc
             t_dictionary* notedic;
-            atom_alloc_array(5, &i, &array, &err);
+            atom_alloc_array(MAX_EXTRAS, &i, &array, &err);
             t_atom* notesarray = (t_atom*)sysmem_newptr(MAX_NOTES*sizeof(t_atom));
             
             dictionary_appendsym(d, gensym("typeID"), gensym("MIDI"));
@@ -837,6 +857,11 @@ void OMax_data_writefile(t_OMax_data *x, char *filename, short path)
                 atom_setlong(array+2, current->get_binfo1());
                 atom_setlong(array+3, current->get_binfo2());
                 dictionary_appendatoms(ditem, sym_beat, 4, array);
+                // extras data
+                extras_nb = current->get_extras().size();
+                extras_data = current->get_extras(extras_data);
+                atom_setfloat_array(extras_nb, array, extras_nb, extras_data);
+                dictionary_appendatoms(ditem, sym_extras, extras_nb, array);
                 // slice data
                 atom_setfloat(array, ((O_MIDI*)current)->get_vpitch());
                 atom_setfloat(array+1, ((O_MIDI*)current)->get_mvelocity());
@@ -862,8 +887,8 @@ void OMax_data_writefile(t_OMax_data *x, char *filename, short path)
         }
         case SPECTRAL:
         {
-            // alloc
-            atom_alloc_array(x->nbcoeffs, &i, &array, &err);
+            // vars & alloc
+            atom_alloc_array((x->nbcoeffs>MAX_EXTRAS?x->nbcoeffs:MAX_EXTRAS), &i, &array, &err);
             
             dictionary_appendsym(d, gensym("typeID"), gensym("SPECTRAL"));
             
@@ -887,6 +912,11 @@ void OMax_data_writefile(t_OMax_data *x, char *filename, short path)
                 atom_setlong(array+2, current->get_binfo1());
                 atom_setlong(array+3, current->get_binfo2());
                 dictionary_appendatoms(ditem, sym_beat, 4, array);
+                // extras data
+                extras_nb = current->get_extras().size();
+                extras_data = current->get_extras(extras_data);
+                atom_setfloat_array(extras_nb, array, extras_nb, extras_data);
+                dictionary_appendatoms(ditem, sym_extras, extras_nb, array);
                 // pitch
                 dictionary_appendlong(ditem, sym_pitch, ((O_spectral*)current)->get_pitch());
                 // MFCCs
@@ -902,7 +932,7 @@ void OMax_data_writefile(t_OMax_data *x, char *filename, short path)
         case PITCH:
         {
             // alloc
-            atom_alloc_array(3, &i, &array, &err);
+            atom_alloc_array(MAX_EXTRAS, &i, &array, &err);
             
             dictionary_appendsym(d, gensym("typeID"), gensym("PITCH"));
             
@@ -926,6 +956,11 @@ void OMax_data_writefile(t_OMax_data *x, char *filename, short path)
                 atom_setlong(array+2, current->get_binfo1());
                 atom_setlong(array+3, current->get_binfo2());
                 dictionary_appendatoms(ditem, sym_beat, 4, array);
+                // extras data
+                extras_nb = current->get_extras().size();
+                extras_data = current->get_extras(extras_data);
+                atom_setfloat_array(extras_nb, array, extras_nb, extras_data);
+                dictionary_appendatoms(ditem, sym_extras, extras_nb, array);
                 // note
                 note_data = ((O_pitch*)current)->get_data(note_data);
                 atom_setlong_array(3, array, 3, (long*)note_data);
@@ -938,7 +973,7 @@ void OMax_data_writefile(t_OMax_data *x, char *filename, short path)
         default:
         {
             // alloc
-            atom_alloc_array(2, &i, &array, &err);
+            atom_alloc_array(MAX_EXTRAS, &i, &array, &err);
             
             dictionary_appendsym(d, gensym("typeID"), gensym("LETTERS"));
             
@@ -962,6 +997,11 @@ void OMax_data_writefile(t_OMax_data *x, char *filename, short path)
                 atom_setlong(array+2, current->get_binfo1());
                 atom_setlong(array+3, current->get_binfo2());
                 dictionary_appendatoms(ditem, sym_beat, 4, array);
+                // extras data
+                extras_nb = current->get_extras().size();
+                extras_data = current->get_extras(extras_data);
+                atom_setfloat_array(extras_nb, array, extras_nb, extras_data);
+                dictionary_appendatoms(ditem, sym_extras, extras_nb, array);
                 // letter
                 letter[0] = ((O_char*)current)->get_letter();
                 dictionary_appendsym(ditem, sym_letter, gensym(letter));
@@ -993,7 +1033,7 @@ void OMax_data_writefile(t_OMax_data *x, char *filename, short path)
 
 void OMax_data_doread(t_OMax_data *x, t_symbol *s)
 {
-    //char err;
+    char err;
     short path;
     int date = 0;
     long datatype, size, nbcoeffs;
@@ -1053,6 +1093,7 @@ void OMax_data_doread(t_OMax_data *x, t_symbol *s)
         t_symbol* sym_slice = gensym("slice");
         t_symbol* sym_notes = gensym("notes");
         t_symbol* sym_beat = gensym("beat");
+        t_symbol* sym_extras = gensym("extras");
         
         
         dictionary_getlong(d, gensym("size"), &size);
@@ -1061,11 +1102,14 @@ void OMax_data_doread(t_OMax_data *x, t_symbol *s)
         if (x->readcount==0 && x->wflag==0)
         {
             // vars
+            int j;
             long statenb;
             t_atom *array = NULL;
             t_dictionary *ditem = NULL;
+            list<float> extras;
             
             // alloc
+            atom_alloc_array(MAX_EXTRAS, &i, &array, &err);
             /*if (x->nbcoeffs>2)
              atom_alloc_array(x->nbcoeffs, &i, &array, &err);
              else
@@ -1077,7 +1121,6 @@ void OMax_data_doread(t_OMax_data *x, t_symbol *s)
                 case 3: // MIDI
                     for (idx=1; idx<size; idx++)
                     {
-                        int j;
                         long k,l;
                         O_MIDI* newstate;
                         t_atom* notes = NULL;
@@ -1124,6 +1167,14 @@ void OMax_data_doread(t_OMax_data *x, t_symbol *s)
                             }
                             
                             i = 0;
+                            // get extras data
+                            dictionary_getatoms(ditem, sym_extras, &i, &array);
+                            for (j=0;j<i;j++)
+                                extras.push_back(atom_getfloat(&array[j]));
+                            newstate->set_extras(extras);
+                            extras.clear();
+                            
+                            i = 0;
                             // get slice data (virtual pitch & mean velocity)
                             dictionary_getatoms(ditem, sym_slice, &i, &array);
                             if (i==2)
@@ -1159,7 +1210,6 @@ void OMax_data_doread(t_OMax_data *x, t_symbol *s)
                 case 2: // Spectral
                     for (idx=1; idx<size; idx++)
                     {
-                        int j;
                         long pitch;
                         list<float> coeffs;
                         O_spectral* newstate;
@@ -1201,6 +1251,14 @@ void OMax_data_doread(t_OMax_data *x, t_symbol *s)
                                 newstate->set_binfo1(atom_getlong(array+2));
                                 newstate->set_binfo2(atom_getlong(array+3));
                             }
+                            
+                            i = 0;
+                            // get extras data
+                            dictionary_getatoms(ditem, sym_extras, &i, &array);
+                            for (j=0;j<i;j++)
+                                extras.push_back(atom_getfloat(&array[j]));
+                            newstate->set_extras(extras);
+                            extras.clear();
                             
                             // get pitch
                             dictionary_getlong(ditem, sym_pitch, &pitch);
@@ -1265,6 +1323,14 @@ void OMax_data_doread(t_OMax_data *x, t_symbol *s)
                                 newstate->set_binfo2(atom_getlong(array+3));
                             }
                             
+                            i = 0;
+                            // get extras data
+                            dictionary_getatoms(ditem, sym_extras, &i, &array);
+                            for (j=0;j<i;j++)
+                                extras.push_back(atom_getfloat(&array[j]));
+                            newstate->set_extras(extras);
+                            extras.clear();
+                            
                             i=0;
                             // get note data (pitch, velocity, channel)
                             dictionary_getatoms(ditem, sym_note, &i, &array);
@@ -1323,6 +1389,14 @@ void OMax_data_doread(t_OMax_data *x, t_symbol *s)
                                 newstate->set_binfo1(atom_getlong(array+2));
                                 newstate->set_binfo2(atom_getlong(array+3));
                             }
+                            
+                            i = 0;
+                            // get extras data
+                            dictionary_getatoms(ditem, sym_extras, &i, &array);
+                            for (j=0;j<i;j++)
+                                extras.push_back(atom_getfloat(&array[j]));
+                            newstate->set_extras(extras);
+                            extras.clear();
                             
                             // add to the data structure
                             x->data.add<O_char>(date,(O_label*)newstate);

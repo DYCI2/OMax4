@@ -226,11 +226,16 @@ void O_data::add_date(int datein, int statenb)
 ///@details Retreive the first state finishing at or after the given date
 int O_data::get_state(int date)
 {
+    int out = -1;
 	map<int,int>::iterator mapit;
-	mapit = dates2states->upper_bound(date);
-	--mapit;
-	///@return The state number
-	return (*mapit).second;
+    if (!(dates2states->empty()))
+    {
+        mapit = dates2states->upper_bound(date);
+        --mapit;
+        out = (*mapit).second;
+    }
+	///@return The state number the structure is not empty, -1 otherwise
+	return out;
 }
 
 void O_data::reset_D2S()

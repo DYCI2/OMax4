@@ -40,6 +40,8 @@ extern "C"
         int			nbcoeffs;	///< Number of coefficients for spectral
         O_data*		data;		///< Pointer to Data Sequence structure
         t_atom*		twout;		///< Array for the output
+        list<float>*extraslist; ///< List to get extras
+        float*      extrastab;  ///< Float array to transfert extras
         t_atom*		coefout;	///< Array for spectral output
         list<float>*coeflist;	///< List to get spectral coeffs
         float*		coeftab;	///< Float array to transfert spectral coeffs
@@ -117,9 +119,12 @@ extern "C"
             // allocation
             char err;
             long i = 0;
-            atom_alloc_array(4, &i, &x->twout, &err);
-            if (!err || i!=4)
+            atom_alloc_array(MAX_EXTRAS, &i, &x->twout, &err);
+            if (!err || i!=MAX_EXTRAS)
                 object_error((t_object*)x, "Allocation error");
+            
+            x->extraslist = new list<float>();
+            x->extrastab = (float*)malloc((MAX_EXTRAS)*sizeof(float));
             
             x->coefout = NULL;
             x->coeflist = NULL;
@@ -316,6 +321,19 @@ extern "C"
                     // state number
                     outlet_int(x->out_statenb, labL->get_statenb()); // output
                     
+                    // extras
+                    *x->extraslist = labL->get_extras();
+                    int l = 0;
+                    list<float>::iterator it;
+                    for(it=x->extraslist->begin();it!=x->extraslist->end();it++)
+                    {
+                        x->extrastab[l]=(*it);
+                        l++;
+                    }
+                    atom_setfloat_array(l, x->twout, l, x->extrastab);
+                    outlet_list(x->out_add, NULL,l, x->twout); // then output coeffs
+                    
+                    
                     // beat info
                     atom_setfloat(x->twout, labL->get_tempo());
                     atom_setfloat(x->twout+1, labL->get_phase());
@@ -412,8 +430,18 @@ extern "C"
     {
         int statenb = 0;
         if (OMax_render_bind(x))
-            statenb = x->data->get_state(idin);
-        OMax_render_read(x,statenb);
+        {
+            ATOMIC_INCREMENT(&(((t_OMax_data *)(x->dataname->s_thing))->readcount));
+            if(!(((t_OMax_data *)(x->dataname->s_thing))->wflag))
+            {
+                statenb = x->data->get_state(idin);
+                if (statenb>0)
+                    OMax_render_read(x,statenb);
+            }
+            else
+                object_error((t_object *)x,"Data of Oracle %s busy",x->oname->s_name);
+            ATOMIC_DECREMENT(&(((t_OMax_data *)(x->dataname->s_thing))->readcount));
+        }
     }
     
     /**@public @memberof t_OMax_render

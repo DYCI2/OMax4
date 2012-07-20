@@ -41,6 +41,8 @@ protected:
     int binfo1;
     /// Additional rhythm information for the state
     int binfo2;
+    /// Extra info structure for the state
+    list<float> extras;
     
     
     /// Virtual output function (operator<< can't be virtual)
@@ -97,6 +99,12 @@ public:
     void set_binfo2(int);
     /// Return the second additional info of the state
     int get_binfo2();
+    /// Set the extra info list of the state
+    void set_extras(list<float>);
+    /// Return the extra info list of the state (list)
+    list<float> get_extras();
+    /// Return the extra info list of the state (tab)
+    float* get_extras(float*);
     
 	//@}
     
