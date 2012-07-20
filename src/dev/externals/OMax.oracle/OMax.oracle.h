@@ -13,6 +13,7 @@
 #include "jpatcher_api.h"		// required for the color
 #include "jgraphics.h"			// required for the color
 #include "ext_atomic.h"			// required for atomic operation for thread safety
+#include "ext_critical.h"       // required for critical regions handeling
 
 /**@ingroup oracle
  * @nosubgrouping

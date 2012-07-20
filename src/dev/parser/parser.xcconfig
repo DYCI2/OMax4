@@ -3,4 +3,15 @@
 //  Created by Benjamin Levy on 15/04/10.
 //
 
+CONFIGURATION_BUILD_DIR = $(SRCROOT)
+
 OTHER_LDFLAGS = -lfl
+
+GCC_INPUT_FILETYPE = sourcecode.cpp.cpp
+
+// From Max
+WARNING_CFLAGS = -Wmost -Wno-four-char-constants -Wno-unknown-pragmas
+// Architecture and Deployment
+SDKROOT = /Developer/SDKs/MacOSX10.6.sdk
+GCC_VERSION = 4.2
+MACOSX_DEPLOYMENT_TARGET = 10.6
