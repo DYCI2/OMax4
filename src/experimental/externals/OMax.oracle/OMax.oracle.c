@@ -39,7 +39,7 @@ using namespace std;
 	void OMax_oracle_size(t_OMax_oracle *x);
 	void OMax_oracle_write(t_OMax_oracle *x, t_symbol *s);
 	void OMax_oracle_read(t_OMax_oracle *x, t_symbol *s);
-	void OMax_oracle_init(t_OMax_oracle *x);
+//	void OMax_oracle_init(t_OMax_oracle *x);
 	void OMax_oracle_reset(t_OMax_oracle *x);
 	void OMax_oracle_dates(t_OMax_oracle *x);
 
@@ -75,7 +75,7 @@ using namespace std;
 		class_addmethod(c, (method)OMax_oracle_size, "size", 0);
 		class_addmethod(c, (method)OMax_oracle_write, "write", A_DEFSYM, 0);
 		class_addmethod(c, (method)OMax_oracle_read, "read", A_DEFSYM, 0);
-		class_addmethod(c, (method)OMax_oracle_init, "init", 0);
+//		class_addmethod(c, (method)OMax_oracle_init, "init", 0);
 		class_addmethod(c, (method)OMax_oracle_reset, "reset", 0);
 		class_addmethod(c, (method)OMax_oracle_dates, "dates", 0);
         class_addmethod(c, (method)OMax_oracle_add, "add", A_LONG, 0);
@@ -159,7 +159,7 @@ using namespace std;
 				switch (index)
 			{
 				case 0: // leftmost
-					sprintf(s, "messages (init, reset, write, size)");
+					sprintf(s, "messages (add, reset, write, size)");
 					break;
 			}
                 break;
@@ -201,10 +201,10 @@ using namespace std;
 	/**@public @memberof t_OMax_oracle
 	 * @brief Initialise the FO structure
 	 * @remarks Input message in Max5: @c init*/
-	void OMax_oracle_init(t_OMax_oracle *x)
+/*	void OMax_oracle_init(t_OMax_oracle *x)
 	{
 		x->oracle.start();
-	}
+	}*/
 	
 	/**@public @memberof t_OMax_oracle
 	 * @brief Reset the FO structure

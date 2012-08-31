@@ -36,7 +36,7 @@ int yyerror(O_oracle*,const char*);
 oracle:	DIGRAPH ORACLE_ID NEW_LINE
 		{
 			NewOracle->set_name($2);
-			//NewOracle->start();
+			NewOracle->start();
 			//printf("Oracle's name: %s\n",$2);
 		} 
 		O_BRACKET NEW_LINE
@@ -50,7 +50,7 @@ oracle:	DIGRAPH ORACLE_ID NEW_LINE
 		DIGRAPH STRING NEW_LINE
 		{
 			NewOracle->set_name($2);
-			//NewOracle->start();
+			NewOracle->start();
 			//printf("Oracle's name: %s\n",$2);
 		} 
 		O_BRACKET NEW_LINE 
@@ -97,6 +97,9 @@ dotid:      DOTID EQ NUMBER
             {
                 ((*NewOracle)[NewOracle->get_size()-1])->set_bufferef($3);
                 //printf("id : %d\n",$3);
+                //printf("statenb : %d\n",NewOracle->get_size()-1);
+                NewOracle->add_state(NewOracle->get_size()-1,$3);
+                NewOracle->add_date($3,NewOracle->get_size()-1);
             }
 
 xlabel:     XLABEL EQ NUMBER

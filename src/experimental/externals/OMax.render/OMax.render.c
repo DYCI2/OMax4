@@ -213,7 +213,7 @@ extern "C"
                     sprintf(s, "[f,f,i,i] Beat info");
                     break;
                 case 5:
-                    sprintf(s, "(inactive) Additional data");
+                    sprintf(s, "Additional data");
                     break;
                 case 6:
                     sprintf(s, "index");

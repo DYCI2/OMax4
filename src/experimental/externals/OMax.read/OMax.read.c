@@ -32,7 +32,7 @@ extern "C"
 		t_symbol*	oname;		///< Pointer to FO name
 		bool		obound;		///< Binding flag
 		O_oracle*	oracle;		///< Pointer to FO structure
-		void*		out_statenb;///< Outlet 0 (leftmost): state number
+		void*		out_statenb;///< Outlet 0 (leftmost): state number & letter
 		void*		out_trans;	///< Outlet 1: transitions
 		void*		out_suff;	///< Outlet 2: suffix & @e lrs
 		void*		out_rsuff;	///< Outlet 3: reverse suffix with @e lrs
@@ -96,7 +96,7 @@ extern "C"
 		if ((x = (t_OMax_read *)object_alloc(OMax_read_class)))
 		{
 			// outlet init
-			x->out_statenb = intout(x); // rightmost
+			x->out_statenb = listout(x); // rightmost
 			x->out_trans = listout(x);
 			x->out_suff = listout(x);
 			x->out_rsuff = listout(x);
@@ -161,7 +161,7 @@ extern "C"
 					sprintf(s, "list of transitions");
 					break;
 				case 4:
-					sprintf(s, "state number");
+					sprintf(s, "state number & letter");
 					break;
 			}
 				break;
@@ -228,23 +228,37 @@ extern "C"
 					O_state state = *(*x->oracle)[statnb];
 					ATOMIC_DECREMENT(&(((t_OMax_oracle *)(x->oname->s_thing))->readcount));
 					
+                    char err,err0;
+					long i = 0;
+                    long j = 0;
+                    
 					// state number
-					outlet_int(x->out_statenb, state.get_statenb()); // output
+                    t_atom * tabout = NULL;
+					atom_alloc_array(2, &i, &tabout, &err);
+                    if(err && i==2)
+					{
+                    
+                    atom_setlong(tabout, state.get_statenb());
+                    atom_setlong(tabout+1, state.get_letter());
+                    
+                    outlet_list(x->out_statenb, NULL, 2, tabout); // output
+                        
+                    }
+                    
+					//outlet_int(x->out_statenb, state.get_statenb()); // output
 					
 					// transitions
-					char err;
-					long i = 0;
 					list<O_state*> trans = state.get_trans();
 					list<O_state*>::iterator it;
 					long vals[trans.size()];
 					t_atom * trans_list = NULL;
 					for (it = trans.begin(); it!=trans.end(); it++)
 					{
-						vals[i]=(*it)->get_statenb();
-						i++;
+						vals[j]=(*it)->get_statenb();
+						j++;
 					}
-					atom_alloc_array((long)trans.size(), &i, &trans_list, &err);
-					if(err)
+					atom_alloc_array((long)trans.size(), &j, &trans_list, &err0);
+					if(err0)
 					{
 						atom_setlong_array((long)trans.size(),trans_list,(long)trans.size(),vals);
 						outlet_list(x->out_trans, NULL, (short)trans.size(), trans_list); // output
@@ -252,33 +266,34 @@ extern "C"
 					sysmem_freeptr(trans_list);
 					
 					// suffix
-					t_atom * suff = NULL;
-					atom_alloc_array(2, &i, &suff, &err);
+					//t_atom * suff = NULL;
+					//atom_alloc_array(2, &i, &suff, &err);
 					if((state.get_suffix().first!=NULL) && (i==2) && err)
 					{
-							atom_setlong(suff, (state.get_suffix().first)->get_statenb());
-							atom_setlong(suff+1, state.get_suffix().second);
-							outlet_list(x->out_suff, NULL, 2, suff); // output
+							atom_setlong(tabout, (state.get_suffix().first)->get_statenb());
+							atom_setlong(tabout+1, state.get_suffix().second);
+							outlet_list(x->out_suff, NULL, 2, tabout); // output
 					}
-					sysmem_freeptr(suff);
+					//sysmem_freeptr(suff);
 					
 					// reversed suffixes
 					list<pair<O_state*,int> > rsuff = state.get_rsuff();
 					list<pair<O_state*,int> >::iterator rsit = rsuff.begin();
 					long rsvals[2];
-					t_atom * rsuff_out = NULL;
-					atom_alloc_array(2, &i, &rsuff_out, &err);
+					//t_atom * rsuff_out = NULL;
+					//atom_alloc_array(2, &i, &rsuff_out, &err);
 					if(err && i==2)
 					{
 						for (rsit=rsuff.begin();rsit!=rsuff.end();rsit++)
 						{
 							rsvals[0]=(*rsit).first->get_statenb();
 							rsvals[1]=(*rsit).second;
-							atom_setlong_array(2,rsuff_out,2,rsvals);
-							outlet_list(x->out_rsuff, NULL, 2, rsuff_out); // output
+							atom_setlong_array(2,tabout,2,rsvals);
+							outlet_list(x->out_rsuff, NULL, 2, tabout); // output
 						}
 					}
-					sysmem_freeptr(rsuff_out);
+					
+                    sysmem_freeptr(tabout);
 					
 					// done
 					outlet_bang(x->out_bang);

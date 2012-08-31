@@ -351,8 +351,8 @@ void O_oracle::start()
 {
 	if(size <= 0)
 	{
-		O_state * newstate = new O_state(0, -1);
-		state_vect.push_back(newstate);
+		//O_state * newstate = new O_state(0, -1);
+		//state_vect.push_back(newstate);
 		size = state_vect.size();
         IDs2states = new map<int,int>();
 		(*IDs2states)[0]=0;
@@ -369,6 +369,8 @@ int O_oracle::add(int letterIn, int bufferefIn)
 	if (state_vect.size()<1)
 	{
 		this->start();
+        O_state * newstate = new O_state(0, -1);
+		state_vect.push_back(newstate);
 	}
 	
 	int newstatenb;
