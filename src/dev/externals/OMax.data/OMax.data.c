@@ -177,6 +177,9 @@ extern "C"
         {
             ATOMIC_INCREMENT(&x->wflag);
             ///@details Depending on t_OMax_data::noDelete value, erase every state of the Data Sequence by calling O_data::freestates or keeps it */	
+            if (x->dataname->s_thing == (t_object *)x)
+                x->dataname->s_thing = NULL;
+            
             if (!(x->noDelete))
             {
                 switch (x->datatype)
@@ -194,8 +197,6 @@ extern "C"
                         x->data.freestates<O_char>();
                 }
             }
-            if (x->dataname->s_thing == (t_object *)x)
-                x->dataname->s_thing = NULL;
         }
 	}
 	

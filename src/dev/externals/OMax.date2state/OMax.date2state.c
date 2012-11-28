@@ -94,7 +94,7 @@ extern "C"
 		t_OMax_date2state *x = NULL;
 		
 		// object instantiation, NEW STYLE
-		if (x = (t_OMax_date2state *)object_alloc(OMax_date2state_class))
+		if ((x = (t_OMax_date2state *)object_alloc(OMax_date2state_class)))
 		{
 			// outlet init
 			x->out = intout(x);
@@ -196,7 +196,7 @@ extern "C"
 	 * @remarks Input message in Max5: a date (@c int in ms) */
 	void OMax_date2state_do(t_OMax_date2state *x, long date)
 	{
-		if (OMax_date2state_bind(x))
+		if (OMax_date2state_bind(x)&&(x->dataname->s_thing))
 		{
 			ATOMIC_INCREMENT(&(((t_OMax_data *)(x->dataname->s_thing))->readcount));
 			if(!(((t_OMax_data *)(x->dataname->s_thing))->wflag))

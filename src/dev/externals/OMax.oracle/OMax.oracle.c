@@ -137,9 +137,9 @@ void OMax_oracle_free(t_OMax_oracle *x)
 {
     if (x->oname!= NULL)
     {
-        ATOMIC_INCREMENT(&x->wflag);
         if (x->oname->s_thing == (t_object*)x)
             x->oname->s_thing = NULL;
+        ATOMIC_INCREMENT(&x->wflag);
         ///@remarks Deletes the whole FO structure
         x->oracle.freestates();
     }

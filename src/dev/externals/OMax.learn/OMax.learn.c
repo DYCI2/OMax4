@@ -267,7 +267,7 @@ extern "C"
 	void OMax_learn_add(t_OMax_learn *x, t_symbol *s, short ac, t_atom * av)
 	{
 		/// Check for binding
-		if (OMax_learn_bind(x))
+		if (OMax_learn_bind(x)&&(x->oname->s_thing)&&(x->dataname->s_thing))
 		{
 			int out;				
 			if (ac>0)

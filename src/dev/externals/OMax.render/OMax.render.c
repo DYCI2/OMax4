@@ -107,7 +107,7 @@ extern "C"
 	{
 		t_OMax_render *x = NULL;
 		
-		if (x = (t_OMax_render *)object_alloc(OMax_render_class))
+		if ((x = (t_OMax_render *)object_alloc(OMax_render_class)))
 		{
 			// allocation
 			char err;
@@ -280,7 +280,7 @@ extern "C"
 	 * @remarks Input message in Max5: a state number (@c int) */
 	void OMax_render_read(t_OMax_render *x, long statnb)
 	{
-		if (OMax_render_bind(x))
+		if (OMax_render_bind(x)&&(x->dataname->s_thing))
 		{
 			ATOMIC_INCREMENT(&(((t_OMax_data *)(x->dataname->s_thing))->readcount));
 			if(!(((t_OMax_data *)(x->dataname->s_thing))->wflag))
@@ -380,7 +380,7 @@ extern "C"
 	 * starting buffer reference */
 	void OMax_render_phrases(t_OMax_render *x)
 	{
-		if (OMax_render_bind(x))
+		if (OMax_render_bind(x)&&(x->dataname->s_thing))
 		{
 			ATOMIC_INCREMENT(&(((t_OMax_data *)(x->dataname->s_thing))->readcount));
 			if(!(((t_OMax_data *)(x->dataname->s_thing))->wflag))

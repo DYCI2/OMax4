@@ -254,7 +254,7 @@ extern "C"
 	 * @remarks Input message in Max5: @c bang */
 	void OMax_build_bang(t_OMax_build *x)
 	{
-		if (OMax_build_bind(x))
+		if (OMax_build_bind(x)&&(x->odataname->s_thing)&&(x->idataname->s_thing))
 		{
 			ATOMIC_INCREMENT(&(((t_OMax_data *)(x->idataname->s_thing))->readcount));
 			if(!(((t_OMax_data *)(x->idataname->s_thing))->wflag))
@@ -275,7 +275,7 @@ extern "C"
 	 * @remarks Input message in Max5: @c add followed by a state number (@c int) */
 	void OMax_build_add(t_OMax_build *x, long statein)
 	{
-		if (OMax_build_bind(x))
+		if (OMax_build_bind(x)&&(x->odataname->s_thing)&&(x->idataname->s_thing))
 		{
 			ATOMIC_INCREMENT(&(((t_OMax_data *)(x->odataname->s_thing))->readcount));
 			if(!(((t_OMax_data *)(x->odataname->s_thing))->wflag)
