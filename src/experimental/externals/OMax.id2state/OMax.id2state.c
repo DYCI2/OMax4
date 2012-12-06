@@ -178,7 +178,7 @@ extern "C"
 	 * @remarks Input message in Max5: a date (@c int in ms) */
 	void OMax_id2state_do(t_OMax_id2state *x, long id)
 	{
-		if (OMax_id2state_bind(x))
+		if (OMax_id2state_bind(x)&&(x->oname->s_thing))
 		{
 			ATOMIC_INCREMENT(&(((t_OMax_oracle *)(x->oname->s_thing))->readcount));
 			if(!(((t_OMax_oracle *)(x->oname->s_thing))->wflag))

@@ -241,7 +241,7 @@ extern "C"
 	 * @remarks Input message in Max5: a state number (@c int) */	
 	void OMax_SLT(t_OMax_SLT *x, long statnb)
 	{
-		if (OMax_SLT_bind(x))
+		if (OMax_SLT_bind(x)&&(x->oname->s_thing))
 		{
 			ATOMIC_INCREMENT(&(((t_OMax_oracle *)(x->oname->s_thing))->readcount));
 			if(!(((t_OMax_oracle *)(x->oname->s_thing))->wflag))
@@ -308,7 +308,7 @@ extern "C"
 	 * @remarks Input message in Max5: @c path followed by a state number (@c int) */
 	void OMax_path(t_OMax_SLT *x, long statnb)
 	{
-		if (OMax_SLT_bind(x))
+		if (OMax_SLT_bind(x)&&(x->oname->s_thing))
 		{
 			ATOMIC_INCREMENT(&(((t_OMax_oracle *)(x->oname->s_thing))->readcount));
 			if(!(((t_OMax_oracle *)(x->oname->s_thing))->wflag))
@@ -354,7 +354,7 @@ extern "C"
 	 * @remarks Input message in Max5: @c fullpath followed by a state number (@c int) */
 	void OMax_fullpath(t_OMax_SLT *x, long statnb)
 	{
-		if (OMax_SLT_bind(x))
+		if (OMax_SLT_bind(x)&&(x->oname->s_thing))
 		{
 			ATOMIC_INCREMENT(&(((t_OMax_oracle *)(x->oname->s_thing))->readcount));
 			if(!(((t_OMax_oracle *)(x->oname->s_thing))->wflag))
@@ -400,7 +400,7 @@ extern "C"
 	 * @remarks Input message in Max5: @c sorted followed by a state number (@c int) */	
 	void OMax_sortedSLT(t_OMax_SLT *x, long statnb)
 	{
-		if (OMax_SLT_bind(x))
+		if (OMax_SLT_bind(x)&&(x->oname->s_thing))
 		{
 			ATOMIC_INCREMENT(&(((t_OMax_oracle *)(x->oname->s_thing))->readcount));
 			if(!(((t_OMax_oracle *)(x->oname->s_thing))->wflag))
@@ -445,7 +445,7 @@ extern "C"
 	 * @remarks Input message in Max5: @c sorted followed by a state number (@c int) and a number of solutions (@c int) */	
 	void OMax_sortedSLTbis(t_OMax_SLT *x, long statnb, long nbsol)
 	{
-		if (OMax_SLT_bind(x))
+		if (OMax_SLT_bind(x)&&(x->oname->s_thing))
 		{
 			ATOMIC_INCREMENT(&(((t_OMax_oracle *)(x->oname->s_thing))->readcount));
 			if(!(((t_OMax_oracle *)(x->oname->s_thing))->wflag))

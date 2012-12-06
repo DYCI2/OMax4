@@ -190,7 +190,7 @@ extern "C"
 	 * @remarks Input message in Max5: a state number (@c int) */
 	void OMax_state2id_do(t_OMax_state2id *x, long statnb)
 	{
-		if (OMax_state2id_bind(x))
+		if (OMax_state2id_bind(x)&&(x->oname->s_thing))
 		{
 			ATOMIC_INCREMENT(&(((t_OMax_oracle *)(x->oname->s_thing))->readcount));
 			if(((t_OMax_oracle *)(x->oname->s_thing))->wflag == FALSE)

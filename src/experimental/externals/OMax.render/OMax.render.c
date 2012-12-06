@@ -309,7 +309,7 @@ extern "C"
      * @remarks Input message in Max5: a state number (@c int) */
     void OMax_render_read(t_OMax_render *x, long statnb)
     {
-        if (OMax_render_bind(x))
+        if (OMax_render_bind(x)&&(x->dataname->s_thing))
         {
             ATOMIC_INCREMENT(&(((t_OMax_data *)(x->dataname->s_thing))->readcount));
             if(!(((t_OMax_data *)(x->dataname->s_thing))->wflag))
@@ -429,7 +429,7 @@ extern "C"
     void OMax_render_readid(t_OMax_render *x, long idin)
     {
         int statenb = 0;
-        if (OMax_render_bind(x))
+        if (OMax_render_bind(x)&&(x->dataname->s_thing))
         {
             ATOMIC_INCREMENT(&(((t_OMax_data *)(x->dataname->s_thing))->readcount));
             if(!(((t_OMax_data *)(x->dataname->s_thing))->wflag))
