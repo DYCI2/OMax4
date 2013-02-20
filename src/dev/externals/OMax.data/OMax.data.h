@@ -48,7 +48,7 @@ typedef struct _OMax_data
 		O_data			data;		///< Data sequence
 		t_int32_atomic	wflag;		///< Writing flag
 		t_int32_atomic	readcount;	///< Reader Count
-		bool			noDelete;	///< Keep Data states
+		char			noDelete;	///< Keep Data states
 		void*			out0;		///< Outlet 0 (leftmost)
 	} t_OMax_data;
 

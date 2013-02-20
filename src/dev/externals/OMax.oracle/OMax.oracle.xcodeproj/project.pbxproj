@@ -206,6 +206,9 @@
 /* Begin PBXProject section */
 		089C1669FE841209C02AAC07 /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0450;
+			};
 			buildConfigurationList = 2FBBEACF08F335010078DB84 /* Build configuration list for PBXProject "OMax.oracle" */;
 			compatibilityVersion = "Xcode 3.1";
 			developmentRegion = English;
@@ -373,6 +376,7 @@
 				7BC90222158B46A400E9DA2E /* Normal */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Normal;
 		};
 /* End XCConfigurationList section */
 	};

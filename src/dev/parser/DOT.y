@@ -38,6 +38,7 @@ oracle:	DIGRAPH ORACLE_ID NEW_LINE
 			NewOracle->set_name($2);
 			//NewOracle->start();
 			//printf("Oracle's name: %s\n",$2);
+            free($2);
 		} 
 		O_BRACKET NEW_LINE
 		stmt_list
@@ -52,6 +53,7 @@ oracle:	DIGRAPH ORACLE_ID NEW_LINE
 			NewOracle->set_name($2);
 			//NewOracle->start();
 			//printf("Oracle's name: %s\n",$2);
+            free($2);
 		} 
 		O_BRACKET NEW_LINE 
 		stmt_list
@@ -104,6 +106,9 @@ stmt_list:  /* empty */
               stmt_list
 
 attr_stmt:  STRING O_SQBRACKET attr_list C_SQBRACKET
+            {
+                free($1);
+            }
             | attr
 			
 attr_list:  /* empty */
@@ -117,8 +122,18 @@ lrs:    LABEL EQ NUMBER
 		}
             
 attr:   STRING EQ STRING
+        {
+            free($1);
+            free($3);
+        }
         | STRING EQ NUMBER
+        {
+            free($1);
+        }
         | STRING EQ FNUMBER
+        {
+            free($1);
+        }
 
 trans_list:	/* empty */
 			| trans_link NEW_LINE

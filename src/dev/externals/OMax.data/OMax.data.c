@@ -64,7 +64,11 @@ extern "C"
 		class_addmethod(c, (method)OMax_data_type, "type", 0);
 		class_addmethod(c, (method)OMax_data_write, "write", A_DEFSYM, 0);
 		class_addmethod(c, (method)OMax_data_read, "read", A_DEFSYM, 0);
-		
+        
+        // noDelete Attribute
+        CLASS_ATTR_CHAR(c, "NoDelete", 0, t_OMax_data, noDelete);
+        CLASS_ATTR_STYLE_LABEL(c, "NoDelete", 0, "onoff", (char*)"Do Not Erase Data");
+                         
 		class_register(CLASS_BOX, c); /* CLASS_NOBOX */
 		OMax_data_class = c;
 		
@@ -84,7 +88,7 @@ extern "C"
 		{
 			// outlets
 			x->out0 = outlet_new(x, NULL);
-			
+            
 			if (argc == 0)
 				object_error((t_object *)x,"Missing arguments");
 			else
@@ -157,8 +161,11 @@ extern "C"
 			// write flags
 			x->wflag = 0;
 			x->readcount = 0;
-			x->noDelete = TRUE;
+			x->noDelete = 0;
 			
+            // process attr args, if any
+            attr_args_process(x, argc, argv);
+            
 			// color
 			t_object *box;
 			t_jrgba colorvals;
@@ -884,6 +891,7 @@ extern "C"
 				}
 				ATOMIC_DECREMENT(&x->wflag);
 			}
+            object_free(d);
 			object_post((t_object *)x, "Loaded data from oracle %s", symdata->s_name);
 		}
 	}

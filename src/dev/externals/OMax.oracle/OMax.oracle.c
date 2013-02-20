@@ -399,6 +399,7 @@ void OMax_oracle_parsefile(t_OMax_oracle *x, char *fbuffer, long size)
     else
         object_post((t_object*)x, "Loaded oracle %s", x->oracle.get_name().c_str());
     yy_delete_buffer (scan_buffer);
+    yylex_destroy();
     scan_buffer = NULL;
 }
 //@}
