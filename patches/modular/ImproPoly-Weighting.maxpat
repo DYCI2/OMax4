@@ -48,7 +48,7 @@
 , 			{
 				"box" : 				{
 					"maxclass" : "newobj",
-					"text" : "Impro-Rhythm #1",
+					"text" : "OMax.Impro-Rhythm #1",
 					"fontname" : "Arial",
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 127.0, 63.0, 103.0, 20.0 ],
