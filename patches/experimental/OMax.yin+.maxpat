@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 6,
 			"minor" : 0,
-			"revision" : 1
+			"revision" : 5
 		}
 ,
 		"rect" : [ 16.0, 75.0, 797.0, 719.0 ],
@@ -222,7 +222,7 @@
 					}
 ,
 					"text" : "autopattr",
-					"varname" : "u849000507"
+					"varname" : "u416003710"
 				}
 
 			}
@@ -237,12 +237,12 @@
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 521.0, 61.0, 223.0, 20.0 ],
 					"saved_object_attributes" : 					{
-						"client_rect" : [ 67, 153, 461, 322 ],
-						"parameter_enable" : 0,
-						"storage_rect" : [ 794, -709, 1244, -510 ]
+						"client_rect" : [ 4, 44, 358, 172 ],
+						"storage_rect" : [ 766, 44, 1220, 302 ],
+						"parameter_enable" : 0
 					}
 ,
-					"text" : "pattrstorage pattrstorage @savemode 2",
+					"text" : "pattrstorage pattrstorage @savemode 0",
 					"varname" : "pattrstorage"
 				}
 
@@ -364,7 +364,7 @@
 						"appversion" : 						{
 							"major" : 6,
 							"minor" : 0,
-							"revision" : 1
+							"revision" : 5
 						}
 ,
 						"rect" : [ 1005.0, 216.0, 165.0, 329.0 ],
@@ -588,16 +588,16 @@
 ,
 					"patching_rect" : [ 362.0, 294.0, 47.0, 20.0 ],
 					"saved_object_attributes" : 					{
-						"digest" : "",
-						"default_fontname" : "Arial",
-						"fontname" : "Arial",
-						"default_fontsize" : 12.0,
-						"description" : "",
-						"tags" : "",
 						"globalpatchername" : "",
 						"fontface" : 0,
+						"default_fontface" : 0,
 						"fontsize" : 12.0,
-						"default_fontface" : 0
+						"tags" : "",
+						"digest" : "",
+						"default_fontname" : "Arial",
+						"default_fontsize" : 12.0,
+						"description" : "",
+						"fontname" : "Arial"
 					}
 ,
 					"text" : "p mem"
@@ -629,7 +629,7 @@
 						"appversion" : 						{
 							"major" : 6,
 							"minor" : 0,
-							"revision" : 1
+							"revision" : 5
 						}
 ,
 						"rect" : [ 723.0, 489.0, 419.0, 295.0 ],
@@ -823,16 +823,16 @@
 ,
 					"patching_rect" : [ 66.0, 212.0, 87.0, 20.0 ],
 					"saved_object_attributes" : 					{
-						"digest" : "",
-						"default_fontname" : "Arial",
-						"fontname" : "Arial",
-						"default_fontsize" : 12.0,
-						"description" : "",
-						"tags" : "",
 						"globalpatchername" : "",
 						"fontface" : 0,
+						"default_fontface" : 0,
 						"fontsize" : 12.0,
-						"default_fontface" : 0
+						"tags" : "",
+						"digest" : "",
+						"default_fontname" : "Arial",
+						"default_fontsize" : 12.0,
+						"description" : "",
+						"fontname" : "Arial"
 					}
 ,
 					"text" : "p presentation"
