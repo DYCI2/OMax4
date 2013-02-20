@@ -30,11 +30,13 @@ id      {return DOTID;}
 
 {STRING} {
         yylval.ALPHANUM = strdup(yytext);
+        //free(yylval.ALPHANUM);
         return STRING;
         }
 
 {ID}    {
 		yylval.ALPHANUM = strdup(yytext);
+        //free(yylval.ALPHANUM);
 		return ORACLE_ID;
 		}
 		

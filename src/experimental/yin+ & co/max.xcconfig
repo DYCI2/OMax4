@@ -18,10 +18,8 @@ INSTALL_PATH = /
 
 
 // Per architecture and deployment settings
-SDKROOT[arch=i386] = /Developer/SDKs/MacOSX10.5.sdk
-//SDKROOT[arch=ppc] = /Developer/SDKs/MacOSX10.4u.sdk
-GCC_VERSION[arch=i386] = 4.2
-//GCC_VERSION[arch=ppc] = 4.0
+GCC_VERSION = com.apple.compilers.llvmgcc42
+SDKROOT = macosx10.7
 MACOSX_DEPLOYMENT_TARGET = 10.5
 
 

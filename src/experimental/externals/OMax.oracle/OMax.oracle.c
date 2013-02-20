@@ -139,14 +139,17 @@ using namespace std;
 	
 	/**@public @memberof t_OMax_oracle
 	 * @brief Object destruction */	
-	void OMax_oracle_free(t_OMax_oracle *x)
-	{
-		ATOMIC_INCREMENT(&x->wflag);
-		if (x->oname->s_thing == (t_object*)x)
-			x->oname->s_thing = NULL;
-		///@remarks Deletes the whole FO structure
-		x->oracle.freestates();
-	}
+    void OMax_oracle_free(t_OMax_oracle *x)
+    {
+        if (x->oname!=NULL)
+        {
+            ATOMIC_INCREMENT(&x->wflag);
+            if (x->oname->s_thing == (t_object*)x)
+                x->oname->s_thing = NULL;
+            ///@remarks Deletes the whole FO structure
+            x->oracle.freestates();
+        }
+    }
 	
 	/**@public @memberof t_OMax_oracle
 	 * @brief Inlet/Outlet contextual information when patching in Max5
@@ -213,6 +216,8 @@ using namespace std;
 	{
 		ATOMIC_INCREMENT(&x->wflag);
 		x->oracle.freestates();
+        x->oracle.reset_D2S();
+        x->oracle.reset_S2D();
 		ATOMIC_DECREMENT(&x->wflag);
 		outlet_int(x->out0,(long)x->oracle.get_size());
 	}
@@ -444,6 +449,8 @@ using namespace std;
 		else
 			object_post((t_object*)x, "Loaded oracle %s", x->oracle.get_name().c_str());
 		yy_delete_buffer (scan_buffer);
+        yylex_destroy();
+        scan_buffer = NULL;
 	}
 	//@}
 //}

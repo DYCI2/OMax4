@@ -198,7 +198,7 @@ void *OMax_data_new(t_symbol *s, long argc, t_atom *argv)
         // write flags
         x->wflag = 0;
         x->readcount = 0;
-        x->noDelete = TRUE;
+        x->noDelete = FALSE;
         
         // color
         t_object *box;
@@ -233,6 +233,7 @@ void OMax_data_free(t_OMax_data *x)
                 x->data.freestates<O_char>();
         }
     }
+    
     if (x->dataname && x->dataname->s_thing == (t_object *)x)
         x->dataname->s_thing = NULL;
     
@@ -1406,6 +1407,7 @@ void OMax_data_doread(t_OMax_data *x, t_symbol *s)
             }
             ATOMIC_DECREMENT(&x->wflag);
         }
+        object_free(d);
         object_post((t_object *)x, "Loaded data from oracle %s", symdata->s_name);
     }
 }

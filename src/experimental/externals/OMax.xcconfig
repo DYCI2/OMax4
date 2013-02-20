@@ -20,13 +20,17 @@ GCC_PREFIX_HEADER = $(C74SUPPORT)/max-includes/macho-prefix.pch
 
 // Architecture and Deployment
 ARCHS = i386
-SDKROOT = /Developer/SDKs/MacOSX10.6.sdk
-MACOSX_DEPLOYMENT_TARGET = 10.6
+// Mac OSX 10.5
+//SDKROOT = /Developer/SDKs/MacOSX10.5.sdk
+//MACOSX_DEPLOYMENT_TARGET = 10.5
+// Mac OSX 10.6
+SDKROOT = macosx10.7
+MACOSX_DEPLOYMENT_TARGET = 10.5
 
 
 // Complilation
-GCC_VERSION = 4.2
-// GCC_VERSION = com.apple.compilers.llvmgcc42
+//GCC_VERSION = 4.2
+GCC_VERSION = com.apple.compilers.llvmgcc42
 // GCC_VERSION = com.apple.compilers.llvm.clang.1_0
 GCC_INPUT_FILETYPE = sourcecode.cpp.cpp
 

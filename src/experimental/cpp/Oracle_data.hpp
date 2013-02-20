@@ -161,9 +161,9 @@ void O_data::freestates()
 	for(O_it = state_vect.rbegin();O_it != state_vect.rend();++O_it)
 	{
 		//cout<<*(O_DataType*)(*O_it)<<endl;
-		//delete (O_DataType*)(*O_it);
-		state_vect.pop_back();
+		delete (O_DataType*)(*O_it);
 	}
+    state_vect.clear();
 	size = state_vect.size();
 }
 

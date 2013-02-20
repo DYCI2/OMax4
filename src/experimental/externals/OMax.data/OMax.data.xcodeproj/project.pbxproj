@@ -179,26 +179,28 @@
 /* Begin XCBuildConfiguration section */
 		2FBBEAD008F335010078DB84 /* Development */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FB3521B20F70080E00B535EC /* OMax.xcconfig */;
 			buildSettings = {
+				SDKROOT = macosx10.7;
 			};
 			name = Development;
 		};
 		2FBBEAD108F335010078DB84 /* Deployment */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FB3521B20F70080E00B535EC /* OMax.xcconfig */;
 			buildSettings = {
+				SDKROOT = macosx10.7;
 			};
 			name = Deployment;
 		};
 		2FBBEAE108F335360078DB84 /* Development */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FB3521B20F70080E00B535EC /* OMax.xcconfig */;
 			buildSettings = {
 			};
 			name = Development;
 		};
 		2FBBEAE208F335360078DB84 /* Deployment */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FB3521B20F70080E00B535EC /* OMax.xcconfig */;
 			buildSettings = {
 			};
 			name = Deployment;
