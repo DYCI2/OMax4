@@ -4,7 +4,7 @@ PRODUCT_NAME = $(PROJECT_NAME)
 // Paths
 MAX_SDK = ~/Max5/MaxSDK-5.1.7
 C74SUPPORT = $(MAX_SDK)/c74support
-HEADER_SEARCH_PATHS = "$(C74SUPPORT)/max-includes" "$(C74SUPPORT)/msp-includes"
+HEADER_SEARCH_PATHS = /Developer/Headers/FlatCarbon "$(C74SUPPORT)/max-includes" "$(C74SUPPORT)/msp-includes"
 FRAMEWORK_SEARCH_PATHS = "$(C74SUPPORT)/max-includes" "$(C74SUPPORT)/msp-includes"
 DSTROOT = $(SRCROOT)/../../build-Max5
 // (This next path is relative to DSTROOT)
@@ -19,9 +19,9 @@ GCC_PREFIX_HEADER = $(C74SUPPORT)/max-includes/macho-prefix.pch
 
 
 // Per architecture and deployment settings
-SDKROOT = macosx10.5
-//GCC_VERSION = com.apple.compilers.llvmgcc42
-GCC_VERSION = com.apple.compilers.llvm.clang.1_0
+SDKROOT = macosx10.7
+GCC_VERSION = com.apple.compilers.llvmgcc42
+//GCC_VERSION = com.apple.compilers.llvm.clang.1_0
 MACOSX_DEPLOYMENT_TARGET = 10.5
 
 

@@ -1,0 +1,36 @@
+/src/experimental/build/
+/src/experimental/externals/OMax.build/build/
+/src/experimental/externals/OMax.data/build/
+/src/experimental/externals/OMax.id2state/build/
+/src/experimental/externals/OMax.learn/build/
+/src/experimental/externals/OMax.oracle/build/
+/src/experimental/externals/OMax.oracle/DOT.yy.h
+/src/experimental/externals/OMax.read/build/
+/src/experimental/externals/OMax.render/build/
+/src/experimental/externals/OMax.SLT/build/
+/src/experimental/externals/OMax.state2id/build/
+/src/experimental/yin+ & co/bc.virfun/build/
+/src/experimental/yin+ & co/bc.yinstats/build/
+/Forum/OMax4.5.3/OMax 4.5.3/OMax Patches&Objects/bc.virfun.mxo/
+/Forum/OMax4.5.3/OMax 4.5.3/OMax Patches&Objects/bc.yinstats.mxo/
+/Forum/OMax4.5.3/OMax 4.5.3/OMax Patches&Objects/OMax.build.mxo/
+/Forum/OMax4.5.3/OMax 4.5.3/OMax Patches&Objects/OMax.data.mxo/
+/Forum/OMax4.5.3/OMax 4.5.3/OMax Patches&Objects/OMax.date2state.mxo/
+/Forum/OMax4.5.3/OMax 4.5.3/OMax Patches&Objects/OMax.learn.mxo/
+/Forum/OMax4.5.3/OMax 4.5.3/OMax Patches&Objects/OMax.oracle.mxo/
+/Forum/OMax4.5.3/OMax 4.5.3/OMax Patches&Objects/OMax.read.mxo/
+/Forum/OMax4.5.3/OMax 4.5.3/OMax Patches&Objects/OMax.render.mxo/
+/Forum/OMax4.5.3/OMax 4.5.3/OMax Patches&Objects/OMax.SLT.mxo/
+/Forum/OMax4.5.3/OMax 4.5.3/OMax Patches&Objects/OMax.state2date.mxo/
+/src/dev/externals/OMax.build/build/
+/src/dev/externals/OMax.data/build/
+/src/dev/externals/OMax.date2state/build/
+/src/dev/externals/OMax.learn/build/
+/src/dev/externals/OMax.oracle/build/
+/src/dev/externals/OMax.read/build/
+/src/dev/externals/OMax.render/build/
+/src/dev/externals/OMax.SLT/build/
+/src/dev/externals/OMax.state2date/build/
+/src/dev/yin+ & co/bc.virfun/build/
+/src/dev/yin+ & co/bc.yinstats/build/
+/src/dev/externals/OMax.oracle/DOT.yy.h

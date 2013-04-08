@@ -4,7 +4,7 @@ PRODUCT_NAME = $(PROJECT_NAME)
 // Paths
 MAX_SDK = ~/Max6/MaxSDK-6.0.4
 C74SUPPORT = $(MAX_SDK)/c74support
-HEADER_SEARCH_PATHS = /Developer/Headers/FlatCarbon "$(C74SUPPORT)/max-includes"
+HEADER_SEARCH_PATHS = /Developer/Headers/FlatCarbon /Developer/Headers/FlatCarbon "$(C74SUPPORT)/max-includes"
 FRAMEWORK_SEARCH_PATHS = "$(C74SUPPORT)/max-includes"
 DSTROOT = $(SRCROOT)/../../build-Max6
 // (This next path is relative to DSTROOT)
@@ -19,13 +19,13 @@ GCC_PREFIX_HEADER = $(C74SUPPORT)/max-includes/macho-prefix.pch
 
 // Architecture and Deployment
 ARCHS = i386
-SDKROOT = macosx10.5
+SDKROOT = macosx10.7
 MACOSX_DEPLOYMENT_TARGET = 10.5
 
 // Compiler Version -- leave them all commented out to get the default version provided by Xcode
 // GCC_VERSION = 4.2
-//GCC_VERSION = com.apple.compilers.llvmgcc42
-GCC_VERSION = com.apple.compilers.llvm.clang.1_0
+GCC_VERSION = com.apple.compilers.llvmgcc42
+//GCC_VERSION = com.apple.compilers.llvm.clang.1_0
 
 
 // Static Configuration (don't change these)
