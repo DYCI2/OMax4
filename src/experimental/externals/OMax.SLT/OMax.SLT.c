@@ -258,7 +258,7 @@ extern "C"
 					
 					O_state * root = state->rec_upSLT(&path, x->context);
 					
-					long pathvals[path.size()];
+					t_atom_long pathvals[path.size()];
 					t_atom * pathout = NULL;
 					for (pathit = path.begin(); pathit!=path.end(); pathit++)
 					{
@@ -281,7 +281,7 @@ extern "C"
 					
 					root->rec_downSLT(&SLT, x->context);
                     
-					long vals[2];
+					t_atom_long vals[2];
 					t_atom * SLTout = NULL;
 					atom_alloc_array(2, &i, &SLTout, &err);
 					if(err && i==2)
@@ -325,7 +325,7 @@ extern "C"
 					/// Follow suffix links up to the root of the tree
 					O_state * root = state->rec_upSLT(&path, x->context);
 					
-					long pathvals[path.size()];
+					t_atom_long pathvals[path.size()];
 					t_atom * pathout = NULL;
 					for (pathit = path.begin(); pathit!=path.end(); pathit++)
 					{
@@ -371,7 +371,7 @@ extern "C"
 					/// Follow suffix links up to the root of the tree with  @link t_OMax_SLT::context minimal context @endlink set to 0
 					O_state * root = state->rec_upSLT(&path, 0);
 					
-					long pathvals[path.size()];
+					t_atom_long pathvals[path.size()];
 					t_atom * pathout = NULL;
 					for (pathit = path.begin(); pathit!=path.end(); pathit++)
 					{
@@ -416,7 +416,7 @@ extern "C"
 					
 					SLT = *state->sortedSLT(x->context);
 					
-					long vals[2];
+					t_atom_long vals[2];
 					t_atom * SLTout = NULL;
 					atom_alloc_array(2, &i, &SLTout, &err);
 					if(err && i==2)
@@ -464,7 +464,7 @@ extern "C"
 					else
 						SLT = *state->sortedSLT(x->context);
 					
-					long vals[2];
+					t_atom_long vals[2];
 					t_atom * SLTout = NULL;
 					atom_alloc_array(2, &i, &SLTout, &err);
 					if(err && i==2)

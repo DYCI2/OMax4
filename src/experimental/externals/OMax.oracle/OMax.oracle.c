@@ -302,8 +302,8 @@ using namespace std;
 	void OMax_oracle_dowrite(t_OMax_oracle *x, t_symbol *s)
 	{
 		short err = 0;
-		long filetype = 'TEXT';
-		long outtype = 'TEXT';
+		t_fourcc filetype = 'TEXT';
+		t_fourcc outtype = 'TEXT';
 		short path, newpath = 0;
 		short numtypes = 1;
 		char* foldername = NULL;
@@ -354,7 +354,7 @@ using namespace std;
 	{
 		char *buf;
 		long err;
-		long count;
+		t_ptr_size count;
 		short exist,binflag;
 		stringstream ssout;
 		t_filehandle fh;
@@ -373,7 +373,7 @@ using namespace std;
 		count = ssout.str().size();
 		buf = (char*)malloc(count*sizeof(char));
 		strcpy(buf, ssout.str().c_str());
-		err = sysfile_write(fh, &count, buf);	
+		err = sysfile_write(fh, &count, buf);
 		if (err)
 			object_error((t_object*)x, "%s: error %d writing file", filename, err);
 		else
@@ -385,7 +385,7 @@ using namespace std;
 	
 	void OMax_oracle_doread(t_OMax_oracle *x, t_symbol *s)
 	{
-		long size;
+		t_ptr_size size;
 		short savelock, err = -1;
 		t_filehandle fh;
 		char* buffer;
@@ -415,7 +415,7 @@ using namespace std;
 	{
 		short vol,err;
 		char ps[MAX_PATH_CHARS];
-		long type;
+		t_fourcc type;
 		
 		if (s==gensym("")) {
 			if (open_dialog(ps,&vol,&type,0L,0))
