@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 6,
 			"minor" : 0,
-			"revision" : 7
+			"revision" : 8
 		}
 ,
 		"rect" : [ 94.0, 112.0, 811.0, 609.0 ],
@@ -143,7 +143,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 300.0, 51.0, 116.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 23.124279, 2.0, 79.751442, 20.0 ],
+					"presentation_rect" : [ 23.124279, 2.0, 86.751442, 20.0 ],
 					"text" : "#1_PITCH"
 				}
 
@@ -288,7 +288,7 @@
 						"appversion" : 						{
 							"major" : 6,
 							"minor" : 0,
-							"revision" : 7
+							"revision" : 8
 						}
 ,
 						"rect" : [ 671.0, 44.0, 622.0, 590.0 ],

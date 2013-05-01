@@ -463,7 +463,7 @@
 					"args" : [ "#1" ],
 					"id" : "obj-29",
 					"maxclass" : "bpatcher",
-					"name" : "OMax.Data-SP-new.maxpat",
+					"name" : "OMax.Data-SP.maxpat",
 					"numinlets" : 4,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
@@ -1174,7 +1174,7 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "OMax.Data-SP-new.maxpat",
+				"name" : "OMax.Data-SP.maxpat",
 				"bootpath" : "/Users/blevy/Projets/OMax/WoMax-Reorganized/patches/experimental",
 				"patcherrelativepath" : "",
 				"type" : "JSON",
