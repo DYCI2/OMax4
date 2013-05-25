@@ -37,7 +37,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 789.5, 362.636353, 71.0, 20.0 ],
-					"presentation_rect" : [ 795.0, 441.636353, 0.0, 0.0 ],
 					"text" : "prepend /bt"
 				}
 
@@ -52,7 +51,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 789.5, 335.136353, 83.0, 20.0 ],
-					"presentation_rect" : [ 795.0, 414.136353, 0.0, 0.0 ],
 					"text" : "pack 0. 0. 0 0"
 				}
 
@@ -67,7 +65,6 @@
 					"numoutlets" : 4,
 					"outlettype" : [ "", "", "", "" ],
 					"patching_rect" : [ 795.5, 303.871155, 113.0, 20.0 ],
-					"presentation_rect" : [ 817.0, 388.871155, 0.0, 0.0 ],
 					"text" : "pipe 0. 0. 0 0 92.88"
 				}
 
@@ -85,7 +82,7 @@
 					"patching_rect" : [ 289.0, 31.0, 81.0, 27.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 10.0, 2.0, 81.0, 27.0 ],
-					"text" : "Dual"
+					"text" : "Dual1"
 				}
 
 			}
@@ -195,8 +192,8 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 970.0, 81.265198, 125.0, 20.0 ],
-					"text" : "OMax.4Regions Dual"
+					"patching_rect" : [ 970.0, 81.265198, 131.0, 20.0 ],
+					"text" : "OMax.4Regions Dual1"
 				}
 
 			}
@@ -256,10 +253,10 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 970.0, 46.265198, 126.0, 20.0 ],
+					"patching_rect" : [ 970.0, 46.265198, 132.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 243.0, 12.0, 126.0, 20.0 ],
-					"text" : "OMax.Dual-Visu Dual",
+					"presentation_rect" : [ 232.0, 8.0, 132.0, 20.0 ],
+					"text" : "OMax.Dual-Visu Dual1",
 					"varname" : "OMax.Dual-Visu"
 				}
 
@@ -328,8 +325,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 1133.0, 14.265198, 90.0, 20.0 ],
-					"text" : "loadmess Dual"
+					"patching_rect" : [ 1133.0, 14.265198, 97.0, 20.0 ],
+					"text" : "loadmess Dual1"
 				}
 
 			}
@@ -616,21 +613,6 @@
 			}
 , 			{
 				"box" : 				{
-					"args" : [ 1, 2 ],
-					"id" : "obj-60",
-					"maxclass" : "bpatcher",
-					"name" : "OMax.AudioIn.maxpat",
-					"numinlets" : 1,
-					"numoutlets" : 2,
-					"outlettype" : [ "signal", "signal" ],
-					"patching_rect" : [ 76.800003, 9.0, 74.0, 69.0 ],
-					"presentation" : 1,
-					"presentation_rect" : [ 2.0, 26.0, 74.0, 69.0 ]
-				}
-
-			}
-, 			{
-				"box" : 				{
 					"color" : [ 0.0, 0.85098, 1.0, 1.0 ],
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
@@ -638,8 +620,8 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 77.0, 632.0, 108.0, 20.0 ],
-					"text" : "s Dual_Buffer-size"
+					"patching_rect" : [ 77.0, 632.0, 115.0, 20.0 ],
+					"text" : "s Dual1_Buffer-size"
 				}
 
 			}
@@ -904,7 +886,7 @@
 					}
 ,
 					"text" : "pattr @bindto OMax.MFCCs-pure::Thresh",
-					"varname" : "u217006569"
+					"varname" : "u043001068"
 				}
 
 			}
@@ -952,7 +934,6 @@
 			}
 , 			{
 				"box" : 				{
-					"autorestore" : "OMax.inDual.xml",
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
 					"id" : "obj-39",
@@ -960,15 +941,15 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 676.0, -196.5, 210.0, 20.0 ],
+					"patching_rect" : [ 676.0, -196.5, 216.0, 20.0 ],
 					"saved_object_attributes" : 					{
 						"client_rect" : [ 4, 44, 358, 172 ],
 						"parameter_enable" : 0,
 						"storage_rect" : [ 766, 44, 1220, 302 ]
 					}
 ,
-					"text" : "pattrstorage OMax.inDual @greedy 1",
-					"varname" : "OMax.inDual"
+					"text" : "pattrstorage OMax.inDual1 @greedy 1",
+					"varname" : "OMax.inDual1"
 				}
 
 			}
@@ -1168,7 +1149,7 @@
 			}
 , 			{
 				"box" : 				{
-					"args" : [ "Dual" ],
+					"args" : [ "Dual1" ],
 					"id" : "obj-29",
 					"maxclass" : "bpatcher",
 					"name" : "OMax.Data-SP.maxpat",
@@ -1211,7 +1192,7 @@
 			}
 , 			{
 				"box" : 				{
-					"args" : [ "Dual_sp" ],
+					"args" : [ "Dual1_sp" ],
 					"id" : "obj-26",
 					"maxclass" : "bpatcher",
 					"name" : "OMax.Oracle-gen.maxpat",
@@ -1261,8 +1242,8 @@
 					"numinlets" : 6,
 					"numoutlets" : 4,
 					"outlettype" : [ "", "", "", "int" ],
-					"patching_rect" : [ 916.5, 243.0, 154.499969, 20.0 ],
-					"text" : "OMax.seg Dual /cc"
+					"patching_rect" : [ 916.5, 243.0, 119.0, 20.0 ],
+					"text" : "OMax.seg Dual1 /cc"
 				}
 
 			}
@@ -1312,7 +1293,7 @@
 			}
 , 			{
 				"box" : 				{
-					"args" : [ "Dual_pitch" ],
+					"args" : [ "Dual1_pitch" ],
 					"id" : "obj-27",
 					"maxclass" : "bpatcher",
 					"name" : "OMax.Oracle-gen.maxpat",
@@ -1355,7 +1336,7 @@
 			}
 , 			{
 				"box" : 				{
-					"args" : [ "Dual" ],
+					"args" : [ "Dual1" ],
 					"id" : "obj-8",
 					"maxclass" : "bpatcher",
 					"name" : "OMax.Data-PITCH.maxpat",
@@ -1391,8 +1372,8 @@
 					"numinlets" : 6,
 					"numoutlets" : 4,
 					"outlettype" : [ "", "", "", "int" ],
-					"patching_rect" : [ 362.060669, 229.0, 217.999985, 20.0 ],
-					"text" : "OMax.seg Dual /mo"
+					"patching_rect" : [ 362.060669, 229.0, 123.0, 20.0 ],
+					"text" : "OMax.seg Dual1 /mo"
 				}
 
 			}
@@ -1413,7 +1394,7 @@
 			}
 , 			{
 				"box" : 				{
-					"args" : [ "Dual" ],
+					"args" : [ "Dual1" ],
 					"id" : "obj-7",
 					"maxclass" : "bpatcher",
 					"name" : "OMax.Record.st.maxpat",
@@ -1422,7 +1403,7 @@
 					"outlettype" : [ "int", "" ],
 					"patching_rect" : [ 77.0, 522.765198, 183.0, 70.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 2.0, 204.0, 74.0, 70.0 ],
+					"presentation_rect" : [ 2.0, 165.5, 74.0, 70.0 ],
 					"varname" : "Record"
 				}
 
@@ -1433,12 +1414,12 @@
 					"id" : "obj-1",
 					"lockeddragscroll" : 1,
 					"maxclass" : "bpatcher",
-					"name" : "OMax.Audio-Monitor.maxpat",
-					"numinlets" : 2,
+					"name" : "OMax.Audio-Monitor.st.maxpat",
+					"numinlets" : 3,
 					"numoutlets" : 0,
 					"patching_rect" : [ 5.0, 180.265198, 74.0, 58.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 2.0, 162.5, 74.0, 40.0 ]
+					"presentation_rect" : [ 2.0, 96.0, 74.0, 69.5 ]
 				}
 
 			}
@@ -1504,15 +1485,16 @@
 			}
 , 			{
 				"box" : 				{
-					"id" : "obj-93",
+					"args" : [ 1, 2 ],
+					"id" : "obj-60",
 					"maxclass" : "bpatcher",
-					"name" : "OMax.Load.maxpat",
-					"numinlets" : 0,
-					"numoutlets" : 4,
-					"outlettype" : [ "bang", "", "", "" ],
-					"patching_rect" : [ 1184.5, 290.871155, 73.0, 70.0 ],
+					"name" : "OMax.AudioIn.maxpat",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "signal", "signal" ],
+					"patching_rect" : [ 76.800003, 9.0, 74.0, 69.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 2.0, 95.0, 74.0, 70.0 ]
+					"presentation_rect" : [ 2.0, 26.0, 74.0, 69.0 ]
 				}
 
 			}
@@ -1526,7 +1508,21 @@
 					"outlettype" : [ "signal", "signal" ],
 					"patching_rect" : [ 160.25, 9.0, 74.0, 69.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 2.0, 95.0, 74.0, 69.0 ]
+					"presentation_rect" : [ 2.0, 26.0, 74.0, 69.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-93",
+					"maxclass" : "bpatcher",
+					"name" : "OMax.Load.maxpat",
+					"numinlets" : 0,
+					"numoutlets" : 4,
+					"outlettype" : [ "bang", "", "", "" ],
+					"patching_rect" : [ 1184.5, 290.871155, 73.0, 70.0 ],
+					"presentation" : 1,
+					"presentation_rect" : [ 2.0, 26.0, 74.0, 70.0 ]
 				}
 
 			}
@@ -2992,6 +2988,13 @@
 			}
  ],
 		"dependency_cache" : [ 			{
+				"name" : "OMax.Load.maxpat",
+				"bootpath" : "/Users/blevy/Projets/OMax/git2svn/patches/experimental",
+				"patcherrelativepath" : "",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
 				"name" : "OMax.AudioIn-File.st.maxpat",
 				"bootpath" : "/Users/blevy/Projets/OMax/git2svn/patches/experimental",
 				"patcherrelativepath" : "",
@@ -2999,7 +3002,7 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "OMax.Load.maxpat",
+				"name" : "OMax.AudioIn.maxpat",
 				"bootpath" : "/Users/blevy/Projets/OMax/git2svn/patches/experimental",
 				"patcherrelativepath" : "",
 				"type" : "JSON",
@@ -3013,7 +3016,7 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "OMax.Audio-Monitor.maxpat",
+				"name" : "OMax.Audio-Monitor.st.maxpat",
 				"bootpath" : "/Users/blevy/Projets/OMax/git2svn/patches/experimental",
 				"patcherrelativepath" : "",
 				"type" : "JSON",
@@ -3091,20 +3094,6 @@
 			}
 , 			{
 				"name" : "OMax.Data-SP.maxpat",
-				"bootpath" : "/Users/blevy/Projets/OMax/git2svn/patches/experimental",
-				"patcherrelativepath" : "",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "OMax.inDual.xml",
-				"bootpath" : "/Users/blevy/Projets/OMax/git2svn/patches/experimental",
-				"patcherrelativepath" : "",
-				"type" : "TEXT",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "OMax.AudioIn.maxpat",
 				"bootpath" : "/Users/blevy/Projets/OMax/git2svn/patches/experimental",
 				"patcherrelativepath" : "",
 				"type" : "JSON",

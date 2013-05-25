@@ -7,7 +7,7 @@
 			"revision" : 8
 		}
 ,
-		"rect" : [ 29.0, -976.0, 1259.0, 794.0 ],
+		"rect" : [ 29.0, 44.0, 1259.0, 794.0 ],
 		"bgcolor" : [ 1.0, 1.0, 1.0, 0.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
@@ -101,7 +101,7 @@
 					"maxclass" : "outlet",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 88.5, 555.680725, 25.0, 25.0 ]
+					"patching_rect" : [ 88.5, 573.680725, 25.0, 25.0 ]
 				}
 
 			}
@@ -147,7 +147,7 @@
 			}
 , 			{
 				"box" : 				{
-					"args" : [ "#1", 20 ],
+					"args" : [ "#1", 50 ],
 					"id" : "obj-91",
 					"maxclass" : "bpatcher",
 					"name" : "OMax.Visu-Player.maxpat",
@@ -283,7 +283,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "int" ],
-					"patching_rect" : [ 63.125, 535.680725, 24.0, 20.0 ],
+					"patching_rect" : [ 63.125, 553.680725, 24.0, 20.0 ],
 					"text" : "t 0"
 				}
 
@@ -738,7 +738,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "int", "" ],
-					"patching_rect" : [ 88.5, 475.379517, 201.0, 47.0 ],
+					"patching_rect" : [ 88.5, 475.379517, 179.0, 60.301208 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 1.0, 303.0, 82.0, 47.0 ]
 				}
@@ -822,7 +822,7 @@
 					"destination" : [ "obj-17", 2 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"midpoints" : [ 280.0, 694.879517, 511.166656, 694.879517 ],
+					"midpoints" : [ 258.0, 694.879517, 511.166656, 694.879517 ],
 					"source" : [ "obj-14", 1 ]
 				}
 
@@ -1211,15 +1211,6 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-12", 0 ],
-					"disabled" : 0,
-					"hidden" : 0,
-					"source" : [ "obj-45", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
 					"destination" : [ "obj-5", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
@@ -1259,7 +1250,7 @@
 					"destination" : [ "obj-5", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"midpoints" : [ 72.625, 564.680725, 37.5, 564.680725, 37.5, 97.379517, 58.5, 97.379517 ],
+					"midpoints" : [ 72.625, 583.680725, 37.5, 583.680725, 37.5, 97.379517, 58.5, 97.379517 ],
 					"source" : [ "obj-51", 0 ]
 				}
 

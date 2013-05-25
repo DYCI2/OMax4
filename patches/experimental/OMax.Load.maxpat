@@ -33,8 +33,7 @@
 					"maxclass" : "outlet",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 28.0, 688.0, 25.0, 25.0 ],
-					"presentation_rect" : [ 28.0, 679.0, 0.0, 0.0 ]
+					"patching_rect" : [ 28.0, 688.0, 25.0, 25.0 ]
 				}
 
 			}
@@ -607,7 +606,7 @@
 					"outlettype" : [ "", "" ],
 					"patching_rect" : [ 337.0, 32.0, 136.0, 33.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 2.0, 2.0, 69.0, 65.0 ]
+					"presentation_rect" : [ 2.0, 2.0, 70.0, 65.0 ]
 				}
 
 			}
@@ -645,9 +644,9 @@
 					"maxclass" : "panel",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 151.0, 23.0, 379.596802, 191.111206 ],
+					"patching_rect" : [ 151.0, 23.0, 379.0, 191.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 2.0, 2.0, 69.0, 65.0 ]
+					"presentation_rect" : [ 2.0, 2.0, 70.0, 65.0 ]
 				}
 
 			}

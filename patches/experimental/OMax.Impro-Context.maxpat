@@ -7,7 +7,7 @@
 			"revision" : 8
 		}
 ,
-		"rect" : [ 141.0, 62.0, 504.0, 738.0 ],
+		"rect" : [ 264.0, 48.0, 504.0, 738.0 ],
 		"bgcolor" : [ 1.0, 0.8, 0.4, 1.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
@@ -373,7 +373,7 @@
 			}
 , 			{
 				"box" : 				{
-					"comment" : "list: Jump, Origin, ... , Energy",
+					"comment" : "list: Jump, Origin, ... , Context",
 					"id" : "obj-14",
 					"maxclass" : "outlet",
 					"numinlets" : 1,

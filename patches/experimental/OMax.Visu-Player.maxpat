@@ -739,8 +739,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 124.5, 128.0, 58.0, 20.0 ],
-					"text" : "metro #2"
+					"patching_rect" : [ 124.5, 128.0, 65.0, 20.0 ],
+					"text" : "qmetro #2"
 				}
 
 			}
