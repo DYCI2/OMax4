@@ -117,7 +117,7 @@ void *bc_yinstats_new(t_symbol *s, long argc, t_atom *argv)
 {
 	t_bc_yinstats *x = NULL;
 	
-	if ((x = (t_bc_yinstats *)object_alloc(bc_yinstats_class)))
+	if (x = (t_bc_yinstats *)object_alloc(bc_yinstats_class))
 	{
 		// inlets
 		floatin(x, 1); // amplitude

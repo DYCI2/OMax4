@@ -576,7 +576,7 @@ void OMax_data_add(t_OMax_data *x, t_symbol *s, short ac, t_atom * av)
 void OMax_data_note(t_OMax_data *x, t_symbol *s, short ac, t_atom * av)
 {
     long count = (long)ac;
-    t_atom_long vals[5];
+    long vals[5];
     if (x->datatype!=MIDI)
         object_error((t_object*)x, "No note stacking allowed in this type");
     else
@@ -738,8 +738,8 @@ bool OMax_data_setCommon(t_OMax_data *x, O_label* newdata)
 void OMax_data_dowrite(t_OMax_data *x, t_symbol *s, long argc, t_atom* argv)
 {
     short err = 0;
-    t_fourcc filetype = 'TEXT';
-    t_fourcc outtype = 'TEXT';
+    long filetype = 'TEXT';
+    long outtype = 'TEXT';
     short path, newpath = 0;
     short numtypes = 1;
     char* foldername = NULL;
@@ -875,7 +875,7 @@ void OMax_data_writefile(t_OMax_data *x, char *filename, short path)
                 {
                     notedic = dictionary_new();
                     note_data = notit->get_note(note_data);
-                    atom_setlong_array(5, array, 5, (t_atom_long*)note_data);
+                    atom_setlong_array(5, array, 5, (long*)note_data);
                     dictionary_appendatoms(notedic, sym_note, 3, array);
                     dictionary_appendatoms(notedic, sym_time, 2, array+3);
                     atom_setobj(&notesarray[i++], notedic);
@@ -964,7 +964,7 @@ void OMax_data_writefile(t_OMax_data *x, char *filename, short path)
                 dictionary_appendatoms(ditem, sym_extras, extras_nb, array);
                 // note
                 note_data = ((O_pitch*)current)->get_data(note_data);
-                atom_setlong_array(3, array, 3, (t_atom_long*)note_data);
+                atom_setlong_array(3, array, 3, (long*)note_data);
                 dictionary_appendatoms(ditem, sym_note, 3, array);
                 // add to the data array
                 atom_setobj(&datab[idx], ditem);
@@ -1037,11 +1037,10 @@ void OMax_data_doread(t_OMax_data *x, t_symbol *s)
     char err;
     short path;
     int date = 0;
-    t_atom_long size;
-    t_atom_long datatype, nbcoeffs;
+    long datatype, size, nbcoeffs;
     long i, idx;
     char filename[MAX_PATH_CHARS];
-    t_fourcc type = FOUR_CHAR_CODE('JSON');
+    long type = FOUR_CHAR_CODE('JSON');
     t_symbol *symdata = NULL;
     t_atom *data = NULL;
     t_dictionary *d = NULL;
@@ -1099,13 +1098,13 @@ void OMax_data_doread(t_OMax_data *x, t_symbol *s)
         
         
         dictionary_getlong(d, gensym("size"), &size);
-        dictionary_getatoms(d, gensym("data"), (long int*)&size, &data);
+        dictionary_getatoms(d, gensym("data"), &size, &data);
         
         if (x->readcount==0 && x->wflag==0)
         {
             // vars
             int j;
-            t_atom_long statenb;
+            long statenb;
             t_atom *array = NULL;
             t_dictionary *ditem = NULL;
             list<float> extras;
@@ -1212,7 +1211,7 @@ void OMax_data_doread(t_OMax_data *x, t_symbol *s)
                 case 2: // Spectral
                     for (idx=1; idx<size; idx++)
                     {
-                        t_atom_long pitch;
+                        long pitch;
                         list<float> coeffs;
                         O_spectral* newstate;
                         ditem = (t_dictionary*)atom_getobj(&data[idx]);

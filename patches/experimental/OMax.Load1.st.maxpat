@@ -7,7 +7,7 @@
 			"revision" : 8
 		}
 ,
-		"rect" : [ 7.0, 391.0, 289.0, 172.0 ],
+		"rect" : [ 32.0, 429.0, 286.0, 172.0 ],
 		"bgcolor" : [ 0.619608, 1.0, 0.929412, 1.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
@@ -82,7 +82,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 39.833313, 147.0, 134.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 150.5, 4.0, 131.863647, 20.0 ],
+					"presentation_rect" : [ 150.5, 4.0, 132.0, 20.0 ],
 					"text" : "OMax.Dual-Visu Load1",
 					"varname" : "OMax.Dual-Visu"
 				}

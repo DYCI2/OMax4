@@ -101,7 +101,7 @@
 					"fontname" : "Arial",
 					"fontsize" : 11.0,
 					"id" : "obj-63",
-					"items" : [ "Load1_Buffer", ",", "Dual_Buffer" ],
+					"items" : [ "Dual1_Buffer", ",", "Dual2_Buffer" ],
 					"maxclass" : "umenu",
 					"numinlets" : 1,
 					"numoutlets" : 3,
@@ -137,7 +137,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 620.0, 163.0, 65.0, 18.0 ],
-					"text" : "symbol #1"
+					"text" : "symbol #2"
 				}
 
 			}

@@ -7,7 +7,7 @@
 			"revision" : 8
 		}
 ,
-		"rect" : [ 114.0, 110.0, 373.0, 275.0 ],
+		"rect" : [ 103.0, 109.0, 373.0, 275.0 ],
 		"bgcolor" : [ 0.619608, 1.0, 0.929412, 1.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
@@ -886,7 +886,7 @@
 					}
 ,
 					"text" : "pattr @bindto OMax.MFCCs-pure::Thresh",
-					"varname" : "u918001564"
+					"varname" : "u145000657"
 				}
 
 			}
@@ -1417,7 +1417,7 @@
 					"name" : "OMax.Audio-Monitor.st.maxpat",
 					"numinlets" : 3,
 					"numoutlets" : 0,
-					"patching_rect" : [ 5.0, 180.265198, 74.0, 58.0 ],
+					"patching_rect" : [ 5.0, 180.265198, 74.0, 72.469604 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 2.0, 96.0, 74.0, 70.0 ]
 				}
@@ -1485,7 +1485,7 @@
 			}
 , 			{
 				"box" : 				{
-					"args" : [ 1, 2 ],
+					"args" : [ 3, 4 ],
 					"id" : "obj-60",
 					"maxclass" : "bpatcher",
 					"name" : "OMax.AudioIn.maxpat",
@@ -2441,7 +2441,7 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-1", 0 ],
+					"destination" : [ "obj-1", 1 ],
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-60", 1 ]

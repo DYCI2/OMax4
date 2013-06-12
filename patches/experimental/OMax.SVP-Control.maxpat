@@ -188,6 +188,7 @@
 					"fontsize" : 10.0,
 					"id" : "obj-12",
 					"maxclass" : "flonum",
+					"minimum" : 0.1,
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "float", "bang" ],

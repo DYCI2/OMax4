@@ -108,7 +108,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "signal" ],
 					"patching_rect" : [ 130.399902, 100.422424, 41.0, 20.0 ],
-					"presentation_rect" : [ 118.399902, 99.422424, 0.0, 0.0 ],
 					"text" : "gate~"
 				}
 
@@ -121,8 +120,7 @@
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 152.399902, 54.0, 25.0, 25.0 ],
-					"presentation_rect" : [ 138.399902, 54.0, 0.0, 0.0 ]
+					"patching_rect" : [ 152.399902, 54.0, 25.0, 25.0 ]
 				}
 
 			}
@@ -149,6 +147,7 @@
 					"bgcolor" : [ 0.0, 0.0, 1.0, 0.101961 ],
 					"bordercolor" : [ 0.0, 0.0, 0.0, 0.0 ],
 					"id" : "obj-64",
+					"interval" : 100,
 					"maxclass" : "meter~",
 					"numinlets" : 1,
 					"numoutlets" : 1,
@@ -248,6 +247,7 @@
 					"bgcolor" : [ 0.0, 0.0, 1.0, 0.101961 ],
 					"bordercolor" : [ 0.0, 0.0, 0.0, 0.0 ],
 					"id" : "obj-7",
+					"interval" : 100,
 					"maxclass" : "meter~",
 					"numinlets" : 1,
 					"numoutlets" : 1,

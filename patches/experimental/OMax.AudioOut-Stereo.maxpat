@@ -37,7 +37,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "signal" ],
 					"patching_rect" : [ 99.399902, 104.0, 80.0, 20.0 ],
-					"presentation_rect" : [ 106.0, 105.0, 0.0, 0.0 ],
 					"text" : "selector~ 2 2"
 				}
 
@@ -1783,6 +1782,7 @@
 					"bgcolor" : [ 0.0, 0.0, 1.0, 0.101961 ],
 					"bordercolor" : [ 1.0, 1.0, 1.0, 0.0 ],
 					"id" : "obj-50",
+					"interval" : 100,
 					"maxclass" : "meter~",
 					"numinlets" : 1,
 					"numoutlets" : 1,
@@ -1799,6 +1799,7 @@
 					"bgcolor" : [ 0.0, 0.0, 1.0, 0.101961 ],
 					"bordercolor" : [ 1.0, 1.0, 1.0, 0.0 ],
 					"id" : "obj-168",
+					"interval" : 100,
 					"maxclass" : "meter~",
 					"numinlets" : 1,
 					"numoutlets" : 1,

@@ -13,7 +13,6 @@ int yyerror(char *s);
 
 %option header-file="DOT.yy.h"
 %option nounput
-%option noyywrap
 
 STRING  [a-zA-Z]+
 FLOAT   [0-9]*"."[0-9]*
