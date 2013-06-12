@@ -56,7 +56,7 @@ float midi2freq(float midin);
 float freq2midi(float freqin);
 
 // Global class pointer variable
-void *bc_virfun_class;
+t_class *bc_virfun_class;
 
 ///////////////
 // Functions //
@@ -112,7 +112,7 @@ void *bc_virfun_new(t_symbol *s, long argc, t_atom *argv)
 {
 	t_bc_virfun *x = NULL;
 	
-	if (x = (t_bc_virfun *)object_alloc(bc_virfun_class))
+	if ((x = (t_bc_virfun *)object_alloc(bc_virfun_class)))
 	{
 		// outlets
 		x->out = intout(x);

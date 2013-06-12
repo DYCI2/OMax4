@@ -15,14 +15,14 @@
 /**@brief stucture holding a statistics agent*/
 typedef struct _statelem
 	{
-		bool	enable;		///< Status of the agent
-		double	pitch;		///< Pitch of the agent
-		double	nbOcc;		///< # of occurences of this pitch
-		double	nbtot;		///< # of pitches received
-		double	ampacc;		///< Sum of the amplitudes from this pitch
-		double	proba;		///< Probability of this pitch
-		void*	clock;		///< Timer
-		void*	object;		///< Pointer to the bc.yinstats object
+		bool        enable;		///< Status of the agent
+		double      pitch;		///< Pitch of the agent
+		double      nbOcc;		///< # of occurences of this pitch
+		double      nbtot;		///< # of pitches received
+		double      ampacc;		///< Sum of the amplitudes from this pitch
+		double      proba;		///< Probability of this pitch
+		t_object*	clock;		///< Timer
+		void*       object;		///< Pointer to the bc.yinstats object
 	} bc_statelem;
 
 /**@ingroup yin
@@ -68,7 +68,7 @@ long bc_yinstats_addstat(t_bc_yinstats *x, double pitchin, double ampin);
 void bc_yinstats_reset(t_bc_yinstats *x, bc_statelem *stat);
 
 // Global class pointer variable
-void *bc_yinstats_class;
+t_class *bc_yinstats_class;
 
 
 int main(void)
@@ -117,7 +117,7 @@ void *bc_yinstats_new(t_symbol *s, long argc, t_atom *argv)
 {
 	t_bc_yinstats *x = NULL;
 	
-	if (x = (t_bc_yinstats *)object_alloc(bc_yinstats_class))
+	if ((x = (t_bc_yinstats *)object_alloc(bc_yinstats_class)))
 	{
 		// inlets
 		floatin(x, 1); // amplitude
@@ -311,7 +311,7 @@ void bc_yinstats_reset(t_bc_yinstats *x, bc_statelem *stat)
 	stat->nbtot = 0;
 	stat->proba = 0.;
 	stat->object = x;
-	stat->clock = clock_new(stat , (method)bc_yinstats_out);
+	stat->clock = (t_object*)clock_new(stat , (method)bc_yinstats_out);
 }
 
 //@}
@@ -323,7 +323,7 @@ void bc_yinstats_reset(t_bc_yinstats *x, bc_statelem *stat)
  * @brief Outputs a @em coocked pitch with its mean amplitude and probability */
 void bc_yinstats_out(bc_statelem *stat)
 {
-	t_bc_yinstats * x = stat->object;
+	t_bc_yinstats * x = (t_bc_yinstats *)stat->object;
 	stat->proba = stat->nbOcc / stat->nbtot;
 	if (stat->proba >= x->minproba)
 	{
