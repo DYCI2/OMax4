@@ -81,10 +81,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 133.0, 565.0, 44.0, 20.0 ],
-					"saved_object_attributes" : 					{
-						"attr_comment" : ""
-					}
-,
 					"text" : "out~ 2"
 				}
 
@@ -449,6 +445,10 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 182.0, 725.0, 37.0, 20.0 ],
+					"saved_object_attributes" : 					{
+						"attr_comment" : ""
+					}
+,
 					"text" : "out 1"
 				}
 
@@ -539,7 +539,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 161.0, 319.0, 74.0, 20.0 ],
+					"patching_rect" : [ 165.0, 293.0, 74.0, 20.0 ],
 					"text" : "prepend set"
 				}
 
@@ -553,7 +553,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 161.0, 293.0, 30.0, 20.0 ],
+					"patching_rect" : [ 165.0, 267.0, 30.0, 20.0 ],
 					"saved_object_attributes" : 					{
 						"attr_comment" : [ "Buffer", "Name" ]
 					}
@@ -613,6 +613,10 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 81.0, 565.0, 44.0, 20.0 ],
+					"saved_object_attributes" : 					{
+						"attr_comment" : ""
+					}
+,
 					"text" : "out~ 1"
 				}
 
@@ -1168,11 +1172,6 @@
 					"source" : [ "obj-9", 0 ]
 				}
 
-			}
- ],
-		"dependency_cache" : [ 			{
-				"name" : "supervp.scrub~.mxo",
-				"type" : "iLaX"
 			}
  ]
 	}

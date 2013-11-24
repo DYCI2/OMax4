@@ -7,7 +7,7 @@
 			"revision" : 8
 		}
 ,
-		"rect" : [ 918.0, 44.0, 342.0, 630.0 ],
+		"rect" : [ 1093.0, 73.0, 342.0, 630.0 ],
 		"bgcolor" : [ 1.0, 1.0, 1.0, 0.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
@@ -1036,7 +1036,7 @@
 					"fontsize" : 18.0,
 					"framecolor" : [ 0.0, 1.0, 0.0, 0.0 ],
 					"id" : "obj-43",
-					"items" : [ "Dual1", ",", "Dual2", ",", "Load1" ],
+					"items" : [ "Dual1", ",", "Dual2" ],
 					"maxclass" : "umenu",
 					"numinlets" : 1,
 					"numoutlets" : 3,
@@ -1044,7 +1044,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 281.0, 150.759033, 98.0, 28.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 8.0, 2.5, 126.0, 28.0 ]
+					"presentation_rect" : [ 8.0, 2.5, 133.0, 28.0 ]
 				}
 
 			}
@@ -1634,9 +1634,9 @@
 					"id" : "obj-7",
 					"maxclass" : "bpatcher",
 					"name" : "OMax.Impro-Region.maxpat",
-					"numinlets" : 3,
-					"numoutlets" : 3,
-					"outlettype" : [ "", "", "" ],
+					"numinlets" : 4,
+					"numoutlets" : 4,
+					"outlettype" : [ "", "", "", "int" ],
 					"patching_rect" : [ 492.5, 716.879517, 233.0, 47.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 3.0, 395.0, 165.0, 47.0 ]
@@ -1649,9 +1649,9 @@
 					"id" : "obj-9",
 					"maxclass" : "bpatcher",
 					"name" : "OMax.Impro-Region.maxpat",
-					"numinlets" : 3,
-					"numoutlets" : 3,
-					"outlettype" : [ "", "", "" ],
+					"numinlets" : 4,
+					"numoutlets" : 4,
+					"outlettype" : [ "", "", "", "int" ],
 					"patching_rect" : [ 492.5, 599.379517, 233.0, 47.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 3.0, 349.0, 165.0, 47.0 ]
@@ -1706,9 +1706,9 @@
 					"id" : "obj-34",
 					"maxclass" : "bpatcher",
 					"name" : "OMax.Impro-Region.maxpat",
-					"numinlets" : 3,
-					"numoutlets" : 3,
-					"outlettype" : [ "", "", "" ],
+					"numinlets" : 4,
+					"numoutlets" : 4,
+					"outlettype" : [ "", "", "", "int" ],
 					"patching_rect" : [ 492.5, 486.379517, 233.0, 47.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 3.0, 303.0, 165.0, 47.0 ]
@@ -1721,9 +1721,9 @@
 					"id" : "obj-36",
 					"maxclass" : "bpatcher",
 					"name" : "OMax.Impro-Region.maxpat",
-					"numinlets" : 3,
-					"numoutlets" : 3,
-					"outlettype" : [ "", "", "" ],
+					"numinlets" : 4,
+					"numoutlets" : 4,
+					"outlettype" : [ "", "", "", "int" ],
 					"patching_rect" : [ 492.5, 374.379517, 233.0, 47.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 3.0, 257.0, 165.0, 47.0 ]
@@ -2035,7 +2035,7 @@
 					"destination" : [ "obj-36", 1 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"midpoints" : [ 402.5, 365.129517, 609.0, 365.129517 ],
+					"midpoints" : [ 402.5, 365.129517, 573.333313, 365.129517 ],
 					"source" : [ "obj-18", 0 ]
 				}
 
@@ -2265,7 +2265,7 @@
 					"destination" : [ "obj-23", 2 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"midpoints" : [ 609.0, 591.129517, 475.5, 591.129517 ],
+					"midpoints" : [ 573.333313, 591.129517, 475.5, 591.129517 ],
 					"source" : [ "obj-34", 1 ]
 				}
 
@@ -2275,7 +2275,7 @@
 					"destination" : [ "obj-23", 2 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"midpoints" : [ 609.0, 475.629517, 475.5, 475.629517 ],
+					"midpoints" : [ 573.333313, 475.629517, 475.5, 475.629517 ],
 					"source" : [ "obj-36", 1 ]
 				}
 
@@ -2852,7 +2852,7 @@
 					"destination" : [ "obj-23", 2 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"midpoints" : [ 609.0, 782.379517, 475.5, 782.379517 ],
+					"midpoints" : [ 573.333313, 782.379517, 475.5, 782.379517 ],
 					"source" : [ "obj-7", 1 ]
 				}
 
@@ -3080,7 +3080,7 @@
 					"destination" : [ "obj-23", 2 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"midpoints" : [ 609.0, 703.629517, 475.5, 703.629517 ],
+					"midpoints" : [ 573.333313, 703.629517, 475.5, 703.629517 ],
 					"source" : [ "obj-9", 1 ]
 				}
 

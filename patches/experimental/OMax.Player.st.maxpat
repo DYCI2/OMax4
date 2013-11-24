@@ -29,6 +29,21 @@
 		"tags" : "",
 		"boxes" : [ 			{
 				"box" : 				{
+					"color" : [ 0.4, 0.8, 1.0, 1.0 ],
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-40",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 105.25, 69.0, 62.0, 20.0 ],
+					"text" : "r #1-reset"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"color" : [ 0.0, 0.0, 0.501961, 1.0 ],
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
@@ -93,7 +108,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 74.0, 32.0, 98.0, 20.0 ],
+					"patching_rect" : [ 74.0, 16.0, 98.0, 20.0 ],
 					"text" : "loadmess set #1"
 				}
 
@@ -181,7 +196,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 619.0, 431.939758, 83.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 23.0, 22.0, 103.0, 20.0 ],
+					"presentation_rect" : [ 23.0, 22.0, 140.0, 20.0 ],
 					"text" : "#2_Buffer"
 				}
 
@@ -985,7 +1000,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 74.0, 62.0, 80.0, 20.0 ],
+					"patching_rect" : [ 74.0, 46.0, 80.0, 20.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 16.0, 2.0, 61.0, 20.0 ],
 					"text" : "#1"
@@ -1386,6 +1401,15 @@
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-39", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-6", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-40", 0 ]
 				}
 
 			}

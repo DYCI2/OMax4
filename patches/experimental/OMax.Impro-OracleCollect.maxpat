@@ -7,7 +7,7 @@
 			"revision" : 8
 		}
 ,
-		"rect" : [ 359.0, 44.0, 717.0, 730.0 ],
+		"rect" : [ 645.0, -1001.0, 717.0, 730.0 ],
 		"bgcolor" : [ 0.4, 1.0, 0.8, 0.5 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
@@ -37,7 +37,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 624.0, 157.0, 32.5, 18.0 ],
-					"presentation_rect" : [ 625.0, 191.0, 0.0, 0.0 ],
 					"text" : "#1"
 				}
 
@@ -487,7 +486,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 517.0, 439.0, 98.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 64.0, 2.0, 100.0, 20.0 ]
+					"presentation_rect" : [ 62.0, 2.0, 104.0, 20.0 ]
 				}
 
 			}

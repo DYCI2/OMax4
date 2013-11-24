@@ -28,7 +28,7 @@ int yyerror(O_oracle*,char*);
 %token	LINK EQ COMMA
 %token	NEW_LINE O_BRACKET C_BRACKET O_SBRACKET C_SBRACKET O_SQBRACKET C_SQBRACKET
 %token 	<NUM> NUMBER
-%token  <FLOAT> FNUMBER
+%token  <FNUM> FNUMBER
 
 
 %%
@@ -108,6 +108,7 @@ stmt_list:  /* empty */
 attr_stmt:  STRING O_SQBRACKET attr_list C_SQBRACKET
             {
                 free($1);
+                //printf("%s\n",$1);
             }
             | attr
 			
@@ -123,15 +124,18 @@ lrs:    LABEL EQ NUMBER
             
 attr:   STRING EQ STRING
         {
+            //printf("%s = %s\n",$1,$3);
             free($1);
             free($3);
         }
         | STRING EQ NUMBER
         {
+            //printf("%s = %d\n",$1,$3);
             free($1);
         }
         | STRING EQ FNUMBER
         {
+            //printf("%s = %f\n",$1,$3);
             free($1);
         }
 

@@ -8,6 +8,7 @@
 		}
 ,
 		"rect" : [ 44.0, 48.0, 932.0, 715.0 ],
+		"bgcolor" : [ 1.0, 1.0, 1.0, 0.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
 		"default_fontsize" : 12.0,
@@ -220,7 +221,7 @@
 					"maxclass" : "inlet",
 					"numinlets" : 0,
 					"numoutlets" : 1,
-					"outlettype" : [ "" ],
+					"outlettype" : [ "int" ],
 					"patching_rect" : [ 546.0, 38.0, 25.0, 25.0 ]
 				}
 
@@ -232,7 +233,7 @@
 					"maxclass" : "inlet",
 					"numinlets" : 0,
 					"numoutlets" : 1,
-					"outlettype" : [ "" ],
+					"outlettype" : [ "bang" ],
 					"patching_rect" : [ 641.0, 38.0, 25.0, 25.0 ]
 				}
 
@@ -270,7 +271,7 @@
 					"maxclass" : "inlet",
 					"numinlets" : 0,
 					"numoutlets" : 1,
-					"outlettype" : [ "" ],
+					"outlettype" : [ "signal" ],
 					"patching_rect" : [ 243.0, 38.0, 25.0, 25.0 ]
 				}
 
@@ -304,13 +305,13 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "" ],
 					"patching_rect" : [ 58.227295, 481.0, 87.0, 47.0 ],
-					"restore" : [ 25 ],
+					"restore" : [ 20 ],
 					"saved_object_attributes" : 					{
 						"parameter_enable" : 0
 					}
 ,
 					"text" : "pattr @bindto OMax.MFCCs-pure::Thresh",
-					"varname" : "u239009822"
+					"varname" : "u582001161"
 				}
 
 			}
@@ -467,7 +468,7 @@
 					"numinlets" : 4,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 346.833313, 282.371155, 150.0, 44.0 ],
+					"patching_rect" : [ 364.833344, 268.371155, 150.0, 44.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 190.0, 2.0, 105.0, 44.0 ]
 				}
@@ -482,7 +483,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 280.0, 481.0, 36.0, 20.0 ],
+					"patching_rect" : [ 280.0, 489.0, 36.0, 20.0 ],
 					"text" : "pack"
 				}
 
@@ -496,7 +497,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 256.5, 449.0, 59.5, 20.0 ],
+					"patching_rect" : [ 256.5, 464.0, 59.5, 20.0 ],
 					"text" : "zl ecils 1"
 				}
 
@@ -526,7 +527,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 3,
 					"outlettype" : [ "", "int", "int" ],
-					"patching_rect" : [ 281.0, 419.0, 50.0, 20.0 ],
+					"patching_rect" : [ 281.0, 434.0, 50.0, 20.0 ],
 					"text" : "change"
 				}
 
@@ -540,7 +541,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 243.0, 309.871155, 57.0, 20.0 ],
+					"patching_rect" : [ 243.0, 324.871155, 57.0, 20.0 ],
 					"text" : "zl slice 1"
 				}
 
@@ -586,7 +587,8 @@
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 301.002563, 530.0, 84.994873, 18.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 4.002563, 98.0, 81.997437, 18.0 ]
+					"presentation_rect" : [ 4.002563, 98.0, 81.997437, 18.0 ],
+					"text" : "103 115103"
 				}
 
 			}
@@ -614,7 +616,7 @@
 					"numinlets" : 3,
 					"numoutlets" : 2,
 					"outlettype" : [ "int", "float" ],
-					"patching_rect" : [ 281.0, 339.0, 165.0, 69.0 ],
+					"patching_rect" : [ 281.0, 354.0, 165.0, 69.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 2.0, 51.0, 165.0, 69.0 ]
 				}
@@ -1129,76 +1131,6 @@
 					"source" : [ "obj-9", 0 ]
 				}
 
-			}
- ],
-		"dependency_cache" : [ 			{
-				"name" : "OMax.MFCCs-Alphabet-new.maxpat",
-				"bootpath" : "/Users/blevy/Projets/OMax/WoMax-Reorganized/patches/experimental",
-				"patcherrelativepath" : "",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "OMax.MFCCs-pure.maxpat",
-				"bootpath" : "/Users/blevy/Projets/OMax/WoMax-Reorganized/patches/experimental",
-				"patcherrelativepath" : "",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "OMax.MFCCs-zsa.maxpat",
-				"bootpath" : "/Users/blevy/Projets/OMax/WoMax-Reorganized/patches/experimental",
-				"patcherrelativepath" : "",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "OMax.MFCCs-zsa.core.maxpat",
-				"bootpath" : "/Users/blevy/Projets/OMax/WoMax-Reorganized/patches/experimental",
-				"patcherrelativepath" : "",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "OMax.seg.maxpat",
-				"bootpath" : "/Users/blevy/Projets/OMax/WoMax-Reorganized/patches/experimental",
-				"patcherrelativepath" : "",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "OMax.Oracle-gen.maxpat",
-				"bootpath" : "/Users/blevy/Projets/OMax/WoMax-Reorganized/patches/experimental",
-				"patcherrelativepath" : "",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "OMax.Data-SP.maxpat",
-				"bootpath" : "/Users/blevy/Projets/OMax/WoMax-Reorganized/patches/experimental",
-				"patcherrelativepath" : "",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "zsa.dist.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "zsa.mfcc~.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "OMax.oracle.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "OMax.read.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "OMax.data.mxo",
-				"type" : "iLaX"
 			}
  ]
 	}

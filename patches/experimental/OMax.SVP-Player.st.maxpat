@@ -37,7 +37,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 213.75, 71.5, 49.0, 20.0 ],
+					"patching_rect" : [ 144.25, 70.5, 49.0, 20.0 ],
 					"text" : "receive"
 				}
 
@@ -51,7 +51,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 213.75, 45.5, 151.0, 20.0 ],
+					"patching_rect" : [ 144.25, 44.5, 151.0, 20.0 ],
 					"text" : "sprintf set %s_AudioReset"
 				}
 
@@ -65,7 +65,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 5,
 					"outlettype" : [ "", "", "", "", "" ],
-					"patching_rect" : [ 213.75, 15.5, 107.0, 20.0 ],
+					"patching_rect" : [ 122.25, 14.5, 107.0, 20.0 ],
 					"text" : "regexp (.+)_Buffer"
 				}
 
@@ -107,7 +107,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 82.5, 15.5, 125.0, 20.0 ],
+					"patching_rect" : [ 682.0, 111.5, 125.0, 20.0 ],
 					"text" : "loadmess set SVP #1"
 				}
 
@@ -121,7 +121,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "float", "int" ],
-					"patching_rect" : [ 575.0, 353.620483, 76.0, 20.0 ],
+					"patching_rect" : [ 575.0, 323.120483, 76.0, 20.0 ],
 					"text" : "maximum 0."
 				}
 
@@ -316,7 +316,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "float", "float" ],
-					"patching_rect" : [ 575.0, 381.620483, 32.5, 20.0 ],
+					"patching_rect" : [ 575.0, 351.120483, 32.5, 20.0 ],
 					"text" : "t f f"
 				}
 
@@ -330,7 +330,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 588.5, 445.5, 61.0, 18.0 ],
+					"patching_rect" : [ 588.5, 415.0, 61.0, 18.0 ],
 					"text" : "tempo $1"
 				}
 
@@ -344,7 +344,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "float" ],
-					"patching_rect" : [ 588.5, 417.5, 42.0, 20.0 ],
+					"patching_rect" : [ 588.5, 387.0, 42.0, 20.0 ],
 					"text" : "* 120."
 				}
 
@@ -373,7 +373,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 82.5, 45.335571, 74.0, 19.0 ],
+					"patching_rect" : [ 682.0, 141.335571, 74.0, 19.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 18.0, 1.0, 58.0, 19.0 ],
 					"text" : "SVP #1"
@@ -550,7 +550,7 @@
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 575.0, 316.620483, 25.0, 25.0 ]
+					"patching_rect" : [ 575.0, 286.120483, 25.0, 25.0 ]
 				}
 
 			}
@@ -863,7 +863,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 177.0, 420.0, 103.0, 20.0 ],
+					"patching_rect" : [ 177.0, 422.0, 103.0, 20.0 ],
 					"text" : "translate ms ticks"
 				}
 
@@ -1152,7 +1152,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 9,
 					"outlettype" : [ "int", "int", "float", "float", "float", "", "int", "float", "" ],
-					"patching_rect" : [ 43.0, 459.0, 153.0, 20.0 ],
+					"patching_rect" : [ 43.0, 462.0, 153.0, 20.0 ],
 					"text" : "transport @name #1_Time"
 				}
 

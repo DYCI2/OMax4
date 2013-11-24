@@ -66,6 +66,7 @@ int main(int argc, char **argv)
         cout << "err = "<<err<<endl;
         cout <<"_____________________________"<<endl<<endl;
         
+        scan_buffer = yy_scan_string(fbuffer);
         
         err = yyparse(&NewOracle);
         cout << "err = "<<err<<endl;
