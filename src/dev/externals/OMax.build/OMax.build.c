@@ -326,7 +326,7 @@ extern "C"
 					outlet_int(x->out_date, x->date); 	/// Output the new ending date
 					outlet_int(x->out_state, (long)x->idata->get_size()); /// Output the current size
 					
-					long added[2];
+					t_atom_long added[2];
 					added[0] = statnb;
 					added[1] = statein;
 					atom_setlong_array(2,x->addout,2,added);

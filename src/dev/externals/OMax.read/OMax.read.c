@@ -233,7 +233,7 @@ extern "C"
 					long i = 0;
 					list<O_state*> trans = state.get_trans();
 					list<O_state*>::iterator it;
-					long vals[trans.size()];
+					t_atom_long vals[trans.size()];
 					t_atom * trans_list = NULL;
 					for (it = trans.begin(); it!=trans.end(); it++)
 					{
@@ -262,7 +262,7 @@ extern "C"
 					// reversed suffixes
 					list<pair<O_state*,int> > rsuff = state.get_rsuff();
 					list<pair<O_state*,int> >::iterator rsit = rsuff.begin();
-					long rsvals[2];
+					t_atom_long rsvals[2];
 					t_atom * rsuff_out = NULL;
 					atom_alloc_array(2, &i, &rsuff_out, &err);
 					if(err && i==2)

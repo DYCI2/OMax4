@@ -249,8 +249,8 @@ void OMax_oracle_dates(t_OMax_oracle *x)
 void OMax_oracle_dowrite(t_OMax_oracle *x, t_symbol *s)
 {
     short err = 0;
-    long filetype = 'TEXT';
-    long outtype = 'TEXT';
+    t_fourcc filetype = 'TEXT';
+    t_fourcc outtype = 'TEXT';
     short path, newpath = 0;
     short numtypes = 1;
     char* foldername = NULL;
@@ -301,7 +301,7 @@ void OMax_oracle_writefile(t_OMax_oracle *x, char *filename, short path)
 {
     char *buf;
     long err;
-    long count;
+    t_ptr_size count;
     short exist,binflag;
     stringstream ssout;
     t_filehandle fh;
@@ -332,7 +332,7 @@ void OMax_oracle_writefile(t_OMax_oracle *x, char *filename, short path)
 
 void OMax_oracle_doread(t_OMax_oracle *x, t_symbol *s)
 {
-    long size;
+    t_ptr_size size;
     short err = -1;
     //short savelock;
     t_filehandle fh;
@@ -364,7 +364,7 @@ short OMax_oracle_openfile(t_OMax_oracle *x, t_symbol* s, t_filehandle* fh)
 {
     short vol,err;
     char ps[MAX_PATH_CHARS];
-    long type;
+    t_fourcc type;
     
     if (s==gensym("")) {
         if (open_dialog(ps,&vol,&type,0L,0))

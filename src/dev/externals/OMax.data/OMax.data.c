@@ -351,8 +351,8 @@ extern "C"
 	void OMax_data_dowrite(t_OMax_data *x, t_symbol *s, long argc, t_atom* argv)
 	{
 		short err = 0;
-		long filetype = 'TEXT';
-		long outtype = 'TEXT';
+		t_fourcc filetype = 'TEXT';
+		t_fourcc outtype = 'TEXT';
 		short path, newpath = 0;
 		short numtypes = 1;
 		char* foldername = NULL;
@@ -473,7 +473,7 @@ extern "C"
 					{
 						notedic = dictionary_new();
 						note_data = notit->get_note(note_data);
-						atom_setlong_array(5, array, 5, (long*)note_data);
+						atom_setlong_array(5, array, 5, (t_atom_long*)note_data);
 						dictionary_appendatoms(notedic, sym_note, 3, array);
 						dictionary_appendatoms(notedic, sym_time, 2, array+3);
 						atom_setobj(&notesarray[i++], notedic);
@@ -540,7 +540,7 @@ extern "C"
 					dictionary_appendatoms(ditem, sym_seg, 2, array);
 					// note
 					note_data = ((O_MIDI_mono*)current)->get_data(note_data);
-					atom_setlong_array(3, array, 3, (long*)note_data);
+					atom_setlong_array(3, array, 3, (t_atom_long*)note_data);
 					dictionary_appendatoms(ditem, sym_note, 3, array);
 					// add to the data array
 					atom_setobj(&datab[idx], ditem);
@@ -602,10 +602,11 @@ extern "C"
 		//char err;
 		short path;
 		int date = 0;
-		long datatype, size, nbcoeffs;
+		t_atom_long datatype, t_size, nbcoeffs;
+        long size;
 		long i, idx;
 		char filename[MAX_PATH_CHARS];
-		long type = FOUR_CHAR_CODE('JSON');
+		t_fourcc type = FOUR_CHAR_CODE('JSON');
 		t_symbol *symdata = NULL;
 		t_atom *data = NULL;
 		t_dictionary *d = NULL;
@@ -660,13 +661,14 @@ extern "C"
 			t_symbol* sym_notes = gensym("notes");
 			
 			
-			dictionary_getlong(d, gensym("size"), &size);
+			dictionary_getlong(d, gensym("size"), &t_size);
+            size = t_size; // possible perte de précision (dépendant de la machine)
 			dictionary_getatoms(d, gensym("data"), &size, &data);
 			
 			if (x->readcount==0 && x->wflag==0)
 			{
 				// vars
-				long statenb;
+				t_atom_long statenb;
 				t_atom *array = NULL;
 				t_dictionary *ditem = NULL;
 				
@@ -754,7 +756,7 @@ extern "C"
 						for (idx=1; idx<size; idx++)
 						{
 							int j;
-							long pitch;
+							t_atom_long pitch;
 							list<float> coeffs;
 							O_spectral* newstate;
 							ditem = (t_dictionary*)atom_getobj(&data[idx]);

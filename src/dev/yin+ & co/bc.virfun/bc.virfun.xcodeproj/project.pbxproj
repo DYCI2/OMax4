@@ -24,8 +24,6 @@
 /* Begin PBXBuildFile section */
 		7B64664E125F2406003ABC96 /* bc.virfun.c in Sources */ = {isa = PBXBuildFile; fileRef = 7B64664D125F2406003ABC96 /* bc.virfun.c */; };
 		7BC9028D158B64B300E9DA2E /* bc.virfun.c in Sources */ = {isa = PBXBuildFile; fileRef = 7B64664D125F2406003ABC96 /* bc.virfun.c */; };
-		7BC9028F158B64B300E9DA2E /* MaxAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BFC726F12E44E900071CD76 /* MaxAPI.framework */; };
-		7BFC727012E44E900071CD76 /* MaxAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BFC726F12E44E900071CD76 /* MaxAPI.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,7 +49,6 @@
 		7BC90288158B647300E9DA2E /* bc.externals-Max6.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = "bc.externals-Max6.xcconfig"; path = "../bc.externals-Max6.xcconfig"; sourceTree = "<group>"; };
 		7BC90293158B64B300E9DA2E /* bc.virfun.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = bc.virfun.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BC902A8158B674800E9DA2E /* bc.externals-Max5.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = "bc.externals-Max5.xcconfig"; path = "../bc.externals-Max5.xcconfig"; sourceTree = "<group>"; };
-		7BFC726F12E44E900071CD76 /* MaxAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MaxAPI.framework; path = "../../../../../../../Max5/MaxSDK-5.1.6/c74support/max-includes/MaxAPI.framework"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,7 +56,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7BFC727012E44E900071CD76 /* MaxAPI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -67,7 +63,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7BC9028F158B64B300E9DA2E /* MaxAPI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -89,7 +84,6 @@
 		089C1671FE841209C02AAC07 /* External Frameworks and Libraries */ = {
 			isa = PBXGroup;
 			children = (
-				7BFC726F12E44E900071CD76 /* MaxAPI.framework */,
 			);
 			name = "External Frameworks and Libraries";
 			sourceTree = "<group>";
@@ -174,6 +168,8 @@
 /* Begin PBXProject section */
 		089C1669FE841209C02AAC07 /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+			};
 			buildConfigurationList = 2FBBEACF08F335010078DB84 /* Build configuration list for PBXProject "bc.virfun" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
@@ -322,6 +318,7 @@
 				7BC90296158B64EB00E9DA2E /* Normal */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Normal;
 		};
 /* End XCConfigurationList section */
 	};

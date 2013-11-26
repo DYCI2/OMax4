@@ -22,13 +22,11 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		7B44BE2C13E816D400BE30A2 /* MaxAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B44BE2B13E816D400BE30A2 /* MaxAPI.framework */; };
 		7BC9026C158B486900E9DA2E /* OMax.data.h in Headers */ = {isa = PBXBuildFile; fileRef = FBE61F9B0F7BC79500BCD651 /* OMax.data.h */; };
 		7BC9026D158B486900E9DA2E /* Oracle_data.hpp in Headers */ = {isa = PBXBuildFile; fileRef = FB1E11181003EDC90017FD00 /* Oracle_data.hpp */; };
 		7BC9026E158B486900E9DA2E /* Oracle_label.hpp in Headers */ = {isa = PBXBuildFile; fileRef = FB1E11191003EDC90017FD00 /* Oracle_label.hpp */; };
 		7BC90271158B486900E9DA2E /* OMax.state2date.c in Sources */ = {isa = PBXBuildFile; fileRef = FB647E560F6139EE00824DA2 /* OMax.state2date.c */; };
 		7BC90272158B486900E9DA2E /* Oracle_label.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FB1E111C1003EDD80017FD00 /* Oracle_label.cpp */; };
-		7BC90274158B486900E9DA2E /* MaxAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B44BE2B13E816D400BE30A2 /* MaxAPI.framework */; };
 		FB1E111A1003EDC90017FD00 /* Oracle_data.hpp in Headers */ = {isa = PBXBuildFile; fileRef = FB1E11181003EDC90017FD00 /* Oracle_data.hpp */; };
 		FB1E111B1003EDC90017FD00 /* Oracle_label.hpp in Headers */ = {isa = PBXBuildFile; fileRef = FB1E11191003EDC90017FD00 /* Oracle_label.hpp */; };
 		FB1E111D1003EDD80017FD00 /* Oracle_label.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FB1E111C1003EDD80017FD00 /* Oracle_label.cpp */; };
@@ -55,7 +53,6 @@
 
 /* Begin PBXFileReference section */
 		2FBBEAE508F335360078DB84 /* OMax.state2date.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OMax.state2date.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
-		7B44BE2B13E816D400BE30A2 /* MaxAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MaxAPI.framework; path = "../../../../../../../Max5/MaxSDK-5.1.7/c74support/max-includes/MaxAPI.framework"; sourceTree = "<group>"; };
 		7BC90269158B483A00E9DA2E /* OMax-Max5.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = "OMax-Max5.xcconfig"; path = "../OMax-Max5.xcconfig"; sourceTree = "<group>"; };
 		7BC90278158B486900E9DA2E /* OMax.state2date.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OMax.state2date.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BF6A71E1588F262000662C8 /* OMax-Max6.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "OMax-Max6.xcconfig"; path = "../OMax-Max6.xcconfig"; sourceTree = "<group>"; };
@@ -71,7 +68,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7B44BE2C13E816D400BE30A2 /* MaxAPI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,7 +75,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7BC90274158B486900E9DA2E /* MaxAPI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,18 +88,9 @@
 				7BF6A71E1588F262000662C8 /* OMax-Max6.xcconfig */,
 				FBE61F940F7BC75400BCD651 /* Headers */,
 				08FB77ADFE841716C02AAC07 /* Source */,
-				089C1671FE841209C02AAC07 /* External Frameworks and Libraries */,
 				19C28FB4FE9D528D11CA2CBB /* Products */,
 			);
 			name = iterator;
-			sourceTree = "<group>";
-		};
-		089C1671FE841209C02AAC07 /* External Frameworks and Libraries */ = {
-			isa = PBXGroup;
-			children = (
-				7B44BE2B13E816D400BE30A2 /* MaxAPI.framework */,
-			);
-			name = "External Frameworks and Libraries";
 			sourceTree = "<group>";
 		};
 		08FB77ADFE841716C02AAC07 /* Source */ = {
@@ -204,6 +190,8 @@
 /* Begin PBXProject section */
 		089C1669FE841209C02AAC07 /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+			};
 			buildConfigurationList = 2FBBEACF08F335010078DB84 /* Build configuration list for PBXProject "OMax.state2date" */;
 			compatibilityVersion = "Xcode 3.1";
 			developmentRegion = English;
@@ -351,6 +339,7 @@
 				7BC9027B158B488A00E9DA2E /* Normal */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Normal;
 		};
 /* End XCConfigurationList section */
 	};

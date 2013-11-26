@@ -22,8 +22,6 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		7B44BE0A13E8160500BE30A2 /* MaxAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B44BE0913E8160500BE30A2 /* MaxAPI.framework */; };
-		7B69D8F2166669F6006790F8 /* MaxAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B69D8F1166669F6006790F8 /* MaxAPI.framework */; };
 		7BC901E8158B454100E9DA2E /* OMax.oracle.h in Headers */ = {isa = PBXBuildFile; fileRef = FB38FE7F0F6D6235000A583F /* OMax.oracle.h */; };
 		7BC901E9158B454100E9DA2E /* OMax.data.h in Headers */ = {isa = PBXBuildFile; fileRef = FBCF3A710F7114A5007C84EC /* OMax.data.h */; };
 		7BC901EA158B454100E9DA2E /* Oracle_data.hpp in Headers */ = {isa = PBXBuildFile; fileRef = FB1E106A1003DDA20017FD00 /* Oracle_data.hpp */; };
@@ -33,7 +31,6 @@
 		7BC901F1158B454100E9DA2E /* OMax.learn.c in Sources */ = {isa = PBXBuildFile; fileRef = FB647E560F6139EE00824DA2 /* OMax.learn.c */; };
 		7BC901F2158B454100E9DA2E /* Oracle_classes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FB1E10721003DDB50017FD00 /* Oracle_classes.cpp */; };
 		7BC901F3158B454100E9DA2E /* Oracle_label.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FB1E10731003DDB50017FD00 /* Oracle_label.cpp */; };
-		7BC901F5158B454100E9DA2E /* MaxAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B44BE0913E8160500BE30A2 /* MaxAPI.framework */; };
 		FB1E106E1003DDA20017FD00 /* Oracle_data.hpp in Headers */ = {isa = PBXBuildFile; fileRef = FB1E106A1003DDA20017FD00 /* Oracle_data.hpp */; };
 		FB1E106F1003DDA20017FD00 /* Oracle_label.hpp in Headers */ = {isa = PBXBuildFile; fileRef = FB1E106B1003DDA20017FD00 /* Oracle_label.hpp */; };
 		FB1E10701003DDA20017FD00 /* Oracle_classes.hpp in Headers */ = {isa = PBXBuildFile; fileRef = FB1E106C1003DDA20017FD00 /* Oracle_classes.hpp */; };
@@ -64,8 +61,6 @@
 
 /* Begin PBXFileReference section */
 		2FBBEAE508F335360078DB84 /* OMax.learn.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OMax.learn.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
-		7B44BE0913E8160500BE30A2 /* MaxAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MaxAPI.framework; path = "../../../../../../../Max5/MaxSDK-5.1.7/c74support/max-includes/MaxAPI.framework"; sourceTree = "<group>"; };
-		7B69D8F1166669F6006790F8 /* MaxAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MaxAPI.framework; path = "../../../../../../../Max6/MaxSDK-6.0.4/c74support/max-includes/MaxAPI.framework"; sourceTree = "<group>"; };
 		7BC901E5158B453F00E9DA2E /* OMax-Max5.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = "OMax-Max5.xcconfig"; path = "../OMax-Max5.xcconfig"; sourceTree = "<group>"; };
 		7BC901FA158B454100E9DA2E /* OMax.learn.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OMax.learn.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BF6A6F41588F176000662C8 /* OMax-Max6.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "OMax-Max6.xcconfig"; path = "../OMax-Max6.xcconfig"; sourceTree = "<group>"; };
@@ -85,7 +80,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7B44BE0A13E8160500BE30A2 /* MaxAPI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,8 +87,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7BC901F5158B454100E9DA2E /* MaxAPI.framework in Frameworks */,
-				7B69D8F2166669F6006790F8 /* MaxAPI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -108,19 +100,9 @@
 				7BF6A6F41588F176000662C8 /* OMax-Max6.xcconfig */,
 				FB0E2A490F6A9C2200CF12C6 /* Headers */,
 				08FB77ADFE841716C02AAC07 /* Source */,
-				089C1671FE841209C02AAC07 /* External Frameworks and Libraries */,
 				19C28FB4FE9D528D11CA2CBB /* Products */,
 			);
 			name = iterator;
-			sourceTree = "<group>";
-		};
-		089C1671FE841209C02AAC07 /* External Frameworks and Libraries */ = {
-			isa = PBXGroup;
-			children = (
-				7B69D8F1166669F6006790F8 /* MaxAPI.framework */,
-				7B44BE0913E8160500BE30A2 /* MaxAPI.framework */,
-			);
-			name = "External Frameworks and Libraries";
 			sourceTree = "<group>";
 		};
 		08FB77ADFE841716C02AAC07 /* Source */ = {
@@ -230,6 +212,8 @@
 /* Begin PBXProject section */
 		089C1669FE841209C02AAC07 /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+			};
 			buildConfigurationList = 2FBBEACF08F335010078DB84 /* Build configuration list for PBXProject "OMax.learn" */;
 			compatibilityVersion = "Xcode 3.1";
 			developmentRegion = English;
@@ -340,10 +324,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7BF6A6F41588F176000662C8 /* OMax-Max6.xcconfig */;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/../../../../../../../Max6/MaxSDK-6.0.4/c74support/max-includes\"",
-				);
 			};
 			name = Normal;
 		};

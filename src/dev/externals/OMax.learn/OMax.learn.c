@@ -574,7 +574,7 @@ extern "C"
 	void OMax_learn_note(t_OMax_learn *x, t_symbol *s, short ac, t_atom * av)
 	{
 		long count = (long)ac;
-		long vals[5];
+		t_atom_long vals[5];
 		/// Check for binding
 		if (OMax_learn_bind(x))
 		{
