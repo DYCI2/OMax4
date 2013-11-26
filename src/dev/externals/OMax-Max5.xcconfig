@@ -19,10 +19,10 @@ GCC_INPUT_FILETYPE = sourcecode.cpp.cpp
 
 
 // Per architecture and deployment settings
-//ARCHS = x86_64
+ARCHS = i386
 SDKROOT = macosx10.7
 //GCC_VERSION = 4.2
-GCC_VERSION = com.apple.compilers.llvmgcc42
+//GCC_VERSION = com.apple.compilers.llvmgcc42
 //GCC_VERSION = com.apple.compilers.llvm.clang.1_0
 MACOSX_DEPLOYMENT_TARGET = 10.5
 
