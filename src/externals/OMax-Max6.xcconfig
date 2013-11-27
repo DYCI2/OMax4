@@ -18,13 +18,13 @@ GCC_INPUT_FILETYPE = sourcecode.cpp.cpp
 
 
 // Architecture and Deployment
-// ARCHS = i386
+ARCHS = i386
 SDKROOT = macosx10.7
 MACOSX_DEPLOYMENT_TARGET = 10.5
 
 // Compiler Version -- leave them all commented out to get the default version provided by Xcode
 // GCC_VERSION = 4.2
-GCC_VERSION = com.apple.compilers.llvmgcc42
+//GCC_VERSION = com.apple.compilers.llvmgcc42
 //GCC_VERSION = com.apple.compilers.llvm.clang.1_0
 
 
