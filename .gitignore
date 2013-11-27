@@ -73,3 +73,6 @@
 /src/externals/OMax.state2date/build/
 /src/yin+ & co/bc.virfun/build/
 /src/yin+ & co/bc.yinstats/build/
+
+/src/externals/OMax.build/OMax.build.xcodeproj/project.xcworkspace/
+/src/externals/OMax.build/OMax.build.xcodeproj/xcuserdata/

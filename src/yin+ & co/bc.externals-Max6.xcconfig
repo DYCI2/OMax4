@@ -1,0 +1,35 @@
+// Name & Version
+PRODUCT_NAME = $(PROJECT_NAME)
+
+// Paths
+MAX_SDK = ~/Max6/MaxSDK-6.0.4
+C74SUPPORT = $(MAX_SDK)/c74support
+HEADER_SEARCH_PATHS = /Developer/Headers/FlatCarbon /Developer/Headers/FlatCarbon "$(C74SUPPORT)/max-includes"
+FRAMEWORK_SEARCH_PATHS = "$(C74SUPPORT)/max-includes"
+DSTROOT = $(SRCROOT)/../../build-Max6
+// (This next path is relative to DSTROOT)
+INSTALL_PATH = /
+
+
+// Special Files
+GCC_PREFIX_HEADER = $(C74SUPPORT)/max-includes/macho-prefix.pch
+//INFOPLIST_FILE = $(SRCROOT)/../../Info.plist
+//GCC_INPUT_FILETYPE = sourcecode.cpp.cpp
+
+
+// Architecture and Deployment
+ARCHS = i386
+SDKROOT = macosx10.7
+MACOSX_DEPLOYMENT_TARGET = 10.5
+
+// Compiler Version -- leave them all commented out to get the default version provided by Xcode
+// GCC_VERSION = 4.2
+GCC_VERSION = com.apple.compilers.llvmgcc42
+//GCC_VERSION = com.apple.compilers.llvm.clang.1_0
+
+
+// Static Configuration (don't change these)
+WRAPPER_EXTENSION = mxo;
+WARNING_CFLAGS = -Wmost -Wno-four-char-constants -Wno-unknown-pragmas
+DEPLOYMENT_LOCATION = YES
+GENERATE_PKGINFO_FILE = YES
