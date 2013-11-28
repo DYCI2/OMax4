@@ -65,7 +65,7 @@ extern "C"
 	// Functions //
 	///////////////
 	
-	int main(void)
+	int C74_EXPORT main(void)
 	{	
 		// object initialization, NEW STYLE
 		t_class *c;

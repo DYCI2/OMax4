@@ -6,7 +6,7 @@ MAX_SDK = /Users/blevy/Max6.1/MaxSDK-6.1.4
 C74SUPPORT = $(MAX_SDK)/c74support
 HEADER_SEARCH_PATHS = /Developer/Headers/FlatCarbon "$(C74SUPPORT)/max-includes"
 FRAMEWORK_SEARCH_PATHS = "$(C74SUPPORT)/max-includes"
-DSTROOT = $(SRCROOT)/../../build-Max6
+DSTROOT = $(SRCROOT)/../../build
 // (This next path is relative to DSTROOT)
 INSTALL_PATH = /
 

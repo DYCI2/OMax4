@@ -6,71 +6,25 @@
 	objectVersion = 45;
 	objects = {
 
-/* Begin PBXAggregateTarget section */
-		7B130918158A37BC0041C84F /* Max5&6 */ = {
-			isa = PBXAggregateTarget;
-			buildConfigurationList = 7B13091A158A37BC0041C84F /* Build configuration list for PBXAggregateTarget "Max5&6" */;
-			buildPhases = (
-			);
-			dependencies = (
-				7B13091D158A37CD0041C84F /* PBXTargetDependency */,
-				7B13091F158A37D00041C84F /* PBXTargetDependency */,
-			);
-			name = "Max5&6";
-			productName = OMax.render.mxo;
-		};
-/* End PBXAggregateTarget section */
-
 /* Begin PBXBuildFile section */
 		7B1308FB158A326D0041C84F /* OMax.data.h in Headers */ = {isa = PBXBuildFile; fileRef = FBDC507F0F73E17300146D1C /* OMax.data.h */; };
 		7B1308FC158A326D0041C84F /* Oracle_data.hpp in Headers */ = {isa = PBXBuildFile; fileRef = FB1E10E01003ED3D0017FD00 /* Oracle_data.hpp */; };
 		7B1308FD158A326D0041C84F /* Oracle_label.hpp in Headers */ = {isa = PBXBuildFile; fileRef = FB1E10E21003ED460017FD00 /* Oracle_label.hpp */; };
 		7B130901158A326D0041C84F /* OMax.render.c in Sources */ = {isa = PBXBuildFile; fileRef = FB647E560F6139EE00824DA2 /* OMax.render.c */; };
 		7B130902158A326D0041C84F /* Oracle_label.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FB1E10E41003ED560017FD00 /* Oracle_label.cpp */; };
-		FB1E10E11003ED3D0017FD00 /* Oracle_data.hpp in Headers */ = {isa = PBXBuildFile; fileRef = FB1E10E01003ED3D0017FD00 /* Oracle_data.hpp */; };
-		FB1E10E31003ED460017FD00 /* Oracle_label.hpp in Headers */ = {isa = PBXBuildFile; fileRef = FB1E10E21003ED460017FD00 /* Oracle_label.hpp */; };
-		FB1E10E51003ED560017FD00 /* Oracle_label.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FB1E10E41003ED560017FD00 /* Oracle_label.cpp */; };
-		FB647E570F6139EE00824DA2 /* OMax.render.c in Sources */ = {isa = PBXBuildFile; fileRef = FB647E560F6139EE00824DA2 /* OMax.render.c */; };
-		FBDC50800F73E17300146D1C /* OMax.data.h in Headers */ = {isa = PBXBuildFile; fileRef = FBDC507F0F73E17300146D1C /* OMax.data.h */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		7B13091C158A37CD0041C84F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 2FBBEAD608F335360078DB84;
-			remoteInfo = Max5;
-		};
-		7B13091E158A37D00041C84F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 7B1308F9158A326D0041C84F;
-			remoteInfo = Max6;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
-		2FBBEAE508F335360078DB84 /* OMax.render.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OMax.render.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B130909158A326D0041C84F /* OMax.render.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OMax.render.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BF6A6D01588F075000662C8 /* OMax-Max6.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "OMax-Max6.xcconfig"; path = "../OMax-Max6.xcconfig"; sourceTree = "<group>"; };
 		FB1E10E01003ED3D0017FD00 /* Oracle_data.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Oracle_data.hpp; path = ../../cpp/Oracle_data.hpp; sourceTree = SOURCE_ROOT; };
 		FB1E10E21003ED460017FD00 /* Oracle_label.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Oracle_label.hpp; path = ../../cpp/Oracle_label.hpp; sourceTree = SOURCE_ROOT; };
 		FB1E10E41003ED560017FD00 /* Oracle_label.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Oracle_label.cpp; path = ../../cpp/Oracle_label.cpp; sourceTree = SOURCE_ROOT; };
 		FB647E560F6139EE00824DA2 /* OMax.render.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = OMax.render.c; sourceTree = SOURCE_ROOT; };
-		FBDC50660F73E07A00146D1C /* OMax-Max5.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "OMax-Max5.xcconfig"; path = "../OMax-Max5.xcconfig"; sourceTree = SOURCE_ROOT; };
 		FBDC507F0F73E17300146D1C /* OMax.data.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OMax.data.h; path = ../OMax.data/OMax.data.h; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		2FBBEADC08F335360078DB84 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		7B130903158A326D0041C84F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -85,7 +39,6 @@
 			isa = PBXGroup;
 			children = (
 				7BF6A6D01588F075000662C8 /* OMax-Max6.xcconfig */,
-				FBDC50660F73E07A00146D1C /* OMax-Max5.xcconfig */,
 				FBDC50820F73E17B00146D1C /* Headers */,
 				08FB77ADFE841716C02AAC07 /* Source */,
 				19C28FB4FE9D528D11CA2CBB /* Products */,
@@ -105,7 +58,6 @@
 		19C28FB4FE9D528D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2FBBEAE508F335360078DB84 /* OMax.render.mxo */,
 				7B130909158A326D0041C84F /* OMax.render.mxo */,
 			);
 			name = Products;
@@ -124,16 +76,6 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		2FBBEAD708F335360078DB84 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				FBDC50800F73E17300146D1C /* OMax.data.h in Headers */,
-				FB1E10E11003ED3D0017FD00 /* Oracle_data.hpp in Headers */,
-				FB1E10E31003ED460017FD00 /* Oracle_label.hpp in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		7B1308FA158A326D0041C84F /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -147,25 +89,6 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		2FBBEAD608F335360078DB84 /* Max5 */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 2FBBEAE008F335360078DB84 /* Build configuration list for PBXNativeTarget "Max5" */;
-			buildPhases = (
-				2FBBEAD708F335360078DB84 /* Headers */,
-				2FBBEAD808F335360078DB84 /* Resources */,
-				2FBBEADA08F335360078DB84 /* Sources */,
-				2FBBEADC08F335360078DB84 /* Frameworks */,
-				2FBBEADF08F335360078DB84 /* Rez */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = Max5;
-			productName = iterator;
-			productReference = 2FBBEAE508F335360078DB84 /* OMax.render.mxo */;
-			productType = "com.apple.product-type.bundle";
-		};
 		7B1308F9158A326D0041C84F /* Max6 */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7B130906158A326D0041C84F /* Build configuration list for PBXNativeTarget "Max6" */;
@@ -206,21 +129,12 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				2FBBEAD608F335360078DB84 /* Max5 */,
 				7B1308F9158A326D0041C84F /* Max6 */,
-				7B130918158A37BC0041C84F /* Max5&6 */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		2FBBEAD808F335360078DB84 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		7B1308FE158A326D0041C84F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -231,13 +145,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXRezBuildPhase section */
-		2FBBEADF08F335360078DB84 /* Rez */ = {
-			isa = PBXRezBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		7B130905158A326D0041C84F /* Rez */ = {
 			isa = PBXRezBuildPhase;
 			buildActionMask = 2147483647;
@@ -248,15 +155,6 @@
 /* End PBXRezBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		2FBBEADA08F335360078DB84 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				FB647E570F6139EE00824DA2 /* OMax.render.c in Sources */,
-				FB1E10E51003ED560017FD00 /* Oracle_label.cpp in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		7B130900158A326D0041C84F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -268,29 +166,9 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXTargetDependency section */
-		7B13091D158A37CD0041C84F /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 2FBBEAD608F335360078DB84 /* Max5 */;
-			targetProxy = 7B13091C158A37CD0041C84F /* PBXContainerItemProxy */;
-		};
-		7B13091F158A37D00041C84F /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 7B1308F9158A326D0041C84F /* Max6 */;
-			targetProxy = 7B13091E158A37D00041C84F /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
 /* Begin XCBuildConfiguration section */
 		2FBBEAD008F335010078DB84 /* Normal */ = {
 			isa = XCBuildConfiguration;
-			buildSettings = {
-			};
-			name = Normal;
-		};
-		2FBBEAE108F335360078DB84 /* Normal */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = FBDC50660F73E07A00146D1C /* OMax-Max5.xcconfig */;
 			buildSettings = {
 			};
 			name = Normal;
@@ -306,13 +184,6 @@
 			};
 			name = Normal;
 		};
-		7B130919158A37BC0041C84F /* Normal */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Normal;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -324,26 +195,10 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Normal;
 		};
-		2FBBEAE008F335360078DB84 /* Build configuration list for PBXNativeTarget "Max5" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				2FBBEAE108F335360078DB84 /* Normal */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Normal;
-		};
 		7B130906158A326D0041C84F /* Build configuration list for PBXNativeTarget "Max6" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7B130907158A326D0041C84F /* Normal */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Normal;
-		};
-		7B13091A158A37BC0041C84F /* Build configuration list for PBXAggregateTarget "Max5&6" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				7B130919158A37BC0041C84F /* Normal */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Normal;

@@ -54,7 +54,7 @@ t_class *OMax_oracle_class;
 // Functions //
 ///////////////
 
-int main(void)
+int C74_EXPORT main(void)
 {	
     t_class *c;
     

@@ -71,7 +71,7 @@ void bc_yinstats_reset(t_bc_yinstats *x, bc_statelem *stat);
 void *bc_yinstats_class;
 
 
-int main(void)
+int C74_EXPORT main(void)
 {	
 	t_class *c;
 	
