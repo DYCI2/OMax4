@@ -62,9 +62,9 @@ Documentation by B.~Levy\\
 \chapter{Introduction}
 \section{System Requirements}
 \subsubsection{Hardware}
-OMax 4.5.1 has been developed and tested for Apple computers based on an Intel processor only. It has been extensively used on laptops of the Macbook Pro series, models going from Macbook Pro 3,2 (2007 with Core 2 Duo processor) to the most recent Unibody models.
+OMax 4.5.3 has been developed and tested for Apple computers based on an Intel processor only. It has been extensively used on laptops of the Macbook Pro series, models going from Macbook Pro 3,2 (2007 with Core 2 Duo processor) to the most recent Unibody models.
 \subsubsection{Software}
-OMax 4.5.1 has been developed and used in Max/MSP 5 in its most recent (and last) version, 5.1.9. It has not been thoroughly tested on Max 6 yet, however no specific feature of Max/MSP 5 is used and positive feedback has been given on first tests. So it may work fine in Max 6 (without any guarantee).\\
+OMax 4.5.3 has been developed and used in Max/MSP 5 in its most recent (and last) version, 5.1.9. It has been tested on Max 6.0.8 and positive feedback has been given on first tests on Max 6.1.x\\
 %OMax 4.5.1 uses also third party externals for Max/MSP 5 as \textsf{yin\textasciitilde} and \textsf{supervp.scrub\textasciitilde} developed at IRCAM and distributed through its software portal \href{http://forumnet.ircam.fr/}{\textit{Forumnet}} and \textsf{zsa.mfcc\textasciitilde} and \textsf{zsa.dist} which are part of the \textit{zsa.descriptors} package developed by E. Jourdan and downloadable on his website \href{http://www.e--j.com/}{\textit{e--j}}.
 
 %%
@@ -510,38 +510,90 @@ A handy shortcut is provided in the interface to activate/deactivate all the fea
 
 %
 %%%%%%%%%%%%%%%%%%%%%
-%\chapter{Advanced explanations}
-%\section{Segmentation}
-%\subsection{MIDI Slicing}\label{slicing}
-%Since MIDI data is already constituted of symbolic information (notes, velocities, channels\dots), the detection stage described~\ref{overview} is reduced at its minimal form in the MIDI part of OMax: getting the data stream on the correct port (and possibly select the channel to listen to). However, it is still necessary to segment very carefully this data stream to create consistent units and use a proper description to compare them. The segmentation of MIDI data is based on the appearance of new events and termination of past ones defining the beginning and end of what we call slices (Figure~\ref{slices}). Every slice has a duration information, and contains a series of channels, each of which contains pitch and velocity information and possibly other musical parameters.
-%\begin{figure}[h]
-%	\centering
-%	\includegraphics[width=\linewidth]{Slices.png}
-%	\caption{Segmentation of MIDI data into slices}
-%	\label{slices}
-%\end{figure}
-%
-%\begin{wrapfigure}{R}{0.6\linewidth}
-%	\centering
-%	\includegraphics[scale=0.2]{slicer-unslicer}
-%	\caption{Slicing and unslicing of MIDI data}
-%	\label{slicing}
-%\end{wrapfigure}
-%The slices are the units learnt in the knowledge model of OMax in MIDI mode. When improvising, they are recombined to recreate a polyphonic discourse (in MIDI format). This operation is name unslicing (Figure~\ref{slicing}) and has to be done even more cautiously. Indeed, the variations happening in OMax may create splits of notes, notes without any explicit end or other cases which need to be handled.
-%
-%
-%\subsection{Virtual fundamental}
-%
-%
-%\subsection{Pitch statistical analysis}
-%
-%
-%\subsection{Spectral clustering}\label{specdetails}
-%
-%
-%%
-%\section{Model}
-%
+\chapter{Advanced Usage}
+This section presents more advanced features of OMax 4.5.x. It assumes that you are comfortable enough with Max/MSP so that you know how to edit a patch, switch between presentation and edit mode, use the embedded help on inlets and outlets and the inspector, know the concepts of objects, abstractions or bpatchers and other basic Max/MSP functions.
+
+\section{Controling OMax with Messages}
+The inputs (inlets) and outputs (outlets) of all the modules of OMax are documented in the patch. That means that if you mouse over any inlet/outlet it will display information on the purpose of this inlet/outlet. You can use those inlets at your convenience to interact directly with any module with Max messages (and toggles etc.) instead of using the graphical interface. Most of the inlets correspond to parameters described earlier in this documentation. For example, Figure~\ref{inlet-help} shows the first (left-most) inlet of the Player A (see~\ref{playerA}) which is used to start and stop the ``\,clone\,''.	
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.6\linewidth]{Inlet-Help.png}
+	\caption{Example of an inlet and its help}
+	\label{inlet-help}
+\end{figure}\\
+Few inlets though are used for purposes that are not previously described. The embedded info should be self-explanatory or this inlet is not controlling any user-level parameter and you should not use it either. The last (right-most) inlet of every module (either loaded as an abstraction or in a bpatcher) which includes settable parameters is always named \textbf{patterhub}. It is used to access and change all the parameters of the module even if some of them are not shown in the graphical interface.
+\begin{figure}[!h]
+	\centering
+	\subfloat[abstraction]{\label{abstraction}\includegraphics[scale=0.45]{pattrhub.png}}
+%	\\ \smallskip
+\hspace{1em}
+	\subfloat[bpatcher]{\label{bpatcher}\includegraphics[scale=0.45]{pattrhub2.png}}
+	\caption{pattrhub inlet (right-most)}
+	\label{pattrhub}
+\end{figure}
+Figure~\ref{pattrhub} shows this inlet for the Improvisation core module (see~\ref{core}) which is loaded as an abstraction (Figure~\ref{abstraction}) and for the Pitch extraction module (Figure~\ref{bpatcher}, see~\ref{pitchsection}) which is loaded in a bpatcher. This inlet allows to send direct messages to the module with the name of a parameter (even if the parameter is hidden in the graphical interface) and a value to assign to this parameter.
+\par
+\begin{wrapfigure}[8]{L}{0.4\linewidth}
+	\centering
+	\includegraphics[width=0.9\linewidth]{pattrsystem.png}
+	\caption{}
+	\label{pattrsystem}
+\end{wrapfigure}
+This mechanism relies on the \textbf{pattr} system of Max/MSP. Figure~\ref{pattrsystem} shows the simple set of \textbf{pattr} objects used in every module. If you double-click on the \textbf{pattrstorage} object, a list of all the parameters accessible in the module you are exploring will pop-up. As explained in the documentation of the \textbf{pattrstorage} object, this \textit{Client Objects} list reflects the state of all the parameters watched by the pattr system. If you change any parameter either with the graphical interface or with a message, the current value of that parameter will be reflected in this window as well. This way, it is very easy to link a parameter to the corresponding name in the pattr system and know which message to send in the \textbf{pattrhub} inlet of the module. Figure~\ref{pattrstorage-messages} shows an example of such control of the Improvisation core module (see~\ref{core}) with a few messages and the associated list of parameters.
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=\linewidth]{pattrstorage-messages.png}
+	\caption{Example of an interaction through messages to the pattr system of the Improvisation core}
+	\label{pattrstorage-messages}
+\end{figure}\\
+
+\section{References Through Names}
+\subsection{Names}
+There are in OMax 4.5.x a few absolute names which constitute univocal references to underlying data structures as the audio buffer, the internal model (see~\ref{overview}), the jitter window of the visualization part etc. The names are declared to Max/MSP when loading the OMax patch and can not be changed afterward without closing it. Therefore they will be conflicts if you load two times the main OMax 4.5.x for example. The architecture of the names (except for the visualization part) is illustrated Figure~\ref{names}.
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.75\linewidth]{Names.png}
+	\caption{The differents names in OMax audio}
+	\label{names}
+\end{figure}
+\par
+There are 4 types of names: the first level is the name of the input. In the OMax 4.5.x patch, the audio input is named \textbf{Dual} and the MIDI input is named \textbf{MIDI}. Inside those input there can be different types of analysis/modeling chains which correspond to a second level of names. For example in the audio input of OMax 4.5.x, you can find two types of descriptions: pitch and spectral, the first description is referred as \textbf{Dual\_MIDI} (which is ambiguous and actually do not correspond to any MIDI processing but is an heritage of the previous versions of OMax). The spectral description of the \textbf{Dual} input is named \textbf{Dual\_SP}. The MIDI part of OMax 4.5.x (\textbf{MIDI} input) uses only one type of analysis and internal model named \textbf{MIDI\_POLY}.
+\par
+Each ``\,clone\,'' of OMax rely on an Improvisation core (see~\ref{core}). These cores are also named, so that the different players (see~\ref{players}) can effectively render the ``\,clones\,''. In the audio part of OMax 4.5.x, there are 4 improvisation cores named \textbf{Impro1}, \textbf{Impro2}, \textbf{Impro3} and \textbf{Impro4}. As explained on Figure~\ref{boxes}, the first two cores use the pitch description (\textbf{Dual\_MIDI}) while the last two cores use the spectral description of the input (\textbf{Dual\_SP}). The MIDI improvisation cores, \textbf{ImproM1} and \textbf{ImproM2} refer to the only available description of the MIDI input: \textbf{MIDI\_POLY}.
+\par
+Lastly, the visualization is also referred through its name. In the OMax 4.5.x patch, the visualization name is \textbf{Vizu} which correspond to the jitter window in which it is rendered. All the modules which have to draw in the visualization have to use this name. Figure~\ref{inspector} shows the usage of names for the module in charge of rendering the pitch description (\textbf{Dual\_MIDI}) in the visualization window (\textbf{Vizu}).
+\subsection{Changing Names}
+\begin{wrapfigure}[13]{R}{0.5\linewidth}
+	\centering
+	\includegraphics[width=0.9\linewidth]{Inspector.png}
+	\caption{}
+	\label{inspector}
+\end{wrapfigure}
+All the names described in the previous section are mainly used as parameter of objects, abstractions or bpatchers. In the case of objects and abstractions, they are use explicitly as in Figure~\ref{boxes}. However, in the case of the bpatchers, those references are to be found in the bpatcher inspector (see Figure~\ref{inspector} for example). This makes the tracking of all the references in the OMax patch a very tedious task. However, if you would like for example to run two copies of the OMax patch, side by side in the same Max/MSP application, you will have to change every name of one of them.
+\vspace*{2em} \\
+Therefore an safer and faster method is given here:
+\begin{itemize}
+	\item Edit one of the copies of the patch in text mode (to benefit from search/replace functions). 
+	\item Then do the following searches and replacements in this copy:\\
+Caution! Doing search and replace, you need to keep extensions like \_MIDI, \_SP, \_POLY etc.
+\indent	\begin{itemize}
+		\item Search for all the mentions of ``\,Dual\,'' and replace them all by ``\,Duo\,'' (for example). This way, you will have independent audio inputs and models.
+		\item Search for all the mentions of ``\,Vizu\,'' and replace them all by ``\,Disp\,'' (for example). This way, you will have 2 visualization windows.
+		\item Search for all the mentions of ``\,Impro1\,'', ``\,Impro2\,'', ``\,Impro3\,'', ``\,Impro4\,'' and replace them by ``\,Clone1\,'', ``\,Clone2\,'', ``\,Clone3\,'', ``\,Clone4\,'' (for example).
+	\end{itemize}
+	\item If you are interested by the MIDI part of OMax as well:
+\indent	\begin{itemize}
+		\item Search for all the mention of ``\,$[$ "MIDI" $]$\,'' (brackets included with their content) and replace them all by ``\,$[$ "14H" $]$\,'' (for example)
+		\item Search for all the mentions of ``\,MIDI\_POLY \,'' and replace them all by ``\,14H\_POLY\,'' (for example, or the same name you used for the previous step, appended with \_POLY).
+		\item Search for all the mentions of ``\,ImproM1\,'' , ``\,ImproM2\,'' and replace them by ``\,ImproH1\,'' , ``\,ImproH2\,'' (for example)
+	\end{itemize}
+	\item Save the patch (with a different name than the ``\,original\,'' OMax patch)
+	\item Finally load the ``\,orginal\,'' (not modified) OMax 4.5.x patch
+	\item Then load the modified copy of the patch.
+\end{itemize}
+You should not have any error message when loading the second copy (either saying that a structure is missing or that the name is already in use) and everything should work well. Otherwise, you probably missed some name replacements.
+
+
 %%%%%%%%%%%%%%%%%%%%%
 %\chapter{Reference}
 %\section{Patches Index}
