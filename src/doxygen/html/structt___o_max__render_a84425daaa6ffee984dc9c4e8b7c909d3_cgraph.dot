@@ -1,0 +1,20 @@
+digraph G
+{
+  bgcolor="transparent";
+  edge [fontname="FreeSans",fontsize="10",labelfontname="FreeSans",labelfontsize="10"];
+  node [fontname="FreeSans",fontsize="10",shape=record];
+  rankdir=LR;
+  Node1 [label="t_OMax_render::OMax_render_read",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="FreeSans"];
+  Node2 [label="O_label::get_bufferef",height=0.2,width=0.4,color="black",URL="$class_o__label.html#a18816b978a098c2e57b5f36e39e8f8ad",tooltip="Return the time reference in the buffer the state is pointing to (in ms)."];
+  Node1 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="FreeSans"];
+  Node3 [label="O_label::get_duration",height=0.2,width=0.4,color="black",URL="$class_o__label.html#a16f550f60bda334a69fe79df2fba1504",tooltip="Return the duration of the state (in ms)."];
+  Node1 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="FreeSans"];
+  Node4 [label="O_label::get_phrase",height=0.2,width=0.4,color="black",URL="$class_o__label.html#aa9cb6fd7acf51f864a385e78cea1fde9",tooltip="Return the number of the phrase the state belongs to."];
+  Node1 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="FreeSans"];
+  Node5 [label="O_label::get_section",height=0.2,width=0.4,color="black",URL="$class_o__label.html#a398711c164e3ff054c4decfb8ccca5d0",tooltip="Return the number of the section the state belongs to."];
+  Node1 -> Node6 [color="midnightblue",fontsize="10",style="solid",fontname="FreeSans"];
+  Node6 [label="O_data::get_size",height=0.2,width=0.4,color="black",URL="$class_o__data.html#ab8222f2093f5b02d55857a8c61d1ee0c",tooltip="Return the current size of the sequence."];
+  Node1 -> Node7 [color="midnightblue",fontsize="10",style="solid",fontname="FreeSans"];
+  Node7 [label="O_label::get_statenb",height=0.2,width=0.4,color="black",URL="$class_o__label.html#a95c66f241f7bd5fc50215aa84d50ad9b",tooltip="Return the number of the state in the sequence."];
+}

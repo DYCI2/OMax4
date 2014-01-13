@@ -1,0 +1,8 @@
+digraph G
+{
+  bgcolor="transparent";
+  edge [fontname="FreeSans",fontsize="10",labelfontname="FreeSans",labelfontsize="10"];
+  node [fontname="FreeSans",fontsize="10",shape=record];
+  rankdir=LR;
+  Node1 [label="bc_statelem",height=0.2,width=0.4,color="black",URL="$structbc__statelem.html",tooltip="stucture holding a statistics agent"];
+}

@@ -1,0 +1,39 @@
+digraph G
+{
+  bgcolor="transparent";
+  edge [fontname="FreeSans",fontsize="10",labelfontname="FreeSans",labelfontsize="10"];
+  node [fontname="FreeSans",fontsize="10",shape=record];
+  rankdir=LR;
+  Node1 [label="O_learner::add",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="FreeSans"];
+  Node2 [label="O_data::add_date",height=0.2,width=0.4,color="black",URL="$class_o__data.html#a3fa234b4542a1383c6c902f8a65b0a45",tooltip="Reference a date from data."];
+  Node2 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="FreeSans"];
+  Node3 [label="O_label::get_bufferef",height=0.2,width=0.4,color="black",URL="$class_o__label.html#a18816b978a098c2e57b5f36e39e8f8ad",tooltip="Return the time reference in the buffer the state is pointing to (in ms)."];
+  Node2 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="FreeSans"];
+  Node4 [label="O_label::get_statenb",height=0.2,width=0.4,color="black",URL="$class_o__label.html#a95c66f241f7bd5fc50215aa84d50ad9b",tooltip="Return the number of the state in the sequence."];
+  Node1 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="FreeSans"];
+  Node5 [label="O_data::add_state",height=0.2,width=0.4,color="black",URL="$class_o__data.html#a37130bd8972a72c868f85b979b865dcf",tooltip="Reference a state from data."];
+  Node5 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="FreeSans"];
+  Node5 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="FreeSans"];
+  Node1 -> Node6 [color="midnightblue",fontsize="10",style="solid",fontname="FreeSans"];
+  Node6 [label="O_state::add_trans",height=0.2,width=0.4,color="black",URL="$class_o__state.html#a86bf0468ce6bb52458056d6ce4474ae1",tooltip="Add a transition to the transition list."];
+  Node1 -> Node7 [color="midnightblue",fontsize="10",style="solid",fontname="FreeSans"];
+  Node7 [label="O_state::get_statenb",height=0.2,width=0.4,color="black",URL="$class_o__state.html#a046051313287022e6d9893beac4f3e4b",tooltip="Return the number of the state in FO."];
+  Node1 -> Node8 [color="midnightblue",fontsize="10",style="solid",fontname="FreeSans"];
+  Node8 [label="O_data::start",height=0.2,width=0.4,color="black",URL="$class_o__data.html#aa562023520b6863fa06f069c552d1d53",tooltip="Initialisation."];
+  Node1 -> Node9 [color="midnightblue",fontsize="10",style="solid",fontname="FreeSans"];
+  Node9 [label="O_oracle::start",height=0.2,width=0.4,color="black",URL="$class_o__oracle.html#aaab57df465a11c7ff254e8e93323fd54",tooltip="Initialisation."];
+  Node1 -> Node10 [color="midnightblue",fontsize="10",style="solid",fontname="FreeSans"];
+  Node10 [label="O_learner::suffix",height=0.2,width=0.4,color="black",URL="$class_o__learner.html#ac188f3631f62564db233b88848970d00",tooltip="Run the suffix oracle core algorithm."];
+  Node10 -> Node7 [color="midnightblue",fontsize="10",style="solid",fontname="FreeSans"];
+  Node10 -> Node11 [color="midnightblue",fontsize="10",style="solid",fontname="FreeSans"];
+  Node11 [label="O_state::get_suffix",height=0.2,width=0.4,color="black",URL="$class_o__state.html#ae1f577ab7e81969b53d589e22d4e853c",tooltip="Return the suffix link and the associated lrs."];
+  Node10 -> Node12 [color="midnightblue",fontsize="10",style="solid",fontname="FreeSans"];
+  Node12 [label="O_learner::lrs",height=0.2,width=0.4,color="black",URL="$class_o__learner.html#a9b3f5a9cee0170db35db188ceeea277a",tooltip="Compute the length of common suffix."];
+  Node12 -> Node7 [color="midnightblue",fontsize="10",style="solid",fontname="FreeSans"];
+  Node12 -> Node11 [color="midnightblue",fontsize="10",style="solid",fontname="FreeSans"];
+  Node10 -> Node13 [color="midnightblue",fontsize="10",style="solid",fontname="FreeSans"];
+  Node13 [label="O_learner::search_trans",height=0.2,width=0.4,color="black",URL="$class_o__learner.html#ad741e34562041a9113a561e48c0c0fa0",tooltip="Find transition."];
+  Node13 -> Node14 [color="midnightblue",fontsize="10",style="solid",fontname="FreeSans"];
+  Node14 [label="O_state::get_trans",height=0.2,width=0.4,color="black",URL="$class_o__state.html#a10b14aabd7bb9b8441198cc8934a41d9",tooltip="Return the list transitions."];
+}

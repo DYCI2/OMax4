@@ -1,0 +1,12 @@
+digraph G {
+  bgcolor=transparent;
+  compound=true
+  node [ fontsize="10", fontname="FreeSans"];
+  edge [ labelfontsize="10", labelfontname="FreeSans"];
+  subgraph clusterdir_9d796b5c9224ad50c0b820fe47c019d9 {
+    graph [ bgcolor="#eeeeff", pencolor="black", label="" URL="dir_9d796b5c9224ad50c0b820fe47c019d9.html"];
+    dir_9d796b5c9224ad50c0b820fe47c019d9 [shape=plaintext label="yin+ & co"];
+    dir_307fd33dbeae5c031661da0aa79f355b [shape=box label="bc.virfun" color="black" fillcolor="white" style="filled" URL="dir_307fd33dbeae5c031661da0aa79f355b.html"];
+    dir_71c81267217c902beb0298964623fc12 [shape=box label="bc.yinstats" color="black" fillcolor="white" style="filled" URL="dir_71c81267217c902beb0298964623fc12.html"];
+  }
+}
