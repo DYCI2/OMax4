@@ -597,45 +597,45 @@
 	</slot>
 	<clientstate>
 		<path name = "Impro1" active = "0" />
-		<path name = "Impro1::u024006761" active = "0" />
+		<path name = "Impro1::u291006528" active = "0" />
 		<path name = "Player" active = "0" />
-		<path name = "Player::u552006759" active = "0" />
+		<path name = "Player::u865006526" active = "0" />
 		<path name = "Impro2" active = "0" />
-		<path name = "Impro2::u680006757" active = "0" />
+		<path name = "Impro2::u856006524" active = "0" />
 		<path name = "Player[2]" active = "0" />
-		<path name = "Player[2]::u537006755" active = "0" />
+		<path name = "Player[2]::u783006522" active = "0" />
 		<path name = "Player[1]" active = "0" />
-		<path name = "Player[1]::u552006753" active = "0" />
+		<path name = "Player[1]::u877006520" active = "0" />
 		<path name = "Impro3" active = "0" />
-		<path name = "Impro3::u926006749" active = "0" />
+		<path name = "Impro3::u907006516" active = "0" />
 		<path name = "Impro4" active = "0" />
-		<path name = "Impro4::u297006747" active = "0" />
+		<path name = "Impro4::u220006514" active = "0" />
 		<path name = "Player[4]" active = "0" />
-		<path name = "Player[4]::u757006745" active = "0" />
+		<path name = "Player[4]::u051006512" active = "0" />
 		<path name = "Player[3]" active = "0" />
-		<path name = "Player[3]::u307006743" active = "0" />
+		<path name = "Player[3]::u440006510" active = "0" />
 		<path name = "ImproM1" active = "0" />
-		<path name = "ImproM1::u177006739" active = "0" />
+		<path name = "ImproM1::u123006506" active = "0" />
 		<path name = "Player[6]" active = "0" />
-		<path name = "Player[6]::u535006737" active = "0" />
+		<path name = "Player[6]::u329006504" active = "0" />
 		<path name = "Player[5]" active = "0" />
-		<path name = "Player[5]::u329006735" active = "0" />
+		<path name = "Player[5]::u444006502" active = "0" />
 		<path name = "DeSlicer" active = "0" />
-		<path name = "DeSlicer::u768006733" active = "0" />
+		<path name = "DeSlicer::u060006500" active = "0" />
 		<path name = "DeSlicer[1]" active = "0" />
-		<path name = "DeSlicer[1]::u581006731" active = "0" />
+		<path name = "DeSlicer[1]::u736006498" active = "0" />
 		<path name = "ImproM2" active = "0" />
-		<path name = "ImproM2::u547006729" active = "0" />
+		<path name = "ImproM2::u441006496" active = "0" />
 		<path name = "Player[7]" active = "0" />
-		<path name = "Player[7]::u014006727" active = "0" />
+		<path name = "Player[7]::u321006494" active = "0" />
 		<path name = "DeSlicer[2]" active = "0" />
-		<path name = "DeSlicer[2]::u591006725" active = "0" />
+		<path name = "DeSlicer[2]::u146006492" active = "0" />
 		<path name = "Dual_MIDI_Suffixes" active = "0" />
-		<path name = "Dual_MIDI_Suffixes::u601006723" active = "0" />
+		<path name = "Dual_MIDI_Suffixes::u030006490" active = "0" />
 		<path name = "Dual_SP_Suffixes" active = "0" />
-		<path name = "Dual_SP_Suffixes::u774006721" active = "0" />
+		<path name = "Dual_SP_Suffixes::u799006488" active = "0" />
 		<path name = "Dual_MIDI_Suffixes[1]" active = "0" />
-		<path name = "Dual_MIDI_Suffixes[1]::u287006719" active = "0" />
+		<path name = "Dual_MIDI_Suffixes[1]::u754006486" active = "0" />
 	</clientstate>
 </pattrstorage>
 
