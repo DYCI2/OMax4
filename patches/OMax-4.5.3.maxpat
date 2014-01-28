@@ -3,11 +3,12 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 6,
-			"minor" : 0,
-			"revision" : 8
+			"minor" : 1,
+			"revision" : 5,
+			"architecture" : "x64"
 		}
 ,
-		"rect" : [ 5.0, 50.0, 846.0, 642.0 ],
+		"rect" : [ 80.0, 50.0, 846.0, 642.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
 		"default_fontsize" : 12.0,
@@ -39,8 +40,9 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 6,
-							"minor" : 0,
-							"revision" : 8
+							"minor" : 1,
+							"revision" : 5,
+							"architecture" : "x64"
 						}
 ,
 						"rect" : [ 509.0, 225.0, 196.0, 236.0 ],
@@ -240,8 +242,9 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 6,
-							"minor" : 0,
-							"revision" : 8
+							"minor" : 1,
+							"revision" : 5,
+							"architecture" : "x64"
 						}
 ,
 						"rect" : [ 509.0, 225.0, 196.0, 236.0 ],
@@ -441,8 +444,9 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 6,
-							"minor" : 0,
-							"revision" : 8
+							"minor" : 1,
+							"revision" : 5,
+							"architecture" : "x64"
 						}
 ,
 						"rect" : [ 509.0, 225.0, 196.0, 236.0 ],
@@ -642,8 +646,9 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 6,
-							"minor" : 0,
-							"revision" : 8
+							"minor" : 1,
+							"revision" : 5,
+							"architecture" : "x64"
 						}
 ,
 						"rect" : [ 509.0, 225.0, 196.0, 236.0 ],
@@ -843,8 +848,9 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 6,
-							"minor" : 0,
-							"revision" : 8
+							"minor" : 1,
+							"revision" : 5,
+							"architecture" : "x64"
 						}
 ,
 						"rect" : [ 509.0, 225.0, 196.0, 236.0 ],
@@ -1044,8 +1050,9 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 6,
-							"minor" : 0,
-							"revision" : 8
+							"minor" : 1,
+							"revision" : 5,
+							"architecture" : "x64"
 						}
 ,
 						"rect" : [ 509.0, 225.0, 196.0, 236.0 ],
@@ -1245,8 +1252,9 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 6,
-							"minor" : 0,
-							"revision" : 8
+							"minor" : 1,
+							"revision" : 5,
+							"architecture" : "x64"
 						}
 ,
 						"rect" : [ 509.0, 225.0, 196.0, 236.0 ],
@@ -1446,8 +1454,9 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 6,
-							"minor" : 0,
-							"revision" : 8
+							"minor" : 1,
+							"revision" : 5,
+							"architecture" : "x64"
 						}
 ,
 						"rect" : [ 509.0, 225.0, 196.0, 236.0 ],
@@ -1777,8 +1786,9 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 6,
-							"minor" : 0,
-							"revision" : 8
+							"minor" : 1,
+							"revision" : 5,
+							"architecture" : "x64"
 						}
 ,
 						"rect" : [ 707.0, 165.0, 204.0, 149.0 ],
@@ -1949,8 +1959,9 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 6,
-							"minor" : 0,
-							"revision" : 8
+							"minor" : 1,
+							"revision" : 5,
+							"architecture" : "x64"
 						}
 ,
 						"rect" : [ 707.0, 165.0, 204.0, 149.0 ],
@@ -2121,11 +2132,12 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 6,
-							"minor" : 0,
-							"revision" : 8
+							"minor" : 1,
+							"revision" : 5,
+							"architecture" : "x64"
 						}
 ,
-						"rect" : [ 9.0, 437.0, 740.0, 340.0 ],
+						"rect" : [ 80.0, 437.0, 740.0, 340.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -2145,6 +2157,21 @@
 						"digest" : "",
 						"tags" : "",
 						"boxes" : [ 							{
+								"box" : 								{
+									"color" : [ 0.74902, 0.792157, 0.929412, 1.0 ],
+									"fontname" : "Arial",
+									"fontsize" : 12.0,
+									"id" : "obj-7",
+									"maxclass" : "newobj",
+									"numinlets" : 0,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 74.0, 173.5, 138.0, 20.0 ],
+									"text" : "r MIDI_POLY-selection1"
+								}
+
+							}
+, 							{
 								"box" : 								{
 									"comment" : "toggle: enable",
 									"id" : "obj-6",
@@ -2233,7 +2260,7 @@
 									"numinlets" : 0,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 368.0, 196.0, 138.0, 20.0 ],
+									"patching_rect" : [ 365.0, 171.0, 138.0, 20.0 ],
 									"text" : "r MIDI_POLY-selection2"
 								}
 
@@ -2344,6 +2371,15 @@
 							}
 , 							{
 								"patchline" : 								{
+									"destination" : [ "obj-17", 0 ],
+									"disabled" : 0,
+									"hidden" : 0,
+									"source" : [ "obj-127", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
 									"destination" : [ "obj-3", 1 ],
 									"disabled" : 0,
 									"hidden" : 0,
@@ -2365,7 +2401,7 @@
 									"destination" : [ "obj-101", 0 ],
 									"disabled" : 0,
 									"hidden" : 0,
-									"midpoints" : [ 286.5, 199.5, 67.5, 199.5 ],
+									"midpoints" : [ 286.5, 165.5, 67.5, 165.5 ],
 									"source" : [ "obj-3", 1 ]
 								}
 
@@ -2402,7 +2438,7 @@
 									"destination" : [ "obj-113", 0 ],
 									"disabled" : 0,
 									"hidden" : 0,
-									"midpoints" : [ 567.5, 187.0, 348.5, 187.0 ],
+									"midpoints" : [ 567.5, 161.0, 348.5, 161.0 ],
 									"source" : [ "obj-5", 1 ]
 								}
 
@@ -2431,6 +2467,24 @@
 									"disabled" : 0,
 									"hidden" : 0,
 									"source" : [ "obj-6", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-101", 0 ],
+									"disabled" : 0,
+									"hidden" : 0,
+									"source" : [ "obj-7", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-16", 0 ],
+									"disabled" : 0,
+									"hidden" : 0,
+									"source" : [ "obj-7", 0 ]
 								}
 
 							}
@@ -2581,11 +2635,12 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 6,
-							"minor" : 0,
-							"revision" : 8
+							"minor" : 1,
+							"revision" : 5,
+							"architecture" : "x64"
 						}
 ,
-						"rect" : [ 22.0, -467.0, 1300.0, 332.0 ],
+						"rect" : [ 80.0, 44.0, 1300.0, 332.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -3285,8 +3340,9 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 6,
-							"minor" : 0,
-							"revision" : 8
+							"minor" : 1,
+							"revision" : 5,
+							"architecture" : "x64"
 						}
 ,
 						"rect" : [ 378.0, 310.0, 440.0, 467.0 ],
@@ -4256,8 +4312,9 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 6,
-							"minor" : 0,
-							"revision" : 8
+							"minor" : 1,
+							"revision" : 5,
+							"architecture" : "x64"
 						}
 ,
 						"rect" : [ 222.0, 136.0, 213.0, 305.0 ],
@@ -4673,8 +4730,9 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 6,
-							"minor" : 0,
-							"revision" : 8
+							"minor" : 1,
+							"revision" : 5,
+							"architecture" : "x64"
 						}
 ,
 						"rect" : [ 29.0, 69.0, 336.0, 320.0 ],
@@ -5072,8 +5130,9 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 6,
-							"minor" : 0,
-							"revision" : 8
+							"minor" : 1,
+							"revision" : 5,
+							"architecture" : "x64"
 						}
 ,
 						"rect" : [ 29.0, 69.0, 336.0, 320.0 ],
@@ -5532,8 +5591,9 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 6,
-							"minor" : 0,
-							"revision" : 8
+							"minor" : 1,
+							"revision" : 5,
+							"architecture" : "x64"
 						}
 ,
 						"rect" : [ 29.0, 69.0, 653.0, 151.0 ],
@@ -6927,7 +6987,7 @@
 					"active" : 					{
 						"Impro1" : 0,
 						"Impro1::pattrstorage" : 0,
-						"Impro1::u028013344" : 0,
+						"Impro1::u698006518" : 0,
 						"Impro1::Attractor" : 0,
 						"Impro1::AttractorEn" : 0,
 						"Impro1::AttractorFollow" : 0,
@@ -6945,13 +7005,13 @@
 						"Impro1::Velocity" : 0,
 						"Player" : 0,
 						"Player::pattrstorage" : 0,
-						"Player::u442013342" : 0,
+						"Player::u640006520" : 0,
 						"Player::Cut-Threshold" : 0,
 						"Player::Cut-Window" : 0,
 						"Player::Xfade" : 0,
 						"Impro2" : 0,
 						"Impro2::pattrstorage" : 0,
-						"Impro2::u392013340" : 0,
+						"Impro2::u234006522" : 0,
 						"Impro2::Attractor" : 0,
 						"Impro2::AttractorEn" : 0,
 						"Impro2::AttractorFollow" : 0,
@@ -6969,7 +7029,7 @@
 						"Impro2::Velocity" : 0,
 						"Player[2]" : 0,
 						"Player[2]::pattrstorage" : 0,
-						"Player[2]::u956013338" : 0,
+						"Player[2]::u525006524" : 0,
 						"Player[2]::Cut-Threshold" : 0,
 						"Player[2]::Cut-Window" : 0,
 						"Player[2]::Direction" : 0,
@@ -6977,7 +7037,7 @@
 						"Player[2]::Xfade" : 0,
 						"Player[1]" : 0,
 						"Player[1]::SVP-Player" : 0,
-						"Player[1]::u788013336" : 0,
+						"Player[1]::u302006526" : 0,
 						"Player[1]::Cut-Threshold" : 0,
 						"Player[1]::Cut-Window" : 0,
 						"Player[1]::Direction" : 0,
@@ -6987,7 +7047,7 @@
 						"Player[1]::Xfade" : 0,
 						"Impro3" : 0,
 						"Impro3::Impro-Presets" : 0,
-						"Impro3::u234013332" : 0,
+						"Impro3::u336006530" : 0,
 						"Impro3::Attractor" : 0,
 						"Impro3::AttractorEn" : 0,
 						"Impro3::AttractorFollow" : 0,
@@ -7006,7 +7066,7 @@
 						"Impro3::TabooLength" : 0,
 						"Impro4" : 0,
 						"Impro4::Impro-Presets" : 0,
-						"Impro4::u784013330" : 0,
+						"Impro4::u821006532" : 0,
 						"Impro4::Attractor" : 0,
 						"Impro4::AttractorEn" : 0,
 						"Impro4::AttractorFollow" : 0,
@@ -7025,13 +7085,13 @@
 						"Impro4::TabooLength" : 0,
 						"Player[4]" : 0,
 						"Player[4]::pattrstorage" : 0,
-						"Player[4]::u375013328" : 0,
+						"Player[4]::u680006534" : 0,
 						"Player[4]::Cut-Threshold" : 0,
 						"Player[4]::Cut-Window" : 0,
 						"Player[4]::Xfade" : 0,
 						"Player[3]" : 0,
 						"Player[3]::pattrstorage" : 0,
-						"Player[3]::u940013326" : 0,
+						"Player[3]::u670006536" : 0,
 						"Player[3]::Cut-Threshold" : 0,
 						"Player[3]::Cut-Window" : 0,
 						"Player[3]::Direction" : 0,
@@ -7039,7 +7099,7 @@
 						"Player[3]::Xfade" : 0,
 						"ImproM1" : 0,
 						"ImproM1::pattrstorage" : 0,
-						"ImproM1::u628013322" : 0,
+						"ImproM1::u309006540" : 0,
 						"ImproM1::#Notes" : 0,
 						"ImproM1::Attractor" : 0,
 						"ImproM1::AttractorEn" : 0,
@@ -7058,13 +7118,13 @@
 						"ImproM1::Velocity" : 0,
 						"Player[6]" : 0,
 						"Player[6]::pattrstorage" : 0,
-						"Player[6]::u392013320" : 0,
+						"Player[6]::u770006542" : 0,
 						"Player[6]::Cut-Threshold" : 0,
 						"Player[6]::Cut-Window" : 0,
 						"Player[6]::Xfade" : 0,
 						"Player[5]" : 0,
 						"Player[5]::pattrstorage" : 0,
-						"Player[5]::u126013318" : 0,
+						"Player[5]::u422006544" : 0,
 						"Player[5]::Cut-Threshold" : 0,
 						"Player[5]::Cut-Window" : 0,
 						"Player[5]::Direction" : 0,
@@ -7072,19 +7132,19 @@
 						"Player[5]::Xfade" : 0,
 						"DeSlicer" : 0,
 						"DeSlicer::pattrstorage" : 0,
-						"DeSlicer::u354013316" : 0,
+						"DeSlicer::u799006546" : 0,
 						"DeSlicer::ChanOverride" : 0,
 						"DeSlicer::Channel" : 0,
 						"DeSlicer::Noteout" : 0,
 						"DeSlicer[1]" : 0,
 						"DeSlicer[1]::pattrstorage" : 0,
-						"DeSlicer[1]::u734013314" : 0,
+						"DeSlicer[1]::u818006548" : 0,
 						"DeSlicer[1]::ChanOverride" : 0,
 						"DeSlicer[1]::Channel" : 0,
 						"DeSlicer[1]::Noteout" : 0,
 						"ImproM2" : 0,
 						"ImproM2::pattrstorage" : 0,
-						"ImproM2::u165013312" : 0,
+						"ImproM2::u469006550" : 0,
 						"ImproM2::#Notes" : 0,
 						"ImproM2::Attractor" : 0,
 						"ImproM2::AttractorEn" : 0,
@@ -7103,7 +7163,7 @@
 						"ImproM2::Velocity" : 0,
 						"Player[7]" : 0,
 						"Player[7]::SVP-Player" : 0,
-						"Player[7]::u841013310" : 0,
+						"Player[7]::u304006552" : 0,
 						"Player[7]::Cut-Threshold" : 0,
 						"Player[7]::Cut-Window" : 0,
 						"Player[7]::Direction" : 0,
@@ -7113,34 +7173,33 @@
 						"Player[7]::Xfade" : 0,
 						"DeSlicer[2]" : 0,
 						"DeSlicer[2]::pattrstorage" : 0,
-						"DeSlicer[2]::u063013308" : 0,
+						"DeSlicer[2]::u222006554" : 0,
 						"DeSlicer[2]::ChanOverride" : 0,
 						"DeSlicer[2]::Channel" : 0,
 						"DeSlicer[2]::Noteout" : 0,
 						"Dual_MIDI_Suffixes" : 0,
 						"Dual_MIDI_Suffixes::pattrstorage[1]" : 0,
-						"Dual_MIDI_Suffixes::u688013306" : 0,
+						"Dual_MIDI_Suffixes::u935006556" : 0,
 						"Dual_MIDI_Suffixes::Black" : 0,
 						"Dual_MIDI_Suffixes::Enable" : 0,
 						"Dual_MIDI_Suffixes::MinCtxt" : 0,
 						"Dual_MIDI_Suffixes::White" : 0,
 						"Dual_SP_Suffixes" : 0,
 						"Dual_SP_Suffixes::pattrstorage[1]" : 0,
-						"Dual_SP_Suffixes::u161013304" : 0,
+						"Dual_SP_Suffixes::u942006558" : 0,
 						"Dual_SP_Suffixes::Black" : 0,
 						"Dual_SP_Suffixes::Enable" : 0,
 						"Dual_SP_Suffixes::MinCtxt" : 0,
 						"Dual_SP_Suffixes::White" : 0,
 						"Dual_MIDI_Suffixes[1]" : 0,
 						"Dual_MIDI_Suffixes[1]::pattrstorage[1]" : 0,
-						"Dual_MIDI_Suffixes[1]::u307013301" : 0,
+						"Dual_MIDI_Suffixes[1]::u362006560" : 0,
 						"Dual_MIDI_Suffixes[1]::Black" : 0,
 						"Dual_MIDI_Suffixes[1]::Enable" : 0,
 						"Dual_MIDI_Suffixes[1]::MinCtxt" : 0,
 						"Dual_MIDI_Suffixes[1]::White" : 0
 					}
 ,
-					"autorestore" : "OMax-4.5.3.xml",
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
 					"id" : "obj-110",
@@ -7699,7 +7758,7 @@
 					"name" : "OMax.Yin+.maxpat",
 					"numinlets" : 2,
 					"numoutlets" : 4,
-					"outlettype" : [ "", "int", "int", "float" ],
+					"outlettype" : [ "", "int", "int", "" ],
 					"patching_rect" : [ 144.0, 52.0, 234.0, 69.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 156.0, 73.0, 167.0, 70.0 ],
@@ -9373,7 +9432,7 @@
 					"destination" : [ "obj-38", 2 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"midpoints" : [ 861.5, 203.0, 722.299988, 203.0 ],
+					"midpoints" : [ 861.5, 203.0, 722.3, 203.0 ],
 					"source" : [ "obj-42", 2 ]
 				}
 
@@ -10011,7 +10070,7 @@
 					"destination" : [ "obj-1", 4 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"midpoints" : [ 61.166668, 847.0, 587.5, 847.0, 587.5, 356.0, 566.5, 356.0 ],
+					"midpoints" : [ 61.166667, 847.0, 587.5, 847.0, 587.5, 356.0, 566.5, 356.0 ],
 					"source" : [ "obj-87", 1 ]
 				}
 
@@ -10053,7 +10112,7 @@
 					"destination" : [ "obj-42", 3 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"midpoints" : [ 99.833336, 851.0, 3.916656, 851.0, 3.916656, -3.0, 802.0, -3.0 ],
+					"midpoints" : [ 99.833333, 851.0, 3.916656, 851.0, 3.916656, -3.0, 802.0, -3.0 ],
 					"source" : [ "obj-87", 2 ]
 				}
 
@@ -10200,469 +10259,458 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "OMax.Buffer.maxpat",
-				"bootpath" : "/Users/blevy/Projets/OMax/WoMax-Reorganized/New Forum/OMax4.5.3/OMax 4.5.3/OMax Patches&Objects",
-				"patcherrelativepath" : "",
+				"bootpath" : "/Users/blevy/Projets/OMax/Dev-Forge/patches",
+				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "OMax.Yin+.maxpat",
-				"bootpath" : "/Users/blevy/Projets/OMax/WoMax-Reorganized/New Forum/OMax4.5.3/OMax 4.5.3/OMax Patches&Objects",
-				"patcherrelativepath" : "",
+				"bootpath" : "/Users/blevy/Projets/OMax/Dev-Forge/patches",
+				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "OMax.Yin+core.maxpat",
-				"bootpath" : "/Users/blevy/Projets/OMax/WoMax-Reorganized/New Forum/OMax4.5.3/OMax 4.5.3/OMax Patches&Objects",
-				"patcherrelativepath" : "",
+				"bootpath" : "/Users/blevy/Projets/OMax/Dev-Forge/patches",
+				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "sr.maxpat",
-				"bootpath" : "/Users/blevy/Projets/OMax/WoMax-Reorganized/New Forum/OMax4.5.3/OMax 4.5.3/OMax Patches&Objects",
-				"patcherrelativepath" : "",
+				"bootpath" : "/Users/blevy/Projets/OMax/Dev-Forge/patches",
+				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "bc.autoname.js",
-				"bootpath" : "/Users/blevy/Projets/OMax/WoMax-Reorganized/New Forum/OMax4.5.3/OMax 4.5.3/OMax Patches&Objects",
-				"patcherrelativepath" : "",
+				"bootpath" : "/Users/blevy/Projets/OMax/Dev-Forge/patches",
+				"patcherrelativepath" : ".",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "OMax.seg.maxpat",
-				"bootpath" : "/Users/blevy/Projets/OMax/WoMax-Reorganized/New Forum/OMax4.5.3/OMax 4.5.3/OMax Patches&Objects",
-				"patcherrelativepath" : "",
+				"bootpath" : "/Users/blevy/Projets/OMax/Dev-Forge/patches",
+				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "OMax.Oracle-MIDI.maxpat",
-				"bootpath" : "/Users/blevy/Projets/OMax/WoMax-Reorganized/New Forum/OMax4.5.3/OMax 4.5.3/OMax Patches&Objects",
-				"patcherrelativepath" : "",
+				"bootpath" : "/Users/blevy/Projets/OMax/Dev-Forge/patches",
+				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "OMax.Visu-Display.maxpat",
-				"bootpath" : "/Users/blevy/Projets/OMax/WoMax-Reorganized/New Forum/OMax4.5.3/OMax 4.5.3/OMax Patches&Objects",
-				"patcherrelativepath" : "",
+				"bootpath" : "/Users/blevy/Projets/OMax/Dev-Forge/patches",
+				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "OMax.ImproMIDI.maxpat",
-				"bootpath" : "/Users/blevy/Projets/OMax/WoMax-Reorganized/New Forum/OMax4.5.3/OMax 4.5.3/OMax Patches&Objects",
-				"patcherrelativepath" : "",
+				"bootpath" : "/Users/blevy/Projets/OMax/Dev-Forge/patches",
+				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "OMax.Impro-PickSimple.maxpat",
-				"bootpath" : "/Users/blevy/Projets/OMax/WoMax-Reorganized/New Forum/OMax4.5.3/OMax 4.5.3/OMax Patches&Objects",
-				"patcherrelativepath" : "",
+				"bootpath" : "/Users/blevy/Projets/OMax/Dev-Forge/patches",
+				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "OMax.Impro-RegionSel.maxpat",
-				"bootpath" : "/Users/blevy/Projets/OMax/WoMax-Reorganized/New Forum/OMax4.5.3/OMax 4.5.3/OMax Patches&Objects",
-				"patcherrelativepath" : "",
+				"bootpath" : "/Users/blevy/Projets/OMax/Dev-Forge/patches",
+				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "OMax.Impro-Jumps.maxpat",
-				"bootpath" : "/Users/blevy/Projets/OMax/WoMax-Reorganized/New Forum/OMax4.5.3/OMax 4.5.3/OMax Patches&Objects",
-				"patcherrelativepath" : "",
+				"bootpath" : "/Users/blevy/Projets/OMax/Dev-Forge/patches",
+				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "OMax.Impro-Collect.maxpat",
-				"bootpath" : "/Users/blevy/Projets/OMax/WoMax-Reorganized/New Forum/OMax4.5.3/OMax 4.5.3/OMax Patches&Objects",
-				"patcherrelativepath" : "",
+				"bootpath" : "/Users/blevy/Projets/OMax/Dev-Forge/patches",
+				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "OMax.Impro-Taboo.maxpat",
-				"bootpath" : "/Users/blevy/Projets/OMax/WoMax-Reorganized/New Forum/OMax4.5.3/OMax 4.5.3/OMax Patches&Objects",
-				"patcherrelativepath" : "",
+				"bootpath" : "/Users/blevy/Projets/OMax/Dev-Forge/patches",
+				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "OMax.ImproMIDI-Weighting.maxpat",
-				"bootpath" : "/Users/blevy/Projets/OMax/WoMax-Reorganized/New Forum/OMax4.5.3/OMax 4.5.3/OMax Patches&Objects",
-				"patcherrelativepath" : "",
+				"bootpath" : "/Users/blevy/Projets/OMax/Dev-Forge/patches",
+				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "OMax.Impro-Rhythm.maxpat",
-				"bootpath" : "/Users/blevy/Projets/OMax/WoMax-Reorganized/New Forum/OMax4.5.3/OMax 4.5.3/OMax Patches&Objects",
-				"patcherrelativepath" : "",
+				"bootpath" : "/Users/blevy/Projets/OMax/Dev-Forge/patches",
+				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "OMax.ImproMIDI-Weigth.maxpat",
-				"bootpath" : "/Users/blevy/Projets/OMax/WoMax-Reorganized/New Forum/OMax4.5.3/OMax 4.5.3/OMax Patches&Objects",
-				"patcherrelativepath" : "",
+				"bootpath" : "/Users/blevy/Projets/OMax/Dev-Forge/patches",
+				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "OMax.ImproMIDI-Octave.maxpat",
-				"bootpath" : "/Users/blevy/Projets/OMax/WoMax-Reorganized/New Forum/OMax4.5.3/OMax 4.5.3/OMax Patches&Objects",
-				"patcherrelativepath" : "",
+				"bootpath" : "/Users/blevy/Projets/OMax/Dev-Forge/patches",
+				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "OMax.Impro-Target.maxpat",
-				"bootpath" : "/Users/blevy/Projets/OMax/WoMax-Reorganized/New Forum/OMax4.5.3/OMax 4.5.3/OMax Patches&Objects",
-				"patcherrelativepath" : "",
+				"bootpath" : "/Users/blevy/Projets/OMax/Dev-Forge/patches",
+				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "OMax.ImproMIDI-Velo.maxpat",
-				"bootpath" : "/Users/blevy/Projets/OMax/WoMax-Reorganized/New Forum/OMax4.5.3/OMax 4.5.3/OMax Patches&Objects",
-				"patcherrelativepath" : "",
+				"bootpath" : "/Users/blevy/Projets/OMax/Dev-Forge/patches",
+				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "thru.maxpat",
-				"bootpath" : "/Applications/Max6/patches/m4l-patches/Pluggo for Live resources/patches",
-				"patcherrelativepath" : "../../../../../../../../../Applications/Max6/patches/m4l-patches/Pluggo for Live resources/patches",
+				"bootpath" : "/Applications/Max 6.1/patches/m4l-patches/Pluggo for Live resources/patches",
+				"patcherrelativepath" : "../../../../../../Applications/Max 6.1/patches/m4l-patches/Pluggo for Live resources/patches",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "OMax.ImproPlayerA.maxpat",
-				"bootpath" : "/Users/blevy/Projets/OMax/WoMax-Reorganized/New Forum/OMax4.5.3/OMax 4.5.3/OMax Patches&Objects",
-				"patcherrelativepath" : "",
+				"bootpath" : "/Users/blevy/Projets/OMax/Dev-Forge/patches",
+				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "OMax.ImproOut-Play.maxpat",
-				"bootpath" : "/Users/blevy/Projets/OMax/WoMax-Reorganized/New Forum/OMax4.5.3/OMax 4.5.3/OMax Patches&Objects",
-				"patcherrelativepath" : "",
+				"bootpath" : "/Users/blevy/Projets/OMax/Dev-Forge/patches",
+				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "OMax.ImproPlayerB.maxpat",
-				"bootpath" : "/Users/blevy/Projets/OMax/WoMax-Reorganized/New Forum/OMax4.5.3/OMax 4.5.3/OMax Patches&Objects",
-				"patcherrelativepath" : "",
+				"bootpath" : "/Users/blevy/Projets/OMax/Dev-Forge/patches",
+				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "OMax.Audio-Output.Pan.maxpat",
-				"bootpath" : "/Users/blevy/Projets/OMax/WoMax-Reorganized/New Forum/OMax4.5.3/OMax 4.5.3/OMax Patches&Objects",
-				"patcherrelativepath" : "",
+				"bootpath" : "/Users/blevy/Projets/OMax/Dev-Forge/patches",
+				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "OMax.Visu-Impro.maxpat",
-				"bootpath" : "/Users/blevy/Projets/OMax/WoMax-Reorganized/New Forum/OMax4.5.3/OMax 4.5.3/OMax Patches&Objects",
-				"patcherrelativepath" : "",
+				"bootpath" : "/Users/blevy/Projets/OMax/Dev-Forge/patches",
+				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "OMax.VisuImpro-Arrows.maxpat",
-				"bootpath" : "/Users/blevy/Projets/OMax/WoMax-Reorganized/New Forum/OMax4.5.3/OMax 4.5.3/OMax Patches&Objects",
-				"patcherrelativepath" : "",
+				"bootpath" : "/Users/blevy/Projets/OMax/Dev-Forge/patches",
+				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "OMax.VisuImpro-Attractor.maxpat",
-				"bootpath" : "/Users/blevy/Projets/OMax/WoMax-Reorganized/New Forum/OMax4.5.3/OMax 4.5.3/OMax Patches&Objects",
-				"patcherrelativepath" : "",
+				"bootpath" : "/Users/blevy/Projets/OMax/Dev-Forge/patches",
+				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "OMax.Audio-Input.maxpat",
-				"bootpath" : "/Users/blevy/Projets/OMax/WoMax-Reorganized/New Forum/OMax4.5.3/OMax 4.5.3/OMax Patches&Objects",
-				"patcherrelativepath" : "",
+				"bootpath" : "/Users/blevy/Projets/OMax/Dev-Forge/patches",
+				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "OMax.Audio-Monitor.maxpat",
-				"bootpath" : "/Users/blevy/Projets/OMax/WoMax-Reorganized/New Forum/OMax4.5.3/OMax 4.5.3/OMax Patches&Objects",
-				"patcherrelativepath" : "",
+				"bootpath" : "/Users/blevy/Projets/OMax/Dev-Forge/patches",
+				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "OMax.PattrStorage.maxpat",
-				"bootpath" : "/Users/blevy/Projets/OMax/WoMax-Reorganized/New Forum/OMax4.5.3/OMax 4.5.3/OMax Patches&Objects",
-				"patcherrelativepath" : "",
+				"bootpath" : "/Users/blevy/Projets/OMax/Dev-Forge/patches",
+				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "OMax-4.5.3.xml",
-				"bootpath" : "/Users/blevy/Projets/OMax/WoMax-Reorganized/New Forum/OMax4.5.3/OMax 4.5.3/OMax Patches&Objects",
-				"patcherrelativepath" : "",
-				"type" : "TEXT",
-				"implicit" : 1
-			}
-, 			{
 				"name" : "OMax.SVP-Player.maxpat",
-				"bootpath" : "/Users/blevy/Projets/OMax/WoMax-Reorganized/New Forum/OMax4.5.3/OMax 4.5.3/OMax Patches&Objects",
-				"patcherrelativepath" : "",
+				"bootpath" : "/Users/blevy/Projets/OMax/Dev-Forge/patches",
+				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "OMax.SVP-Play.maxpat",
-				"bootpath" : "/Users/blevy/Projets/OMax/WoMax-Reorganized/New Forum/OMax4.5.3/OMax 4.5.3/OMax Patches&Objects",
-				"patcherrelativepath" : "",
+				"bootpath" : "/Users/blevy/Projets/OMax/Dev-Forge/patches",
+				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "OMax.MFCCs.maxpat",
-				"bootpath" : "/Users/blevy/Projets/OMax/WoMax-Reorganized/New Forum/OMax4.5.3/OMax 4.5.3/OMax Patches&Objects",
-				"patcherrelativepath" : "",
+				"bootpath" : "/Users/blevy/Projets/OMax/Dev-Forge/patches",
+				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "OMax.MFCCs-zsa.maxpat",
-				"bootpath" : "/Users/blevy/Projets/OMax/WoMax-Reorganized/New Forum/OMax4.5.3/OMax 4.5.3/OMax Patches&Objects",
-				"patcherrelativepath" : "",
+				"bootpath" : "/Users/blevy/Projets/OMax/Dev-Forge/patches",
+				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "OMax.MFCCs-zsa-core.maxpat",
-				"bootpath" : "/Users/blevy/Projets/OMax/WoMax-Reorganized/New Forum/OMax4.5.3/OMax 4.5.3/OMax Patches&Objects",
-				"patcherrelativepath" : "",
+				"bootpath" : "/Users/blevy/Projets/OMax/Dev-Forge/patches",
+				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "OMax.MFCCs-alphabet.maxpat",
-				"bootpath" : "/Users/blevy/Projets/OMax/WoMax-Reorganized/New Forum/OMax4.5.3/OMax 4.5.3/OMax Patches&Objects",
-				"patcherrelativepath" : "",
+				"bootpath" : "/Users/blevy/Projets/OMax/Dev-Forge/patches",
+				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "OMax.Oracle-SP.maxpat",
-				"bootpath" : "/Users/blevy/Projets/OMax/WoMax-Reorganized/New Forum/OMax4.5.3/OMax 4.5.3/OMax Patches&Objects",
-				"patcherrelativepath" : "",
+				"bootpath" : "/Users/blevy/Projets/OMax/Dev-Forge/patches",
+				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "OMax.ImproSpectral.maxpat",
-				"bootpath" : "/Users/blevy/Projets/OMax/WoMax-Reorganized/New Forum/OMax4.5.3/OMax 4.5.3/OMax Patches&Objects",
-				"patcherrelativepath" : "",
+				"bootpath" : "/Users/blevy/Projets/OMax/Dev-Forge/patches",
+				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "OMax.ImproSpectral-Weighting.maxpat",
-				"bootpath" : "/Users/blevy/Projets/OMax/WoMax-Reorganized/New Forum/OMax4.5.3/OMax 4.5.3/OMax Patches&Objects",
-				"patcherrelativepath" : "",
+				"bootpath" : "/Users/blevy/Projets/OMax/Dev-Forge/patches",
+				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "OMax.ImproSpectral-Weight.maxpat",
-				"bootpath" : "/Users/blevy/Projets/OMax/WoMax-Reorganized/New Forum/OMax4.5.3/OMax 4.5.3/OMax Patches&Objects",
-				"patcherrelativepath" : "",
+				"bootpath" : "/Users/blevy/Projets/OMax/Dev-Forge/patches",
+				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "OMax.ImproSpectral-Energy.maxpat",
-				"bootpath" : "/Users/blevy/Projets/OMax/WoMax-Reorganized/New Forum/OMax4.5.3/OMax 4.5.3/OMax Patches&Objects",
-				"patcherrelativepath" : "",
+				"bootpath" : "/Users/blevy/Projets/OMax/Dev-Forge/patches",
+				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "OMax.ImproSpectral-Pitch.maxpat",
-				"bootpath" : "/Users/blevy/Projets/OMax/WoMax-Reorganized/New Forum/OMax4.5.3/OMax 4.5.3/OMax Patches&Objects",
-				"patcherrelativepath" : "",
+				"bootpath" : "/Users/blevy/Projets/OMax/Dev-Forge/patches",
+				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "OMax.Multipitch.maxpat",
-				"bootpath" : "/Users/blevy/Projets/OMax/WoMax-Reorganized/New Forum/OMax4.5.3/OMax 4.5.3/OMax Patches&Objects",
-				"patcherrelativepath" : "",
+				"bootpath" : "/Users/blevy/Projets/OMax/Dev-Forge/patches",
+				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "OMax.Slicer.maxpat",
-				"bootpath" : "/Users/blevy/Projets/OMax/WoMax-Reorganized/New Forum/OMax4.5.3/OMax 4.5.3/OMax Patches&Objects",
-				"patcherrelativepath" : "",
+				"bootpath" : "/Users/blevy/Projets/OMax/Dev-Forge/patches",
+				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "OMax.Slicer-core.maxpat",
-				"bootpath" : "/Users/blevy/Projets/OMax/WoMax-Reorganized/New Forum/OMax4.5.3/OMax 4.5.3/OMax Patches&Objects",
-				"patcherrelativepath" : "",
+				"bootpath" : "/Users/blevy/Projets/OMax/Dev-Forge/patches",
+				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "OMax.Hindemith.maxpat",
-				"bootpath" : "/Users/blevy/Projets/OMax/WoMax-Reorganized/New Forum/OMax4.5.3/OMax 4.5.3/OMax Patches&Objects",
-				"patcherrelativepath" : "",
+				"bootpath" : "/Users/blevy/Projets/OMax/Dev-Forge/patches",
+				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "OMax.Oracle-POLY.maxpat",
-				"bootpath" : "/Users/blevy/Projets/OMax/WoMax-Reorganized/New Forum/OMax4.5.3/OMax 4.5.3/OMax Patches&Objects",
-				"patcherrelativepath" : "",
+				"bootpath" : "/Users/blevy/Projets/OMax/Dev-Forge/patches",
+				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "OMax.time.maxpat",
-				"bootpath" : "/Users/blevy/Projets/OMax/WoMax-Reorganized/New Forum/OMax4.5.3/OMax 4.5.3/OMax Patches&Objects",
-				"patcherrelativepath" : "",
+				"bootpath" : "/Users/blevy/Projets/OMax/Dev-Forge/patches",
+				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "OMax.ImproPoly.maxpat",
-				"bootpath" : "/Users/blevy/Projets/OMax/WoMax-Reorganized/New Forum/OMax4.5.3/OMax 4.5.3/OMax Patches&Objects",
-				"patcherrelativepath" : "",
+				"bootpath" : "/Users/blevy/Projets/OMax/Dev-Forge/patches",
+				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "OMax.ImproPoly-Weighting.maxpat",
-				"bootpath" : "/Users/blevy/Projets/OMax/WoMax-Reorganized/New Forum/OMax4.5.3/OMax 4.5.3/OMax Patches&Objects",
-				"patcherrelativepath" : "",
+				"bootpath" : "/Users/blevy/Projets/OMax/Dev-Forge/patches",
+				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "OMax.ImproPoly-Weigth.maxpat",
-				"bootpath" : "/Users/blevy/Projets/OMax/WoMax-Reorganized/New Forum/OMax4.5.3/OMax 4.5.3/OMax Patches&Objects",
-				"patcherrelativepath" : "",
+				"bootpath" : "/Users/blevy/Projets/OMax/Dev-Forge/patches",
+				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "OMax.ImproPoly-Velo.maxpat",
-				"bootpath" : "/Users/blevy/Projets/OMax/WoMax-Reorganized/New Forum/OMax4.5.3/OMax 4.5.3/OMax Patches&Objects",
-				"patcherrelativepath" : "",
+				"bootpath" : "/Users/blevy/Projets/OMax/Dev-Forge/patches",
+				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "OMax.ImproPoly-#Notes.maxpat",
-				"bootpath" : "/Users/blevy/Projets/OMax/WoMax-Reorganized/New Forum/OMax4.5.3/OMax 4.5.3/OMax Patches&Objects",
-				"patcherrelativepath" : "",
+				"bootpath" : "/Users/blevy/Projets/OMax/Dev-Forge/patches",
+				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "OMax.DeSlicer.maxpat",
-				"bootpath" : "/Users/blevy/Projets/OMax/WoMax-Reorganized/New Forum/OMax4.5.3/OMax 4.5.3/OMax Patches&Objects",
-				"patcherrelativepath" : "",
+				"bootpath" : "/Users/blevy/Projets/OMax/Dev-Forge/patches",
+				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "OMax.DeSlicer-core.maxpat",
-				"bootpath" : "/Users/blevy/Projets/OMax/WoMax-Reorganized/New Forum/OMax4.5.3/OMax 4.5.3/OMax Patches&Objects",
-				"patcherrelativepath" : "",
+				"bootpath" : "/Users/blevy/Projets/OMax/Dev-Forge/patches",
+				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "OMax.DeSlicer-borax.maxpat",
-				"bootpath" : "/Users/blevy/Projets/OMax/WoMax-Reorganized/New Forum/OMax4.5.3/OMax 4.5.3/OMax Patches&Objects",
-				"patcherrelativepath" : "",
+				"bootpath" : "/Users/blevy/Projets/OMax/Dev-Forge/patches",
+				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "OMax.SaveLoad.maxpat",
-				"bootpath" : "/Users/blevy/Projets/OMax/WoMax-Reorganized/New Forum/OMax4.5.3/OMax 4.5.3/OMax Patches&Objects",
-				"patcherrelativepath" : "",
+				"bootpath" : "/Users/blevy/Projets/OMax/Dev-Forge/patches",
+				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "bc.vufader.maxpat",
-				"bootpath" : "/Users/blevy/Projets/OMax/WoMax-Reorganized/New Forum/OMax4.5.3/OMax 4.5.3/OMax Patches&Objects",
-				"patcherrelativepath" : "",
+				"bootpath" : "/Users/blevy/Projets/OMax/Dev-Forge/patches",
+				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "OMax.ImproOut-MIDI.maxpat",
-				"bootpath" : "/Users/blevy/Projets/OMax/WoMax-Reorganized/New Forum/OMax4.5.3/OMax 4.5.3/OMax Patches&Objects",
-				"patcherrelativepath" : "",
+				"bootpath" : "/Users/blevy/Projets/OMax/Dev-Forge/patches",
+				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "OMax.Visu-Selection.maxpat",
-				"bootpath" : "/Users/blevy/Projets/OMax/WoMax-Reorganized/New Forum/OMax4.5.3/OMax 4.5.3/OMax Patches&Objects",
-				"patcherrelativepath" : "",
+				"bootpath" : "/Users/blevy/Projets/OMax/Dev-Forge/patches",
+				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "OMax.Mouse2Selection.maxpat",
-				"bootpath" : "/Users/blevy/Projets/OMax/WoMax-Reorganized/New Forum/OMax4.5.3/OMax 4.5.3/OMax Patches&Objects",
-				"patcherrelativepath" : "",
+				"bootpath" : "/Users/blevy/Projets/OMax/Dev-Forge/patches",
+				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "OMax.Visu-Suffixes.maxpat",
-				"bootpath" : "/Users/blevy/Projets/OMax/WoMax-Reorganized/New Forum/OMax4.5.3/OMax 4.5.3/OMax Patches&Objects",
-				"patcherrelativepath" : "",
+				"bootpath" : "/Users/blevy/Projets/OMax/Dev-Forge/patches",
+				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "OMax.Visu-Timeline.maxpat",
-				"bootpath" : "/Users/blevy/Projets/OMax/WoMax-Reorganized/New Forum/OMax4.5.3/OMax 4.5.3/OMax Patches&Objects",
-				"patcherrelativepath" : "",
+				"bootpath" : "/Users/blevy/Projets/OMax/Dev-Forge/patches",
+				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "OMax.Visu-Waveform.maxpat",
-				"bootpath" : "/Users/blevy/Projets/OMax/WoMax-Reorganized/New Forum/OMax4.5.3/OMax 4.5.3/OMax Patches&Objects",
-				"patcherrelativepath" : "",
+				"bootpath" : "/Users/blevy/Projets/OMax/Dev-Forge/patches",
+				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
-			}
-, 			{
-				"name" : "yin~.mxo",
-				"type" : "iLaX"
 			}
 , 			{
 				"name" : "bc.yinstats.mxo",
@@ -10702,10 +10750,6 @@
 			}
 , 			{
 				"name" : "OMax.build.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "supervp.scrub~.mxo",
 				"type" : "iLaX"
 			}
 , 			{
