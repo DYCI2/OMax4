@@ -2,7 +2,7 @@
 PRODUCT_NAME = $(PROJECT_NAME)
 
 // Paths
-MAX_SDK = /Users/blevy/Max6.1/MaxSDK-6.1.4
+MAX_SDK = /Users/blevy/Documents/Max/MaxSDK-6.1.4
 C74SUPPORT = $(MAX_SDK)/c74support
 HEADER_SEARCH_PATHS = /Developer/Headers/FlatCarbon "$(C74SUPPORT)/max-includes"
 FRAMEWORK_SEARCH_PATHS = "$(C74SUPPORT)/max-includes"
@@ -19,7 +19,7 @@ GCC_PREFIX_HEADER = $(C74SUPPORT)/max-includes/macho-prefix.pch
 
 // Architecture and Deployment
 ARCHS = i386 x86_64
-SDKROOT = macosx10.7
+SDKROOT = $(DEVELOPER_SDK_DIR)/macosx10.7.sdk
 MACOSX_DEPLOYMENT_TARGET = 10.5
 
 // Compiler Version -- leave them all commented out to get the default version provided by Xcode
