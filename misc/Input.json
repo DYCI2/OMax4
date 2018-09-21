@@ -1,0 +1,36 @@
+{
+	"pattrstorage" : 	{
+		"name" : "Input",
+		"slots" : 		{
+
+		}
+,
+		"clientstate" : 		{
+			"active" : 			{
+				"Impro1" : 0,
+				"Player" : 0,
+				"Impro2" : 0,
+				"Player[2]" : 0,
+				"Player[1]" : 0,
+				"Impro3" : 0,
+				"Impro4" : 0,
+				"Player[4]" : 0,
+				"Player[3]" : 0,
+				"ImproM1" : 0,
+				"Player[6]" : 0,
+				"Player[5]" : 0,
+				"DeSlicer" : 0,
+				"DeSlicer[1]" : 0,
+				"ImproM2" : 0,
+				"Player[7]" : 0,
+				"DeSlicer[2]" : 0,
+				"Dual_MIDI_Suffixes" : 0,
+				"Dual_SP_Suffixes" : 0,
+				"Dual_MIDI_Suffixes[1]" : 0
+			}
+
+		}
+
+	}
+
+}
