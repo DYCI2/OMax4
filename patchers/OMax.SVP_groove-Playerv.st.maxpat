@@ -1140,7 +1140,7 @@
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 1032.54541, 300.0, 50.0, 22.0 ],
 					"style" : "",
-					"text" : "#1"
+					"text" : "Impro4"
 				}
 
 			}
@@ -1148,7 +1148,7 @@
 				"box" : 				{
 					"comment" : "impro name when clicked (mouse down)",
 					"id" : "obj-230",
-					"index" : 0,
+					"index" : 5,
 					"maxclass" : "outlet",
 					"numinlets" : 1,
 					"numoutlets" : 0,
@@ -1161,7 +1161,7 @@
 				"box" : 				{
 					"comment" : "Audio Out",
 					"id" : "obj-226",
-					"index" : 0,
+					"index" : 4,
 					"maxclass" : "outlet",
 					"numinlets" : 1,
 					"numoutlets" : 0,
@@ -1721,7 +1721,7 @@
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 570.0, 126.0, 111.5, 22.0 ],
+					"patching_rect" : [ 570.0, 126.0, 115.5, 22.0 ],
 					"style" : "",
 					"text" : "receive #0_Name"
 				}
@@ -1802,7 +1802,7 @@
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 725.5, 566.0, 114.5, 22.0 ],
+					"patching_rect" : [ 725.5, 566.0, 116.5, 22.0 ],
 					"style" : "",
 					"text" : "receive #0_Name"
 				}
@@ -2534,7 +2534,7 @@
 				"box" : 				{
 					"comment" : "",
 					"id" : "obj-202",
-					"index" : 0,
+					"index" : 6,
 					"maxclass" : "outlet",
 					"numinlets" : 1,
 					"numoutlets" : 0,
@@ -2647,6 +2647,7 @@
 									"fontname" : "Arial",
 									"fontsize" : 12.0,
 									"id" : "obj-9",
+									"linecount" : 3,
 									"maxclass" : "newobj",
 									"numinlets" : 0,
 									"numoutlets" : 1,
@@ -2702,7 +2703,7 @@
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 17.0, 172.0, 50.0, 22.0 ],
 									"style" : "",
-									"text" : "361219"
+									"text" : "328714"
 								}
 
 							}
@@ -2831,6 +2832,7 @@
 									"fontname" : "Arial",
 									"fontsize" : 12.0,
 									"id" : "obj-26",
+									"linecount" : 2,
 									"maxclass" : "newobj",
 									"numinlets" : 1,
 									"numoutlets" : 2,
@@ -4387,7 +4389,7 @@
 					"presentation" : 1,
 					"presentation_rect" : [ 73.0, 56.473679, 79.0, 20.0 ],
 					"style" : "",
-					"text" : "#1"
+					"text" : "Impro4"
 				}
 
 			}
@@ -5362,7 +5364,7 @@
 				"box" : 				{
 					"comment" : "int: State for external sync",
 					"id" : "obj-182",
-					"index" : 0,
+					"index" : 3,
 					"maxclass" : "inlet",
 					"numinlets" : 0,
 					"numoutlets" : 1,
@@ -5391,7 +5393,7 @@
 				"box" : 				{
 					"comment" : "pattrhub",
 					"id" : "obj-174",
-					"index" : 0,
+					"index" : 5,
 					"maxclass" : "inlet",
 					"numinlets" : 0,
 					"numoutlets" : 1,
@@ -5430,15 +5432,15 @@
 						"Cut-Threshold" : [ 0.002 ],
 						"Cut-Window" : [ 20 ],
 						"Direction" : [ 0 ],
-						"Speed" : [ 1.0 ],
-						"Sync" : [ 0 ],
+						"Speed" : [ 0.75 ],
+						"Sync" : [ 1 ],
 						"Transposition" : [ 0.0 ],
 						"Xfade" : [ 30 ]
 					}
 ,
 					"style" : "",
 					"text" : "autopattr @autorestore 0",
-					"varname" : "u270018642"
+					"varname" : "u059008121"
 				}
 
 			}
@@ -5477,7 +5479,7 @@
 					"presentation" : 1,
 					"presentation_rect" : [ 1.0, 1.0, 80.002388, 19.0 ],
 					"style" : "",
-					"text" : "SVP #2"
+					"text" : "SVP Player5"
 				}
 
 			}
@@ -5529,7 +5531,7 @@
 				"box" : 				{
 					"comment" : "bang: Catch up !",
 					"id" : "obj-171",
-					"index" : 0,
+					"index" : 2,
 					"maxclass" : "inlet",
 					"numinlets" : 0,
 					"numoutlets" : 1,
@@ -5543,11 +5545,11 @@
 				"box" : 				{
 					"comment" : "toggle: Play/Stop bang: Look for an end and Stop there",
 					"id" : "obj-172",
-					"index" : 0,
+					"index" : 1,
 					"maxclass" : "inlet",
 					"numinlets" : 0,
 					"numoutlets" : 1,
-					"outlettype" : [ "" ],
+					"outlettype" : [ "int" ],
 					"patching_rect" : [ 122.0, 14.0, 25.0, 25.0 ],
 					"style" : ""
 				}
@@ -5572,7 +5574,7 @@
 				"box" : 				{
 					"comment" : "Data Out",
 					"id" : "obj-147",
-					"index" : 0,
+					"index" : 2,
 					"maxclass" : "outlet",
 					"numinlets" : 1,
 					"numoutlets" : 0,
@@ -5585,7 +5587,7 @@
 				"box" : 				{
 					"comment" : "bang to get next state computed // toggle: enable",
 					"id" : "obj-139",
-					"index" : 0,
+					"index" : 1,
 					"maxclass" : "outlet",
 					"numinlets" : 1,
 					"numoutlets" : 0,
@@ -5598,7 +5600,7 @@
 				"box" : 				{
 					"comment" : "Impro Name",
 					"id" : "obj-67",
-					"index" : 0,
+					"index" : 4,
 					"maxclass" : "inlet",
 					"numinlets" : 0,
 					"numoutlets" : 1,
@@ -6814,7 +6816,7 @@
 					"fontsize" : 9.0,
 					"id" : "obj-10",
 					"maxclass" : "number",
-					"maximum" : 23975,
+					"maximum" : 29448,
 					"minimum" : 1,
 					"numinlets" : 1,
 					"numoutlets" : 2,
@@ -7055,7 +7057,7 @@
 			}
 , 			{
 				"box" : 				{
-					"bgcolor" : [ 1.0, 0.768627, 0.254902, 1.0 ],
+					"bgcolor" : [ 1.0, 0.356863, 0.254902, 1.0 ],
 					"fontname" : "Arial",
 					"fontsize" : 10.0,
 					"format" : 6,
@@ -8664,7 +8666,7 @@
 				"box" : 				{
 					"comment" : "Audio Out",
 					"id" : "obj-113",
-					"index" : 0,
+					"index" : 3,
 					"maxclass" : "outlet",
 					"numinlets" : 1,
 					"numoutlets" : 0,
@@ -8761,7 +8763,7 @@
 , 			{
 				"box" : 				{
 					"angle" : 0.0,
-					"bgcolor" : [ 1.0, 0.9, 0.9, 1.0 ],
+					"bgcolor" : [ 1.0, 0.9, 1.0, 1.0 ],
 					"border" : 4,
 					"bordercolor" : [ 1.0, 0.501961, 0.0, 1.0 ],
 					"id" : "obj-224",
@@ -8926,6 +8928,13 @@
 				"patchline" : 				{
 					"destination" : [ "obj-99", 0 ],
 					"source" : [ "obj-105", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-164", 0 ],
+					"source" : [ "obj-106", 0 ]
 				}
 
 			}
@@ -10925,44 +10934,7 @@
 				}
 
 			}
- ],
-		"dependency_cache" : [ 			{
-				"name" : "thru.maxpat",
-				"bootpath" : "C74:/patchers/m4l/Pluggo for Live resources/patches",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "sr.maxpat",
-				"bootpath" : "~/Documents/Max 7/Packages/OMax4.56distrib/patchers",
-				"patcherrelativepath" : "../patchers",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "fr.maxpat",
-				"bootpath" : "~/Documents/Max 7/Packages/OMax4.56distrib/patchers",
-				"patcherrelativepath" : "../patchers",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "OMax.SVP_groove.Playv_n.maxpat",
-				"bootpath" : "~/Documents/Max 7/Packages/OMax4.56distrib/zz_unused",
-				"patcherrelativepath" : ".",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "OMax.render.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "OMax.state2date.mxo",
-				"type" : "iLaX"
-			}
- ],
-		"autosave" : 0
+ ]
 	}
 
 }
