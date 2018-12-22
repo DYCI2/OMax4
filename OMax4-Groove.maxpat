@@ -9,7 +9,7 @@
 			"modernui" : 1
 		}
 ,
-		"rect" : [ 83.0, 89.0, 910.0, 590.0 ],
+		"rect" : [ 34.0, 79.0, 910.0, 593.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
 		"default_fontsize" : 12.0,
@@ -7923,7 +7923,7 @@
 					"id" : "obj-22",
 					"lockeddragscroll" : 0,
 					"maxclass" : "bpatcher",
-					"name" : "OMax.SVP-Playerv.st.maxpat",
+					"name" : "OMax.SVP_groove-Playerv.st.maxpat",
 					"numinlets" : 5,
 					"numoutlets" : 6,
 					"offset" : [ 0.0, 0.0 ],
@@ -11758,13 +11758,13 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "OMax.SVP-Playerv.st.maxpat",
+				"name" : "OMax.SVP_groove-Playerv.st.maxpat",
 				"bootpath" : "~/Documents/Max 7/Packages/OMax4.5.7/patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "Omax.SVP-Play.st.maxpat",
+				"name" : "OMax.SVP_groove.Playv_n.maxpat",
 				"bootpath" : "~/Documents/Max 7/Packages/OMax4.5.7/patchers",
 				"type" : "JSON",
 				"implicit" : 1
@@ -12042,10 +12042,6 @@
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "supervp.scrub~.mxo",
-				"type" : "iLaX"
-			}
-, 			{
 				"name" : "zsa.mfcc~.mxo",
 				"type" : "iLaX"
 			}
@@ -12057,13 +12053,15 @@
 				"name" : "bc.virfun.mxo",
 				"type" : "iLaX"
 			}
+, 			{
+				"name" : "supervp.scrub~.mxo",
+				"type" : "iLaX"
+			}
  ],
 		"autosave" : 0,
 		"styles" : [ 			{
 				"name" : "dUG Yello 01-1",
-				"default" : 				{
-					"fontface" : [ 1 ],
-					"fontsize" : [ 10.0 ],
+				"message" : 				{
 					"bgfillcolor" : 					{
 						"type" : "gradient",
 						"color" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
@@ -12074,6 +12072,24 @@
 						"autogradient" : 0
 					}
 ,
+					"fontface" : [ 1 ],
+					"fontsize" : [ 10.0 ],
+					"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
+				}
+,
+				"default" : 				{
+					"bgfillcolor" : 					{
+						"type" : "gradient",
+						"color" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
+						"color1" : [ 0.94902, 0.992157, 1.0, 1.0 ],
+						"color2" : [ 0.862745, 0.870588, 0.878431, 1.0 ],
+						"angle" : 270.0,
+						"proportion" : 0.39,
+						"autogradient" : 0
+					}
+,
+					"fontface" : [ 1 ],
+					"fontsize" : [ 10.0 ],
 					"bgcolor" : [ 1.0, 0.941176, 0.803922, 1.0 ],
 					"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -12082,22 +12098,6 @@
 					"fontface" : [ 1 ],
 					"fontsize" : [ 10.0 ],
 					"bgcolor" : [ 1.0, 0.941176, 0.803922, 1.0 ],
-					"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
-				}
-,
-				"message" : 				{
-					"fontface" : [ 1 ],
-					"fontsize" : [ 10.0 ],
-					"bgfillcolor" : 					{
-						"type" : "gradient",
-						"color" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
-						"color1" : [ 0.94902, 0.992157, 1.0, 1.0 ],
-						"color2" : [ 0.862745, 0.870588, 0.878431, 1.0 ],
-						"angle" : 270.0,
-						"proportion" : 0.39,
-						"autogradient" : 0
-					}
-,
 					"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 ,
