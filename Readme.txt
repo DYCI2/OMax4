@@ -7,7 +7,7 @@ OMax initial concept and design by Gerard Assayag Marc Chemillier and Shlomo Dub
 © Ircam 2004-2018
 
 This version is for Max7
-This version is the full MIDI and audio capable version of OMax, it includes Yin~ and SuperVP.scrub~objects.
+This version is the full MIDI, audio and video capable version of OMax, it includes Yin~ and SuperVP.scrub~objects.
 To install, put the OMax4 folder inside the Max 7/Packages subfolder of your Documents folder.
 
 -----------
