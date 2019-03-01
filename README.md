@@ -1,6 +1,6 @@
-# OMax v4
-OMax improvisation software in its 4th version.
-
-This master branch provides the current version of OMax 4 updated by George Bloch for Max 7.
-
-It is  distributed as a Max Package (to be placed in the `Packages` folder).
+# OMax 4
+OMax improvisation software
+OMax 4 by Benjamin Lévy, George Bloch and Gérard Assayag.
+OMax initial design and development by G. Assayag, G. Bloch, M. Chemillier, S. Dubnov
+This version is for Max7
+© Ircam 2004-2018
