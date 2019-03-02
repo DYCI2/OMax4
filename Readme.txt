@@ -50,7 +50,9 @@ Changes since 4.5.7
 
 
 Max 8 version.
-The installation of zsa is different. It is no more an extension inside the extensions folder of the omax package, but has to be installed as a Max package from inside Max (Menu File, Show Package Manager, search for zsa and press install).
+The installation of zsa is different. It is no more an extension inside the extensions folder of the omax package, 
+but has to be installed as a Max package from inside Max (Menu File, Show Package Manager, search for zsa and press install).
+The OMax.SVP.xxx patchers have been adapted for Max 8.
 
 
 
@@ -58,7 +60,8 @@ Changes since 4.5.64
 
 OMax4 is fully video-ready
 There’s a new set of patchers using groove (instead of svp) for time transformations.
-There’s a new patch OMax4-Groove using the groove player instead of the svp one, so one is free to choose between the standard OMax4 and this one.
+There’s a new patch OMax4-Groove using the groove player instead of the svp one, so one is free to choose between 
+the standard OMax4 and this one.
 
 
 Changes since 4.5.5
