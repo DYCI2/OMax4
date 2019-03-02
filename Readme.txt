@@ -1,14 +1,13 @@
 OMax4 
-
-Version 4.5.7
+Version 4.6
 
 OMax4 by Gérard Assayag, Georges Bloch and Benjamin Lévy
 OMax initial concept and design by Gerard Assayag Marc Chemillier and Shlomo Dubnov
-© Ircam 2004-2018
+© Ircam 2004-2019
 
-This version is for Max7
+This version is for Max8
 This version is the full MIDI, audio and video capable version of OMax, it includes Yin~ and SuperVP.scrub~objects.
-To install, put the OMax4 folder inside the Max 7/Packages subfolder of your Documents folder.
+To install, put the OMax4 folder inside the Max 8/Packages subfolder of your Documents folder.
 
 -----------
 QuickStart (MIDI)
@@ -34,11 +33,10 @@ QuickStart (Audio)
 Dependencies 
 
 Uses externals Yin~ and SuperVP.Scrub~ for audio operations.
-Uses some zsa.descriptors from http://www.e--j.com 
-
-See Ircam Forumnet and http://www.e--j.com.
+Uses some zsa.descriptors (http://www.e--j.com), now integrated in standard Max external Packages
 
 If used without these objects, basic functions in pitch mode and midi will still be working.
+
 
 -------
 Infos
@@ -47,6 +45,14 @@ For any informations, bug reports etc contact Benjamin.Levy@ircam.fr
 
 
 ---------------------
+
+Changes since 4.5.7
+
+
+Max 8 version.
+The installation of zsa is different. It is no more an extension inside the extensions folder of the omax package, but has to be installed as a Max package from inside Max (Menu File, Show Package Manager, search for zsa and press install).
+
+
 
 Changes since 4.5.64
 
