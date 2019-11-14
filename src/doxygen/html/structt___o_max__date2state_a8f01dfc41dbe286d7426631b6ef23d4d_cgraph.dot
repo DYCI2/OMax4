@@ -1,0 +1,12 @@
+digraph G
+{
+  bgcolor="transparent";
+  edge [fontname="FreeSans",fontsize="10",labelfontname="FreeSans",labelfontsize="10"];
+  node [fontname="FreeSans",fontsize="10",shape=record];
+  rankdir=LR;
+  Node1 [label="t_OMax_date2state::OMax_date2state_setname",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="FreeSans"];
+  Node2 [label="t_OMax_date2state::OMax_date2state_bind",height=0.2,width=0.4,color="black",URL="$structt___o_max__date2state.html#a2ba6c4e713ff940c6f4bcaf9e8bf2acb",tooltip="Bind the translator with Data Structure."];
+  Node2 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="FreeSans"];
+  Node3 [label="t_OMax_date2state::OMax_date2state_name",height=0.2,width=0.4,color="black",URL="$structt___o_max__date2state.html#a89526301b326f5ea2620092b2fd2b945",tooltip="Return Data Sequence name from FO name."];
+}

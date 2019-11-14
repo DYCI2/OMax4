@@ -1,0 +1,21 @@
+digraph G
+{
+  bgcolor="transparent";
+  edge [fontname="FreeSans",fontsize="10",labelfontname="FreeSans",labelfontsize="10"];
+  node [fontname="FreeSans",fontsize="10",shape=record];
+  rankdir=LR;
+  Node1 [label="t_OMax_SLT::OMax_sortedSLT",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="FreeSans"];
+  Node2 [label="O_oracle::get_size",height=0.2,width=0.4,color="black",URL="$class_o__oracle.html#a084597a4f020b5ddadc603881b596d4f",tooltip="Return the current size of FO."];
+  Node1 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="FreeSans"];
+  Node3 [label="O_state::get_statenb",height=0.2,width=0.4,color="black",URL="$class_o__state.html#a046051313287022e6d9893beac4f3e4b",tooltip="Return the number of the state in FO."];
+  Node1 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="FreeSans"];
+  Node4 [label="t_OMax_SLT::OMax_SLT_bind",height=0.2,width=0.4,color="black",URL="$structt___o_max___s_l_t.html#ad4227dddeba43f5e41a96fec871855d8",tooltip="Bind the object with FO."];
+  Node1 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="FreeSans"];
+  Node5 [label="O_state::rec_upSLT",height=0.2,width=0.4,color="black",URL="$class_o__state.html#aa1071779e17c28e97b9366f186ed8465",tooltip="Recursive function to follow suffix links."];
+  Node5 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="FreeSans"];
+  Node1 -> Node6 [color="midnightblue",fontsize="10",style="solid",fontname="FreeSans"];
+  Node6 [label="O_state::sortedSLT",height=0.2,width=0.4,color="black",URL="$class_o__state.html#ad563bd42f7a7221f89f46b37a5718b54",tooltip="Function to collect and sort all jump candidates from a state."];
+  Node6 -> Node7 [color="midnightblue",fontsize="10",style="solid",fontname="FreeSans"];
+  Node7 [label="O_state::rec_sortSLT",height=0.2,width=0.4,color="black",URL="$class_o__state.html#a46d9a2792e600d2f027fa6007f541f16",tooltip="Recursive function to list &amp; sort nodes in a subSLT."];
+}

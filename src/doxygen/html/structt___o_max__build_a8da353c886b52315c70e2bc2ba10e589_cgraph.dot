@@ -1,0 +1,12 @@
+digraph G
+{
+  bgcolor="transparent";
+  edge [fontname="FreeSans",fontsize="10",labelfontname="FreeSans",labelfontsize="10"];
+  node [fontname="FreeSans",fontsize="10",shape=record];
+  rankdir=LR;
+  Node1 [label="t_OMax_build::OMax_build_bang",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="FreeSans"];
+  Node2 [label="O_data::get_size",height=0.2,width=0.4,color="black",URL="$class_o__data.html#ab8222f2093f5b02d55857a8c61d1ee0c",tooltip="Return the current size of the sequence."];
+  Node1 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="FreeSans"];
+  Node3 [label="t_OMax_build::OMax_build_bind",height=0.2,width=0.4,color="black",URL="$structt___o_max__build.html#a84b0ca99a6b47de1c4ac66e63fa270ec",tooltip="Bind the builder with both Data Sequences."];
+}

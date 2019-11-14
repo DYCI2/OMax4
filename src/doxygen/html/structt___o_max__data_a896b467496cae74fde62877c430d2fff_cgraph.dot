@@ -1,0 +1,18 @@
+digraph G
+{
+  bgcolor="transparent";
+  edge [fontname="FreeSans",fontsize="10",labelfontname="FreeSans",labelfontsize="10"];
+  node [fontname="FreeSans",fontsize="10",shape=record];
+  rankdir=LR;
+  Node1 [label="t_OMax_data::OMax_data_reset",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="FreeSans"];
+  Node2 [label="O_data::clear_vect",height=0.2,width=0.4,color="black",URL="$class_o__data.html#aa12901c1abfd0482a6402f4a14f19a85",tooltip="Reset sequence without deletion of states."];
+  Node1 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="FreeSans"];
+  Node3 [label="O_data::freestates",height=0.2,width=0.4,color="black",URL="$class_o__data.html#a8526c6d22bdec8569e0a1bf0cd3e9313",tooltip="Reset with erasing of all data."];
+  Node1 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="FreeSans"];
+  Node4 [label="O_data::get_size",height=0.2,width=0.4,color="black",URL="$class_o__data.html#ab8222f2093f5b02d55857a8c61d1ee0c",tooltip="Return the current size of the sequence."];
+  Node1 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="FreeSans"];
+  Node5 [label="O_data::reset_D2S",height=0.2,width=0.4,color="black",URL="$class_o__data.html#a9bd659fb97745b8b7723f128d4e0b2fb",tooltip="Reset hash table."];
+  Node1 -> Node6 [color="midnightblue",fontsize="10",style="solid",fontname="FreeSans"];
+  Node6 [label="O_data::reset_S2D",height=0.2,width=0.4,color="black",URL="$class_o__data.html#a48290818fe9181eced2151ac3b6a5018",tooltip="Reset hash table."];
+}

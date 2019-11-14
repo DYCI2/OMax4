@@ -1,0 +1,8 @@
+<map id="G" name="G">
+<area shape="rect" id="node2" href="$class_o__label.html#a18816b978a098c2e57b5f36e39e8f8ad" title="Return the time reference in the buffer the state is pointing to (in ms)." alt="" coords="292,5,439,32"/>
+<area shape="rect" id="node3" href="$class_o__label.html#a16f550f60bda334a69fe79df2fba1504" title="Return the duration of the state (in ms)." alt="" coords="291,56,440,83"/>
+<area shape="rect" id="node4" href="$class_o__label.html#aa9cb6fd7acf51f864a385e78cea1fde9" title="Return the number of the phrase the state belongs to." alt="" coords="294,107,437,133"/>
+<area shape="rect" id="node5" href="$class_o__label.html#a398711c164e3ff054c4decfb8ccca5d0" title="Return the number of the section the state belongs to." alt="" coords="293,157,437,184"/>
+<area shape="rect" id="node6" href="$class_o__data.html#ab8222f2093f5b02d55857a8c61d1ee0c" title="Return the current size of the sequence." alt="" coords="304,208,427,235"/>
+<area shape="rect" id="node7" href="$class_o__label.html#a95c66f241f7bd5fc50215aa84d50ad9b" title="Return the number of the state in the sequence." alt="" coords="293,259,438,285"/>
+</map>

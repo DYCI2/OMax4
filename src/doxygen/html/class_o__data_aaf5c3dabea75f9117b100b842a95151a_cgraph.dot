@@ -1,0 +1,18 @@
+digraph G
+{
+  bgcolor="transparent";
+  edge [fontname="FreeSans",fontsize="10",labelfontname="FreeSans",labelfontsize="10"];
+  node [fontname="FreeSans",fontsize="10",shape=record];
+  rankdir=LR;
+  Node1 [label="O_data::add",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="FreeSans"];
+  Node2 [label="O_data::add_date",height=0.2,width=0.4,color="black",URL="$class_o__data.html#a3fa234b4542a1383c6c902f8a65b0a45",tooltip="Reference a date from data."];
+  Node2 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="FreeSans"];
+  Node3 [label="O_label::get_bufferef",height=0.2,width=0.4,color="black",URL="$class_o__label.html#a18816b978a098c2e57b5f36e39e8f8ad",tooltip="Return the time reference in the buffer the state is pointing to (in ms)."];
+  Node2 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="FreeSans"];
+  Node4 [label="O_label::get_statenb",height=0.2,width=0.4,color="black",URL="$class_o__label.html#a95c66f241f7bd5fc50215aa84d50ad9b",tooltip="Return the number of the state in the sequence."];
+  Node1 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="FreeSans"];
+  Node5 [label="O_data::add_state",height=0.2,width=0.4,color="black",URL="$class_o__data.html#a37130bd8972a72c868f85b979b865dcf",tooltip="Reference a state from data."];
+  Node5 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="FreeSans"];
+  Node5 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="FreeSans"];
+}

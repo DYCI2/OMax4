@@ -1,0 +1,10 @@
+digraph G {
+  bgcolor=transparent;
+  compound=true
+  node [ fontsize="10", fontname="FreeSans"];
+  edge [ labelfontsize="10", labelfontname="FreeSans"];
+  subgraph clusterdir_9d796b5c9224ad50c0b820fe47c019d9 {
+    graph [ bgcolor="#ddddee", pencolor="black", label="yin+ & co" fontname="FreeSans", fontsize="10", URL="dir_9d796b5c9224ad50c0b820fe47c019d9.html"]
+  dir_307fd33dbeae5c031661da0aa79f355b [shape=box, label="bc.virfun", style="filled", fillcolor="#eeeeff", pencolor="black", URL="dir_307fd33dbeae5c031661da0aa79f355b.html"];
+  }
+}

@@ -1,0 +1,12 @@
+digraph structs
+{
+  bgcolor="transparent";
+  edge [fontname="FreeSans",fontsize="10",labelfontname="FreeSans",labelfontsize="10"];
+  node [fontname="FreeSans",fontsize="10",shape=record];
+  rankdir=LR;
+  Node1 [label="Data Sequence structure",height=0.2,width=0.4,color="black",URL="$group__label.html"];
+  Node0 [label="Max5 Externals",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node2 [label="Factor Oracle structure",height=0.2,width=0.4,color="black",URL="$group__oracle.html"];
+  Node0->Node1 [shape=plaintext, label="t_OMax_build\nt_OMax_data\nt_OMax_date2state\nt_OMax_learn\nt_OMax_render\nt_OMax_state2date", color="orange", dir="none", style="dashed"];
+  Node0->Node2 [shape=plaintext, label="t_OMax_learn\nt_OMax_oracle\nt_OMax_read\nt_OMax_SLT", color="orange", dir="none", style="dashed"];
+}

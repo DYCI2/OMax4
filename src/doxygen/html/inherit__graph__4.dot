@@ -1,0 +1,8 @@
+digraph G
+{
+  bgcolor="transparent";
+  edge [fontname="FreeSans",fontsize="10",labelfontname="FreeSans",labelfontsize="10"];
+  node [fontname="FreeSans",fontsize="10",shape=record];
+  rankdir=LR;
+  Node1 [label="O_MIDI_note",height=0.2,width=0.4,color="black",URL="$class_o___m_i_d_i__note.html",tooltip="MIDI note for polyphonic MIDI."];
+}

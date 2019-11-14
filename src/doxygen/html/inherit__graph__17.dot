@@ -1,0 +1,8 @@
+digraph G
+{
+  bgcolor="transparent";
+  edge [fontname="FreeSans",fontsize="10",labelfontname="FreeSans",labelfontsize="10"];
+  node [fontname="FreeSans",fontsize="10",shape=record];
+  rankdir=LR;
+  Node1 [label="t_OMax_SLT",height=0.2,width=0.4,color="black",URL="$structt___o_max___s_l_t.html",tooltip="OMax.SLT external."];
+}

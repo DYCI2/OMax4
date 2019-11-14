@@ -1,0 +1,19 @@
+digraph G
+{
+  bgcolor="transparent";
+  edge [fontname="FreeSans",fontsize="10",labelfontname="FreeSans",labelfontsize="10"];
+  node [fontname="FreeSans",fontsize="10",shape=record];
+  rankdir=LR;
+  Node1 [label="t_OMax_SLT::OMax_SLT",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="FreeSans"];
+  Node2 [label="O_oracle::get_size",height=0.2,width=0.4,color="black",URL="$class_o__oracle.html#a084597a4f020b5ddadc603881b596d4f",tooltip="Return the current size of FO."];
+  Node1 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="FreeSans"];
+  Node3 [label="O_state::get_statenb",height=0.2,width=0.4,color="black",URL="$class_o__state.html#a046051313287022e6d9893beac4f3e4b",tooltip="Return the number of the state in FO."];
+  Node1 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="FreeSans"];
+  Node4 [label="t_OMax_SLT::OMax_SLT_bind",height=0.2,width=0.4,color="black",URL="$structt___o_max___s_l_t.html#ad4227dddeba43f5e41a96fec871855d8",tooltip="Bind the object with FO."];
+  Node1 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="FreeSans"];
+  Node5 [label="O_state::rec_downSLT",height=0.2,width=0.4,color="black",URL="$class_o__state.html#a98855c859fe7d952b6fe447e4bdbdddc",tooltip="Recursive function to follow reverse suffix links."];
+  Node1 -> Node6 [color="midnightblue",fontsize="10",style="solid",fontname="FreeSans"];
+  Node6 [label="O_state::rec_upSLT",height=0.2,width=0.4,color="black",URL="$class_o__state.html#aa1071779e17c28e97b9366f186ed8465",tooltip="Recursive function to follow suffix links."];
+  Node6 -> Node6 [color="midnightblue",fontsize="10",style="solid",fontname="FreeSans"];
+}

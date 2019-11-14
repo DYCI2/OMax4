@@ -1,0 +1,20 @@
+digraph G
+{
+  bgcolor="transparent";
+  edge [fontname="FreeSans",fontsize="10",labelfontname="FreeSans",labelfontsize="10"];
+  node [fontname="FreeSans",fontsize="10",shape=record];
+  rankdir=LR;
+  Node1 [label="t_OMax_read::OMax_read_read",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="FreeSans"];
+  Node2 [label="O_state::get_rsuff",height=0.2,width=0.4,color="black",URL="$class_o__state.html#aa1186f2f5d1efe24ff4d17d0929082a7",tooltip="Return the list of reverse suffix links."];
+  Node1 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="FreeSans"];
+  Node3 [label="O_oracle::get_size",height=0.2,width=0.4,color="black",URL="$class_o__oracle.html#a084597a4f020b5ddadc603881b596d4f",tooltip="Return the current size of FO."];
+  Node1 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="FreeSans"];
+  Node4 [label="O_state::get_statenb",height=0.2,width=0.4,color="black",URL="$class_o__state.html#a046051313287022e6d9893beac4f3e4b",tooltip="Return the number of the state in FO."];
+  Node1 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="FreeSans"];
+  Node5 [label="O_state::get_suffix",height=0.2,width=0.4,color="black",URL="$class_o__state.html#ae1f577ab7e81969b53d589e22d4e853c",tooltip="Return the suffix link and the associated lrs."];
+  Node1 -> Node6 [color="midnightblue",fontsize="10",style="solid",fontname="FreeSans"];
+  Node6 [label="O_state::get_trans",height=0.2,width=0.4,color="black",URL="$class_o__state.html#a10b14aabd7bb9b8441198cc8934a41d9",tooltip="Return the list transitions."];
+  Node1 -> Node7 [color="midnightblue",fontsize="10",style="solid",fontname="FreeSans"];
+  Node7 [label="t_OMax_read::OMax_read_bind",height=0.2,width=0.4,color="black",URL="$structt___o_max__read.html#aa6930bd7f7c3dfa8232c10517d91eca7",tooltip="Bind the reader with FO."];
+}

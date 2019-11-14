@@ -1,0 +1,15 @@
+digraph G
+{
+  bgcolor="transparent";
+  edge [fontname="FreeSans",fontsize="10",labelfontname="FreeSans",labelfontsize="10"];
+  node [fontname="FreeSans",fontsize="10",shape=record];
+  Node1 [label="t_OMax_data",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node2 -> Node1 [dir=back,color="darkorchid3",fontsize="10",style="dashed",label="data",fontname="FreeSans"];
+  Node2 [label="O_data",height=0.2,width=0.4,color="black",URL="$class_o__data.html",tooltip="Data sequence class."];
+  Node3 -> Node2 [dir=back,color="darkorchid3",fontsize="10",style="dashed",label="state_vect",fontname="FreeSans"];
+  Node3 [label="std::vector\< O_label * \>",height=0.2,width=0.4,color="grey75"];
+  Node4 -> Node3 [dir=back,color="darkorchid3",fontsize="10",style="dashed",label="elements",fontname="FreeSans"];
+  Node4 [label="O_label",height=0.2,width=0.4,color="black",URL="$class_o__label.html",tooltip="Generic state of a data sequence."];
+  Node5 -> Node2 [dir=back,color="darkorchid3",fontsize="10",style="dashed",label="states2dates\ndates2states",fontname="FreeSans"];
+  Node5 [label="std::map\< int, int \>",height=0.2,width=0.4,color="grey75"];
+}
