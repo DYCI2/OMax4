@@ -11,7 +11,7 @@
 #ifndef __OMAX_LEARN_MAX_API_
 #define __OMAX_LEARN_MAX_API_
 
-#include "Oracle_learn.hpp"
+#include "../../cpp/Oracle_learn.hpp"
 
 extern "C"
 {
@@ -21,8 +21,8 @@ extern "C"
 #include "jpatcher_api.h"		// required for the color
 #include "jgraphics.h"			// required for the color
 	
-#include "OMax.oracle.h"
-#include "OMax.data.h"
+#include "../OMax.oracle/OMax.oracle.h"
+#include "../OMax.data/OMax.data.h"
 	
 	/**@ingroup oracle label
 	 * @nosubgrouping

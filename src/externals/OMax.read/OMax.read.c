@@ -11,8 +11,8 @@
 #ifndef __OMax_read_MAX_API_
 #define __OMax_read_MAX_API_
 
-#include "Oracle_classes.hpp"
-#include "OMax.oracle.h"
+#include "../../cpp/Oracle_classes.hpp"
+#include "../OMax.oracle/OMax.oracle.h"
 
 extern "C"
 {

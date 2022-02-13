@@ -11,7 +11,7 @@
 #ifndef __OMax_date2state_MAX_API_
 #define __OMax_date2state_MAX_API_
 
-#include "Oracle_data.hpp"
+#include "../../cpp/Oracle_data.hpp"
 
 extern "C"
 {
@@ -21,7 +21,7 @@ extern "C"
 #include "jpatcher_api.h"		// required for the color
 #include "jgraphics.h"			// required for the color
 	
-#include "OMax.data.h"
+#include "../OMax.data/OMax.data.h"
 	
 	/**@ingroup label
 	 * @nosubgrouping

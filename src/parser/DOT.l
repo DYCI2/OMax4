@@ -7,12 +7,14 @@
 
 %{
 #include <stdio.h>
-#include "y.tab.h"
+//#include "y.tab.h"
+#include "parser.hpp"
 int yyerror(char *s);
 %}
 
 %option header-file="DOT.yy.h"
 %option nounput
+%option noyywrap
 
 STRING  [a-zA-Z]+
 FLOAT   [0-9]*"."[0-9]*

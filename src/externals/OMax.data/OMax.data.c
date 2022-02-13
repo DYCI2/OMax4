@@ -8,8 +8,8 @@
 #ifndef __OMAX_DATA_MAX_API__
 #define __OMAX_DATA_MAX_API__
 
-#include "Oracle_label.hpp"
-#include "Oracle_data.hpp"
+#include "../../cpp/Oracle_label.hpp"
+#include "../../cpp/Oracle_data.hpp"
 
 #include <string.h>
 
