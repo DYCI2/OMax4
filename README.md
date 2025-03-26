@@ -6,7 +6,7 @@ OMax 4 by Benjamin Lévy, George Bloch and Gérard Assayag.
 
 OMax initial design and development by G. Assayag, G. Bloch, M. Chemillier, S. Dubnov
 
-Version 4.7 is univesal for Apple ARM processors and Max 9
+Version 4.7 is universal for Apple ARM processors and Max 9
 
 Version 4.6 is for Max 8.
 
