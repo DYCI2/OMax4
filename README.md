@@ -18,6 +18,10 @@ Omax Version 4.6 is for Max 8.
 
 For Max 7 use release 4.5.7 or 4.5.64. For versions compatible with  Max 6 and below, check other github branches (Max5, Max6.1)
 
+## Documentation
+
+Read Omax4-doc.pdf in the Omax folder.
+
 ## Resources
 
 [Omax Project Page](http://repmus.ircam.fr/omax/home)
